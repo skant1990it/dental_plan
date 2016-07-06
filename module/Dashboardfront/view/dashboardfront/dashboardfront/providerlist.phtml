@@ -1,0 +1,73 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+
+
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+?>
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+
+
+<div class="width800" ng-controller="providercontrollar">
+    <div class="grid100 change-password">
+      <div layout="row" layout-align="center center">
+            <h2><span class="margin30">Providers List</span></h2>
+        </div>
+        <div class="schedule-table margintop90">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dr. Name</th>
+                        <th>Location</th>
+                        <th>Hours</th>
+                        <th>View Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="providerdata in providerlistingarray">
+                       
+                        <td>{{ providerdata.first_name+' '+providerdata.last_name }}</td>
+                         <td>{{providerdata.timing?providerdata.address+', '+providerdata.city+', '+providerdata.state+', '+providerdata.zip:'Unavailable' }}</td>
+                        <td>{{providerdata.timing?providerdata.timing:'Unavailable'}}</td>
+                        <td>
+                          <div layout="row" layout-align="center center">
+                            <a href="/dashboardfront/doctorprofile/{{providerdata.id}}"><img src="/images/profile-icon.png" width="27" height="22" alt="Profile"></a>
+                            </div>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>  
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('providercontrollar', function($scope,$http,$window) 
+{ 
+  var providerlisting=statesname='<?php echo $providerlist ; ?>';
+  var providerlistingobj=angular.fromJson(providerlisting); 
+  $scope.providerlistingarray  = angular.fromJson(providerlistingobj);
+}); 
+
+</script>
+

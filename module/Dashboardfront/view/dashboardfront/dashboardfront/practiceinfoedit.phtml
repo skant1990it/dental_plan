@@ -1,0 +1,312 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+
+
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+
+ use Zend\Session\Container;
+ $session = new Container('User');
+ $doc_specility_type=  $session->offsetGet('doc_speciality') ;
+?>
+<header layout="row">
+ <?php 
+   echo $this->render('dentalheaderlogo.phtml'); 
+ ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+
+<div class="width650">
+    <div class="grid100 change-password" ng-controller="formController">
+        <form name="providerLocationForm" id="msform">
+               <h2>Tell About your practice</h2>
+               {{ successmessage }} {{ message }} 
+              <div layout-gt-sm="row" class="layout-gt-sm-row">
+                    <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        <label for="input_4">Legal Business Name</label>
+                        <input name="legal" type="text" ng-model="location.legal" class="ng-pristine ng-untouched ng-valid md-input" id="input_4" aria-invalid="false" required>
+                       <div class="md-errors-spacer" ng-show="providerLocationForm.legal.$touched"> 
+                        <span ng-show="providerLocationForm.legal.$error.required">Enter Legal Business Name .</span>
+                       </div>
+                    </md-input-container>
+              </div>
+              <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                  <label for="input_5">Practice Name</label>
+                  <input name="practice" type="text" ng-model="location.practice" class="ng-pristine ng-untouched ng-valid md-input" id="input_5" aria-invalid="false" required>
+                   <div ng-show="providerLocationForm.practice.$touched">
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.practice.$error.required">Enter Practice Name .</div>
+                   </div>
+            </md-input-container>  
+              <h2 style="padding-bottom:45px;padding-top:45px;">What Kind of practice do you have?</h2>
+                <div layout-gt-sm="row" class="layout-gt-sm-row">
+                  <md-checkbox md-no-ink="" aria-label="Checkbox No Ink" ng-model="location.chk1" class="md-primary" role="checkbox"><div class="md-container" md-ink-ripple="" md-ink-ripple-checkbox=""><div class="md-icon"></div></div><div ng-transclude="" class="md-label"><span class="ng-scope">
+                    General Dental Office
+                  </span></div>
+                </md-checkbox>
+
+                  <md-checkbox md-no-ink="" aria-label="Checkbox No Ink" ng-model="location.chk2" class="md-primary" role="checkbox"><div class="md-container" md-ink-ripple="" md-ink-ripple-checkbox=""><div class="md-icon"></div></div><div ng-transclude="" class="md-label"><span class="ng-scope">
+                    Specialty Office
+                  </span></div>
+                  </md-checkbox>
+                </div>
+                
+                <div layout-gt-sm="row" class="layout-gt-sm-row">
+                  <md-checkbox md-no-ink="" aria-label="Checkbox No Ink" ng-model="location.chk3" class="md-primary" role="checkbox"><div class="md-container" md-ink-ripple="" md-ink-ripple-checkbox=""><div class="md-icon"></div></div><div ng-transclude="" class="md-label"><span class="ng-scope">
+                    General Dental Office with different specialties
+                  </span></div>
+                  </md-checkbox>
+
+                </div>
+        
+                <h2 style="padding-bottom:25px;padding-top:75px;">Are you a traveling Specialist?</h2>
+                <div layout-gt-sm="row" class="layout-gt-sm-row">
+                  <md-radio-group ng-model="location.group" layout="row">
+                        <md-radio-button ng-value="1"  class="md-primary">Yes</md-radio-button>
+                        <md-radio-button ng-value="0" class="md-primary">No</md-radio-button>
+                 </md-radio-group>
+              </div>
+     <div layout-gt-sm="row" class="layout-gt-sm-row" > 
+          <div ng-if="location.group == '0'"> 
+            
+
+
+                <div  ng-repeat="choice in choices">
+              <!-- part of div alaways repeat    -->
+              <div layout-gt-sm="row" class="layout-gt-sm-row">   
+      <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                <label for="input_13">Zip Code</label>
+                <input name="zipcode{{ $index }}" type="text"  ng-blur="searchzip(choice.id)" ng-model="location.zip[choice.id]" class="ng-pristine ng-untouched ng-valid md-input" id="input_13" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-minlength="5" ng-maxlength="5" aria-invalid="false" required>
+                <div ng-show="providerLocationForm.zipcode{{ $index }}.$touched">
+                  <span ng-show="providerLocationForm.zipcode{{ $index }}.$error.required">Enter Zip Code .</span>
+                  <span ng-show="providerLocationForm.zipcode{{ $index }}.$error.pattern"> Only number allowed . </span>
+                  <span ng-show="providerLocationForm.zipcode{{ $index }}.$error.minlength"> Min length should be 5. </span>
+                  <span ng-show="providerLocationForm.zipcode{{ $index }}.$error.maxlength">Max length should be 5 . </span>
+                </div>
+                   <div class="md-errors-spacer"></div>
+      </md-input-container>
+      <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                       <label for="input_7">City</label>
+                        <input name="city{{ $index }}" type="text" ng-model="location.city[choice.id]" class="ng-pristine ng-untouched ng-valid md-input" id="input_7" aria-invalid="false" required>
+                         <div ng-show="providerLocationForm.city{{ $index }}.$touched">
+                             <span ng-show="providerLocationForm.city{{ $index }}.$error.required">Enter city .</span>
+                        </div>
+                        <div class="md-errors-spacer"></div>
+             </md-input-container>
+             <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        <label for="input_7">State</label>
+                        <input name="state{{ $index }}" type="text" ng-model="location.state[choice.id]" class="ng-pristine ng-untouched ng-valid md-input" id="input_7" aria-invalid="false" required>
+                         <div ng-show="providerLocationForm.state{{ $index }}.$touched">
+                             <span ng-show="providerLocationForm.state{{ $index }}.$error.required">Enter State .</span>
+                        </div>
+                        <div class="md-errors-spacer"></div>
+             </md-input-container>
+      <?php /* ?>
+      <md-input-container class="md-block" flex-gt-sm ng-required="true">
+           <md-select placeholder="State"  ng-model="location.state[choice.id]" required>
+                <md-option ng-value="statesval.short_name" ng-repeat="statesval in statesobject"> {{ statesval.name }} </md-option>
+           </md-select>
+      </md-input-container>
+       <?php */ ?>
+               <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                    <label for="input_6">Address</label>
+                    <input name="addr{{ $index }}" type="text" ng-model='location.address[choice.id]'
+                    choice.id class="ng-pristine ng-untouched ng-valid md-input" id="input_6" aria-invalid="false" required>
+                      <div ng-show="providerLocationForm.addr{{ $index }}.$touched">
+                         <span ng-show="providerLocationForm.addr{{ $index }}.$error.required">Enter Address .</span>
+                     </div>
+
+                    <div class="md-errors-spacer"></div>
+                </md-input-container>
+          
+          
+         <div ng-if="choice.id!=1" class="delete"><a href="javascript:void(0);" title="Delete"><img src="/images/delete-icon.png" width="20" height="25" alt="Delete" ng-click="removeLocation(choices,$index,choice.id,location.loc_id[choice.id])"></a></div>
+        </div>
+        
+                  <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                    <label for="input_14">Phone</label>
+                    <input ng-pattern='/^(0|[0-9][0-9]*)$/' name="phone{{ $index }}" ng-maxlength="10" ng-minlength="10"  type="text" ng-model="location.phone[choice.id]" class="ng-pristine ng-untouched ng-valid md-input" id="input_14" aria-invalid="false" required>
+                   <div ng-show="providerLocationForm.phone{{ $index }}.$touched">
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.phone{{ $index }}.$error.required">Enter Phone No.</div>
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.phone{{ $index }}.$error.pattern">Only number allowed .</div>
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.phone{{ $index }}.$error.maxlength">Max length should be 10 .</div>
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.phone{{ $index }}.$error.minlength">Min length should be 10 .</div>
+                   </div>
+                </md-input-container>
+                <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                    <label for="input_15">Practice Email Address </label>
+                  <input name="email{{ $index }}" type="email" ng-pattern='/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/' ng-model="location.email[choice.id]" class="ng-pristine ng-untouched ng-valid md-input ng-valid-email" id="input_15" aria-invalid="false" required>
+                    <div ng-show="providerLocationForm.email{{ $index }}.$touched">
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.email{{ $index }}.$error.required">Enter Email Address. </div>
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.email{{ $index }}.$error.pattern">Invalid Email Address. </div>
+                   </div>
+               </md-input-container>
+                
+                <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                       <label for="input_7">Timing</label>
+                        <input name="timing{{ $index }}" type="text" ng-model="location.timing[choice.id]" class="ng-pristine ng-untouched ng-valid md-input" id="input_7" aria-invalid="false" required>
+                         <div ng-show="providerLocationForm.timing{{ $index }}.$touched">
+                             <span ng-show="providerLocationForm.timing{{ $index }}.$error.required">Enter Time .</span>
+                        </div>
+                        <div class="md-errors-spacer"></div>
+             </md-input-container>
+                 <!-- part of div alaways repeat  end -->
+             </div>
+
+
+                  <div layout="row" layout-align="center center">
+                     <md-button class="md-warn md-raised green-button" ng-click=addNewChoice(providerLocationForm)>Add More Location</md-button>
+                  </div>
+            </div>
+          </div>
+      <div layout="row" layout-align="center center">
+       <md-button class="md-warn md-raised save-button next" ng-click="submitLocation(providerLocationForm)">Save</md-button>
+         <?php if($doc_specility_type==3){
+                   ?>
+                 <md-button ng-href="/dashboardfront/specilistwelcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+                 <md-button ng-href="/dashboardfront/dashboardsetting" class="md-warn md-raised red-button marginLeft10">Cancel</md-button>
+                <?php
+               }else{
+                ?>
+            <md-button ng-href="/dashboardfront/welcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+           <md-button ng-href="/dashboardfront/dashboardsetting" class="md-warn md-raised red-button marginLeft10">Cancel</md-button>
+             <?php
+              }
+             ?>
+            
+
+             </form> 
+    </div>
+</div>               
+            
+
+<!-- Your application -->
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="/jscript/angular.min.js"></script>
+<script src="/jscript/angular-animate.min.js"></script>
+<script src="/jscript/angular-aria.min.js"></script>
+<script src="/jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="/jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('formController', function($scope,$http,$window) { 
+var statesname=statesname='<?php echo $statelist ; ?>';
+$scope.statesobject  = angular.fromJson(statesname);  // use for convert string to object
+var locationdetail='<?php echo $locationdetail ; ?>';
+var locationdetailobject  = angular.fromJson(locationdetail);
+$scope.location = locationdetailobject ;
+
+var choicesval='<?php echo $choicesval ; ?>';
+if(choicesval!=0)
+{
+$scope.group=0;
+ $scope.choices = [];
+ for($i=1;$i<=parseInt(choicesval);$i++)
+ {
+  $scope.choices.push({'id': $i});
+ }
+}else{
+$scope.group=1;
+$scope.choices = [{id: '1'}];    // this variable for location form
+}
+    $scope.users = [                                 // this is doctor type list 
+         { id: 1, name: 'Dentist' },
+         { id: 2, name: 'Pediatric Dentists' },
+         { id: 3, name: 'Other Specialist' }
+         ];
+     $scope.addNewChoice = function() 
+       {
+       var newItemNo = $scope.choices.length+1;
+       $scope.choices.push({'id': newItemNo});
+       };
+    $scope.submitLocation =function($valid)
+       { 
+        if($scope.providerLocationForm.$valid)
+        {
+         if(!$scope.location.chk1&&!$scope.location.chk2&&!$scope.location.chk3)
+         {
+          $scope.message =   'Please select atleast one kind of practice .';  
+          return false;
+         }
+           $scope.nolocation='false';
+          if($scope.location.group==1){
+            $scope.location.address={};
+            $scope.location.state={};
+            $scope.location.city={};
+            $scope.location.zip={};
+            $scope.location.phone={};
+            $scope.location.timing={};
+            $scope.location.email={};
+            $scope.location.loc_id={};
+        }
+       $http.post('/dashboardfront/submitlocation',$scope.location)
+       .success(function(data,status){
+        $scope.successmessage='Location updated successfully';
+          if(data=='0'){
+            $scope.location.address={};
+            $scope.location.city={};
+            $scope.location.zip={};
+            $scope.location.phone={};
+            $scope.location.timing={};
+            $scope.location.email={};
+            $scope.location.state={};
+            $scope.nolocation='true';
+            $scope.repeatloc= [{"nolocation":"true","options":[{"id":1}]}];
+            }else{
+            $scope.repeatloc=data;
+          }
+        })
+      }else{
+     $scope.message =   'Please fill the form details.';  
+      }
+    };
+    $scope.removeLocation=function(choices,index,choice_id,loc_id)
+     {
+      $scope.choices.splice(index,1);              // use for remove id element from choices array
+      delete  $scope.location.address[choice_id] ;
+      delete  $scope.location.city[choice_id] ;
+      delete  $scope.location.zip[choice_id] ;
+      delete  $scope.location.phone[choice_id] ;
+      delete  $scope.location.timing[choice_id] ;
+      delete  $scope.location.loc_id[choice_id] ;
+      delete  $scope.location.email[choice_id] ;  // use to delete email of particular choice_id
+      $http.get('/dashboardfront/deletelocprovider/'+loc_id).success(function(data,status){
+        
+      });
+   
+   }
+    $scope.searchzip = function (ind){
+    
+    var sentdata = { "data" : $scope.location.zip[ind]};
+    //console.log(sentdata);
+    $http.post('/searchzip',sentdata)
+    .success(function(data,status){
+      //console.log(data);
+      if(data[0].state){
+         $scope.location.state[ind] = data[0].state;
+         $scope.location.city[ind] = data[0].city;        
+      }
+
+    });
+  
+  };
+});
+</script>

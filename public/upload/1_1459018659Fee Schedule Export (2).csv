@@ -1,0 +1,719 @@
+Procedure Code,Abbrev Description,Description,UCR
+D0366,Cap-Maxil,"CT Capture, Full Arch, Maxilla",0
+D0365,Cap-Mand,"CT Capture, Full Arch, Mandible",0
+D0364,Cap<1Jaw,"CT Capture, Lmtd View  < 1 Jaw",0
+D0191,Assess,Assessment of Patient,0
+D0190,Screen,Screening of Patient,0
+D0120,PeriodicX,Periodic oral evaluation,55
+D0150,CompEx,Comp oral eval-new/estab pat,95
+D0210,FMX,Intraoral-complete series (bw),150
+D1110,ProphyAd,Prophylaxis-adult,120
+D1120,ProphyCh,Prophylaxis-child,75
+D1201,ProphFlCh,Prophylaxis with fluoride-child,95
+D1205,ProphFlAd,Prophylaxis with fluoride-adult,140
+D2110,Amalg1Pri,"Amalgam-1 surface, primary",0
+D2120,Amalg2Pri,"Amalgam-2 surface, primary",120
+D2130,Amalg3Pri,"Amalgam-3 surface, primary",145
+D2131,Amalg4Pri,"Amalgam-4+ surface, primary",165
+D2140,Amalg1Per,Amalgam-1 surf. prim/perm,125
+D2150,Amalg2Per,Amalgam-2 surf. prim/perm,155
+D2160,Amalg3Per,Amalgam-3 surf. prim/perm,185
+D2161,Amalg4Per,Amalgam-4+ surf. prim/perm,225
+D7110,ExtSingTh,Extraction-single tooth,200
+D0220,PA1st,Intraoral-periapical-1st film,20
+D0230,PAadd,Intraoral-periapical-each add'l,10
+D0240,OcclusalX,Intraoral-occlusal film,0
+D0250,Extraor1s,Extraoral-first film,0
+D0260,ExtraorX+,Extraoral-each additional film,0
+D0270,BW1Xray,Bitewing-single film,20
+D0272,2BWX,Bitewings-two films,35
+D0290,SurvXray,Skull &facial bone survey film,0
+D0274,4BWX,Bitewings-four films,50
+D0320,TMJarthro,"TMJ arthrogram, incl injection",0
+D0321,OtherTMJX,"Other TMJ films, by report",0
+D0330,Pano,Panoramic film,0
+D0340,Cephalo,Cephalometric film,0
+D0425,CarisTest,Caries susceptibility tests,0
+D0415,BactStud,Collection of microorg culture,0
+D0460,PulpVitTe,Pulp vitality tests,0
+D0470,DiagCasts,Diagnostic casts,95
+D0471,DiagPhoto,Diagnostic photographs,0
+D0501,HistoExam,Histopathologic examinations,0
+D0502,OthPath,"Other oral path procedure, B/R",0
+D0999,UnspDiag,"Unspecified diag procedure, B/R",0
+D1203,FluoridCh,Fluoride w/o prophylaxis-child,45
+D1204,FlouridAd,Fluoride w/o prophylaxis-adult,45
+D1310,NutriCnsl,Nutritional counseling,0
+D1330,OralHygIn,Oral hygiene instruction,45
+D1351,Sealant,Sealant-per tooth,65
+D1510,SpMFixUni,Space maint-fixed-unilateral,250
+D1515,SpMFixBil,Space maint-fixed-bilateral,350
+D1520,SpMRemUni,Space maint-remov-unilateral,0
+D1525,SpMRemBil,Space maint-remov-bilateral,0
+D1550,Recement,Recementation of space maint,0
+D2210,Silicate,Silicate cement-per restorat.,0
+D2710,CrwnResLb,Crown-resin composite(indirect),750
+D2720,CrwnResHN,Crown-resin w/high noble metal,0
+D2721,CrwnResBm,Crown-resin w/ most base metal,0
+D2722,CrwnResNm,Crown-resin with noble metal,0
+D2740,CrwnPrCrS,Crown-porcelain/ceramic poster,"1,200.00"
+D2750,CrnPrFHnM,Crown-porc fuse high noble mtl,"1,000.00"
+D2751,CrwnPrFBm,Crown-porc fused to base metal,950
+D2752,CrnPrFNm,Crown-porc fused noble metal,"1,000.00"
+D2790,CrnFlcHNm,Crown-full cast high noble mtl,"1,200.00"
+D2791,CrnFlcBm,Crown-full cast base metal,850
+D2792,CrnFlcNm,Crown-full cast noble metal,"1,200.00"
+D2810,Crn3/4Cm,Crown-3/4 cast metallic,0
+D3310,RtCnThrAn,Root canal therapy - anterior,850
+D3320,RtCnThrBi,Root canal therapy - bicuspid,950
+D3330,RtCnThrMo,Root canal therapy - molar,"1,200.00"
+D5110,ComUpDen,Complete denture - maxillary,"1,500.00"
+D5120,ComLowDen,Complete denture - mandibular,"1,500.00"
+D5130,ImmUpDen,Immediate denture - maxillary,"1,800.00"
+D5140,ImmLowDen,Immediate denture - mandibular,"1,800.00"
+D5211,UpParRsBs,Maxillary partial - resin base,850
+D5212,LwParRsBs,Mandibular partial - resin base,850
+D5213,UpParMtBs,Maxil partial-metal Base W/sdls,"1,800.00"
+D5214,LwParMtBs,Mand partial-metal base w/sdls,"1,800.00"
+D6210,PntcCtHNM,Pontic-cast high noble metal,950
+D6211,PntcCtPdB,Pontic-cast predominantly base,900
+D6212,PntcCtNM,Pontic-cast noble metal,950
+D6240,PntcPrFHN,Pontic-porcelain fused to hnob,"1,200.00"
+D6241,PntcPrFBs,Pontic-porcelain fused to base,900
+D6242,PntcPrFNb,Pontic-porcelain fused to nobl,950
+D6250,PntcRsHNM,Pontic-resin w/ high noble met,0
+D6251,PntcRsPdB,Pontic-resin w/ predomnt base,0
+D6252,PntcRsNM,Pontic-resin with noble metal,0
+D6720,RtCrnRsHN,Retainer crn-res w/ hi nob met,0
+D6721,RtCrnRsBM,Retainer crn-resin w/ base met,0
+D6722,RtCrnRsNM,Retainer crn-resin w/ nob met,0
+D6750,RtCrnPFHn,Retainer crn-porc fused-hi nob,"1,200.00"
+D6751,RtCrnPrFB,Retainer crn-porc fuse-base met,900
+D6752,RtCrnPrFN,Retainer crn-porc fused-nob met,"1,200.00"
+D6780,RtCrn3/4,Retainer crn-3/4 cast h nob met,0
+D6790,RtCrnFCHn,Retainer crn-full cast hi nob,"1,200.00"
+D6791,RtCrnFCBs,Retainer crn-full cast base,900
+D6792,RtCrnFCNm,Retainer crn-full cast nob met,"1,200.00"
+D7120,ExtEchAdd,Extraction-each additional,150
+D7210,ExtSrErTh,Extraction-surgical/erupt tooth,350
+D7220,ExtImpSfT,Extraction-impacted/soft tis,450
+D7230,ExtImpPtB,Extraction-impacted/part bony,550
+D7240,ExtImpCmB,Extraction-impacted/compl bony,750
+D2330,Resin1,"Resin-one surface, anterior",165
+D2331,Resin2,"Resin-two surfaces, anterior",185
+D2332,Resin3,"Resin-three surfaces, anterior",225
+D2335,Res4/inAn,Resin-4+ w/incis angle-anterior,350
+D2410,GoldFoil1,Gold foil-one surface,0
+D2420,GoldFoil2,Gold foil-two surfaces,0
+D2430,GoldFoil3,Gold foil-three surfaces,0
+D2510,InlayMet1,Inlay-metallic-one surface,750
+D2520,InlayMet2,Inlay-metallic-two surfaces,850
+D2530,InlayMet3,Inlay-metallic-three + surfaces,950
+D2543,OnlayMet3,Onlay-metallic-three surfaces,950
+D2610,InPorc/C1,Inlay-porcel/ceramic-1 surface,"1,200.00"
+D2620,InPorc/C2,Inlay-porcel/ceramic-2 surface,"1,200.00"
+D2630,InPorc/C3,Inlay-porcel/ceramic-3+ surface,"1,200.00"
+D3351,ApxRclIni,"Apexification/recalcif, initial",0
+D2910,RecmtInly,Recement inlay/onlay/partial,85
+D2920,RecmtCrwn,Recement crown,85
+D2930,PrFbSSCPr,Prefab stain steel crn-primary,350
+D2931,PrFbSSCPe,Prefab stain steel crown-perm,550
+D2932,PrFbRsCrn,Prefabricated resin crown,550
+D2940,SedFill,Sedative filling,0
+D2950,CrnBldPin,"Crown buildup, includ any pins",250
+D2951,PnRetTth+,"Pin retention-/tooth, (+ rest)",50
+D2952,CstPst&Cr,Cast post &core in add to crown,450
+D2954,PrFbPt&Cr,Prefab post&core in add to crn,350
+D2960,LabVnLmCs,Labial veneer(laminate)-chairsd,650
+D2970,TempCrwn,Temporary crown (fractured th),150
+D2980,CrwnRepr,"Crown repair, by report",0
+D2999,UnspResPr,Unspecif restorative proced B/R,0
+D3110,PlpCpDir,"Pulp cap-direct, (+rest)",95
+D3120,PlpCpIndr,"Pulp cap-indirect, (+ rest)",95
+D3220,TherPlpty,Therapeutic pulpotomy(exc rest),120
+D3410,ApctPrSrA,Apicoectomy/Periradic surg-ant,0
+D3421,ApctPrBi1,Apicoect/Perirad-bicus/1st root,0
+D3430,RetroFill,Retrograde filling-per root,0
+D3450,RtAmpPrRt,Root amputation-per root,550
+D3460,EndoEdsIm,Endodontic endosseous implant,0
+D3910,SrIslw/RD,Surg isolation of th w/rub dam,0
+D3920,HemiNRtCn,"Hemisection, no root can ther",0
+D3950,CnPrpDwPs,Canal prep/fit of dowel/post,0
+D3960,BlchTh,Bleaching of discolored tooth,350
+D3999,UnspEdoPr,"Unspecified endo procedure, B/R",0
+D4210,GingctQdr,Gingivectomy-4+ per quadrant,350
+D4211,GingctTh,Gingivectomy-1-3 contig th/quad,95
+D4220,GinCurSrQ,"Gingiv curettage,surgical /quad",0
+D4240,GnFlInRtP,"Ging flap,root pln, 4+ per quad",800
+D4260,OssSurQ,Osseous surgery-4+ per quad,0
+D4263,BnRpGr1st,Bone replace graft-1st site/qu,600
+D4264,BnRpGrEa+,Bone replace graft-each add/qu,300
+D4270,PedsfTsGr,Pedicle soft tissue graft proc,0
+D4271,FrSfTsGr,Free soft tissue graft proced,0
+D4320,ProvSplIn,Provisional splinting-intracor,0
+D4321,ProvSplEx,Provisional splinting-extracor,0
+D4355,FullDebrd,"Full mouth debridemnt,eval/diag",120
+D4341,PrSclRtPl,Perio scale&root pln-4+per quad,225
+D4910,PerMaint,Periodontal maintenance,120
+D4920,UnscDrChg,Unscheduled dressing change,0
+D4999,UnspcPerP,"Unspecified perio proced, B/R",0
+D5281,RmvUniPDn,Removable unilat part denture,0
+D5410,AdjCmDnUp,Adjust complete denture-maxil,150
+D5411,AdjCmDnLw,Adjust complete denture-mand,150
+D5421,AdjPrDnUp,Adjust partial denture-maxil,150
+D5422,AdjPrDnLw,Adjust partial denture-mand,150
+D5510,RprCmDnBs,Repair complete denture base,450
+D5520,RplThCmDn,Replace teeth-comp dent (ea th),150
+D5610,RprRsSdBs,Repair resin denture base,350
+D5620,RprCstFrm,Repair cast framework,350
+D5630,RepClsp,Repair or replace broken clasp,150
+D5640,RepBrkTh,Replace broken teeth-per tooth,150
+D5650,AddThExDn,Add tooth to exist part denture,150
+D5660,AddClsp,"Add clasp, exist part denture",250
+D5710,RebsCUpDn,Rebase complete maxil denture,550
+D5711,RebsCLwDn,Rebase complete mand denture,550
+D5720,RebsUPPDn,Rebase maxil partial denture,550
+D5721,RebsLwPDn,Rebase mand partial denture,550
+D5730,RlnCmUpCh,Reline complete maxil-chairside,400
+D5731,RlnCmLwCh,Reline complete mand-chairside,400
+D5740,RlnUpPrCh,Reline maxil partial-chairside,500
+D5741,RlnLwPrCh,Reline mand partial-chairside,500
+D5750,RlnCmUpLb,Reline complete maxillary (lab),500
+D5751,RlnCmLwLb,Reline complete mand (lab),500
+D5760,RlnUpPrLb,Reline maxillary partial (lab),500
+D5761,RlnLwPrLb,Reline mandibular partial (lab),500
+D8690,OrthTrtBl,Ortho treatment (bill/contract),0
+D8010,LimitPrim,"Limited ortho trt, primary dent",0
+D8210,RmAppTh,Removable appliance therapy,0
+D8220,FxAppTh,Fixed appliance therapy,0
+D8050,IntcPrim,"Intercep orth trt, primary dent",0
+D8060,IntcTrans,"Intercep orth trt, transitional",0
+D8020,LimitTran,"Limited ortho trt, transitional",0
+D8030,LimitAdol,"Limited ortho treat, adolescent",0
+D8040,LimitAdlt,"Limited ortho treat, adult dent",0
+D8070,CompTrans,"Comprehensive orth,transitional",0
+D8080,CompAdol,"Comprehensive ortho, adolescent","5,500.00"
+D8090,CompAdult,"Comprehensive ortho, adult dent","5,500.00"
+D8680,OrthRetn,Orthodontic retention,395
+D8670,PstTrtStb,Periodic ortho visit (contract),0
+D8999,UnspcOrth,"Unspec ortho procedure, B/R",0
+D9211,RegBlkAns,Regional block anesthesia,0
+D9210,LoclAnsNO,Local anesthesia not op/surg,0
+D9110,EmergEx,"Emerg treatment, palliative",250
+D9212,TriDvBlAn,Trigeminal division blk anesth,0
+D9220,GnAns30mn,Deep sedat/gen anesth-1st 30m,0
+D9230,AnlgNitOx,Analgesia,0
+D9240,IntrvnSed,Intravenous sedation,0
+D9310,Consult,Consultation-per session,95
+D9410,ProfHsCal,House/extended care facility,0
+D9420,ProfHosCl,Professional hospital call,0
+D9430,OffVisRgH,Office visit for observation,0
+D9440,OffVisAfH,Office visit-after regular hrs,0
+D9610,ThrDrgInj,"Therapeutic drug injection, B/R",0
+D9630,OthDrgMed,"Other drugs/medicaments, B/R",0
+D9910,ApDesnMed,Application of desensitize med,120
+D9920,BehavMang,"Behavior management, by report",0
+D9930,TrtPstOpC,Treat complications-postsurgic,0
+D9940,OcclGuard,"Occlusal guards, by report",350
+D9941,FabAthMgd,Fabricate athletic mouthguards,0
+D9950,OcclanlMC,Occlusal analysis-mounted case,0
+D9951,OcclAdjLm,Occlusal adjustment-limited,150
+D9952,OcclAdjCm,Occlusal adjustment-complete,350
+D9999,UnspcAdjP,In Office Bleaching,150
+D5810,IntCmDnUp,Interim comp denture (maxil),0
+D5811,IntCmDnLw,Interim comp denture (mand),0
+D5820,IntPrDnUp,Interim partial denture (maxil),0
+D5821,IntPrDnLw,Interim partial denture (mand),750
+D5850,TisConUp,"Tissue condition, maxillary",0
+D5860,OvrDenCom,"Overdenture-complete, B/R",0
+D5861,OvrDenPar,"Overdenture-partial, by report",0
+D5862,PrecnAtt,"Precision attachment, B/R",250
+D5899,UnspcRmPr,"Unspecified remove prosth, B/R",0
+D5911,FacMoulSc,Facial moulage (sectional),0
+D5912,FacMoulCm,Facial moulage (complete),0
+D5913,NasProsth,Nasal prosthesis,0
+D5914,AurProsth,Auricular prosthesis,0
+D5915,OrbProsth,Orbital prosthesis,0
+D5916,OcuProsth,Ocular prosthesis,0
+D5919,FacProsth,Facial prosthesis,0
+D5932,ObtProDef,"Obturator prosthesis,definitive",0
+D5931,ObtProSur,"Obturator prosthesis, surgical",0
+D5933,ObtProMod,"Obturator prosthesis, modificat",0
+D5934,ManResFla,Mandibular resection w/ flange,0
+D5935,ManRes,Mandibular resection w/o flange,0
+D5951,FeedAid,Feeding aid,0
+D5952,SpchAidPd,"Speech aid prosthesis,pediatric",0
+D5953,SpchAidAd,"Speech aid prosthesis, adult",0
+D5954,PalAugPro,Palatal augmentation prosthesis,0
+D5955,PlLftPrDf,"Palatal lift prosth, definitive",0
+D5982,SurgStent,Surgical stent,0
+D5983,RadtnCarr,Radiation carrier,0
+D5984,RadtnShld,Radiation shield,0
+D5985,RadtnCnLc,Radiation cone locator,0
+D5986,FlrGelCar,Fluoride gel carrier,0
+D5999,UnspcMxPr,Unspec maxillofacial prosth B/R,0
+D7810,OpRdDsloc,Open reduction of dislocation,0
+D7820,ClRdDsloc,Closed reduction of dislocate,0
+D7830,ManipAnes,Manipulation under anesthesia,0
+D7840,Cndylctmy,Condylectomy,0
+D7860,Arthrtomy,Arthrotomy,0
+D7870,Arthrcnts,Arthrocentesis,0
+D7880,OclOrthDv,Occlusal orthotic device,0
+D7710,MxlOpRd,Maxilla-open reduction,0
+D7130,RtRemvExR,Root removal-exposed root,150
+D7720,MxlClRd,Maxilla-closed reduction,0
+D7730,ManOpRd,Mandible-open reduction,0
+D7740,ManClRd,Mandible-closed reduction,0
+D7750,MalZYArOR,Malar/zygomatic arch-open red,0
+D7760,MalZyArCR,Malar/zygomatic arch-close red,0
+D7770,AlvStbThO,"Alveolus-stabilize teeth, open",0
+D7780,FacBnCmpR,Facial bones-complicated reduc,0
+D7910,SutSmWds,Suture of small wounds to 5cm,0
+D7971,ExcPrcGnA,Excision-pericoronal ging /arch,0
+D7980,Sialoltho,Sialolithotomy,0
+D7981,ExcSalGld,"Excision of salivary gland, B/R",0
+D7982,Sialodoch,Sialodochoplasty,0
+D7983,ClsrSalvF,Closure of salivary fistula,0
+D7990,EmerTrach,Emergency tracheotomy,0
+D7991,Cornoidct,Coronoidectomy,0
+D7995,SnGrMndFc,"Synthetic graft-mand/facial,B/R",0
+D7996,ImplntOth,"Implant-mandib/augmentation,B/R",0
+D7999,UnspcOrSr,"Unspecified oral surg proc, B/R",0
+D7911,CompSut,Complicated suture-up to 5 cm,0
+D7912,CompSut>5,Complicated suture-over 5 cm,0
+D7970,ExcHypTsA,"Excision, hyperplast tiss-arch",0
+D7960,FrnlctmSP,Frenulectomy-separate procedur,0
+D7950,OsCrtGrMn,Osseous/cartilage graft-mandB/R,0
+D7955,RpMxfcSHT,Rep maxillofacial sft/hrd tis,0
+D7920,SkinGraft,"Skin grafts, by report",0
+D7940,OstpOrtDf,Osteoplasty-orthognathic defor,0
+D7941,OsteRamCl,Osteotomy-mandibular rami,0
+D7942,OsteRamOp,"Osteotomy-ramus, open",0
+D7943,OstRmOpGr,Osteotomy-mand rami w/ graft,0
+D7944,OstSgSbps,Osteotomy-segment/subap-s/quad,0
+D7945,OstBdMand,Osteotomy-body of mandible,0
+D7946,LeFrtIMxT,LeFort I (maxilla-total),0
+D7947,LeFrtIMxS,LeFort I (maxilla-segmented),0
+D7948,LeFrt2&3,LeFort II/III-no bone graft,0
+D7949,LeFrt2&3B,LeFort II/III-with bone graft,0
+D6930,RcmntPrtl,Recement fixed partial denture,100
+D6940,StressBrk,Stress breaker,450
+D6950,PrecAttac,Precision attachment,450
+D6970,CstPtCr+B,"Cast post/core, + brdg retainer",450
+D6971,CstPtBrRt,Cast post/part of brdg retainer,450
+D6972,PrfbPtC+B,Prefab post/core+ brdg retainer,350
+D6980,BrdgRepr,"Fixed partial dent. repair, B/R",0
+D6999,UnspcFxPr,"Unspec fixed prosth proced, B/R",0
+D6520,InlyMt2Sr,Inlay-metallic-two surfaces,0
+D6530,InlyMt3+S,Inlay-metallic-three+ surfaces,0
+D6543,OnlayMt3s,Onlay-metallic-three surfaces,0
+D6545,RetCast,Retainer-cast for resin bonded,0
+D7241,RmvImpCmB,Remov impact-comp bony w/ comp,0
+D7250,SrgRmRThR,Surgic removl resid tooth root,450
+D7260,OrlAntFsC,Oral antral fistula closure,0
+D7270,ReimpStab,Reimplantation/stabilization,0
+D6920,ConectBar,Connector bar,0
+D7272,ThTrnspln,Tooth transplantation,0
+D7280,ExpImpUer,Surgical access unreupted tooth,0
+D7281,ExpImpAdE,Expos impact/unerupt-aid erupt,0
+D7285,BpsyOrTsH,Biopsy of oral tissue-hard,350
+D7286,BpsyOrTsS,Biopsy of oral tissue-soft,350
+D7290,SrgRepsTh,Surgical reposition of teeth,0
+D7291,TnsptlFbr,"T/SC Fiberotomy, B/R",0
+D7310,AlvplsyEx,Alveoloplasty w/ extract- /quad,350
+D7320,Alvplsty,Alveoloplasty w/o extract /quad,450
+D7340,Vstbplsy2,Vestibuloplasty-ridge ext -2nd,0
+D7350,VstplstyI,Vestiplasty-ridge ext (inc),0
+D7410,RadExDm<=,Excision benign lesion<=1.25cm,0
+D7420,RadExDm>,Radical excis-diam > 1.25 cm,0
+D7430,ExBnTmD<=,Ex benign tumor-diam <= 1.25cm,0
+D7431,ExBnTmD>,Ex benign tumor-diam > 1.25 cm,0
+D7440,ExMlTmD<=,Ex malig tumor-diam <= 1.25 cm,0
+D7441,ExMlTmD>,Ex malig tumor-diam > 1.25 cm,0
+D7450,RmOdCyD<=,Rem benign odont-diam<=1.25cm,0
+D7451,RmOdCyD>,Rem benign odont-diam>1.25 cm,0
+D7460,RmNodCD<=,Rem benign nonodont-di<=1.25cm,0
+D7461,RmNodCD>,Rem benign nonodont-diam>1.25cm,0
+D7465,DstrLsPhC,Destruct lesion-phys/chem B/R,0
+D7470,RmExsMxMn,Rem exostosis-maxilla/mandible,0
+D7480,PrtOstctm,Part ostectomy(guttering/sauc),0
+D7490,RdRsMnBng,Rad resectn-maxilla or mandible,0
+D7510,Inc&DrAIn,Incis&drain abscess-intra soft,0
+D7520,Inc&DrAEx,Incis&drain abscess-extra soft,400
+D7530,RmFrBSbQT,Remove foreign body from tissue,0
+D7540,RmFrBdBon,Remove foreign body from bone,0
+D7550,SqstrOstm,Partial ostect/sequestrectomy,0
+D7560,MxlSnstRm,Maxill sinusotomy-rem foreign,0
+D7610,MxlOpRdIm,Maxilla-open red (teeth immob),0
+D7620,MxlClRdIm,Maxilla-closed red(teeth immob),0
+D7630,ManOpRdIm,Mandible-open red (teeth immob),0
+D7640,ManClRdIm,Mandible-closed red (th immob),0
+D7650,MlZyArOpR,Malar/zygomat arch-open reduc,0
+D7660,MlZyArClR,Malar/zygo arch-closed reduc,0
+D7670,AlvStabOp,Alveolus-closed reduction,0
+D7680,FacBnCmRd,Facial bone-complicated reduct,0
+D9221,GnAns+15m,Deep sedat/gen anesth-ea+15m,0
+D9215,LoclAnes,Local anesthesia,0
+D2962,LbVnPorLm,Labial veneer (porceln lam)-lab,"1,500.00"
+D2961,LabVnRsLm,Labial veneer (resin lamin)-lab,750
+D2393,Res3PosPm,"Resin-3 surface +, post-perm",325
+D2392,Res2PosPm,"Resin-2 surface, post-permanent",225
+D2391,Res1PosPm,"Resin-1 surface, post-permanent",165
+D2382,Res3PosPr,"Resin-3 surface, poster-primary",185
+D2381,Res2PosPr,"Resin-2 surface, poster-primary",165
+D2380,Res1PosPr,"Resin-1 surface, poster-primary",125
+D0140,LimitedEx,Limited oral evaluation,55
+15010,PrimPerCh,Primary - Permanent Change,0
+D7850,SurgDisc,Surgical discect:w/ w/o implant,0
+D0322,Tomograph,Tomographic survey,0
+D2336,CRCrwnAnP,Compos resin crwn-anterior-prim,450
+D2642,OnPorc/2s,Onlay-porcel/ceram-2 surface,"1,200.00"
+D2650,InComR1Lb,Inlay-resin based composite-1s,650
+D2651,IncomR2Lb,Inlay-resin based composite-2s,750
+D2652,InComR3Lb,Inlay-resin based composite-3+s,850
+D2662,OnComR2s,Onlay-resin based composite-2s,0
+D2933,PrFbSCRsW,Prefab stl crown w/resin window,0
+D3346,Retrt-Ant,"Retreat, prev RCT - anterior","1,200.00"
+D3347,Retrt-Bi,"Retreat, prev RCT - bicuspid","1,200.00"
+D3348,Retrt-Mol,"Retreat, prev RCT - molar","1,500.00"
+D3352,ApxRclInt,"Apexification/recalcif, interim",0
+D3353,ApxRclFin,"Apexification/recalcif, final",0
+D3425,ApctPrMo1,Apicoect/Perirad-molar/1st root,0
+D3426,ApctPr+th,Apicoect/Perirad (each + root),0
+D3470,IntRplISp,"Intentional replant, inc splint",0
+D4249,CrnLngH&S,Clinic crown lengthen-hard tiss,0
+D4250,MucGinSrQ,Mucogingival surgery-per quad,0
+D4273,SubTisGr,Subepithelial con tis graft/th,0
+D5851,TisConLw,"Tissue condition, mandibular",0
+D5922,NasSepPro,Nasal septal prosthesis,0
+D5923,OcuProsIn,"Ocular prosthesis, interim",0
+D5924,CranPros,Cranial prosthesis,0
+D5925,FacAugImp,"Facial augmentat implant,prosth",0
+D5926,NasProsRp,"Nasal prosthesis, replacement",0
+D5927,AurProRep,"Auricular prosthesis,replacemen",0
+D5928,OrbProRep,"Orbital prosthesis, replacement",0
+D5929,FacProRep,"Facial prosthesis, replacement",0
+D5936,ObtProInt,"Obturator prosthesis, interim",0
+D5937,TrisAppli,Trismus appliance (not TMD),0
+D5958,PlLftPrIn,"Palatal lift prosthesis,interim",0
+D5959,PlLftPrMd,"Palatal lift prosth, modificat",0
+D5960,SpchAdPrM,"Speech aid prosth, modification",0
+D5987,CommSplnt,Commissure splint,0
+D5988,SurgSplnt,Surgical splint,0
+D6020,AbutEnImp,Abut place/subst:endost implant,0
+D6040,SurEpoImp,Surgic place: eposteal implant,0
+D6050,TrnsImpln,Surg place: transosteal implant,0
+D6055,ImpltCnBr,Dent implant sup connecting bar,0
+D6080,ImpltMtPr,Implant maintenance procedures,0
+D6090,ReprImplt,"Repair implant sup prosth, B/R",0
+D6100,ImpltRemv,"Implant removal, by report",0
+D6199,UnspcImpl,"Unspecified implant proced, B/R",0
+D6973,CrBldRtIP,"Core buildup for retain,inc pin",0
+D6975,CopngMetl,Coping-metal,650
+D7852,DiscRepr,Disc repair,0
+D7854,Synvctomy,Synovectomy,0
+D7856,Myotomy,Myotomy,0
+D7858,JointRecn,Joint reconstruction,0
+D7865,Arthrplst,Arthroplasty,0
+D7872,ArthrscpD,"Arthroscopy-diag, w/ w/o biopsy",0
+D7873,ArthrSrAd,Arthroscopy-surgical: adhesions,0
+D7874,ArthrSDsR,Arthroscopy-surgical: disc rep,0
+D7875,ArthrSSyn,Arthroscopy-surgic: synovectomy,0
+D7876,ArthrSDsc,Arthroscopy-surgical:discectomy,0
+D7877,ArthrSDbr,Arthroscopy-surgic: debridement,0
+D7899,UnspcTMDT,"Unspecified TMD therapy, B/R",0
+D0310,Salio,Saliography,0
+D0160,ExtEval,"Detail/extensive oral eval, B/R",95
+D1320,TobacCnsl,Tobacco counseling,0
+D2544,OnlayMet4,Onlay-metallic-four + surfaces,950
+D2643,OnPorc/3s,Onlay-porcel/ceram-3 surface,"1,200.00"
+D2644,OnPorc/4+,Onlay-porcel/ceram-4 + surface,"1,200.00"
+D2663,OnComR3s,Onlay-resin based composite-3s,0
+D2664,OnComR4+,Onlay-resin based composite-4+s,0
+D2955,PostRemov,Post removal (not with endo),0
+D3230,PulThA/Pr,"Pulpal therapy-anterior,primary",0
+D3240,PulThP/Pr,"Pulpal therapy-posterior, prim",0
+D4266,TissRgPer,Guided tiss regen-resorb-per,0
+D4267,TissRgNr,Guided tiss regen-nonresorb-per,0
+D4274,DistPxWg,Distal/proximal wedge procedure,0
+D4381,,Local deliv antimicrb ag-th B/R,0
+D6010,SrgImpEnd,Surg place implant: endosteal,"2,200.00"
+D6095,RepImAbt,"Repair implant abutment, B/R",0
+D6544,OnlayMt4+,Onlay-metallic-four + surfaces,0
+D8660,PrOrthVst,Pre-orthodontic treatment visit,0
+D9970,EnamMcrAb,Enamel microabrasion,0
+90620,ExConsult,Exam and consultation,0
+20999,OrthSplnt,Orthopedic splint (orthotic),"1,000.00"
+64550,TENS,Transcutan. electric. stimulat.,0
+97700,AdjSplint,Adjust orthotic/splint,0
+95831,MusclTest,Muscle testing,0
+209999,MndKinRec,Mandibular kinesiograph record,0
+95868,ElecMyogr,Electromyography,0
+D9998,,Home Bleaching,400
+D0170,ReEval,Limited re-evaluation estab pat,0
+D0180,CmpPerEvl,Comprehensive perio evaluation,120
+D0277,VertBWX,Vertical bitewings-7 to 8 films,0
+D0350,OralImags,Oral/Facial Photographic Images,0
+D0472,AcTisExam,"Accession of tiss, gr exam/rpt",0
+D0473,AcTisGrEx,"Acc of tissue, gr mic exam/rpt",0
+D0474,AcTisDsEx,Acc of tiss-gr mic ex surg mar,0
+D0480,CytoSmrs,Process/interpret exf cyt smear,0
+D2390,CrnResAnt,"Resin composite crown, anterior",0
+D2394,ResCmP4+s,"Resin composite-4+s, posterior",0
+D2542,OnlayMet2,Onlay-metallic-two surfaces,0
+D2780,Crn3/4HnM,Crown-3/4 cast high noble metal,0
+D2781,Crn3/4Bm,Crown-3/4 cast most base metal,0
+D2782,Crn3/4Nm,Crown-3/4 cast noble metal,0
+D2783,Crn3/4Prc,Crown-3/4 porcelain/ceramic,0
+D2799,ProvCrwn,Provisional crown,0
+D2953,CstPstAdd,Each add'l cast post-same tooth,0
+D2957,PrFbPtAdd,Each + prefab post-same tooth,0
+D3221,GrPulDbrd,Pulpal debridemnt-prim/perm th,0
+D3331,TxRtCnOb,Treatmnt of root canal obstruct,0
+D3332,IncmpThrp,Incomplt endo ther-inopbl/unres,0
+D3333,IntRtRpr,Int root repair of perf defects,0
+D4241,GnFlPl1-3,Ging flap rt pln 1-3 cntg th/qu,500
+D4245,ApicPosFl,Apically positioned flap,700
+D4261,OssSur1-3,Osseous surg- 1-3 contg th/quad,700
+D4265,SfTssRgPr,"Bio mat, sft&osseous tiss regen",0
+D4268,SurgRevTh,"Surg revision proc, per tooth",0
+D4275,SftTsGrft,Soft tissue allograft,0
+D4276,CmPdsfTGr,Comb cnct tiss&dbl pedicle grft,0
+D4342,PerScl1-3,"Perio scale&root pln-1-3th,quad",0
+D5670,RpAllTxMx,Replace all th&acrylic-maxil,0
+D5671,RpAllTxMn,Replace all th&acrylic-mand,0
+D5867,RplPrecAt,Replcmt prec attachmt-part/full,350
+D5875,ModRmPros,Mod of remvble prosth-post surg,0
+D6053,ImAbtRmCm,"Imp/abut remov,comp edent arch",0
+D6054,ImAbtRmPt,"Imp/abut remov,part edent arch",0
+D6056,PrefabAbt,Prefab abutment-incl placement,0
+D6057,CustomAbt,Custom abutment-incl placement,600
+D6058,AbtPrcCrn,Abutment supported porc/cer crn,"1,500.00"
+D6059,AbtPrFCnH,Abtmt supp porc fused to hi-nob,"1,200.00"
+D6060,AbtPrFCnB,Abtmt supp porc fused-base metl,0
+D6061,AbtPrFCnN,Abtmt supp porc fused-mtl crown,0
+D6062,AbtCsCnHN,Abtmt supp cast mtl crown-hinob,0
+D6063,AbtCsCnBs,Abtmt supp cast mtl crown-base,0
+D6064,AbtCsCnNb,Abtmt supp cast mtl crown-noble,0
+D6065,ImplPrCrn,Implant supp porc/cer crown,"1,500.00"
+D6066,ImpPrFMCn,Implant supp porc fused mtl crn,0
+D6067,ImplMCrn,Implant supported metal crown,0
+D6068,AbtPrcFPD,Abtmt supp ret for porc/cer FPD,0
+D6069,AbtPFPDHi,Abut sup ret-porc fsd mtl FPDhn,0
+D6070,AbtPFPDBs,Abut sup ret-porc fsd mtl FPDbm,0
+D6071,AbtPFPDNb,Abut sup ret-porc fsd mtl FPDno,0
+D6072,AbCsFPDHi,Abut sup ret-cast mtl FPD-hinob,0
+D6073,AbCsFPDBs,Abut sup ret-cast mtl FPD-base,0
+D6074,AbCsFPDNb,Abut sup ret-cast mtl FPD-noble,0
+D6075,ImpCerFPD,Implant supp ret-ceramic FPD,0
+D6076,ImpPrcFPD,Implnt supp ret-prc fuse mtlFPD,0
+D6077,ImpCsMFPD,Implant supp ret-cast metal FPD,0
+D6078,ImpAbtCEd,Implnt/abut supp fxd comp edent,0
+D6079,ImpAbtPEd,Implnt/abut supp fxd part edent,"2,800.00"
+D6245,PntcPrCer,Pontic-porcelain/ceramic,"1,200.00"
+D6253,ProvPntc,Provisional pontic,0
+D6548,RetPorc,Ret-porc/cer-resin bnd fxd pros,0
+D6600,InlPrCr2s,"Inlay-porcelain/ceramic, 2 surf",0
+D6601,InPrCr3+s,"Inlay-porcelain/ceramic, 3+surf",0
+D6602,InlHiNb2s,"Inlay-cast high noble met,2surf",0
+D6603,InHiNb3+s,"Inlay-cast high nob met, 3+surf",0
+D6604,InlBase2s,"Inlay-cast predomnt base, 2surf",0
+D6605,InBase3+s,"Inlay-cast predomnt base,3+surf",0
+D6606,InlNobl2s,"Inlay-cast noble metal, 2 surf",0
+D6607,InNobl3+s,"Inlay-cast noble metal, 3+ surf",0
+D6608,OnlPrCr2s,"Onlay-porcelain/ceramic, 2 surf",0
+D6609,OnPrCr3+s,"Onlay-porcelain/ceramic, 3+surf",0
+D6610,OnlHiNb2s,"Onlay-cast high noble met,2surf",0
+D6611,OnHiNb3+s,"Onlay-cast high nob met, 3+surf",0
+D6612,OnlBase2s,"Onlay-cast predomnt base, 2surf",0
+D6613,OnBase3+s,"Onlay-cast predomnt base,3+surf",0
+D6614,OnlNobl2s,"Onlay-cast noble metal, 2 surf",0
+D6615,OnNobl3+s,"Onlay-cast noble metal, 3+ surf",0
+D6740,RtCrnPorc,Crown-porcelain/ceramic,"1,200.00"
+D6781,RtCn3/4Bs,Crown-3/4 cast most base metal,0
+D6782,RtCn3/4Nb,Crown-3/4 cast noble metal,0
+D6783,RtCn3/4Pr,Crown-3/4 porcelain/ceramic,0
+D6793,PrvRetCrn,Provisional retainer crown,0
+D6976,CstPtAdd,Each add'l cast post-same tooth,0
+D6977,PrfbPstAd,Each + prefab post-same tooth,0
+D6985,PedPrtDen,"Pediatric part'l denture, fixed",0
+D7111,CorRemDcd,Extraction crnl remnts-decid th,77
+D7140,ExtErpTh,"Extract,erupted th/exposed rt",0
+D7261,ClsSinPrf,Prim closure sinus perforation,0
+D7282,MobErMpTh,Mobiliz erupt/malpos th-erupt,0
+D7287,CytSmpCol,Exfoliative cyt sample collectn,0
+D7411,ExBnLs>,Excision benign lesion>1.25 cm,0
+D7412,ExBnLsCmp,"Excision benign lesion,complic",0
+D7413,ExMtLs<=,Excision malig lesion<=1.25cm,0
+D7414,ExMtLs>,Excision malig lesion>1.25cm,0
+D7415,ExMtLsCmp,"Excision malig lesion,complic",0
+D7471,RmExsSite,Removal of exostosis-per site,700
+D7472,RmTorPal,Removal of torus palatinus,700
+D7473,RmTorMan,Removal of torus mandibularis,900
+D7485,SrgRedOss,"Surg reduc, osseous tuberosity",700
+D7671,AlvOpnRed,Alveolus-open reduction,0
+D7771,AlvStabTh,"Alveolus-stabilize teeth,closed",0
+D7871,NonArthro,Non-arthroscopic lysis & lavage,0
+D7972,SrgRedFib,"Surg reduc, fibrous tuberosity",0
+D7997,ApplRem,Appliance removal-incl archbar,0
+D8691,RepairApp,Repair of orthodontic appliance,0
+D8692,ReplcRetn,Retainer replacemnt-lost/broken,0
+D9241,IntraF30m,IV conscious sed/analg-1st 30m,0
+D9242,IntrAdd15,IV conscious sed/analg-ea15m+,0
+D9248,NonIntrSn,Non IV conscious sedation,0
+D9450,CasPsntTx,"Case present,detailed/extens tx",0
+D9911,DesResTh,"Apply desensitiz' resin, per th",0
+D9971,Odontopl,Odontoplasty 1-2 teeth-rmv enam,0
+D9972,ExtBlchAr,External bleaching-per arch,0
+D9973,ExtBlchTh,External bleaching-per tooth,0
+D9974,IntBlchTh,Internal bleaching-per tooth,200
+Son,,Sonicare Toothbrush,110
+BA,,Broken Appointment,100
+4381,,Arestin,35
+D0416,VrlCultr,Viral Culture,0
+D0421,GenetTest,Genetic test-suscept oral dis,0
+D0431,TestMucAb,Adjunc pre-diag test-detect muc,0
+D0475,DecalcPrc,Decalcification Procedure,0
+D0476,StnsMicro,Special stains for microorg,0
+D0477,StnsNotMi,Special stains-not for microorg,0
+D0478,ImmunStns,Immunohistochemical stains,0
+D0479,TissHybrd,Tissue in-situ hybrid-inclu int,0
+D0481,ElecMicro,Electron microscopy-diagnostic,0
+D0482,DrImFluor,Direct immunofluorescence,0
+D0483,InImFluor,Indirect immunofluorescence,0
+D0484,CnsSlPrEl,Consult on slides prp elsewhere,0
+D0485,CnsPrpSlB,Consult inc prep/slides biop mt,0
+D2712,Crwn34RsC,Crown-3/4 resin-based comp-ind,0
+D2794,CrnTitanm,Crown-titanium,0
+D2915,RecmtCstP,Recemnt cast or prefab pst/cor,0
+D2934,PrFbECSPr,Prefb esth ctd stnl stl crn-prm,0
+D2971,CrwnUnExD,Add'l prc-new crn undr exs dent,0
+D2975,Coping,Coping,0
+D5225,MxPrtFlxB,Maxil partial-flex base incl cl,"2,000.00"
+D5226,MnPrtFlxB,Mand partial-flex base incl cl,"2,000.00"
+D6094,AbtSCrnTi,Abutment supp crown - titanium,0
+D6190,RadSrgImI,Radiograph/surg impl index B/R,0
+D6194,AbCsFPDTi,Abut sup ret-cast mtl FPD-titan,0
+D6205,PntcIndRC,Pontic-indirect res based comp,0
+D6214,PntcTitan,Pontic-titanium,0
+D6624,InlTitanm,Inlay-titanium,0
+D6634,OnlTitanm,Onlay-titanium,0
+D6710,RtCrnRsCm,Retainer crn-indir res-bas comp,0
+D6794,RtCrnTitn,Retainer crown-titanium,0
+D7283,DvcErupTh,Plcmnt of devc fo facil erup th,0
+D7288,BrshBiopT,Brush biopsy-transepith sample,0
+D7311,AlvExt13q,Alveoloplasty w/ext 1-3 th/quad,0
+D7321,AlvNEx13q,Alveoloplsty w/o ex 1-3 th/quad,0
+D7511,Inc&DAISC,Incis&drain abscs-int soft comp,0
+D7521,Inc&DAESC,Incis&drain abscs-ext soft comp,0
+D7953,BnRpGftRP,Bone repl grft ridge prsv/site,0
+D7963,Frenulopl,Frenuloplasty,0
+D9942,RepRelOG,Repair/Reline of occlusal guard,0
+D0145,Eval<3yrs,Oral evaluation < 3 yrs of age,0
+D0273,3BWX,Bitewings-three films,0
+D0360,CnBeamCT,Cone beam ct-craniofacial data,0
+D0362,Cn2dImgRc,Cone beam-2D multi img reconst,0
+D0363,Cn3dImgRc,Cone beam-3D multi img reconst,0
+D0486,BrshBiop,"Brush biopsy sample,exam,report",0
+D1206,TopFlride,Topical fluoride varnish,20
+D1555,RmvSpcMnt,Removal of fixed space maint,0
+D4230,CrnEx4+,"Anatomical crwn exp,4+teeth/qu",0
+D4231,CrnEx1-3,"Anatomical crwn exp,1-3 th/quad",0
+D6012,PlcIntImp,Plcmnt of intrm impl: endosteal,0
+D6091,RplAmtPro,Rpl attchmt imp/abt sup prosth,0
+D6092,RecSptCrn,Recement impl/abut sup crown,0
+D6093,RecSptDnt,Recement impl/abut sup FPD,0
+D7292,PlcAncSrw,Plcmnt: temp anch scrw rtnd plt,0
+D7293,PlcAcWFlp,Plcmnt: temp anch w/ surg flap,0
+D7294,PlcAcNoFp,Plcmnt: temp anch w/o surg flap,0
+D7951,SinAugBne,Sinus augmentation w/bone,0
+D7998,PlcDvNoFr,Plcmnt of devc w/o fracture,0
+D8693,RepFixRet,Rebond/repair of fixed retainer,200
+D9120,FixDntSct,Fixed partl denture sectioning,0
+D9612,ThpdPtl2+,"Therap parenteral drugs, 2+",0
+D0417,CltSaliva,Collection of saliva sample,0
+D0418,AnlSaliva,Analysis of saliva sample,0
+D3222,PartPulp,Partial pulpototomy apexogen,0
+D5991,TopMedCar,Topical medicament carrier,0
+ D9973,BLEACH,ONE HOUR TEETH WHITENING PROC.,0
+D1352,PrevRest,"Preventive Restoration, Perm Th",0
+D3354,PulpRegen,Pulpal Regeneration,0
+D5992,AdjProsth,"Adj Max'facial Prosth, Report",0
+D5993,MntProsth,"Maint Max'facial Prosth, Report",0
+D6254,IntPontic,Interim Pontic,0
+D6795,IntRetCrn,Interim Retainer Crown,0
+D7251,Coronect,Coronectomy-part tooth removal,0
+D7295,BoneHarv,Bone Harvest for Grafting,0
+D8000,,Replacement Aligner,50
+D0000,BT,Bleaching Trays,150
+d0101,antcrwnpr,Anterior Crown/Porcelain subsrt,"1,500.00"
+D1234,MBR,Membership Fee,100
+D0171,PostOp,Re-evaluation or Post Op Visit,0
+D1208,top-fluor,Topical application of fluoride,0
+D2929,PRFBPCPr,Prefabricated porc/cerm cr-prim,0
+D2981,INLYREP,Inlay repair by material failur,0
+D2982,ONLYREP,Onlay repair by material failur,0
+D2983,VnrRep,Veneer repair by mat. failure,0
+D2990,RSNLES,Resin infltrt incipt surf les,0
+SNB,,SOUND BITE,150
+WFL,,Whitening for life,99
+D0367,Cap-Both,"CT Capture, Both Jaws",0
+D0368,Cap-TMJ,"CT Capture, TMJ, 2+ Exposures",0
+D0369,Cap-MRI,Maxillofacial MRI Capture,0
+D0370,Cap-Ultra,Maxillofacial Ultrasnd Capture,0
+D0371,Cap-Sialo,Sialoendoscopy Capture,0
+D0380,Img<1Jaw,"CT Image, Lmtd View  < 1 Jaw",0
+D0381,Img-Mand,"CT Image, Full Arch, Mandible",0
+D0382,Img-Maxil,"CT Image, Full Arch, Maxilla",0
+D0383,Img-Both,"CT Image, Both Jaws",0
+D0384,Img-TMJ,"CT Image, TMJ, 2+ Exposures",0
+D0385,Img-MRI,Maxillofacial MRI Image,0
+D0386,Img-Ultra,Maxillofacial Ultrasnd Image,0
+D0391,DiagImg,"Inter. Diagnostic Img, Oth Prov",0
+D0393,3dTrtSim,Treatment sim. using 3D Imgs,0
+D0394,DigitlSub,Digital Subtraction of 2+ Imgs,0
+D0395,3dImgFuse,3D image fusion,0
+D0601,CarRskLow,Caries risk assessment - Low,0
+D0602,CarRskMod,Caries risk assessment - Mod,0
+D0603,CarRskHgh,Caries risk assessment - High,0
+D1999,UnspPrev,"Unspecified prev procedure, B/R",0
+D2921,ReaThFrgI,"Reattach Th Fragment, incisal",0
+D2941,IntRstPri,Interim Therapeutic Rest - Prim,0
+D2949,RstFndInd,Foundation for Indirect Rest,0
+D3355,PulpRg1st,Pulpal Regeneration - 1st visit,0
+D3356,PulpRgInt,Pulpal Rgn - interim med Replc,0
+D3357,PulpRgCmp,Pulpal Regen - completion,0
+D3427,PerSurg,Periradicular surg-no apicoect,0
+D3428,PrdSrg1St,Bone Graft w/Perirdc Srg 1 Site,0
+D3429,BnGfPrd+1,Bn Graft w/Berirdc Srg each add,0
+D3431,BioMtrPrd,Bio Mtrl to aid Reg w/Prdc Srg,0
+D3432,GuiTisPrd,Guided TissRgn PerSite w/PrdSrg,0
+D4212,GingvRest,Gingivectomy-Access/Restoration,0
+D4277,SfTisGr1,"Soft Tissue Graft, 1st Tooth",0
+D4278,SfTisGr+,"Soft Tissue Graft, Each Add'l",0
+D4921,GingIrrQd,Gingival IrrigationPer Quad,0
+D5863,ODComMax,Overdenture - Complete Max,0
+D5864,ODParMax,Overdenture - Partial Max,0
+D5865,ODComMan,Overdenture - Complete Mand,0
+D5866,ODParMan,Overdenture - Partial Mand,0
+D5994,PerMedCar,Periodontal medicament carrier,0
+D6011,2StImpSrg,Second stage implant surgery,0
+D6013,PlcMinImp,Placement of mini implant,0
+D6051,IntrmAbut,Interim Abutment,0
+D6052,SmPricAbt,Semi-precision attchmt abutment,0
+D6101,DbrdPerIm,Debride Peri-Implant Defect,0
+D6102,D/OPerImp,Debride/Oss Peri-Implant Defect,0
+D6103,BnGrftRep,Bone Graft Rep Peri-Imp Defect,0
+D6104,BnGrftImp,"Bone Graft, Implant Placement",0
+D7921,AutoBlood,Coll/App Autologous Blood Conc,0
+D7952,SinAugVer,"Sinus Augment,Vertical Approach",0
+D8694,ReaFixRet,Repair/reattach fixed retainer,0
+D9975,ExtBlHmAr,External Bleaching-Home-Arch,0
+D9985,SalesTax,Sales Tax,0
+CPY111,,COPAY,0
+D1111,,INHOUSE INS,0
+DED,,DEDUCTIBLE,0
+D0010,,Deliver Restoration,0
+D5555,,CHLORHEXIDIN,0
+DTooth,,Fluoride Toothpaste,0
+Brdge Del,Brdge Del,Bridge Delivery,0

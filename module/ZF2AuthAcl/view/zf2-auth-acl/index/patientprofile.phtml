@@ -1,0 +1,383 @@
+<?php
+
+use Zend\Session\Container;
+ $session = new Container('User');
+ $doc_specility_type=  $session->offsetGet('doc_speciality') ;
+?>
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<div class="width100">
+    <div class="grid100 change-password">
+        <div  layout="row" layout-align="center center">
+            <h2>Patient Profile</h2>
+        </div>
+    </div>
+    <div class="profile-frame"  ng-controller="providerbillingeditcontrollar">
+    	<div class="grid45 padding-right5">
+        	<div class="profile-pic">
+                <img ng-src="{{ avatarSrc }}" width="220" height="220" alt="Profile">
+                 <input type="file" file-model = "myFile" accept="image/*" image="image" style="display:none" id="fileInput"/>
+                 <div class="capture">
+                    <a href="javascript:void(0);" ng-show='selectbutton'  ng-click = "triggerUpload()" title=""><img src="/images/image-capture.png" width="60" height="48" alt="Capture"></a>
+                    <a href="javascript:void(0);" ng-show='uploadbutton' ng-click="uploadFile()" title="save">Save to display changes<img width="26" height="26" alt="Edit" src="/images/save_32.png"></a>
+                </div>
+            </div>
+            <div class="contract-frame" layout="column" layout-align="center center">
+                <div class="gold-plan">Gold Plan</div>
+                <md-button class="md-warn md-raised dark-red-button marginLeft10">Upgrade</md-button>
+                <div class="member">Patient Since Oct, 2003</div>
+            </div>
+            <div class="profile-text">
+                <h3>First Name Last Name</h3>
+            </div>
+            <div class="margintop50">
+                <div class="profile-boxb">
+                    <ul>
+                    	<li>Contact Info</li>
+                    </ul>    
+                </div>
+                <div class="calendar-text marginLeft10"><a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+            </div>
+            <div class="margintop50">
+                <div class="profile-boxb">
+                    <ul>
+                        <li>Payment Info</li>
+                    </ul>    
+                </div>
+                <div class="calendar-text marginLeft10"><a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+            </div>
+            
+            <div class="margintop50">
+                <div class="profile-boxb">
+                    <ul>
+                        <li>Revenue Info</li>
+                    </ul>    
+                </div>
+                <div class="calendar-text marginLeft10"><a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+            </div>
+            
+            <div class="margintop50">
+                <div class="profile-boxb">
+                    <ul>
+                        <li>Financing Policy Change History</li>
+                    </ul>    
+                </div>
+                <div class="calendar-text marginLeft10"><a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+            </div>
+      	</div>
+        <div class="grid55">
+        	<div class="remaining-frame">
+            	<div class="office-info">
+                	<span class="prospect-text"><h3>Remaining Benefits: $</h3></span>
+            	</div>
+                <div class="buttons-frame position-relative">
+                    <div class="compaign-frame add-button">
+                        <ul>
+                            <li class="buttonb dark-green dark-green-shadow"><a href="javascript:void(0);" title="Finance Patient">Finance Patient</a></li>
+                            <li class="buttonb dark-green dark-green-shadow"><a href="javascript:void(0);" title="Add Family">Add Family</a></li>
+                            <li class="buttonb dark-green dark-green-shadow"><a href="/dashboardfront/newreferral/<?php echo $$patient_details[0]['patient_id'] ; ?>" title="Refer">Refer</a></li>
+                            <li id="clickMeId" onclick="show('comment')"  class="buttonb dark-red dark-red-shadow"><a href="javascript:void(0);" title="Check In">Check In</a></li>
+                        </ul>
+                        <div id="comment" class="pay-extra top50">
+                            <h3>Check In</h3>
+                            <p>What was you be doing today? Remember to as detailed as possible!</p>
+                            <h4>Existing Treatment</h4>
+                            <div class="grid100" layout="row" layout-align="start end">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">
+                                D0120 Full Mouth Prophy
+                              </md-checkbox>
+                            </div>
+                            <div class="grid100" layout="row" layout-align="start end">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">
+                                D 6233 Crown #30
+                              </md-checkbox>
+                            </div>
+
+                            <div layout-gt-sm="row" class="grid100"> 
+                                <md-input-container class="md-block position-relative">
+                                    <md-select class="treat-select" placeholder="Tooth #" name="checkModela" ng-model="checkModela">
+                                        <md-option value="1">Full Month</md-option>
+                                        <md-option value="2">URQ</md-option>
+                                        <md-option value="3">ULQ</md-option>
+                                        <md-option value="4">LRQ</md-option>
+                                        <md-option value="5">Upper Arch</md-option>
+                                    </md-select>
+                                </md-input-container> 
+                                <md-input-container class="marginLeft20 md-block position-relative">
+                                    <md-select class="treat-select" placeholder="ADA Code Smart Search" name="checkModelb" ng-model="checkModelb">
+                                        <md-optgroup label="Diagnostic">
+                                            <md-option value="1">D0123 Fulll Month Xrays</md-option>
+                                            <md-option value="2">D0123 Bite Wing Xrays</md-option>
+                                            <md-option value="3">D0123 Periapical</md-option>
+                                        </md-optgroup>
+                                        <md-optgroup label="Preventive"></md-optgroup>
+                                        <md-optgroup label="Restorative"></md-optgroup>
+                                    </md-select>
+                                </md-input-container> 
+                                <div class="plus-icon"><a href="javascript:void(0);" title="Plus"><img src="/images/plus-icon.png" width="24" height="24" alt="Plus"></a></div>
+                            </div>
+
+                            <h4>Common Procedures</h4>
+                            <div class="grid100" layout="row" layout-align="center center">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Prophy
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Limited Exam
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                FMX
+                              </md-checkbox>
+                            </div>
+                            
+                            <div class="grid100" layout="row" layout-align="center center">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Prophy
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Limited Exam
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                FMX
+                              </md-checkbox>
+                            </div>
+                            
+                            <div class="grid100" layout="row" layout-align="center center">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Prophy
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Limited Exam
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                FMX
+                              </md-checkbox>
+                            </div>
+                            
+                            <div class="grid100" layout="row" layout-align="center center">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Prophy
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Limited Exam
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                FMX
+                              </md-checkbox>
+                            </div>
+                            <div layout="row" layout-align="end start" class="pull-left ">
+                                <md-radio-group layout="row" class="margintop40">
+                                    <md-radio-button class="md-primary">Set as complete</md-radio-button>
+                                </md-radio-group>
+                            </div>
+                            <div class="referrals-button pull-right">
+                                <div class="pay-frame" layout="row" layout-align="end center">
+                                    <md-button onclick="hide('comment')" class="md-warn md-raised red-buttonc">Check In</md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="office-info">
+                <span class="prospect-text"><h3>Treatment Details</h3></span>
+            </div>
+            <div class="responsive-table">
+                <table class="patient-table">
+                    <tbody>
+                        <tr>
+                            <th class="blue-bg">Tooth #</th>
+                            <th class="blue-bg">ADA Code Smart Search</th>
+                            <th class="blue-bg">Description</th>
+                            <th class="blue-bg">Treatment Plan</th>
+                            <th class="blue-bg">Completed</th>
+                            <th class="blue-bg">Copayment</th>
+                            <th class="blue-bg">Savings</th>
+                            <th class="blue-bg">Providers</th>
+                        </tr>
+                        <tr>
+                            <td>Full Mouth</td>
+                            <td>D0120</td>
+                            <td>Proph</td>
+                            <td class="align-center"><img src="/images/calendar-icon.png" width="24" height="24" alt="Calendar"></td>
+                            <td class="align-center"><img src="/images/calendar-icon.png" width="24" height="24" alt="Calendar"></td>
+                            <td>$</td>
+                            <td>$</td>
+                            <td>Dr. John</td>
+                        </tr>
+                        <tr>
+                            <td>Full Mouth</td>
+                            <td>D0120</td>
+                            <td>Proph</td>
+                            <td class="align-center"><img src="/images/calendar-icon.png" width="24" height="24" alt="Calendar"></td>
+                            <td class="align-center"><img src="/images/calendar-icon.png" width="24" height="24" alt="Calendar"></td>
+                            <td>$</td>
+                            <td>$</td>
+                            <td>Dr. John</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div layout-gt-sm="row" class="grid50"> 
+                <md-input-container class="md-block">
+                    <md-select class="treat-select" placeholder="Tooth #" name="myModel" ng-model="myModel">
+                        <md-option value="1">Full Month</md-option>
+                        <md-option value="2">URQ</md-option>
+                        <md-option value="3">ULQ</md-option>
+                        <md-option value="4">LRQ</md-option>
+                        <md-option value="5">Upper Arch</md-option>
+                    </md-select>
+                </md-input-container> 
+                <md-input-container class="marginLeft20 md-block">
+                    <md-select class="treat-select" placeholder="ADA Code Smart Search" name="myModelb" ng-model="myModelb">
+                        <md-optgroup label="Diagnostic">
+                            <md-option value="1">D0123 Fulll Month Xrays</md-option>
+                            <md-option value="2">D0123 Bite Wing Xrays</md-option>
+                            <md-option value="3">D0123 Periapical</md-option>
+                        </md-optgroup>
+                        <md-optgroup label="Preventive"></md-optgroup>
+                        <md-optgroup label="Restorative"></md-optgroup>
+                    </md-select>
+                </md-input-container> 
+                <div class="plus-icon"><a href="javascript:void(0);" title="Plus"><img src="/images/plus-icon.png" width="24" height="24" alt="Plus"></a></div>
+            </div>
+            <div class="grid50 procedures">
+                <div class="compaign-frame add-button marginTop20b">
+                    <ul>
+                        <li class="button dark-green dark-green-shadow"><a href="javascript:void(0);" title="Add More Procedures">Add More Procedures</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="collection-frame margintop50">
+           	<!--    <label>Collection Details</label>
+                <input type="text" name="">
+        	</div>-->
+            <div class="margintop50">
+            	<h3>Messaging Center</h3>
+                <div class="message-list">
+                    <ul>
+                        <li>
+                       	  	<input type="text" name="" placeholder="To">
+                            <div class="message-frame">
+                       	    	<div class="prospect-text"><a href="javascript:void(0);" title="Attachment"><img src="/images/attachment-icon.jpg" width="23" height="21" alt="Attachment"></a></div>
+                                <span class="sent-buttonb"><a class="active" href="javascript:void(0);" title="Send">Send</a></span>
+                            </div>
+                        </li>
+                        <li class="height44">
+                        	<div class="message-content">
+                        		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-content">
+                                <p>(Date) Marrio to Patient: We can see you on the 23rd of  the this month</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-content">
+                                <p>(Date) Patient Name to Mario:Do you have an appointment avilable this month?</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-content">
+                                <p>(Date) Endodontist to Patient: That's great to hear</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-content">
+                                <p>(Date) Patient Name: to Endodontist: I'm feeling much better now. Thank you</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+	</div>
+</div>
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+       restrict: 'A',
+       link: function(scope, element, attrs) {
+          var model = $parse(attrs.fileModel);
+          var modelSetter = model.assign;
+          
+          element.bind('change', function(){
+             scope.$apply(function(){
+                modelSetter(scope, element[0].files[0]);
+             });
+          });
+       }
+    };
+ }]);
+
+ app.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl,$scope){
+       var fd = new FormData();
+      
+       fd.append('file', file);
+       $scope.progress = 25;
+       $http.post(uploadUrl, fd, {
+          transformRequest: angular.identity,
+          headers: {'Content-Type': undefined}
+       })
+    
+       .success(function(data){
+           if(data.success==0){
+                $scope.error=data.error;
+                $scope.selectbutton = true;
+                $scope.uploadbutton = false;
+            }else{              
+                $scope.avatarSrc=data.file;
+                $scope.selectbutton = true;
+                $scope.uploadbutton = false;
+            }
+       })
+       .error(function(){
+       });
+       
+       $scope.error='';
+    }
+ }]);
+app.controller('providerbillingeditcontrollar', function($scope,$http,$window,fileUpload) 
+{ 
+  $scope.avatarSrc="<?php echo '/img/placeholders/avatars/'.$patient_details[0]['profile_img'];?>";
+    $scope.selectbutton = true;
+ $scope.uploadFile = function(){
+        if( document.getElementById("fileInput").files.length == 0 ){
+            console.log("no files selected");
+        }else{      
+               var file = $scope.myFile;
+               // $scope.progress = 10;
+               console.log('file is ' );
+               console.dir(file);              
+               var uploadUrl ="<?php echo "/dashboardfront/patientimagechange/".$patient_details[0]['patient_id'];?>";
+               fileUpload.uploadFileToUrl(file, uploadUrl,$scope);
+           }
+        };
+        $scope.triggerUpload=function()
+        {           
+            document.getElementById('fileInput').click()
+            $scope.selectbutton = false;
+            $scope.uploadbutton = true;
+        }
+
+
+
+}); 
+</script>
+
+
+<style>
+
+
+
+
+	</style>

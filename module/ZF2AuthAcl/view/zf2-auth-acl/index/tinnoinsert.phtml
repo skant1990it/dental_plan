@@ -1,0 +1,53 @@
+
+<form name="userForm" id="msform">
+    <header>
+        <div class="logo"><a href="/" title="denefits"><img src="images/logo.png" width="183" height="57" alt="Logo"></a></div>
+        <div class="log-frame" layout-align="start end" flex>
+    	<md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="text = (text == 'logoff' || text == undefined ? 'logon' : 'logoff')">
+            <div ng-if="(text == 'logoff' || text == undefined)">
+                <a href="javascript:void(0)" class="logoff">{{text || 'logoff'}}</a>
+            </div>    
+            <div ng-if="text == 'logon'">
+                <a href="javascript:void(0)" class="logon">{{text || 'logoff'}}</a>
+            </div>
+        </md-switch>
+    </div>
+    </header>
+    <div class="width650">
+        <div class="grid100 change-password">
+            
+              <fieldset>
+            	<div layout="row" layout-align="center center">
+                	<h2>Enter your Tin </h2>
+                </div>
+                <div layout="row" layout-align="center center" class="align-center">
+                	<h3>Just for tax purpose</h3>
+                </div>
+                <md-input-container class="md-block">
+                    <label>My Tin is</label>
+                    <input name="password" type="text" ng-model="password.password">
+                </md-input-container>
+                <div layout="row" layout-align="center center">
+                	<md-button class="md-warn md-raised save-button next">Submit</md-button>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="jscript/angular.min.js"></script>
+<script src="jscript/angular-animate.min.js"></script>
+<script src="jscript/angular-aria.min.js"></script>
+<script src="jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+<script type="text/javascript">    
+angular.module('BlankApp', ['ngMaterial']);
+</script>
+<script src="jscript/jquery-1.9.1.min.js"></script>
+<script src="jscript/jquery.easing.min.js"></script>
+<script src="jscript/process-wizard.js"></script>

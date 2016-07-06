@@ -1,0 +1,108 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+
+
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+?>
+
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+
+<div class="width1200" ng-controller="plancontrollar">
+  <div class="grid100 change-password">
+      <div class="schedule-table margintop90">
+          <div style="text-align:center;">  {{ delmessage }} </div>
+        <md-input-container class="grid190 md-block">
+            <md-select class="treat-select" placeholder="Active" name="myModel" ng-model="myModel">
+                 <md-option ng-value="">All Plan</md-option>
+                <md-option ng-value="1">Active</md-option>
+                <md-option ng-value="0">Discountinued</md-option>
+          	</md-select>
+        </md-input-container> 
+            <div class="buttons-frame">
+                <div class="compaign-frame add-button">
+                    <ul>
+                        <li class="button dark-blue dark-blue-shadow"><a href="/dashboardfront/updateprice" title="Update Plan Detailss">Update Plans</a></li>
+                        <li class="button dark-blue dark-blue-shadow"><a href="/dashboardfront/docfeeschedule" title="Upload New UCR Fees">Upload Files</a></li>
+                    </ul>
+                </div>
+            </div>
+           <table>
+              <thead>
+                  <tr>
+                      <th>Plan Name</th>
+                      <th>Montly Amount</th>
+                      <th>Yearly Amount</th>
+                      <th>Additional Member</th>
+                      <th>Total Patients</th>
+                      <th colspan="2" >Plan Status</th>  
+                  </tr>
+              </thead>
+              <tbody>
+                   <tr ng-repeat="plandata in planslistingarray|filter:{plan_status: myModel }">
+                      <td> {{ plandata.plan_name }}</td>
+                      <td>${{ plandata.plan_monthly_price |number:2 }}</td>
+					            <td>${{ plandata.plan_yearly_price|number:2 }}</td>
+                      <td>${{ plandata.addon_monthly_price |number:2 }}</td>
+                      <td> {{ plandata.patientcount }} </td>                      
+                      <td> <span ng-if="plandata.plan_status==1">Active</span> 
+                           <span ng-if="plandata.plan_status==0">Discountinued</span>
+                          
+                      </td>                      
+                      <td><img src="/images/close.png" width="22" height="22"  style="cursor:pointer;"  ng-click="delplan(plandata.plan_id)" alt="Close"></td>
+                   </tr>
+              </tbody>
+          </table>
+        </div>
+
+    </div>
+</div>        
+
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('plancontrollar', function($scope,$http,$window) 
+{ 
+  var planslisting=statesname='<?php echo $listPlan ; ?>';
+  var planslistingobject=angular.fromJson(planslisting); 
+  $scope.planslistingarray  = angular.fromJson(planslistingobject);
+  $scope.delplan=function(planid)
+  {    
+      var con =confirm("Are You really want to delete this plan.");
+      if(con==true){
+     $http.get('/dashboardfront/delplan/'+planid,planid)
+       .success(function(data,status){
+           if(data==1)
+           {
+             $http.get('/dashboardfront/getplandata')
+             .success(function(data,status){
+              var planslistingobject=angular.fromJson(data); 
+              $scope.planslistingarray  = angular.fromJson(planslistingobject);
+              $scope.delmessage='Data deleted successfully';
+              })
+           }
+        })
+    }
+ }
+}); 
+
+</script>
+

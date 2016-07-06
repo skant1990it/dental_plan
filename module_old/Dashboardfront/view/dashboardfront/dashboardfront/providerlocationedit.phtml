@@ -1,0 +1,144 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+
+
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+?>
+<header layout="row">
+    <div class="logo" layout-align="start" flex><a href="javascript:" title="denefits"><img src="/images/logo.png" width="183" height="57" alt="Logo"></a></div>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+     <div class="log-frame" layout-align="start end" ng-controller="headercontrollar" flex>
+        <md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="showbtn(switchtext)">
+        {{ switchtext }} 
+        </md-switch>
+    </div>
+</header>
+
+<div class="width800">
+    <div class="grid100 change-password">
+        
+        <h2><span class="margin30">Providers Per Location</span></h2>
+        <h3><span class="margin30">Primary Location: 1501 Superior Ave, Newport Beach, CA, 92663</span></h3>
+        <form>
+            <fieldset>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block">
+                        <label>First Name</label>
+                        <input name="member" type="text" ng-model="member.userName">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Last Name</label>
+                        <input name="member" type="text" ng-model="month.userName">
+                    </md-input-container>
+                    <div layout="row" layout-align="center start" class="md-block padding20">
+                        <md-radio-group layout="row">
+                            <md-radio-button value="0" ng-model="true" class="md-primary">Male</md-radio-button>
+                            <md-radio-button value=1 class="md-primary">Female</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    <div class="editb"><a title="Edit" href="javascript:void(0);"><img width="26" height="26" alt="Edit" src="/images/edit-icon.png"></a></div>
+                </div>
+                
+                <md-input-container class="md-block">
+                    <label>License Number</label>
+                    <input name="license" type="text" ng-model="license.userName">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>NPI Number</label>
+                    <input name="npi" type="text" ng-model="npi.userName">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-select placeholder="General Dentist" name="myModel" ng-model="myModel">
+                        <md-option value="1">Dummy Text</md-option>
+                        <md-option value="2">Dummy Text</md-option>
+                        <md-option value="3">Dummy Text</md-option>
+                    </md-select>
+                </md-input-container>
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-warn md-raised green-button">Add More Locations</md-button>
+                </div>
+            </fieldset>
+            <h3><span class="margin30b">2nd Location: 1501 Superior Ave, Losta Mesa, CA, 92663</span></h3>
+            <fieldset>
+                
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block">
+                        <label>Dentists Name</label>
+                        <input name="dentists" type="text" ng-model="dentists.userName">
+                    </md-input-container>
+                    <div layout="row" layout-align="center start" class="md-block padding20">
+                        <md-radio-group layout="row">
+                            <md-radio-button value="0" ng-model="true" class="md-primary">Male</md-radio-button>
+                            <md-radio-button value=1 class="md-primary">Female</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    <div class="editb"><a title="Edit" href="javascript:void(0);"><img width="26" height="26" alt="Edit" src="/images/edit-icon.png"></a></div>
+                    <div class="deleteb"><a href="javascript:void(0);" title="Delete"><img src="/images/delete-icon.png" width="20" height="25" alt="Delete"></a></div>
+                </div>
+                
+                <md-input-container class="md-block">
+                    <label>License Number</label>
+                    <input name="license" type="text" ng-model="license.userName">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>NPI Number</label>
+                    <input name="npi" type="text" ng-model="npi.userName">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-select placeholder="General Dentist" name="myModel" ng-model="myModel">
+                        <md-option value="1">Dummy Text</md-option>
+                        <md-option value="2">Dummy Text</md-option>
+                        <md-option value="3">Dummy Text</md-option>
+                    </md-select>
+                </md-input-container>
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-warn md-raised green-button">Add More Locations</md-button>
+                </div>
+            </fieldset>
+            
+        </form>
+    </div>
+</div>        
+            
+
+<!-- Your application -->
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="/jscript/angular.min.js"></script>
+<script src="/jscript/angular-animate.min.js"></script>
+<script src="/jscript/angular-aria.min.js"></script>
+<script src="/jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="/jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('headercontrollar',function($scope,$http,$window)
+{  
+  $scope.switchtext='logon';
+    $scope.showbtn=function(text){
+        if(text=='logon'){
+            $scope.switchtext='logoff';
+            $window.location.href = '/logout';
+        }
+    } 
+    
+}); 
+</script>

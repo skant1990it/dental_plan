@@ -1,0 +1,112 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+
+
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+?>
+<header layout="row">
+    <div class="logo" layout-align="start" flex><a href="javascript:" title="denefits"><img src="/images/logo.png" width="183" height="57" alt="Logo"></a></div>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+     <div class="log-frame" layout-align="start end" ng-controller="headercontrollar" flex>
+        <md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="text = (text == 'logoff' || text == undefined ? 'logon' : 'logoff')">
+        {{ hasInk }} 
+          <div ng-if="(text == 'logoff' || text == undefined)">
+               <a href="/logout" class="logoff">
+               {{text || 'logoff'}}
+                </a> 
+            </div> 
+         
+            <div ng-if="text == 'logon'">
+                <a href="/logout" class="logon">{{text || 'logoff'}}</a>
+            </div>
+        </md-switch>
+    </div>
+</header>
+
+<div class="width1024">
+    <div class="grid100 change-password">
+    	<div layout="row" layout-align="center center">
+        	<h2>Settings</h2>
+        </div>
+        <div class="dashboard-listing">
+        	<ul>
+            	<li>
+           	    	<img src="images/billing-circle.png" width="144" height="144" alt="Billing"> 
+                    <div>Billing Account</div>
+                </li>
+                <li>
+           	    	<img src="images/account-circle.png" width="144" height="144" alt="Billing"> 
+                    <div>Deposit Account</div>
+                </li>
+                <li>
+           	    	<img src="images/info-circle.png" width="144" height="144" alt="Billing"> 
+                    <div>Practice Information</div>
+                </li>
+                <li>
+           	     <a href="/dashboardfront/" title="Refer"><img src="images/location-circle.png" width="144" height="144" alt="Billing"> 
+                    <div>Provider Location</div>
+                   </a>
+                </li>
+                <li>
+           	    	<img src="images/profile-circle.png" width="144" height="144" alt="Billing"> 
+                   <div>Provider Profiles</div>
+                </li>
+                <li>
+           	    	<img src="images/security-circle.png" width="144" height="144" alt="Billing"> 
+                    <div>Security</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>     
+
+<!-- Your application -->
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="/jscript/angular.min.js"></script>
+<script src="/jscript/angular-animate.min.js"></script>
+<script src="/jscript/angular-aria.min.js"></script>
+<script src="/jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="/jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('headercontrollar',function($scope,$http,$window)
+{ $scope.hasInk=true;
+  alert($scope.hasInk);
+  if($scope.hasInk==false){
+    $scope.hasInk=true;
+    //$window.location.href = '/logout';  
+  }
+    
+});
+app.controller('patientcontrollar', function($scope,$http,$window) 
+{ 
+   //alert($scope.hasInk);
+  var patientname=statesname='<?php echo $statelist ; ?>';
+  var patientlistobject=angular.fromJson(patientname); 
+  $scope.patientlistarray  = angular.fromJson(patientlistobject);
+
+  var planslisting=statesname='<?php echo $planslisting ; ?>';
+  var planslistingobject=angular.fromJson(planslisting); 
+  $scope.planslistingarray  = angular.fromJson(planslistingobject);
+}); 
+</script>

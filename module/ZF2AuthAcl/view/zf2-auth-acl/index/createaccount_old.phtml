@@ -1,0 +1,622 @@
+<?php echo $this->doctype(); 
+use Zend\Session\Container;
+?>
+   <header>
+        <div class="logo"><a href="javascript:void(0);" title="denefits"><img src="images/logo.png" width="183" height="57" alt="Logo"></a></div>
+        <div class="process-wizard">
+            <ul id="progressbar">
+                <li class="active"><span>Locations</span></li>
+                <li><span>Providers</span></li>
+                <li><span>Payment</span></li>
+                <li><span>Login</span></li>
+            </ul>
+        </div>
+    </header>
+    <div class="width650" ng-controller="formController">
+        <div class="grid100 change-password">
+            <div ng-show="one">
+            <form name="providerLocationForm" id="msform" ng-init="location.group='1'">
+               <h2>Tell About your practice</h2>
+               {{ message }} 
+              <div layout-gt-sm="row" class="layout-gt-sm-row">
+                    <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        <label for="input_4">Legal Business Name</label>
+                        <input name="legal" type="text" ng-model="location.legal" class="ng-pristine ng-untouched ng-valid md-input" id="input_4" aria-invalid="false" required>
+                       <div class="md-errors-spacer" ng-show="providerLocationForm.legal.$touched"> 
+                        <span ng-show="providerLocationForm.legal.$error.required">Enter Legal Business Name .</span>
+                       </div>
+                    </md-input-container>
+              </div>
+              <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                  <label for="input_5">Practice Name</label>
+                  <input name="practice" type="text" ng-model="location.practice" class="ng-pristine ng-untouched ng-valid md-input" id="input_5" aria-invalid="false" required>
+                   <div ng-show="providerLocationForm.practice.$touched">
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.practice.$error.required">Enter Practice Name .</div>
+                   </div>
+            </md-input-container>  
+              <h2 style="padding-bottom:45px;padding-top:45px;">What Kind of practice do you have?</h2>
+                <div layout-gt-sm="row" class="layout-gt-sm-row">
+                  <md-checkbox md-no-ink="" aria-label="Checkbox No Ink" ng-model="location.chk1" class="md-primary" role="checkbox"><div class="md-container" md-ink-ripple="" md-ink-ripple-checkbox=""><div class="md-icon"></div></div><div ng-transclude="" class="md-label"><span class="ng-scope">
+                    General Dental Office
+                  </span></div>
+                </md-checkbox>
+
+                  <md-checkbox md-no-ink="" aria-label="Checkbox No Ink" ng-model="location.chk2" class="md-primary" role="checkbox"><div class="md-container" md-ink-ripple="" md-ink-ripple-checkbox=""><div class="md-icon"></div></div><div ng-transclude="" class="md-label"><span class="ng-scope">
+                    Specialty Office
+                  </span></div>
+                  </md-checkbox>
+                </div>
+                
+                <div layout-gt-sm="row" class="layout-gt-sm-row">
+                  <md-checkbox md-no-ink="" aria-label="Checkbox No Ink" ng-model="location.chk3" class="md-primary" role="checkbox"><div class="md-container" md-ink-ripple="" md-ink-ripple-checkbox=""><div class="md-icon"></div></div><div ng-transclude="" class="md-label"><span class="ng-scope">
+                    General Dental Office with different specialties
+                  </span></div>
+                  </md-checkbox>
+
+                </div>
+        
+                <h2 style="padding-bottom:25px;padding-top:75px;">Are you a traveling Specialist?</h2>
+                <div layout-gt-sm="row" class="layout-gt-sm-row">                 <!-- 1 means it is travelling -->
+                  <md-radio-group ng-model="location.group" layout="row">
+                        <md-radio-button ng-value="1"  class="md-primary">Yes</md-radio-button>
+                        <md-radio-button ng-value="0" class="md-primary">No</md-radio-button>
+                 </md-radio-group>
+              </div>
+     <div layout-gt-sm="row" class="layout-gt-sm-row" > 
+          <div ng-if="location.group == '0'"> 
+            <div  ng-repeat="choice in choices">
+              <!-- part of div alaways repeat    -->
+              <div layout-gt-sm="row" class="layout-gt-sm-row">   
+               <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                    <label for="input_6">Address</label>
+                    <input name="addr{{ $index }}" type="text" ng-model='location.address[choice.id]'
+                    choice.id class="ng-pristine ng-untouched ng-valid md-input" id="input_6" aria-invalid="false" required>
+                      <div ng-show="providerLocationForm.addr{{ $index }}.$touched">
+                         <span ng-show="providerLocationForm.addr{{ $index }}.$error.required">Enter Address .</span>
+                     </div>
+
+                    <div class="md-errors-spacer"></div>
+                </md-input-container>
+                     
+          <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                       <label for="input_7">City</label>
+                        <input name="city{{ $index }}" type="text" ng-model="location.city[choice.id]" class="ng-pristine ng-untouched ng-valid md-input" id="input_7" aria-invalid="false" required>
+                         <div ng-show="providerLocationForm.city{{ $index }}.$touched">
+                             <span ng-show="providerLocationForm.city{{ $index }}.$error.required">Enter city .</span>
+                        </div>
+                        <div class="md-errors-spacer"></div>
+         </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm ng-required="true">
+           <md-select placeholder="State"  ng-model="location.state[choice.id]" required>
+                <md-option ng-value="statesval.id" ng-repeat="statesval in statesobject"> {{ statesval.name }} </md-option>
+           </md-select>
+        </md-input-container>
+        <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                <label for="input_13">Zip Code</label>
+                <input name="zipcode{{ $index }}" type="text" ng-model="location.zip[choice.id]" class="ng-pristine ng-untouched ng-valid md-input" id="input_13" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-minlength="6" ng-maxlength="6" aria-invalid="false" required>
+                <div ng-show="providerLocationForm.zipcode{{ $index }}.$touched">
+                  <span ng-show="providerLocationForm.zipcode{{ $index }}.$error.required">Enter Zip Code .</span>
+                  <span ng-show="providerLocationForm.zipcode{{ $index }}.$error.pattern"> Only number allowed . </span>
+                  <span ng-show="providerLocationForm.zipcode{{ $index }}.$error.minlength"> Min length should be 6. </span>
+                  <span ng-show="providerLocationForm.zipcode{{ $index }}.$error.maxlength">Max length should be 6 . </span>
+                </div>
+                   <div class="md-errors-spacer"></div>
+       </md-input-container>
+          
+         <div class="delete"><a href="javascript:void(0);" title="Delete"><img src="/images/delete-icon.png" width="20" height="25" alt="Delete" ng-click="removeLocation(choices,$index,choice.id)"></a></div>
+        </div>
+        
+                  <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                    <label for="input_14">Phone</label>
+                    <input ng-pattern='/^(0|[0-9][0-9]*)$/' name="phone{{ $index }}" ng-maxlength="10" ng-minlength="10"  type="text" ng-model="location.phone[choice.id]" class="ng-pristine ng-untouched ng-valid md-input" id="input_14" aria-invalid="false" required>
+                   <div ng-show="providerLocationForm.phone{{ $index }}.$touched">
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.phone{{ $index }}.$error.required">Enter Phone No.</div>
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.phone{{ $index }}.$error.pattern">Only number allowed .</div>
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.phone{{ $index }}.$error.maxlength">Max length should be 10 .</div>
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.phone{{ $index }}.$error.minlength">Min length should be 10 .</div>
+                   </div>
+                </md-input-container>
+                <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                    <label for="input_15">Practice Email Address </label>
+                  <input name="email{{ $index }}" type="email" ng-pattern='/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/' ng-model="location.email[choice.id]" class="ng-pristine ng-untouched ng-valid md-input ng-valid-email" id="input_15" aria-invalid="false" required>
+                    <div ng-show="providerLocationForm.email{{ $index }}.$touched">
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.email{{ $index }}.$error.required">Enter Email Address. </div>
+                      <div class="md-errors-spacer" ng-show="providerLocationForm.email{{ $index }}.$error.pattern">Invalid Email Address. </div>
+                   </div>
+               </md-input-container>
+                 <!-- part of div alaways repeat  end -->
+                  </div>
+                     <md-button class="md-warn md-raised green-button" ng-click=addNewChoice(providerLocationForm)>Add More Location</md-button>
+             </div>
+          </div>
+            <md-button class="md-warn md-raised prev-button previous">Previous</md-button>
+            <md-button  class="md-warn md-raised next-button next" ng-click="submitLocation(providerLocationForm)">Next</md-button> 
+             </form> 
+          </div>
+        </div>
+    <div id="divtwo" ng-show="two" class="change-password">
+        <h2>Tell About your practice</h2>
+         {{ message2 }} 
+       <form id="formProvider" name="formProvider">
+         <div ng-repeat="(key,locrow) in repeatloc">
+            <div ng-repeat="provider in locrow.options">
+              <div ng-if="location.group == '0'">
+                <h3>{{ locrow.address +', '+locrow.city+', '+locrow.zip}}</h3>
+              </div>
+                <div layout-gt-sm="row" class="clearboth">
+                    <md-input-container class="md-block">
+                        <label>First Name</label>
+                        <input name="first_name{{ key}}{{$index }}"  type="text" ng-model="locrow.first_name[provider.id]" required>
+                         <div ng-show="formProvider.first_name{{ key}}{{$index }}.$touched">
+                          <div class="md-errors-spacer" ng-show="formProvider.first_name{{ key}}{{$index }}.$error.required">Enter First Name.</div>
+                        </div>
+                     </md-input-container>
+                     <md-input-container class="md-block">
+                        <label>Last Name</label>
+                      <input name="last_name{{ key}}{{$index }}" type="text" ng-model="locrow.last_name[provider.id]" required>
+                      <div ng-show="formProvider.last_name{{ key}}{{$index }}.$touched">
+                        <div class="md-errors-spacer" ng-show="formProvider.last_name{{ key}}{{$index }}.$error.required">Enter Last Name.</div>
+                      </div>
+                    </md-input-container>
+                  <div layout="row" layout-align="center start" class="md-block padding20">
+                     <md-radio-group ng-model="locrow.group[provider.id]" layout="row" required>
+                        <md-radio-button ng-value="1"  class="md-primary">Male</md-radio-button>
+                        <md-radio-button ng-value="0" class="md-primary">Female</md-radio-button>
+                    </md-radio-group>
+                  </div>
+                  <div class="delete"><a href="javascript:void(0);" title="Delete"><img src="/images/delete-icon.png" width="20" height="25" alt="Delete" ng-click="removeProvider(key,$index)"></a></div>
+                </div>    
+                <md-input-container class="md-block">
+                    <label>License Number</label>
+                    <input type="text" name="license{{ key}}{{$index }}" ng-pattern="/^(0|[0-9][0-9]*)$/"  ng-model="locrow.license[provider.id]" required>
+                  <div ng-show="formProvider.license{{ key}}{{$index }}.$touched" required>
+                        <div class="md-errors-spacer" ng-show="formProvider.license{{ key}}{{$index }}.$error.required">Enter Licence No.</div>
+                        <div class="md-errors-spacer" ng-show="formProvider.license{{ key}}{{$index }}.$error.pattern">Only number are allowed .</div>
+                  </div>
+                </md-input-container>
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>NPI Number</label>
+                    <input  type="text" name="npi{{ key}}{{$index }}" ng-pattern="/^(0|[0-9][0-9]*)$/"  ng-model="locrow.npi[provider.id]" required>
+                    <div ng-show="formProvider.npi{{ key}}{{$index }}.$touched" required>
+                        <div class="md-errors-spacer" ng-show="formProvider.npi{{ key}}{{$index }}.$error.required">Enter NPI No.</div>
+                        <div class="md-errors-spacer" ng-show="formProvider.npi{{ key}}{{$index }}.$error.pattern">Only number are allowed .</div>
+                   </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                   <md-select ng-model="locrow.dentist[provider.id]" placeholder="Select Dentist Type" required>
+                        <md-option ng-value="user.id" ng-repeat="user in users">{{ user.name }}</md-option>
+                  </md-select>
+                   <div id="dentisterror{{ $index }}"></div> 
+                </md-input-container>
+          </div>
+            <div ng-if="location.group == '0'"  layout="row" layout-align="center center">
+                <md-button  class="md-warn md-raised green-button" ng-click="addNewChoice1(key)">Add More Providers</md-button>
+           </div>
+        </div>
+     <md-button class="md-warn md-raised prev-button previous" ng-click="showtab('one')">Previous</md-button>
+     <md-button  class="md-warn md-raised next-button next"  ng-click=submitprovider(formProvider)>Next</md-button>
+ </form>
+</div>
+<div id="divthree" ng-show="three" class="change-password">
+            <form name="billingProvider" id="billingProvider" ng-init="billing.accounttype=1">
+                <h2>Billing Information</h2>
+                  {{ message3 }}
+              <md-input-container class="md-block margin-bottom40">
+                  <md-select placeholder="Pay with checking account" ng-model="billing.accounttype">
+                      <md-option ng-value="optionno.id" ng-repeat="optionno in paymentoption">{{ optionno.name }}</md-option>
+                  </md-select>
+              </md-input-container>
+               <div ng-if="billing.accounttype==1">
+                <md-input-container class="md-block">
+                    <label>Bank Account Number</label>
+                    <input name="accountno" type="text" ng-model="billing.accountno" ng-pattern='/^(0|[0-9][0-9]*)$/' required>
+                    <div ng-show="billingProvider.accountno.$touched">
+                      <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.required">Enter bank account no.</div>
+                      <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.pattern">Only number are allowed .</div>
+                   </div>
+              </md-input-container>
+                <md-input-container class="md-block">
+                  <label>Confirm Account Number</label>
+                  <input name="conf_account" type="text" ng-pattern="billing.accountno" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-model="billing.conf_account" only-num required>
+                  <!--  code for match pattern start       -->  
+              <div ng-show="billingProvider.conf_account.$touched">
+                  <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.required">Enter confirm account no.</div>
+                  <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.pattern">Only number are allowed .</div>
+                  <div class="md-errors-spacer" ng-show="(billingProvider.conf_account.$viewValue != '' && billingProvider.accountno.$viewValue != '')">
+                  <span ng-show="(billingProvider.accountno.$viewValue != billingProvider.conf_account.$viewValue)">Mismatch account no.</span>
+              </div>
+            </div>
+             <!--  code for match pattern end       --> 
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Bank Routing Number</label>
+                    <input name="routingno" type="text" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-model="billing.routingno" required>
+                    <div ng-show="billingProvider.routingno.$touched">
+                      <div class="md-errors-spacer" ng-show="billingProvider.routingno.$error.required">Enter routing no.</div>
+                      <div class="md-errors-spacer" ng-show="billingProvider.routingno.$error.pattern">Only number are allowed .</div>
+                   </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                  <label>Confirm Routing Number</label>
+                  <input name="conf_routing" type="text"  ng-pattern="billing.routingno" ng-model="billing.conf_routing"  required>
+                 
+              <!--  code for match pattern start       -->  
+              <div ng-show="billingProvider.conf_routing.$touched">
+                  <div class="md-errors-spacer" ng-show="billingProvider.routingno.$error.required">Enter confirm routing no.</div>
+                  <div class="md-errors-spacer" ng-show="(billingProvider.conf_routing.$viewValue != '' && billingProvider.routingno.$viewValue != '')">
+                  <span ng-show="(billingProvider.routingno.$viewValue != billingProvider.conf_routing.$viewValue)">Mismatch routing no.</span>
+              </div>
+            </div>
+             <!--  code for match pattern end       --> 
+                </md-input-container>
+                
+                <md-input-container class="md-block">
+                  <label>Account Holder Name</label>
+                   <input name="acc_holder_name" type="text" ng-model="billing.acc_holder_name" required>
+                   <div ng-show="billingProvider.acc_holder_name.$touched">
+                      <div class="md-errors-spacer" ng-show="billingProvider.acc_holder_name.$error.required">Enter account holder name.</div>
+                  </div>
+               </md-input-container>
+              </div>
+              <div ng-if="billing.accounttype==2">
+                <md-input-container class="md-block">
+                  <label>Name on CC</label>
+                  <input name="name_on_cc" type="text" ng-model="billing.name_on_cc" required>
+                  <div ng-show="billingProvider.name_on_cc.$touched">
+                  <div class="md-errors-spacer" ng-show="billingProvider.name_on_cc.$error.required">Enter name on CC.</div>
+                </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>CC Number</label>
+                     <input name="cc_number" type="text" ng-pattern='/^(0|[0-9][0-9]*)$/'  ng-model="billing.cc_number" required>
+                      <div ng-show="billingProvider.cc_number.$touched">
+                      <div class="md-errors-spacer" ng-show="billingProvider.cc_number.$error.required">Enter CC number .</div>
+                      <div class="md-errors-spacer" ng-show="billingProvider.cc_number.$error.pattern">Only number are allowed .</div>
+                     </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                <label>Confirm CC number</label>
+                <input name="conf_cc_number" type="text" ng-model="billing.conf_cc_number" ng-pattern="billing.cc_number" required>
+                <!--  code for match pattern start       -->  
+              <div ng-show="billingProvider.conf_cc_number.$touched">
+                  <div class="md-errors-spacer" ng-show="billingProvider.conf_cc_number.$error.required">Enter confirm CC number.</div>
+                  <div class="md-errors-spacer" ng-show="(billingProvider.conf_cc_number.$viewValue != '' && billingProvider.cc_number.$viewValue != '')">
+                  <span ng-show="(billingProvider.cc_number.$viewValue != billingProvider.conf_cc_number.$viewValue)">Mismatch CC number.</span>
+              </div>
+              </div>
+             <!--  code for match pattern end       -->  
+                </md-input-container>
+                
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                        <label>CVC Number</label>
+                        <input name="csv_no" type="text" ng-pattern='/^(0|[0-9][0-9]*)$/'  ng-model="billing.csv_no" required>
+                  <div ng-show="billingProvider.csv_no.$touched" required>
+                    <div class="md-errors-spacer" ng-show="billingProvider.csv_no.$error.required">Enter cvc number.</div>
+                    <div class="md-errors-spacer" ng-show="billingProvider.csv_no.$error.pattern">Only number are allowed.</div>
+                 </div>
+                </md-input-container>
+              </div>  <!--  row div close here       -->
+
+           
+            <div layout-gt-sm="row">
+               <md-input-container class="md-block" flex-gt-sm>
+                  <label>Exp. Month</label>
+                  <md-select ng-model="billing.monthno" placeholder="Select Month">
+                        <md-option ng-value="month_name.id" ng-repeat="month_name in monthname">{{ month_name.name }}</md-option>
+                 </md-select>
+
+                 <div>
+                    <div class="md-errors-spacer"> {{ messagemonth }}</div>
+                   
+                 </div>
+           </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Exp. Year</label>
+               <md-select ng-model="billing.exp_year" placeholder="Select Year">
+                        <md-option ng-value="year_name.id" ng-repeat="year_name in yearname">{{ year_name.name }}</md-option>
+              </md-select>
+
+           <div>
+              <div class="md-errors-spacer">{{ messageyear }}</div>
+          </div>
+         </md-input-container>
+        </div>  <!--  row div close here       -->
+  </div>  <!--  ng-if div close here       -->
+                <md-button class="md-warn md-raised prev-button previous" ng-click="showtab('two')">Previous</md-button>
+     <md-button  class="md-warn md-raised next-button next" ng-click="submitBilling(billingProvider)">Next</md-button>
+  </form>
+      </div>   
+      <div ng-show="four" class="change-password">
+                <div id="msg"  class="help-block animation-slideUp" style="color:#555555;padding-left:200px;" ng-bind="message"><a> {{ message }}</a></div>
+              <form name="userForm" id="msform" action="/dashboardfront/index" novalidate="novalidate">
+                <h2>Login</h2>
+                <md-input-container class="md-block">
+                    <label>User Name</label>
+                    <input name="user" type="text" ng-model="user.userName" required>
+                      <div ng-show="userForm.user.$touched">
+                          <span ng-show="userForm.user.$error.required">Enter Username.</span>
+                     </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input name="password" type="password" ng-model="user.password"  required>
+                     <div ng-show="userForm.$submitted || userForm.password.$touched">
+                      <span ng-show="userForm.password.$error.required">Enter Password.</span>
+                    </div>
+                </md-input-container>
+                <md-button class="md-warn md-raised prev-button previous" ng-click="showtab('three')">Previous</md-button>
+                <md-button class="md-warn md-raised next-button submit" ng-click=onSubmit(userForm)>Log in</md-button>
+                <div class="grid100">
+                    <div class="login-text pull-left"><a href="javascript:void(0);" title="Forgot Password">Forgot Password.</a></div>
+                 </div>
+               </form>  
+            </div>    
+        </div>
+    </div>
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="/jscript/angular-animate.min.js"></script>
+<script src="/jscript/angular-aria.min.js"></script>
+<script src="jscript/angular-messages.min.js"></script>
+<!-- Angular Material Library -->
+<script src="/jscript/angular-material.min.js"></script> 
+<!-- Your application -->
+<script type="text/javascript">  
+
+
+ 
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('formController', function($scope,$http,$window) { 
+        var statesname=statesname='<?php echo $statelist ; ?>';
+        $scope.users = [                                 // this is doctor type list 
+         { id: 1, name: 'Dentist' },
+         { id: 2, name: 'Pediatric Dentists' },
+         { id: 3, name: 'Other Specialist' }
+         ];
+          $scope.paymentoption = [                                 // this is doctor type list on billing page 
+         { id: 1, name: 'Pay with checking account' },
+         { id: 2, name: 'Pay with credit cart' },
+         ];
+         $scope.monthname= [                                 // this is for month list on billing  
+         { id: 1, name: 'January' },
+         { id: 2, name: 'February' },
+         { id: 3, name: 'March' },
+         { id: 4, name: 'April' },
+         { id: 5, name: 'May' },
+         { id: 6, name: 'June' },
+         { id: 7, name: 'July' },
+         { id: 8, name: 'August' },
+         { id: 9, name: 'September' },
+         { id: 10, name: 'October' },
+         { id: 11, name: 'November' },
+         { id: 12, name: 'December '}
+         ];
+         $scope.yearname= [                               // this is for year list on billing  
+         { id: 2016, name: 2016 },
+         { id: 2017, name: 2017 },
+         { id: 2018, name: 2018 },
+         { id: 2019, name: 2019 },
+         { id: 2020, name: 2020 },
+         { id: 2021, name: 2021 },
+         { id: 2022, name: 2022 },
+         { id: 2023, name: 2023 },
+         { id: 2024, name: 2024 },
+         { id: 2025, name: 2025 },
+         { id: 2026, name: 2026 },
+         { id: 2027, name: 2027},
+         { id: 2028, name: 2029 },
+         { id: 2029, name: 2029 },
+         { id: 2030, name: 2030 },
+         ];
+        // var chk = angular.isObject(statesname);            // use to check  whether it is string or object
+        $scope.statesobject  = angular.fromJson(statesname);  // use for convert string to object
+        $scope.one=true; 
+        $scope.rowCounter = 0;
+        $scope.rows = [{
+        id: '0'
+        }];
+        $scope.choices = [{id: '1'}];    // this variable for location form
+        $scope.choices1 = [{id: '1'}];    // this variable for provider form
+        $scope.choices2 = [{id: '1'}];    // this variable for provider form
+        $scope.addRow = function() {
+           $scope.rowCounter += 1;
+        $scope.rowTemplate = {
+                id: $scope.rowCounter,
+          };
+        $scope.rows.push($scope.rowTemplate);
+        };
+     $scope.addNewChoice1 = function(id) 
+       {
+        var vr=$scope.repeatloc[id].options;
+        var newItemNo = Object.keys($scope.repeatloc[id].options).length+1;
+        vr.push({'id':newItemNo});
+      };
+     $scope.submitprovider= function($valid)
+      {
+       if($scope.formProvider.$valid)
+       {
+        $("#progressbar li").eq(3).removeClass("active");
+        $("#progressbar li").eq(2).addClass("active");
+        $scope.three = true;
+        $scope.four = false; 
+        $scope.two = false; 
+        $("#divthree").show();
+
+       $http.post('/addproviderinfo',$scope.repeatloc)
+       .success(function(data,status){
+        // $scope.repeatloc=data;
+        if(data){
+
+        }
+        
+        })
+       } else{
+        $scope.message2="Please fill the form details.";
+       }  
+      };
+
+    $scope.removeProvider=function(key,provider_id)
+     { 
+        
+         $scope.repeatloc[key].options.splice(provider_id,1);       // use for remove id element from choices array
+         delete  $scope.repeatloc[key].first_name[provider_id+1] ;
+         delete  $scope.repeatloc[key].last_name[provider_id+1] ;
+         delete  $scope.repeatloc[key].license[provider_id+1] ;
+         delete  $scope.repeatloc[key].npi[provider_id+1] ;
+         delete  $scope.repeatloc[key].dentist[provider_id+1] ; 
+         delete  $scope.repeatloc[key].group[provider_id+1] ; 
+     };
+       $scope.addNewChoice = function() 
+       {
+       var newItemNo = $scope.choices.length+1;
+       $scope.choices.push({'id': newItemNo});
+       };
+    
+       $scope.submitLocation =function($valid)
+       {
+        if($scope.providerLocationForm.$valid)
+        {
+         if(!$scope.location.chk1&&!$scope.location.chk2&&!$scope.location.chk3)
+         {
+          $scope.message =   'Please select atleast one kind of practice .';  
+          return false;
+         }
+        /* code for hide div start   */
+        $scope.nolocation='false';
+        $("#progressbar li").eq(1).addClass("active");
+        $scope.two = true; 
+        $scope.one = false;
+        /* code for hide div end   */
+       $http.post('/submitlocation',$scope.location)
+       .success(function(data,status){
+          if(data=='0'){
+            //$scope.repeatloc=[{'hedayat': 1}]; 
+            //alert('hi');
+            $scope.nolocation='true';
+            $scope.repeatloc= [{"nolocation":"true","options":[{"id":1}]}];
+
+          }else{
+            //alert('by');
+            $scope.repeatloc=data;
+          }
+        
+        })
+      }else{
+     $scope.message =   'Please fill the form details.';  
+      }
+    };
+
+    $scope.submitBilling =function($valid)
+    {  
+       if($scope.billingProvider.$valid){
+          if($scope.billing.monthno==undefined)
+         {
+            if($scope.billing.accounttype==2)
+            {
+            $scope.messagemonth =   'Please select month .';  
+            return false;
+            }
+         }
+         if($scope.billing.exp_year==undefined)
+         { 
+            if($scope.billing.accounttype==2)
+            {
+          $scope.messageyear =   'Please select year .';  
+          return false;
+            }
+         }
+          $("#progressbar li").eq(3).addClass("active");
+          $scope.four = true;
+          $scope.three = false;
+          $("#divthree").hide(); 
+          $http.post('/submitbilling',$scope.billing)
+       .success(function(data,status){
+        })
+
+       }else{
+          $scope.message3="Invalid billing form details.";
+       }
+    } ;
+   $scope.checkDateFormet
+    $scope.showtab = function(tab){
+      if(tab=='one'){
+        $("#progressbar li").eq(1).removeClass("active");
+        $("#progressbar li").eq(0).addClass("active");
+        $scope.one = true; 
+        $scope.two = false; // hidden
+      }
+      if(tab=='two'){
+        $("#progressbar li").eq(2).removeClass("active");
+        $("#progressbar li").eq(1).addClass("active");
+        $scope.two = true; 
+        $scope.three = false; 
+        $scope.one = false; 
+        $("#divtwo").show();
+        
+      }
+      if(tab=='three'){
+        $("#progressbar li").eq(3).removeClass("active");
+        $("#progressbar li").eq(2).addClass("active");
+        $scope.three = true;
+        $scope.four = false; 
+        $scope.two = false; 
+        $("#divthree").show();
+      }
+      if(tab=='four'){
+        //$("#progressbar li").eq(4).removeClass("active");
+        $("#progressbar li").eq(3).addClass("active");
+        $scope.four = true;
+        $scope.three = false; 
+        
+      }
+    };
+   /* onSubmit form function start    */
+       $scope.onSubmit = function($valid) {
+            // check to make sure the form is completely valid
+            if ($scope.userForm.$valid) {
+            $http.post('/admin/1',$scope.user)
+            .success(function (data, status, headers, config) {
+                if(data==1){
+                    $window.location.href = '/dashboardfront/welcome';      
+                }else if(data==3){
+                    $window.location.href = '/dashboardfront/specilistwelcome';   
+                }else if(data==2){
+                    $window.location.href = '/dashboardfront/bankingdoctor'; 
+                }else{   
+                $scope.message = 'Wrong Username Entered';                
+                }
+              })                                  //  get text field value by   $scope.user.userName
+            }else{
+              $scope.message =   'Please fill the form details';  
+            }
+       };
+     /* onSubmit form function end    */
+     $scope.removeLocation=function(choices,index,choice_id)
+     {
+      $scope.choices.splice(index,1);              // use for remove id element from choices array
+      delete  $scope.location.address[choice_id] ;
+      delete  $scope.location.city[choice_id] ;
+      delete  $scope.location.zip[choice_id] ;
+      delete  $scope.location.phone[choice_id] ;
+      delete  $scope.location.email[choice_id] ;  // use to delete email of particular choice_id
+     }
+ 
+   
+});
+</script>
+<style>
+.mdprimary1{
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    box-sizing: border-box;
+    height: 20px;
+    top: 0;
+    transition: border-color 0.28s ease 0s;
+    width: 20px;
+}
+</style>
+<script src="jscript/jquery-1.9.1.min.js"></script>
+<script src="jscript/jquery.easing.min.js"></script>
+

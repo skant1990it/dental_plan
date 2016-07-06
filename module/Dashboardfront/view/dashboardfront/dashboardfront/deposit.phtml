@@ -1,0 +1,125 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+use Zend\Session\Container;
+ $session = new Container('User');
+ $doc_specility_type=  $session->offsetGet('doc_speciality') ;
+?>
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<div class="width650 change-password" ng-controller="providerbillingeditcontrollar">
+       <fieldset>
+          <h2>Deposit Account Information</h2>
+            <form name="billingProvider" id="billingProvider" ng-init="billing.accounttype=1">
+                {{  message3  }} 
+               <div ng-if="billing.accounttype==1">
+                <md-input-container class="md-block">
+                    <label>Bank Account Number</label>
+                    <input name="accountno" type="text" ng-model="billing.accountno" ng-pattern='/^(0|[0-9][0-9]*)$/' required>
+                    <div ng-show="billingProvider.accountno.$touched">
+                      <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.required">Enter bank account no.</div>
+                      <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.pattern">Only number are allowed .</div>
+                   </div>
+              </md-input-container>
+                <md-input-container class="md-block">
+                  <label>Confirm Account Number</label>
+                  <input name="conf_account" type="text" ng-pattern="billing.accountno" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-model="billing.conf_account" only-num required>
+                  <!--  code for match pattern start       -->  
+              <div ng-show="billingProvider.conf_account.$touched">
+                  <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.required">Enter confirm account no.</div>
+                  <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.pattern">Only number are allowed .</div>
+                  <div class="md-errors-spacer" ng-show="(billingProvider.conf_account.$viewValue != '' && billingProvider.accountno.$viewValue != '')">
+                  <span ng-show="(billingProvider.accountno.$viewValue != billingProvider.conf_account.$viewValue)">Mismatch account no.</span>
+              </div>
+            </div>
+             <!--  code for match pattern end       --> 
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Bank Routing Number</label>
+                    <input name="routingno" type="text" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-model="billing.routingno" required>
+                    <div ng-show="billingProvider.routingno.$touched">
+                      <div class="md-errors-spacer" ng-show="billingProvider.routingno.$error.required">Enter routing no.</div>
+                      <div class="md-errors-spacer" ng-show="billingProvider.routingno.$error.pattern">Only number are allowed .</div>
+                   </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                  <label>Confirm Routing Number</label>
+                  <input name="conf_routing" type="text"  ng-pattern="billing.routingno" ng-model="billing.conf_routing"  required>
+                 
+              <!--  code for match pattern start       -->  
+              <div ng-show="billingProvider.conf_routing.$touched">
+                  <div class="md-errors-spacer" ng-show="billingProvider.routingno.$error.required">Enter confirm routing no.</div>
+                  <div class="md-errors-spacer" ng-show="(billingProvider.conf_routing.$viewValue != '' && billingProvider.routingno.$viewValue != '')">
+                  <span ng-show="(billingProvider.routingno.$viewValue != billingProvider.conf_routing.$viewValue)">Mismatch routing no.</span>
+              </div>
+            </div>
+             <!--  code for match pattern end       --> 
+                </md-input-container>
+                
+                <md-input-container class="md-block">
+                  <label>Account Holder Name</label>
+                   <input name="acc_holder_name" type="text" ng-model="billing.acc_holder_name" required>
+                   <div ng-show="billingProvider.acc_holder_name.$touched">
+                      <div class="md-errors-spacer" ng-show="billingProvider.acc_holder_name.$error.required">Enter account holder name.</div>
+                  </div>
+               </md-input-container>
+              </div>
+              <div layout="row" layout-align="center center">
+                  <md-button class="md-warn md-raised save-button next" ng-click="submitBilling(billingProvider)">Save</md-button>
+                  <?php if($doc_specility_type==3){
+                   ?>
+                 <md-button ng-href="/dashboardfront/specilistwelcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+                 <md-button ng-href="/dashboardfront/dashboardsetting" class="md-warn md-raised red-button marginLeft10">Cancel</md-button>
+                <?php
+               }else{
+                ?>
+            <md-button ng-href="/dashboardfront/welcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+           <md-button ng-href="/dashboardfront/dashboardsetting" class="md-warn md-raised red-button marginLeft10">Cancel</md-button>
+             <?php
+              }
+             ?>
+             </div>
+            </form>
+     </fieldset>
+    </div>
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('providerbillingeditcontrollar', function($scope,$http,$window) 
+{ 
+
+ var doctor_details='<?php echo $doctor_detailsForId ; ?>';
+ var doctor_detailsobject  = angular.fromJson(doctor_details);
+ $scope.billing = doctor_detailsobject;
+ $scope.submitBilling =function($valid)
+    {   
+       if($scope.billingProvider.$valid){
+          $http.post('/dashboardfront/submitdeposit',$scope.billing)
+       .success(function(data,status){
+          if(data==1)
+          $scope.message3="Record updated successfully.";
+        })
+      }else{
+          $scope.message3="Invalid billing form details.";
+       }
+    } ;
+    console.log(doctor_detailsobject);
+}); 
+</script>

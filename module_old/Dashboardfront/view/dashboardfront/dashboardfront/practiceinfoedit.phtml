@@ -1,0 +1,179 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+
+
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+?>
+<header layout="row">
+    <div class="logo" layout-align="start" flex><a href="javascript:" title="denefits"><img src="/images/logo.png" width="183" height="57" alt="Logo"></a></div>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+     <div class="log-frame" layout-align="start end" ng-controller="headercontrollar" flex>
+        <md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="showbtn(switchtext)">
+        {{ switchtext }} 
+        </md-switch>
+    </div>
+</header>
+
+<div class="width650">
+    <div class="grid100 change-password">
+        <form>
+            <fieldset>
+                <h2>Practice Information</h2>
+                <h3>Primary Location</h3>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Legal Business Name</label>
+                        <input name="legal" type="text" ng-model="legal.userName">
+                    </md-input-container>
+                    <div class="edit"><a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+                </div>
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Practice Name</label>
+                  <input name="practice" type="text" ng-model="practice.userName">
+            	</md-input-container>  
+                    
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Address</label>
+                    <input name="member" type="text" ng-model="year.userName">
+                </md-input-container>
+                    
+                 <div layout-gt-sm="row">   
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>City</label>
+                        <input name="member" type="text" ng-model="year.userName">
+                    </md-input-container>
+                    
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <md-select placeholder="State" ng-model="user">
+                            <md-option value="Dummy Text">Dummy Text</md-option>
+                            <md-option value="Dummy Text">Dummy Text</md-option>
+                            <md-option value="Dummy Text">Dummy Text</md-option>
+                        </md-select>
+                    </md-input-container>
+                    
+                    
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Zip Code</label>
+                        <input name="member" type="text" ng-model="year.userName">
+                    </md-input-container>
+                 </div>   
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Phone</label>
+                    <input name="phone" type="text" ng-model="phone.userName">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Practice Email Address </label>
+                  <input name="email" type="email" ng-model="email.userName">
+              	</md-input-container>
+                
+                <div layout-gt-sm="row">
+                  <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">
+                    General Dental Office
+                  </md-checkbox>
+                  <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">
+                    Specialty Office
+                  </md-checkbox>
+                </div>
+                <div layout-gt-sm="row">
+                  <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">
+                    General Dental Office with different specialties
+                  </md-checkbox>
+                </div>
+				<div layout="row" layout-align="center center">
+                	<md-button class="md-warn md-raised green-button">Add More Locations</md-button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>Practice Name</label>
+                      <input name="practice" type="text" ng-model="practice.userName">
+                    </md-input-container>  
+                    <div class="edit"><a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+                    <div class="delete"><a href="javascript:void(0);" title="Delete"><img src="/images/delete-icon.png" width="20" height="25" alt="Delete"></a></div>
+                </div>
+                    
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Address</label>
+                    <input name="member" type="text" ng-model="year.userName">
+                </md-input-container>
+                    
+                 <div layout-gt-sm="row">   
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>City</label>
+                        <input name="member" type="text" ng-model="year.userName">
+                    </md-input-container>
+                    
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <md-select placeholder="State" ng-model="user">
+                            <md-option value="Dummy Text">Dummy Text</md-option>
+                            <md-option value="Dummy Text">Dummy Text</md-option>
+                            <md-option value="Dummy Text">Dummy Text</md-option>
+                        </md-select>
+                    </md-input-container>
+                    
+                    
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Zip Code</label>
+                        <input name="member" type="text" ng-model="year.userName">
+                    </md-input-container>
+                 </div>   
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Phone</label>
+                    <input name="phone" type="text" ng-model="phone.userName">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Practice Email Address </label>
+                  <input name="email" type="email" ng-model="email.userName">
+              	</md-input-container>
+                
+				<div layout="row" layout-align="center center">
+                	<md-button class="md-warn md-raised green-button">Add More Locations</md-button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>               
+            
+
+<!-- Your application -->
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="/jscript/angular.min.js"></script>
+<script src="/jscript/angular-animate.min.js"></script>
+<script src="/jscript/angular-aria.min.js"></script>
+<script src="/jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="/jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('headercontrollar',function($scope,$http,$window)
+{  
+  $scope.switchtext='logon';
+    $scope.showbtn=function(text){
+        if(text=='logon'){
+            $scope.switchtext='logoff';
+            $window.location.href = '/logout';
+        }
+    } 
+    
+}); 
+</script>

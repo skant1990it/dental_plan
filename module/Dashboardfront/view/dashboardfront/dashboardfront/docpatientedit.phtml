@@ -1,0 +1,191 @@
+<header layout="row">
+    <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+   <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+
+<div class="width650" ng-controller="formController1">
+    <div class="grid100 change-password">
+		
+        <form name="addPatientForm" id="msform">
+			 {{ message }}
+			
+			<h2>Patient Information</h2>
+            <div ng-repeat="pat in pats">				     
+              
+                <h3>Update Member </h3>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block">
+                        <label>First Name</label>
+                        <input name="first_name{{ $index }}" type="text" ng-model="member.first_name[pat.id]" required>
+                        <div class="md-errors-spacer" ng-show="addPatientForm.first_name{{ $index }}.$touched"> 
+							<span ng-show="addPatientForm.first_name{{ $index }}.$error.required">Enter First Name</span>
+                       </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Last Name</label>
+                        <input name="last_name{{ $index }}" type="text" ng-model="member.last_name[pat.id]" required>
+                        <div class="md-errors-spacer" ng-show="addPatientForm.last_name{{ $index }}.$touched"> 
+							<span ng-show="addPatientForm.last_name{{ $index }}.$error.required">Enter Last Name</span>
+                       </div>
+                    </md-input-container>
+                    <div layout="row" layout-align="center start" class="md-block padding20">
+                      
+                        <md-radio-group ng-model="member.sex[pat.id]" layout="row" required>
+							<md-radio-button ng-value="1" class="md-primary">Male</md-radio-button>
+							<md-radio-button ng-value="0" class="md-primary">Female</md-radio-button>
+						</md-radio-group>
+						
+                    </div>
+                    
+                </div>
+                <div layout-gt-sm="row">
+                   
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>DOB</label>
+                        <input id="date_of_birth" name="dob{{ $index }}" type="text" ng-model="member.dob[pat.id]" ng-pattern="/^(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])\/(19|20)\d{2}$/" required>
+                        <div class="md-errors-spacer" ng-show="addPatientForm.dob{{ $index }}.$touched"> 
+							<span ng-show="addPatientForm.dob{{ $index }}.$error.required">Enter DOB</span>
+							<span ng-show="addPatientForm.dob{{ $index }}.$error.pattern"> mm/dd/yyyy </span>
+                       </div>
+                    </md-input-container>
+                    
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Phone #</label>
+                        <input name="phone{{ $index }}" type="text" ng-model="member.phone[pat.id]" ng-pattern='/^(0|[0-9][0-9]*)$/' required>
+                        <div class="md-errors-spacer" ng-show="addPatientForm.phone{{ $index }}.$touched"> 
+							<span ng-show="addPatientForm.phone{{ $index }}.$error.required">Enter phone</span>
+                        </div>
+                        <div class="md-errors-spacer" ng-show="addPatientForm.phone{{ $index }}.$error.pattern">Only number allowed .</div>                       
+                    </md-input-container>
+                    
+                </div>  
+                    
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Address</label>
+                    <input name="address{{ $index }}" type="text" ng-model="member.address[pat.id]" required>
+					 <div class="md-errors-spacer" ng-show="addPatientForm.address{{ $index }}.$touched">
+                         <span ng-show="addPatientForm.address{{ $index }}.$error.required">Enter Address .</span>
+                     </div>
+                </md-input-container>
+                    
+                 <div layout-gt-sm="row"> 
+					  <md-input-container class="md-block" flex-gt-sm>
+                        <label>Zip Code</label>
+                        <input name="zip{{ $index }}"  ng-blur="searchzip(pat.id)" type="text" ng-model="member.zip[pat.id]" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-minlength="5" ng-maxlength="5" required>
+                        <div class="md-errors-spacer" ng-show="addPatientForm.zip{{ $index }}.$touched">
+						  <span ng-show="addPatientForm.zip{{ $index }}.$error.required">Enter Zip Code</span>
+						  <span ng-show="addPatientForm.zip{{ $index }}.$error.pattern"> Only number allowed</span>
+						  <span ng-show="addPatientForm.zip{{ $index }}.$error.minlength"> Min length should be 5 </span>
+						  <span ng-show="addPatientForm.zip{{ $index }}.$error.maxlength">Max length should be 5 </span>
+						</div>
+                    </md-input-container>  
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>City</label>
+                        <input name="city{{ $index }}" type="text" ng-model="member.city[pat.id]" required>
+                        <div class="md-errors-spacer" ng-show="addPatientForm.city{{ $index }}.$touched">
+                             <span ng-show="addPatientForm.city{{ $index }}.$error.required">Enter city .</span>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>State</label>
+                        <input name="state{{ $index }}" type="text" ng-model="member.state[pat.id]" required>
+                        <div class="md-errors-spacer" ng-show="addPatientForm.state{{ $index }}.$touched">
+                             <span ng-show="addPatientForm.state{{ $index }}.$error.required">Enter city .</span>
+                        </div>
+                    </md-input-container>              
+               
+                    
+                  
+                 </div>   
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Email</label>
+                    <input name="email{{ $index }}" ng-pattern='/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/' type="text" ng-model="member.email[pat.id]" required>
+                    <div class="md-errors-spacer" ng-show="addPatientForm.email{{ $index }}.$touched">
+						<span ng-show="addPatientForm.email{{ $index }}.$error.required">Enter Email Address</span>
+						<span ng-show="addPatientForm.email{{ $index }}.$error.pattern">Invalid Email Address</span>
+					</div>
+                   
+                </md-input-container>
+                </div>
+                
+		
+                <div layout="row" layout-align="center center">
+                	<md-button class="md-warn md-raised blue-button" ng-click="submitPatient(addPatientForm)">Save Members</md-button>
+				</div>
+                
+           
+        </form>
+    </div>
+</div>        
+            
+
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']);
+app.controller('formController1', function($scope,$http,$window) { 
+	$scope.paymentoption = [                                 // this is doctor type list on billing page 
+         { id: 1, name: 'Pay with checking account' },
+         { id: 2, name: 'Pay with credit cart' },
+         ];
+   $scope.pats = [{id: '1'}];    // define pats array to ng-repeat
+  
+   $scope.member=<?php echo json_encode($patientdetail);?>;
+   $scope.addNewpat = function() 
+    {
+       var newItemNo = $scope.pats.length+1;
+       $scope.pats.push({'id': newItemNo                            
+       });
+    };
+    $scope.searchzip = function (ind){
+		
+		var sentdata = { "data" : $scope.member.zip[ind]};
+		//console.log(sentdata);
+		$http.post('/dashboardfront/searchzip',sentdata)
+		.success(function(data,status){
+			//console.log(data);
+			if(data[0].state){
+				 $scope.member.state[ind] = data[0].state;
+				 $scope.member.city[ind] = data[0].city;				
+			}
+
+		});
+	
+	};
+    $scope.submitPatient =function($valid)
+    {
+		console.log($scope.member);
+		if($scope.addPatientForm.$valid)
+		{
+		 
+		$http.post('/dashboardfront/docpatientedit',$scope.member)
+		.success(function(data,status){
+			var rdata = angular.fromJson(data);
+			//console.log(rdata);
+			//alert(rdata.success);
+		  if(data==1){
+			//$window.location='/dashboardfront/welcome';
+			window.history.back();
+
+		  }else{
+			//alert('by');
+			//$scope.repeatloc=data;
+		  }
+
+		});
+		}else{			
+		$scope.message =   'Please fill the form details.';  
+		}
+    };
+    
+    
+    
+});
+
+</script>
+

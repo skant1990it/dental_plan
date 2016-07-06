@@ -1,0 +1,53 @@
+<?php
+ $doctorurl = $_SERVER['REQUEST_URI'];
+?>
+               <!-- Main Sidebar -->
+<div id="sidebar">
+    <!-- Sidebar Brand -->
+    <div id="sidebar-brand" class="themed-background">
+        <a href="/dashboardfront/welcome" class="sidebar-title">
+           <img src="/img/logo.png" align="Dental Plan" width="100%" height="100%" /><!-- <i class="fa fa-cube"></i> <span class="sidebar-nav-mini-hide">Dental Plan</span>-->
+        </a>
+    </div>
+    <!-- END Sidebar Brand -->
+
+    <!-- Wrapper for scrolling functionality -->
+    <div id="sidebar-scroll">
+        <!-- Sidebar Content -->
+        <div class="sidebar-content">
+                        <!-- Sidebar Navigation -->
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="/dashboardfront/welcome" <?php if($doctorurl=='/dashboardfront/welcome')  { ?>class=" active" <?php } ?>><i class="gi gi-compass sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Dashboard</span></a>
+                </li>
+               <li class="sidebar-separator">
+                    <i class="fa fa-ellipsis-h"></i>
+                </li>
+                <li>
+                    <a href="/dashboardfront/specilistreferlist" <?php if($doctorurl=='/dashboardfront/specilistreferlist')  { ?>class=" active" <?php } ?>><i class="gi gi-airplane sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Manage Referrals</span></a>
+                                    </li>
+                                                                <li>
+                    <a href="/dashboardfront/specilistpatient" <?php if($doctorurl=='/dashboardfront/specilistpatient')  { ?>class=" active" <?php } ?>><i class="fa fa-rocket sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Patients</span></a>
+                                    </li>
+                                                                <li>
+                    <a href="/dashboardfront/doctorspacilistccpay" <?php if($doctorurl=='/dashboardfront/doctorspacilistccpay')  { ?>class=" active" <?php } ?>><i class="gi gi-star sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Billing Information</span></a>
+                                    </li>
+                                                                <li>
+                    <a href="/dashboardfront/specialistsdoctoradd" <?php if($doctorurl=='/dashboardfront/specialistsdoctoradd')  { ?>class=" active" <?php } ?>><i class="gi gi-star sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">My Account</span></a>
+                                    </li>
+                                                                <li>
+                    <a href="/dashboardfront/specialistsplservices" <?php if($doctorurl=='/dashboardfront/specialistsplservices')  { ?>class=" active" <?php } ?>><i class="gi gi-star sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Manage Fee Schedule</span></a>
+                                    </li>
+                                                                <li>
+                    <a href="/dashboardfront/doctorsupport" <?php if($doctorurl=='/dashboardfront/doctorsupport')  { ?>class=" active" <?php } ?>><i class="gi gi-star sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Support</span></a>
+                                    </li>
+                                            </ul>
+            <!-- END Sidebar Navigation -->
+                    </div>
+        <!-- END Sidebar Content -->
+    </div>
+    <!-- END Wrapper for scrolling functionality -->
+
+
+</div>
+<!-- END Main Sidebar -->

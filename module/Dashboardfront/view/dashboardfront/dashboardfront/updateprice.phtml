@@ -1,0 +1,218 @@
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<div ng-controller="formCtrl">
+<form name="userForm" id="msform" action="#">
+    <div class="width650">
+        <div class="grid100 change-password">
+			{{message}}
+			
+				<div class="width1200b" >
+						<div class="margin50" layout="row" layout-align="center start">
+							<div class="bank-icon" layout="row" layout-align="center center"><img src="/images/bank-icon.png" width="93" height="93" alt="Bank"></div>
+						</div>
+						<div layout="row" layout-align="center center">
+							<h2>How much do you want to charge for your Dental Plan?</h2>
+						</div>	
+						<div layout="row" layout-align="center center">
+							<h3>Don't Stress, you can change the price at any time</h3>
+						</div>
+						
+						<div class="plan-table margintop90">
+							
+							<table>
+								<thead>
+									<tr>
+										<th>Name of Plan</th>
+										<th>First member (Recomended Price)</th>
+										<th>Additional Member (Recomended price)</th>
+										<th colspan="2">How Much would like to charge?</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<md-input-container class="md-block">
+													<label>Silver Plan</label>
+													<input name="silver" type="text" ng-model="pricing.silver">
+												</md-input-container>
+											</div>
+										</td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$50 / Month</div></td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$40 / Patient</div></td>
+										<td><div class="plan-Margin">
+										<md-input-container class="md-block">
+											<label>Primary Member Price</label>
+											<input name="silvermember" type="text" ng-model="pricing.silvermember">
+										</md-input-container>
+										</div></td>
+										<td><div class="plan-Margin">
+										<md-input-container class="md-block">
+											<label>Add On Member Price</label>
+											<input name="silveraddon" type="text" ng-model="pricing.silveraddon">
+										</md-input-container>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<md-input-container class="md-block">
+													<label>Platinum Plan</label>
+													<input name="platinum" type="text" ng-model="pricing.platinum">
+												</md-input-container>
+											</div>
+										</td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$50 / Month</div></td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$40 / Patient</div></td>
+										<td><div class="plan-Margin">
+										<md-input-container class="md-block">
+											<label>Primary Member Price</label>
+											<input name="platinummember" type="text" ng-model="pricing.platinummember">
+										</md-input-container>
+										</div></td>
+										<td><div class="plan-Margin">
+										<md-input-container class="md-block">
+											<label>Add On Member Price</label>
+											<input name="platinumaddon" type="text" ng-model="pricing.platinumaddon">
+										</md-input-container>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<md-input-container class="md-block">
+													<label>Diamond Plan</label>
+													<input name="diamond" type="text" ng-model="pricing.diamond">
+												</md-input-container>
+											</div>
+										</td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$50 / Month</div></td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$40 / Patient</div></td>
+										<td><div class="plan-Margin">
+										<md-input-container class="md-block">
+											<label>Primary Member Price</label>
+											<input name="diamondmember" type="text" ng-model="pricing.diamondmember">
+										</md-input-container>
+										</div></td>
+										<td><div class="plan-Margin">
+										<md-input-container class="md-block">
+											<label>Add On Member Price</label>
+											<input name="diamondaddon" type="text" ng-model="pricing.diamondaddon">
+										</md-input-container>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div layout="row" layout-align="center center" class="clearboth">
+							<h3><span class="margin30">Would you also like to make a plan for small business</span></h3>
+						</div>
+						<div layout="row" layout-align="center center" class="margin30d" ng-init="business=pricing.business" >
+							<md-radio-group ng-model="business"  layout="row">
+								<md-radio-button value="1" class="md-primary">Yes</md-radio-button>
+								<md-radio-button value="0" class="md-primary">No</md-radio-button>
+							</md-radio-group>
+						</div>
+						<div ng-if="business == '1'">
+						<div class="plan-table">
+							<table>
+								<tbody>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<!--<md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">Silver Plan</md-checkbox>-->Silver Plan
+											</div>
+										</td>
+										<td><div class="plan-Margin plan-Marginc">$40 / Employee</div></td>
+										<td>
+											<div class="plan-input">
+												<md-input-container class="md-block">
+													<input name="businesssilver" type="text" ng-model="pricing.businesssilver" >
+													<div class="md-errors-spacer" ng-show="userForm.businesssilver.$touched"> 
+													<span ng-show="userForm.businesssilver.$error.required">Silver amount for business</span>
+												   </div>
+												</md-input-container>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<!--<md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">Platinum Plan</md-checkbox>-->Platinum Plan
+											</div>
+										</td>
+										<td><div class="plan-Margin plan-Marginc">$60 / Employee</div></td>
+										<td>
+											<div class="plan-input">
+												<md-input-container class="md-block">
+													<input name="businesplatinum" type="text" ng-model="pricing.businesplatinum" >
+													<div class="md-errors-spacer" ng-show="userForm.businesplatinum.$touched"> 
+													<span ng-show="userForm.businesplatinum.$error.required">Platinum amount for business</span>
+												   </div>
+												</md-input-container>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<!--<md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">Diamond Plan</md-checkbox>-->Diamond Plan
+											</div>
+										</td>
+										<td><div class="plan-Margin plan-Marginc">$80 / Employee</div></td>
+										<td>
+											<div class="plan-input">
+												<md-input-container class="md-block">
+													<input name="businessdiamond" type="text" ng-model="pricing.businessdiamond" >
+													<div class="md-errors-spacer" ng-show="userForm.businessdiamond.$touched"> 
+													<span ng-show="userForm.businessdiamond.$error.required">Diamond amount for business</span>
+												</md-input-container>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						</div>
+					</div>
+					<div style="text-align:center">{{Msg}}</div>
+					<md-button class="md-warn md-raised prev-button previous" onclick="history.go(-1);">Back</md-button>
+					<md-button class="md-warn md-raised next-button next left280" ng-click="saveplan(userForm)">Submit</md-button>
+            
+            
+			
+         </div>
+	</div>
+</form>
+</div>
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']); 
+app.controller("formCtrl", function($scope, $http,$window) {
+$scope.pricing=<?php echo json_encode($plans)?>;
+$scope.saveplan = function ($valid){
+	
+	$scope.formdata = {'business':$scope.business,'pricing':$scope.pricing};
+	$http.post("/dashboardfront/plansaveing", $scope.formdata).
+					success(function(data, status) {
+						if(data==1){
+							$scope.Msg='Record saved soccessfully.';
+							$window.location="/dashboardfront/plan";						
+							
+						}
+						
+				});
+};
+
+});
+</script>

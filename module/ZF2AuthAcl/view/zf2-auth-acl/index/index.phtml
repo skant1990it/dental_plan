@@ -1,0 +1,100 @@
+<header>
+        <div class="logo"><a href="/" title="denefits"><img src="/images/logo.png" width="183" height="57" alt="Logo"></a></div>
+      <!--  
+      <div class="log-frame" layout-align="start end" flex>
+    	<md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="text = (text == 'logoff' || text == undefined ? 'logon' : 'logoff')">
+            <div ng-if="(text == 'logoff' || text == undefined)">
+                <a href="javascript:void(0)" class="logoff">{{text || 'logoff'}}</a>
+            </div>    
+            <div ng-if="text == 'logon'">
+                <a href="javascript:void(0)" class="logon">{{text || 'logoff'}}</a>
+            </div>
+        </md-switch>
+    </div>
+    -->
+    </header>
+    <div class="width650">
+        
+        <div class="grid100 change-password">
+           <fieldset ng-controller="loginformcontroller">
+
+             <div id="msg" class="help-block animation-slideUp" style="color:#555555;padding-left:200px;" ng-bind="message"><a> {{ message }}</a></div>
+              <form name="userForm" id="msform" action="/dashboardfront/index" novalidate="novalidate">
+                <h2>Login</h2>
+                <md-input-container class="md-block">
+                    <label>User Name</label>
+                    <input name="user" type="text" ng-model="user.userName" required>
+                      <div ng-show="userForm.user.$touched">
+                          <span ng-show="userForm.user.$error.required">Enter Username.</span>
+                     </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input name="password" type="password" ng-model="user.password" required>
+                     <div ng-show="userForm.$submitted || userForm.password.$touched">
+                      <span ng-show="userForm.password.$error.required">Enter Password.</span>
+                    </div>
+                </md-input-container>
+                <md-button class="md-warn md-raised prev-button"  ng-click="reset(userForm)">Sign Up</md-button>
+                <md-button class="md-warn md-raised next-button submit" ng-click=onSubmit(userForm)>Log in</md-button>
+                <div class="grid100">
+                    <div class="login-text pull-right"><a href="javascript:void(0);" title="Forgot Password">Forgot Password</a></div>
+                 </div>
+               </form>  
+            </fieldset>
+        </div>
+    </div>
+
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="/jscript/angular-animate.min.js"></script>
+<script src="/jscript/angular-aria.min.js"></script>
+<script src="/jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="/jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+<script type="text/javascript">     
+    // function to submit the form after all validation has occurred   
+   var app = angular.module('BlankApp', ['ngMaterial']);
+   app.controller('loginformcontroller',function($scope,$http,$window){
+      /* reset form function start    */
+       $scope.reset = function($valid){
+        $scope.user = {};
+         $window.location.href="/tininsert";
+       }
+       /* reset form function end   */
+
+        /* onSubmit form function start    */
+       $scope.onSubmit = function($valid) {
+           
+            // check to make sure the form is completely valid
+            if ($scope.userForm.$valid) {
+            $http.post('/admin/1',$scope.user)
+            .success(function (data, status, headers, config) {
+                if(data==1){
+                    $window.location.href = '/dashboardfront/welcome';      
+                }else if(data==3){
+                    $window.location.href = '/dashboardfront/specilistwelcome';   
+                }else if(data==2){
+                    $window.location.href = '/dashboardfront/bankingdoctor'; 
+                }else if(data==4){
+                    $window.location.href = '/dashboardfront/bankingdoctorspecialist'; 
+                }else{   
+                $scope.message = 'Incorrect Username or Password Enter.';                
+                }
+              })                                  //  get text field value by   $scope.user.userName
+            }else{
+              $scope.message =   'Please fill the form details';  
+            }
+       };
+     /* onSubmit form function end    */
+    });
+
+</script>
+<script src="/jscript/jquery-1.9.1.min.js"></script>
+<script src="/jscript/jquery.easing.min.js"></script>
+<script src="/jscript/process-wizard.js"></script>
+
+

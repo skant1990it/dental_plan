@@ -1,0 +1,10 @@
+<?php
+use Zend\Session\Container;
+ $session = new Container('User');
+	  $docsplty  =$session->offsetGet('doc_speciality');
+	  $redirect = 'welcome';
+		if($docsplty==3){
+			$redirect = 'specilistwelcome';
+		}
+		?>
+<div class="logo" layout-align="start" flex><a href="/dashboardfront/<?php echo $redirect;?>" title="denefits"><img src="/images/logo.png" width="183" height="57" alt="Logo"></a></div>

@@ -1,0 +1,138 @@
+<?php echo $this->doctype(); 
+use Zend\Session\Container;
+$session = new Container('User');
+$userdatails =array();
+$docdetails= $session->offsetGet('userdetail');
+?>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+$(document).ready(function(){
+    $('body').addClass('dashboard');
+});
+</script>
+<!-- header code will start here    -->
+<header layout="row">
+    <div class="logo" layout-align="start" flex><a href="/dashboardfront/welcome" title="denefits"><img src="/images/dashboard-logo.png" width="184" height="57" alt="Logo"></a></div>
+    <div class="log-frame">
+        <ul>
+            <li class="user"><img src="/images/user.png" width="37" height="37" alt="User"></li>
+            <li class="profile">
+                <a href="javascript:void(0);"><span> <?php echo $session->offsetGet('doc_firstname')." ".$session->offsetGet('doc_lastname') ;?></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/logout">Logout</a></li>
+                
+                </ul>
+            </li>
+            <li><img src="/images/help-icon.png" width="26" height="26" alt="Help"></li>
+        </ul>
+    </div>
+</header>
+<!-- header code will end here    -->
+<!-- contant start here    -->
+<div class="grid100 change-password">
+    <div layout="row" layout-align="center center">
+        <h2>How Can we make things easier for you?</h2>
+    </div>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+    <div class="plan-frame">
+        <div class="grid100" layout="row" layout-align="space-between center">
+            <div layout="column" layout-align="center center">
+                <a href="javascript:void(0);" title="Stats">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/stat-icon.png" width="91" height="71" alt="Stat"></div>
+                    <div class="icon-text">Stats</div>
+                </a>
+            </div>
+            
+            <div layout="column" layout-align="center center">
+                <a href="/dashboardfront/patient" title="Patients">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/patient-icon.png" width="91" height="85" alt="Patient"></div>
+                    <div class="icon-text">Patients</div>
+                </a>
+            </div>
+            
+            <div layout="column" layout-align="center center">
+                <a href="javascript:void(0);" title="Plans">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/plan-icon.png" width="82" height="79" alt="Plan"></div>
+                    <div class="icon-text">Plans</div>
+                </a>
+            </div>
+            
+            <div layout="column" layout-align="center center">
+                <a href="javascript:void(0);" title="Marketplace">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/marketplace-icon.png" width="85" height="80" alt="Marketplace"></div>
+                    <div class="icon-text">Marketplace</div>
+                </a>
+            </div>
+            
+            <div layout="column" layout-align="center center">
+                <a href="/dashboardfront/planchoise" title="Add Patient">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/add-icon.png" width="86" height="86" alt="Add Patient"></div>
+                    <div class="icon-text">Add Patient</div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="grid100" layout="row" layout-align="space-between center">
+            <div layout="column" layout-align="center center">
+                <a href="javascript:void(0);" title="Finance">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/finance-icon.png" width="68" height="89" alt="Finance"></div>
+                    <div class="icon-text">Finance</div>
+                </a>
+            </div>
+            
+            <div layout="column" layout-align="center center">
+                <a href="javascript:void(0);" title="Prospects">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/prospect-icon.png" width="64" height="94" alt="Prospects"></div>
+                    <div class="icon-text">Prospects</div>
+                </a>
+            </div>
+            
+            <div layout="column" layout-align="center center">
+                <a href="javascript:void(0);" title="Refer">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/refer-icon.png" width="92" height="88" alt="Refer"></div>
+                    <div class="icon-text">Refer</div>
+                </a>
+            </div>
+            
+           <div layout="column" layout-align="center center">
+                <a href="/dashboardfront/dashboardsetting" title="Settings">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/setting-icon.png" width="89" height="89" alt="Settings"></div>
+                    <div class="icon-text">Settings</div>
+                </a>
+            </div>
+            
+            <div layout="column" layout-align="center center">
+                <a href="javascript:void(0);" title="Support">
+                    <div class="icon" layout="row" layout-align="center center"><img src="/images/support-icon.png" width="82" height="87" alt="Support"></div>
+                    <div class="icon-text">Support</div>
+                </a>
+            </div>
+        </div>
+    </div>  
+</div>
+<!-- contant end here    -->
+<script src="/jscript/angular.min.js"></script>
+<script src="/jscript/angular-animate.min.js"></script>
+<script src="/jscript/angular-aria.min.js"></script>
+<script src="/jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="/jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+angular.module('BlankApp', ['ngMaterial']);
+</script>
+<script src="/jscript/jquery-1.9.1.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(".log-frame li.profile a").click(function() {
+	  $(".dropdown-menu").toggle("slow");
+  });
+});
+</script>

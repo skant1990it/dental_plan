@@ -1,0 +1,976 @@
+<div ng-controller="formCtrl">
+<form name="userForm" id="msform" action="#">
+    <header>
+        <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+        <div class="process-wizard">
+            <ul id="progressbar">
+                <li class="active"><span>Banking</span></li>
+                <li><span>Fee Schedule upload</span></li>
+                <li><span>Private Plans</span></li>
+                <li><span>Plans Pricing</span></li>
+                <li><span>Financing</span></li>
+                <li><span>Referrals</span></li>
+                <li><span>Welcome</span></li>
+            </ul>
+        </div>
+        <?php echo $this->render('dentalheader.phtml'); ?>
+    </header>
+    <div class="width650">
+        <div class="grid100 change-password">
+            <div id="divone" ng-show='one'>
+                <div class="margin50" layout="row" layout-align="center start">
+                	<div class="bank-icon" layout="row" layout-align="center center"><img src="/images/bank-icon.png" width="93" height="93" alt="Bank"></div>
+                </div>
+                <h2>Where Would you like your money deposited?</h2>
+                   <p>{{ message }} </p>
+                <md-input-container class="md-block">
+                    <label>Account Name</label>
+                    <input name="name" type="text" ng-model="account.name" required>
+                     <div ng-show="userForm.name.$touched">
+                      <div class="md-errors-spacer" ng-show="userForm.name.$error.required">Enter Account Name.</div>
+                     </div>
+                     
+                     
+                     
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Routing Number</label>
+                    <input name="routing_number" type="text" ng-model="account.routing_number" ng-pattern='/^(0|[1-9][0-9]*)$/' required>
+                      <div ng-show="userForm.routing_number.$touched">
+                      <div class="md-errors-spacer" ng-show="userForm.routing_number.$error.required">Enter Routing Number.</div>
+                      <div class="md-errors-spacer" ng-show="userForm.routing_number.$error.pattern">Only numbers are allow.</div>
+                     </div>
+                     
+                     
+                     
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm Routing Number</label>
+                    <input name="confirm_routing_number" type="text" ng-model="account.confirm_routing_number" ng-pattern="account.routing_number" required>
+                    <div ng-show="userForm.confirm_routing_number.$touched">
+                           <div class="md-errors-spacer" ng-show="userForm.confirm_routing_number.$error.required">Enter Confirm Routing Number</div>
+                          <div class="md-errors-spacer" ng-show="userForm.confirm_routing_number.$error.pattern">Routing number have to match!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Account Number</label>
+                    <input name="account_number" type="text" ng-model="account.account_number" ng-pattern='/^(0|[1-9][0-9]*)$/' required>
+                    <div ng-show="userForm.account_number.$touched">
+                          <div class="md-errors-spacer" ng-show="userForm.account_number.$error.required">Enter Account Number</div>
+                          <div class="md-errors-spacer" ng-show="userForm.account_number.$error.pattern">Only numbers are allow</div>
+                     </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm Account Number</label>
+                    <input name="confirm_account_number" type="text" ng-model="account.confirm_account_number" ng-pattern="account.account_number" required>
+                    <div ng-show="userForm.confirm_account_number.$touched">
+                         <div class="md-errors-spacer" ng-show="userForm.confirm_account_number.$error.required">Confirm Account Number</div>
+                         <div class="md-errors-spacer" ng-show="userForm.confirm_account_number.$error.pattern">Account number have to match!</div>
+                     </div>
+                     
+                </md-input-container>
+               	<md-button class="md-warn md-raised next-button next" id="nbutton1" ng-click=bankingformsubmit(userForm);>Next</md-button>
+            </div>
+            <div ng-show='two'>
+            	<div layout="row" layout-align="center center">
+                	<h2>Upload your Fee Schedule</h2>
+                </div>
+                <div layout="row" layout-align="center center">
+                	<h3>Please upload a .xls or .csv file only. Thank You</h3>
+                </div>
+                <div layout="row" layout-align="center center">
+					 <input type = "file" file-model = "myFile"/>					
+                	<md-button class="md-warn md-raised more-button" ng-click = "uploadFileCsv()">Upload</md-button>
+                </div>
+                <p>{{error}}</p>
+                <div id="progress" class="graph"><div id="bar" style="width:{{progress}}%"><p>{{progress}}% complete</p></div></div>
+                <md-button class="md-warn md-raised prev-button previous" ng-click="showtab('one')" >Back</md-button>
+	            <md-button class="md-warn md-raised next-button next" ng-click="showtab('three')">Next</md-button>
+            </div>
+            <div ng-show='three' style="width:900px">
+				
+				<div class="plan_profile">
+				  <img src="/images/profile_img.png" width="166" height="168">
+				  <h4>Just some more details and your done!</h4>
+     			</div>
+				<div class="plan_cover_col">
+					<div class="silver_plan">Silver Plan Coverage</div>
+					<div class="silver_plan platinum_plan">Platinum</div>
+					<div class="silver_plan diamond_plan">Diamond</div>
+				</div>
+       	  		<div class="tabbing_col">
+					<div class="acc_trigger">
+					<div class="exam_left_div">
+						<span class="exam_left_ar">Exams</span>
+					</div>
+					
+					<div class="plan_cover_col exam_rght_div">
+					<span class="exam_rght_price">
+						100
+					</span>
+					
+					<span class="exam_rght_price price_mar1">
+						100
+					</span>
+					
+					<span class="exam_rght_price price_mar1">
+						100
+					</span>
+					</div>
+					</div>
+					
+					<div class="acc_container">
+				   
+					<div class="plan_desc_div">
+					<div class="exam_check_div">
+						 <ul>
+						 <li>
+					<input type="checkbox" id="test1" />
+					<label for="test1">DO120 Complete Exam, New PT</label>
+					</li>
+				  </ul>
+			</div>
+
+			<div class="plan_cover_col exam_rght_div">
+			<span class="exam_rght_price price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+			</div>
+			</div>
+
+			<div class="plan_desc_div">
+			<div class="exam_check_div">
+				 <ul>
+				 <li>
+			<input type="checkbox" id="test2" />
+			<label for="test2">DO123 Limited Exam</label>
+			</li>
+			</ul>
+			</div>
+
+			<div class="plan_cover_col exam_rght_div">
+			<span class="exam_rght_price price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+			</div>
+			</div>
+
+			<div class="plan_desc_div">
+			<div class="exam_check_div">
+				 <ul>
+				 <li>
+			<input type="checkbox" id="test3" />
+			<label for="test3">DO424 Periodic Exam</label>
+			</li>
+			</ul>
+			</div>
+
+			<div class="plan_cover_col exam_rght_div">
+			<span class="exam_rght_price price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+			</div>
+			</div>
+
+			<div class="plan_desc_div">
+			<div class="exam_check_div">
+				 <ul>
+				 <li>
+			<input type="checkbox" id="test4" />
+			<label for="test4">DO150 Emergency Exam</label>
+			</li>
+			</ul>
+			</div>
+
+			<div class="plan_cover_col exam_rght_div">
+			<span class="exam_rght_price price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+			</div>
+			</div>
+
+			<div class="plan_desc_div">
+			<div class="exam_check_div">
+				 <ul>
+				 <li>
+			<input type="checkbox" id="test5" />
+			<label for="test5">D1234 Comprehensive Exam</label>
+			</li>
+			</ul>
+			</div>
+
+			<div class="plan_cover_col exam_rght_div">
+			<span class="exam_rght_price price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+			</div>
+			</div>
+
+			<div class="plan_desc_div">
+			<div class="exam_check_div">
+				 <ul>
+				 <li>
+			<input type="checkbox" id="test6" />
+			<label for="test6">D1235 Exam, Second Opinion</label>
+			</li>
+			</ul>
+			</div>
+
+			<div class="plan_cover_col exam_rght_div">
+			<span class="exam_rght_price price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+
+			<span class="exam_rght_price price_mar1 price_pad1">
+				100
+			</span>
+			</div>
+			</div>
+			</div>
+
+			</div>
+				<div class="tabbing_col">
+				<div class="acc_trigger">
+				<div class="exam_left_div">
+				<span class="exam_left_ar">Xrays</span>
+				</div>
+
+				<div class="plan_cover_col exam_rght_div">
+				<span class="exam_rght_price">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1">
+				100
+				</span>
+				</div>
+				</div>
+
+				<div class="acc_container">
+
+				<div class="plan_desc_div">
+				<div class="exam_check_div">
+				<ul>
+				<li>
+				<input type="checkbox" id="test7" />
+				<label for="test7">DO120 Complete Exam, New PT</label>
+				</li>
+				</ul>
+				</div>
+
+				<div class="plan_cover_col exam_rght_div">
+				<span class="exam_rght_price price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+				</div>
+				</div>
+
+				<div class="plan_desc_div">
+				<div class="exam_check_div">
+				<ul>
+				<li>
+				<input type="checkbox" id="test8" />
+				<label for="test8">DO123 Limited Exam</label>
+				</li>
+				</ul>
+				</div>
+
+				<div class="plan_cover_col exam_rght_div">
+				<span class="exam_rght_price price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+				</div>
+				</div>
+
+				<div class="plan_desc_div">
+				<div class="exam_check_div">
+				<ul>
+				<li>
+				<input type="checkbox" id="test9" />
+				<label for="test9">DO424 Periodic Exam</label>
+				</li>
+				</ul>
+				</div>
+
+				<div class="plan_cover_col exam_rght_div">
+				<span class="exam_rght_price price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+				</div>
+				</div>
+
+				<div class="plan_desc_div">
+				<div class="exam_check_div">
+				<ul>
+				<li>
+				<input type="checkbox" id="test10" />
+				<label for="test10">DO150 Emergency Exam</label>
+				</li>
+				</ul>
+				</div>
+
+				<div class="plan_cover_col exam_rght_div">
+				<span class="exam_rght_price price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+				</div>
+				</div>
+
+				<div class="plan_desc_div">
+				<div class="exam_check_div">
+				<ul>
+				<li>
+				<input type="checkbox" id="test11" />
+				<label for="test11">D1234 Comprehensive Exam</label>
+				</li>
+				</ul>
+				</div>
+
+				<div class="plan_cover_col exam_rght_div">
+				<span class="exam_rght_price price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+				</div>
+				</div>
+
+				<div class="plan_desc_div">
+				<div class="exam_check_div">
+				<ul>
+				<li>
+				<input type="checkbox" id="test12" />
+				<label for="test12">D1235 Exam, Second Opinion</label>
+				</li>
+				</ul>
+				</div>
+
+				<div class="plan_cover_col exam_rght_div">
+				<span class="exam_rght_price price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+
+				<span class="exam_rght_price price_mar1 price_pad1">
+				100
+				</span>
+				</div>
+				</div>
+
+
+				</div>
+
+				</div>
+
+				<div class="plan_tab">
+					<div class="exam_left_div yearly_txt">
+						Yearly Maximum
+					</div>
+					
+					<div class="plan_cover_col exam_rght_div">
+					<span class="exam_rght_price yearly_price">
+						$1500
+					</span>
+					
+					<span class="exam_rght_price price_mar1 yearly_price">
+						$2500
+					</span>
+					
+					<span class="exam_rght_price price_mar1 yearly_price">
+						$3500
+					</span>
+					</div>    
+				</div>
+				<div class="btn_box"><input name="" type="button" class="save_btn" value="Save For Later"></div>
+					<md-button class="md-warn md-raised prev-button previous" ng-click="showtab('two')">Back</md-button>
+					<md-button class="md-warn md-raised next-button next left280" ng-click="showtab('four')">Next</md-button>
+				</div>
+            <div ng-show='four'> 
+				<div class="width1200b">
+						<div class="margin50" layout="row" layout-align="center start">
+							<div class="bank-icon" layout="row" layout-align="center center"><img src="/images/bank-icon.png" width="93" height="93" alt="Bank"></div>
+						</div>
+						<div layout="row" layout-align="center center">
+							<h2>How much do you want to charge for your Dental Plan?</h2>
+						</div>	
+						<div layout="row" layout-align="center center">
+							<h3>Don't Stress, you can change the price at any time</h3>
+						</div>
+						
+						<div class="plan-table margintop90">
+							<table>
+								<thead>
+									<tr>
+										<th>Name of Plan</th>
+										<th>First member (Recomended Price)</th>
+										<th>Additional Member (Recomended price)</th>
+										<th colspan="2">How Much would like to change?</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<md-input-container class="md-block">
+													<label>Silver Plan</label>
+													<input name="user" type="text" ng-model="user.userName">
+												</md-input-container>
+											</div>
+										</td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$50 / Month</div></td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$40 / Patient</div></td>
+										<td><div class="plan-Margin"><div class="buttonc dark-green dark-green-shadow"><a href="javascript:void(0);" title="Primary Member Price">Primary Member Price</a></div></div></td>
+										<td><div class="plan-Margin"><div class="buttonc dark-blue dark-blue-shadow"><a href="javascript:void(0);" title="Add On Member Price">Add On Member Price</a></div></div></td>
+									</tr>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<md-input-container class="md-block">
+													<label>Platinum Plan</label>
+													<input name="user" type="text" ng-model="user.userName">
+												</md-input-container>
+											</div>
+										</td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$70 / Month</div></td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$60 / Patient</div></td>
+										<td><div class="plan-Margin"><div class="buttonc dark-green dark-green-shadow"><a href="javascript:void(0);" title="Primary Member Price">Primary Member Price</a></div></div></td>
+										<td><div class="plan-Margin"><div class="buttonc dark-blue dark-blue-shadow"><a href="javascript:void(0);" title="Add On Member Price">Add On Member Price</a></div></div></td>
+									</tr>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<md-input-container class="md-block">
+													<label>Diamond Plan</label>
+													<input name="user" type="text" ng-model="user.userName">
+												</md-input-container>
+											</div>
+										</td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$90 / Month</div></td>
+										<td class="align-center"><div class="plan-Margin plan-Marginb">$80 / Patient</div></td>
+										<td><div class="plan-Margin"><div class="buttonc dark-green dark-green-shadow"><a href="javascript:void(0);" title="Primary Member Price">Primary Member Price</a></div></div></td>
+										<td><div class="plan-Margin"><div class="buttonc dark-blue dark-blue-shadow"><a href="javascript:void(0);" title="Add On Member Price">Add On Member Price</a></div></div></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div layout="row" layout-align="center center" class="clearboth">
+							<h3><span class="margin30">Would you also like to make a plan for small business</span></h3>
+						</div>
+						<div layout="row" layout-align="center center" class="margin30d">
+							<md-radio-group layout="row">
+								<md-radio-button value="0" ng-model="true" class="md-primary">Yes</md-radio-button>
+								<md-radio-button value=1 class="md-primary">No</md-radio-button>
+							</md-radio-group>
+						</div>
+						<div class="plan-table">
+							<table>
+								<tbody>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">Silver Plan</md-checkbox>
+											</div>
+										</td>
+										<td><div class="plan-Margin plan-Marginc">$40 / Employee</div></td>
+										<td>
+											<div class="plan-input">
+												<md-input-container class="md-block">
+													<input name="user" type="text" ng-model="user.userName">
+												</md-input-container>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">Platinum Plan</md-checkbox>
+											</div>
+										</td>
+										<td><div class="plan-Margin plan-Marginc">$60 / Employee</div></td>
+										<td>
+											<div class="plan-input">
+												<md-input-container class="md-block">
+													<input name="user" type="text" ng-model="user.userName">
+												</md-input-container>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="plan-Margin10">
+												<md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">Diamond Plan</md-checkbox>
+											</div>
+										</td>
+										<td><div class="plan-Margin plan-Marginc">$80 / Employee</div></td>
+										<td>
+											<div class="plan-input">
+												<md-input-container class="md-block">
+													<input name="user" type="text" ng-model="user.userName">
+												</md-input-container>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<md-button class="md-warn md-raised prev-button previous" ng-click="showtab('three')">Back</md-button>
+					<md-button class="md-warn md-raised next-button next left280" ng-click="showtab('five')">Next</md-button>
+            
+            
+            </div>
+            <div ng-show='five'>
+                <div class="width900">
+                    <div layout="row" layout-align="center center">
+                        <h2><span class="margin30">Would you like to let patients finance their treatment?</span></h2>
+                    </div>
+                    <div layout="row" layout-align="center center" class="margin30d">
+                        <md-radio-group layout="row">
+                            <md-radio-button value="0" ng-model="true" class="md-primary">Yes</md-radio-button>
+                            <md-radio-button value=1 class="md-primary">No</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    <div layout="row" layout-align="center center">
+                        <h3><span class="margin30">What is the lowest minimum payment per month you would accept?</span></h3>
+                    </div>
+                    <div class="payment-input">
+                        <input name="member" type="text" placeholder="$50/month">
+                    </div>
+                    <div layout="row" layout-align="center center" class="margintop50 clearboth">
+                        <h3><span class="margin30">What is the minimum downpayment you will require from patients in order to charge 0% intrest?</span></h3>
+                    </div>
+                    <div class="payment-input">
+                        <input name="member" type="text" placeholder="20%">
+                    </div>
+                    <div layout="row" layout-align="center center" class="margintop50 clearboth">
+                        <h3>How would you like to charge for late fees?</h3>            
+                        <div layout="row" layout-align="center start" class="md-block marginLeft20">
+                            <md-radio-group layout="row">
+                                <md-radio-button value="0" ng-model="true" class="md-primary">Flat Fee</md-radio-button>
+                                <md-radio-button value=1 class="md-primary">Percentage of remaining balance</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </div>
+                    <div class="charge200">
+                        <div layout="row" layout-align="center center" class="margintop50 clearboth">
+                            <h3>$</h3>
+                            <div class="payment-input">
+                                <input name="member" type="text">
+                            </div>
+                            <h3>%</h3>
+                        </div>
+                    </div>
+				</div>                
+	            <md-button class="md-warn md-raised prev-button previous margin110" ng-click="showtab('four')">Back</md-button>
+                <md-button class="md-warn md-raised next-button next margin110" ng-click="showtab('six')">Next</md-button>
+            </div>
+            <div ng-show='six'>
+                <div layout="row" layout-align="center center">
+                	<h2>Would you like us to help find patients for you?</h2>
+                </div>
+                <div layout="row" layout-align="center center">
+                	<div class="align-center"><h3>There is no risk. We find patients, you only pay when patients show up for thier appointment</h3></div>
+                </div>
+                 <div layout="row" layout-align="center center" class="margin30d">
+                        <md-radio-group layout="row">
+                            <md-radio-button value="0" ng-model="true" class="md-primary">Yes</md-radio-button>
+                            <md-radio-button value=1 class="md-primary">No</md-radio-button>
+                        </md-radio-group>
+                 </div>
+                 
+                 <div id="last-frame" class="last-frame">
+                	<div class="width900">
+                    	<div layout="row" layout-align="center center">
+                            <h2><span class="margin30">One last thing....</span></h2>
+                        </div>
+                        <div layout="row" layout-align="center center">
+                            <h3><span class="">We want you to see to be able to send patients to specialists you like </span></h3>
+                        </div>
+                        <div layout="row" layout-align="center center">
+                            <h3><span class="">May we send an email invitation on your behalf to your preffered specialists to be part of Denefits?</span></h3>
+                        </div>
+                        <div layout="row" layout-align="center center" class="margin30d">
+                            <md-radio-group layout="row">
+                                <md-radio-button value="0" ng-model="true" class="md-primary">Yes</md-radio-button>
+                                <md-radio-button value=1 class="md-primary">No</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        
+                        <div layout-gt-sm="row" class="clearboth">
+                            <md-input-container class="md-block">
+                                <label>First Name</label>
+                                <input name="first" type="text" ng-model="first.userName">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Last Name</label>
+                              <input name="last" type="text" ng-model="last.lastName">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Email Address</label>
+                              <input name="last" type="text" ng-model="email.emailAddress">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Phone Number</label>
+                              <input name="last" type="text" ng-model="phone.phoneNumber">
+                            </md-input-container>
+                        </div>
+                        
+                        <div layout-gt-sm="row" class="clearboth">
+                            <md-input-container class="md-block">
+                                <label>Dr Name</label>
+                                <input name="first" type="text" ng-model="first.userName">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label></label>
+                                <input name="last" type="text" ng-model="last.lastName">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Email Address</label>
+                                <input name="last" type="text" ng-model="email.emailAddress">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Phone Number</label>
+                                <input name="last" type="text" ng-model="phone.phoneNumber">
+                            </md-input-container>
+                        </div>
+                        
+                        <div layout-gt-sm="row" class="clearboth">
+                            <md-input-container class="md-block">
+                                <label>Dr Name</label>
+                                <input name="first" type="text" ng-model="first.userName">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label></label>
+                                <input name="last" type="text" ng-model="last.lastName">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Email Address</label>
+                                <input name="last" type="text" ng-model="email.emailAddress">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Phone Number</label>
+                                <input name="last" type="text" ng-model="phone.phoneNumber">
+                            </md-input-container>
+                        </div>
+                        
+                        <div layout-gt-sm="row" class="clearboth">
+                            <md-input-container class="md-block">
+                                <label>Dr Name</label>
+                                <input name="first" type="text" ng-model="first.userName">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label></label>
+                                <input name="last" type="text" ng-model="last.lastName">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Email Address</label>
+                                <input name="last" type="text" ng-model="email.emailAddress">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Phone Number</label>
+                                <input name="last" type="text" ng-model="phone.phoneNumber">
+                            </md-input-container>
+                        </div>
+                        
+                    </div>
+                </div>
+                 
+                <md-button class="md-warn md-raised prev-button previous" ng-click="showtab('five')">Back</md-button>
+	            <md-button class="md-warn md-raised next-button next" ng-click="showtab('seven')">Next</md-button>
+            </div>
+            <div ng-show='seven'>
+                <div class="align-center">
+                	<h2>Welcome to Denefits. You are now a part of the world's largest private dental marketplace</h2>
+                </div>
+                <div layout="row" layout-align="center center">
+                	<md-button class="md-warn md-raised green-button" ng-href="welcome">Go to my dashboard</md-button>
+                </div>
+                <md-button class="md-warn md-raised prev-button previous" ng-click="showtab('six')">Back</md-button>
+	            <md-button class="md-warn md-raised next-button submit" ng-click="submitUserForm(userForm)" >Submit</md-button>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']); 
+ 
+         
+ app.directive('fileModel', ['$parse', function ($parse) {
+	return {
+	   restrict: 'A',
+	   link: function(scope, element, attrs) {
+		  var model = $parse(attrs.fileModel);
+		  var modelSetter = model.assign;
+		  
+		  element.bind('change', function(){
+			 scope.$apply(function(){
+				modelSetter(scope, element[0].files[0]);
+			 });
+		  });
+	   }
+	};
+ }]);
+
+ app.service('fileUpload', ['$http', function ($http) {
+	this.uploadFileToUrl = function(file, uploadUrl,$scope){
+	   var fd = new FormData();
+	  
+	   fd.append('file', file);
+		$scope.progress = 25;
+	   $http.post(uploadUrl, fd, {
+		  transformRequest: angular.identity,
+		  headers: {'Content-Type': undefined}
+	   })
+	
+	   .success(function(data){
+		   if(data==0){
+			   //alert('upload csv file only');
+				$scope.error='Upload csv file only';
+				$scope.progress = 0;
+			}else{
+				$scope.progress = 100;
+			}
+	   })
+	
+	   .error(function(){
+	   });
+	   $scope.progress = 60;
+	   $scope.error='';
+	}
+ }]);
+ 
+app.controller("formCtrl", function($scope, $http,fileUpload,$window) {
+	     $scope.one = true; // setting the first div visible when the page loads
+         $scope.two = false; // hidden
+         $scope.three = false; // hidden
+         $scope.four = false; // hidden
+         $scope.five = false; // hidden
+         $scope.six = false; // hidden
+         $scope.seven = false; // hidden
+	
+		$scope.progress = 0;
+        $scope.url = '/dashboardfront/bankingdoctor'; 
+        $scope.bankingformsubmit = function($valid) {
+			//$( "#divone" ).fadeTo( "slow", 0.33 );
+			 //$( ".next" ).unbind( "click");			
+             ///alert($scope.userForm.$valid);
+ 
+            if ($scope.userForm.$valid) {
+              //alert($scope.account.name);
+ 
+                $http.post($scope.url, $scope.account).
+                        success(function(data, status) {
+							var next_fs = $(this).parent().next();						
+							$("#progressbar li").eq(1).addClass("active");
+							$scope.one = false; 
+							$scope.two = true; 
+                            console.log(data);
+                            var ctr = this;
+                            console.log($scope.account.name);
+                            //$( "#nbutton1" ).triggerHandler( "click" );
+							//$scope.target.parent.
+                            //angular.element( document.querySelector( '#nbutton1' ) ).triggerHandler('click');;
+                            
+                            //$temp = $compile(nextbutton)($scope);
+							//$temp.addClass('next');
+                            //$( "#nbutton1" ).trigger( "click" );
+                            //$window.gonext();
+                            //$( ".next" ).bind( "click");
+                            //$( ".next" ).trigger( "click" );
+                            //$mdTabsCtrl.nextPage();
+                            /*$scope.status = status;
+                            $scope.data = data;
+                            $scope.result = data;*/
+                            //$scope.account.nbutton1.class=
+                            //var nextbutton = angular.element( document.querySelector( '#nbutton1' ) );
+							//nextbutton.addClass('next');
+                        })
+            }else{
+                
+                $scope.message  ='Form is not valid';
+            }
+ 
+        };
+      
+		$scope.uploadFileCsv = function(){
+		   var file = $scope.myFile;
+		   $scope.progress = 10;
+		   console.log('file is ' );
+		   console.dir(file);
+		   
+		   var uploadUrl = "/dashboardfront/feeSchedule";
+		   fileUpload.uploadFileToUrl(file, uploadUrl,$scope);
+		};
+		$scope.showtab = function(tab){
+			if(tab=='one'){
+				$("#progressbar li").eq(1).removeClass("active");
+				$("#progressbar li").eq(0).addClass("active");
+				$scope.one = true; 
+				$scope.two = false; // hidden
+			}
+			if(tab=='two'){
+				$("#progressbar li").eq(2).removeClass("active");
+				$("#progressbar li").eq(1).addClass("active");
+				$scope.two = true; 
+				$scope.three = false; 
+				$scope.one = false; 
+				
+			}
+			if(tab=='three'){
+				$("#progressbar li").eq(3).removeClass("active");
+				$("#progressbar li").eq(2).addClass("active");
+				$scope.three = true;
+				$scope.four = false; 
+				$scope.two = false; 
+			}
+			if(tab=='four'){
+				$("#progressbar li").eq(4).removeClass("active");
+				$("#progressbar li").eq(3).addClass("active");
+				$scope.four = true;
+				$scope.three = false; 
+				$scope.five = false;
+			}
+			if(tab=='five'){
+				$("#progressbar li").eq(5).removeClass("active");
+				$("#progressbar li").eq(4).addClass("active");
+				$scope.five = true;
+				$scope.four = false;
+				$scope.six = false;
+			}
+			if(tab=='six'){
+				//$("#progressbar li").removeClass("active");
+				$("#progressbar li").eq(5).addClass("active");
+				$scope.six = true; 
+				$scope.five = false;
+				$scope.seven = false;
+			}
+			if(tab=='seven'){
+				//$("#progressbar li").removeClass("active");
+				$("#progressbar li").eq(5).addClass("active");
+				$scope.seven = true; 
+				$scope.six = false;
+			}
+		
+		};
+       
+ 
+    });
+    
+</script>
+<script src="/jscript/jquery-1.9.1.min.js"></script>
+<script src="/jscript/jquery.easing.min.js"></script>
+
+<script  type="text/javascript">
+
+    $(document).ready(function(){
+	
+//Set default open/close settings
+$('.acc_container').hide(); //Hide/close all containers
+$('.acc_trigger:first').addClass('active').next().show(); //Add "active" class to first trigger, then show/open the immediate next container
+
+//On Click
+$('.acc_trigger').click(function(){
+	if( $(this).next().is(':hidden') ) { //If immediate next container is closed...
+		$('.acc_trigger').removeClass('active').next().slideUp(); //Remove all .acc_trigger classes and slide up the immediate next container
+		$(this).toggleClass('active').next().slideDown(); //Add .acc_trigger class to clicked trigger and slide down the immediate next container
+	}
+	return false; //Prevent the browser jump to the link anchor
+});
+
+});
+</script>

@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>denefits</title>
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Angular Material style sheet -->
+<link href="/css/angular-material.css" rel="stylesheet">
+<!-- Custom style sheet -->
+<link href="/css/custom.css" rel="stylesheet">
+</head>
+<body ng-app="BlankApp" ng-cloak>
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+   
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<div class="width800" ng-controller="refercontroller">
+    <div class="grid100 change-password">
+    	<div layout="row" layout-align="center center">
+            <div class="align-center">
+            	<h2><span class="margin30">Thank you. <?php  echo " (".$patient_name.")  has been referred to :" ;?>
+                <br/> <?php echo $providername ; ?>  <?php if($alt1name||$alt2name){ echo " and alternate: " ;}; 
+                 if($alt1name) echo $alt1name ;if($alt2name){ echo " and ".$alt2name."."  ; }?>  </span></h2>  
+            </div>
+        </div>
+        <div layout="row" layout-align="center center">
+            <md-button ng-href="/dashboardfront/welcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+        </div>
+	</div> 
+</div>  
+            
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('refercontroller', function($scope,$http,$window) 
+{ 
+ 
+}); 
+</script>
+
+</body>
+</html>

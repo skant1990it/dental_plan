@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, height=device-height">
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<title>Denefits</title>
+<link rel="shortcut icon" href="/front-end/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/front-end/images/favicon.ico" type="image/x-icon">
+
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400;300' rel='stylesheet' type='text/css'>
+
+<link href="/front-end/css/style.css" rel="stylesheet">
+<!--[if IE]><script src="assets/jscript/html5.js"></script><![endif]-->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<div class="wrapper">
+<header>
+	<div class="logo"><a href="/" title="denefits"><img src="/front-end/images/logo.png" width="260" height="79" alt="Logo"></a></div>  
+    <div class="menu">
+    	<div class="green-button"><a href="javascript:void(0);" title="Get Your Plan">Get Your Plan</a></div>
+        <div class="icon-close">
+            <img src="/front-end/images/close.png" width="22" height="22" alt="Close">
+        </div>
+        <div class="denefit-text">18885085778</div>
+         <ul>
+            <li><a href="/dashboardfront/riskreferrals" title="Risk Refferals">No Risk Refferals</a></li>
+            <li><a href="/dashboardfront/doctordashboard" title="Doctor Dashboard">Patients</a></li>
+            <li><a href="/dashboardfront/features" title="Feature">Features</a></li>
+            <li><a href="/dashboardfront/pricing" title="Pricing">Pricing</a></li>
+            <li><a href="/dashboardfront/contact" title="Contact Us">Contact Us</a></li>
+            <li><a href="/dashboardfront/workwithus" title="Work With Us">Work With Us</a></li> 
+        </ul>
+    </div>
+    <div class="icon-menu">
+        <ul>
+        	<li><a href="javascript:void(0);" title="Provider"><span class="provider-icon"></span>Patients</a></li>
+            <li><a href="/admin/1" title="Login"><span class="login-icon"></span>Login</a></li>
+            <li class="burger-menu"><i class="fa fa-bars"></i> <span class="menu-text">Menu</span></li>
+        </ul>
+    </div>
+    <div id="menu">
+    	<div class="logo"><a href="/" title="denefits"><img src="/front-end/images/logo.png" width="260" height="79" alt="Logo"></a></div>  
+        <div class="icon-menu">
+            <ul>
+                <li><a href="javascript:void(0);" title="Provider"><span class="talk-icon"></span>Talk With a Guide</a></li>
+               <li class="quote-button"><a href="/tininsert" title="Get a Quote">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="container">
+	<div class="row margin100">
+		<div class="grid50">
+            <div class="contact-banner">
+              <h1><span>Don't be shy</span>and ask for an appointment.</h1>
+            </div>
+        </div>
+        <div class="grid50 align-right mobile-contact-banner">
+   	    	<img src="/front-end/images/contact-banner.png" width="471" height="457" alt="Banner">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="contact-descp">
+        	<ul>
+            	<li>
+                	<div class="contact-pic"><img src="/front-end/images/address-icon.png" width="43" height="53" alt="Address"></div>
+	                <div class="contact-detail"><p>600 E 77TH ST<br/>NEW YORK, NEW YORK 10075</p></div>
+                </li>
+                <li>
+                	<div class="contact-pic"><img src="/front-end/images/mail-icon.png" width="45" height="50" alt="Email"></div>
+	                <div class="contact-detail"><p><a href="javascript:void(0);" title="info@denefits.com">info@denefits.com</a></p></div>
+                </li>
+                <li>
+                	<div class="contact-pic"><img src="/front-end/images/map-icon.png" width="33" height="47" alt="Address"></div>
+	                <div class="contact-detail"><p>Get direections on google map</p></div>
+                </li>
+            </ul>
+             <form action="/dashboardfront/contact" method="post" id="form-contact">
+        <?php
+          $flashMessage = $this->flashMessenger()->getMessages();
+               if (count($flashMessage)) {
+                 echo '<div class="alert alert-info">';
+               ?>
+        <?php
+           foreach ($flashMessage as $msg){
+            foreach ($msg as $type => $message) {
+               echo $message ;
+            }
+          }
+        echo '</div>';     
+       }
+       ?>
+                <fieldset>
+                  <div class="group">
+                    <input type="text" name="contact-fname" id="contact-fname"><span class="highlight"></span><span class="bar"></span>
+                    <label>First Name</label>
+                  </div>
+                </fieldset>
+                <fieldset class="float-right">
+                  <div class="group">
+                    <input type="text" name="contact-lname" id="contact-lname"><span class="highlight"></span><span class="bar"></span>
+                    <label>Last Name</label>
+                  </div>
+                </fieldset>
+                <fieldset>
+                  <div class="group">
+                    <input type="text" name="contact-phone" id="contact-phone"><span class="highlight"></span><span class="bar"></span>
+                    <label>Phone No.</label>
+                  </div>
+                </fieldset>
+                <fieldset class="float-right">
+                  <div class="group">
+                    <input type="text" name="contact-message" id="contact-message"><span class="highlight"></span><span class="bar"></span>
+                    <label>Subject</label>
+                  </div>
+                </fieldset>
+                 
+              <div onclick="$('#form-contact').submit();" class="button buttonGreen" type="submit">Submit
+                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="footer-menu">
+              <ul>
+                    <li>Discover</li>
+                    <li><a href="javascript:void(0);" title="Better Plans">Better Plans</a></li>
+                    <li><a href="javascript:void(0);" title="Better Care">Better Care</a></li>
+                    <li><a href="javascript:void(0);" title="Better Experience">Better Experience</a></li>
+                </ul>
+                <ul>
+                    <li>Explore</li>
+                    <li><a href="javascript:void(0);" title="Search Doctors">Search Doctors</a></li>
+                    <li><a href="javascript:void(0);" title="Search Drugs">Search Plans</a></li>
+                    <li><a href="javascript:void(0);" title="Find Forms">Find Forms</a></li>
+                </ul>
+                <ul>
+                    <li>Sign Up</li>
+                    <li><a href="/tininsert" title="Get Your Free Quote">Sign Me Up</a></li>
+                    <li><a href="javascript:void(0);" title="Talk with a Guide">Talk with a Guide</a></li>
+                    <li><a href="javascript:void(0);" title="View Plan Highlights">View Plan Highlights</a></li>
+                </ul>
+                <ul>
+                    <li>Company</li>
+                    <li><a href="javascript:void(0);" title="About Us">About Us</a></li>
+                    <li><a href="javascript:void(0);" title="Careers">Careers</a></li>
+                    <li><a href="/dashboardfront/contact" title="Blog">Contact</a></li>
+                </ul>
+                <ul>
+                    <li>Partners</li>
+                    <li><a href="javascript:void(0);" title="Brokers">Brokers</a></li>
+                    <li><a href="javascript:void(0);" title="Providers">Providers</a></li>
+                    <li><a href="javascript:void(0);" title="Press">Press</a></li>
+                </ul>
+            </div>
+            <div class="terms-frame">
+                <div class="bottom-wrapper">
+                    <p><span><a href="privacy_policy.html" title="Privacy Policy">Privacy Policy</a> | <a href="terms_use.html" title="Terms of Use">Terms of Use</a></span> &copy; 2016 denefits.com. All Rights Reserved.</p>
+                    <ul class="social-links">
+                        <li><a href="javascript:void(0);" title="Facebook"><span class="social-icon facebook"></span></a></li>
+                        <li><a href="javascript:void(0);" title="Twitter"><span class="social-icon twitter"></span></a></li>
+                        <li><a href="javascript:void(0);" title="Linkedin"><span class="social-icon pinterest"></span></a></li>
+                        <li><a href="javascript:void(0);" title="Google Plus"><span class="social-icon google"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    
+</footer>
+</div>
+<script src="/front-end/jscript/jquery.min.js"></script>
+<script src="/front-end/jscript/jquery-custom.js"></script> 
+
+
+ <!-- js of previous template start here for contact form -->
+        <script src="/front_js/vendor/jquery-2.1.4.min.js"></script>
+        <script src="/front_js/plugins.js"></script>
+        <script src="/front_js/plugins/gmaps.min.js"></script>
+        <script src="/front_js/pages/contact.js"></script>
+        <script>$(function(){ Contact.init(); });</script>
+   <!-- js of previous template end here contact form  -->
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,704 @@
+ADA Code,Dentist Description,Patient Friendly Description,Procedure Categories for Wizard setup for Dentists,Categories for patient price comparison (Phase 2)
+,,,,
+DIAGNOSTIC,DIAGNOSTIC,DIAGNOSTIC,,
+D0120,Periodic oral evaluation,Routine Exam,Exam,
+D0140,Limited oral evaluation,Limited Exam,Exam,
+D0145,Oral evaluation < 3 yrs of age,Exam For Child Under 3,Exam,
+D0150,Comp oral eval-new/estab pat,New Patient Exam,Exam,
+D0160,"Detail/extensive oral eval, B/R",Detailed/Extensive Exam,Exam,
+D0170,Limited re-evaluation estab pat,Limited Re-evaluation,Exam,
+D0180,Comprehensive perio evaluation,Comprehensive Gum Exam,Exam,
+D0210,Intraoral-complete series (bw),Full Mouth Xrays,Xrays,
+D0220,Intraoral-periapical-1st film,Single Periapical Xray,Xrays,
+D0230,Intraoral-periapical-each add'l,Additional Periapical Xray,Xrays,
+D0240,Intraoral-occlusal film,Occlusal Xray,Xrays,
+D0250,Extraoral-first film,First External Film Xray,Xrays,
+D0260,Extraoral-each additional film,Additional External Film Xray,Xrays,
+D0270,Bitewing-single film,Single Bitewing Xray,Xrays,
+D0272,Bitewings-two films,Two Bitewing Xrays,Xrays,
+D0273,Bitewings-three films,Three Bitewing Xrays,Xrays,
+D0274,Bitewings-four films,Four Bitewing Xrays,Xrays,
+D0277,Vertical bitewings-7 to 8 films,Vertical Bitewing Xrays,Xrays,
+D0290,Skull &facial bone survey film,Skull/Facial Bone Survey Xray,,
+D0310,Saliography,Saliva Gland Xray,,
+D0320,"TMJ arthrogram, incl injection",Jaw Joint Xray with Contrast Material,,
+D0321,"Other TMJ films, by report",Other Jaw Joint Xray,,
+D0322,Tomographic survey,Bony Joints/Surface Mapping Xray,,
+D0330,Panoramic film,Panoramic Xray,,
+D0340,Cephalometric film,Cephalometric Xray,,
+D0350,Oral/Facial Photographic Images,Photographs,,
+D0360,Cone beam ct-craniofacial data,Cone Beam Xray,Cone Beam Xray,
+D0362,Cone beam-2D multi img reconst,Cone Beam Xray,Cone Beam Xray,
+D0363,Cone beam-3D multi img reconst,Cone Beam Xray,Cone Beam Xray,
+D0364,"CT Capture, Lmtd View < 1 Jaw",CT Scan - Limited w/ Interpretation,,
+D0365,"CT Capture, Full Arch, Mandible",CT Scan - Lower Jaw  w/ Interpretation,,
+D0366,"CT Capture, Full Arch, Maxilla",CT Scan - Upper Jaw  w/ Interpretation,,
+D0367,"CT Capture, Both Jaws",CT Scan - Upper and Lower Jaws  w/ Interpretation,,
+D0368,"CT Capture, TMJ, 2+ Exposures",CT Scan - Jaw Joints  w/ Interpretation,,
+D0369,Maxillofacial MRI Capture,Facial MRI w/ interpretation,,
+D0370,Maxillofacial Ultrasnd Capture,Facial Ultrasound w/ interpretation,,
+D0371,Sialoendoscopy Capture,Sialoendoscopy Capture,,
+D0380,"CT Image, Lmtd View < 1 Jaw",CT Scan - Limited,,
+D0381,"CT Image, Full Arch, Mandible",CT Scan - Lower Jaw ,,
+D0382,"CT Image, Full Arch, Maxilla",CT Scan - Upper Jaw ,,
+D0383,"CT Image, Both Jaws",CT Scan - Upper and Lower Jaws ,,
+D0384,"CT Image, TMJ, 2+ Exposures",CT Scan - Jaw Joints  ,,
+D0385,Maxillofacial MRI Image,Facial MRI,,
+D0386,Maxillofacial Ultrasnd Image,Facial Ultrasound ,,
+D0391,"Inter. Diagnostic Img, Oth Prov","Inter. Diagnostic Img, Oth Prov",,
+D0393,Treatment sim. using 3D Imgs,Treatment Simulation,,
+D0394,Digital Subtraction of 2+ Imgs,Digital Subtraction of Two or more images,,
+D0395,3D image fusion,Fusion of Two or more 3D Image Volumes,,
+D0415,Collection of microorg culture,Swab for Microorganism Culture,,
+D0416,Viral Culture,Viral Culture,,
+D0417,Collection of saliva sample,Saliva Sample,,
+D0418,Analysis of saliva sample,Analysis of saliva sample,,
+D0421,Genetic test-suscept oral dis,Genetic Testing for Oral Disease,,
+D0425,Caries susceptibility tests,Caries susceptibility tests,,
+D0431,Adjunc pre-diag test-detect muc,Pre-diagnostic test to help detect abnormalities of mucous membranes in the mouth,,
+D0460,Pulp vitality tests,Pulp vitality tests,Exam,
+D0470,Diagnostic casts,Diagnostic casts,Exam,
+D0471,Diagnostic photographs,Diagnostic photographs,Exam,
+D0472,"Accession of tiss, gr exam/rpt",Lab examination of oral tissue and preparation of report of findings,,
+D0473,"Acc of tissue, gr mic exam/rpt",Lab examination of oral tissue and preparation of report of findings,,
+D0474,Acc of tiss-gr mic ex surg mar,Lab examination of oral tissue and preparation of report of findings,,
+D0475,Decalcification Procedure,Lab removal of calcium salts to allow for microscopic examination of tissue,,
+D0476,Special stains for microorg,Staining for Microorganisms,,
+D0477,Special stains-not for microorg,Stains applied to a biopsy or surgical specimen in a lab to help with diagnosis,,
+D0478,Immunohistochemical stains,Lab application to tissue samples to help with diagnosis,,
+D0479,Tissue in-situ hybrid-inclu int,Lab procedure to help with the diagnosis of microorganisms and tumors,,
+D0480,Process/interpret exf cyt smear,Mild scraping of mucous membranes in the mouth and preparation of lab report of findings,,
+D0481,Electron microscopy-diagnostic,Extremely high magnification in a lab to diagnose cell components and microorganisms,,
+D0482,Direct immunofluorescence,Lab technique to identify localized immunoreactants,,
+D0483,Indirect immunofluorescence,Lab technique to identify circulating immunoreactants,,
+D0484,Consult on slides prp elsewhere,"Lab evaluation, consultation and report on microscopic slides of a biopsy specimen from another lab",,
+D0485,Consult inc prep/slides biop mt,Slide preparation and report from consulting pathologist for slide evaluation,,
+D0486,"Brush biopsy sample,exam,report",Brush Biopsy,,
+D0501,Histopathologic examinations,Histopathologic examinations,,
+D0502,"Other oral path procedure, B/R","Other oral path procedure, B/R",,
+D0601,Caries risk assessment - Low,Caries risk assessment - Low,,
+D0602,Caries risk assessment - Mod,Caries risk assessment - Mod,,
+D0603,Caries risk assessment - High,Caries risk assessment - High,,
+D0999,"Unspecified diag procedure, B/R",Other Diagnistic Procedure,,
+PREVENTATIVE,PREVENTATIVE,PREVENTATIVE,,
+D1110,Prophylaxis-adult,Simple cleaning-adult,Cleaning,CLEANING
+D1120,Prophylaxis-child,Simple cleaning-child,Cleaning,CLEANING
+D1201,Prophylaxis with fluoride-child,Simple cleaning with fluoride-child,Cleaning,
+D1203,Fluoride w/o prophylaxis-child,Fluoride w/o cleaning-child,Fluoride,
+D1204,Fluoride w/o prophylaxis-adult,Fluoride w/o cleaning-adult,Fluoride,
+D1205,Prophylaxis with fluoride-adult,Simple cleaning with fluoride-adult,Cleaning,
+D1206,Topical fluoride varnish,Fluoride Varnish,Fluoride,
+D1208,Topical application of fluoride,Fluoride Application,Fluoride,
+D1310,Nutritional counseling,Nutritional counseling,,
+D1320,Tobacco counseling,Tobacco counseling,,
+D1330,Oral hygiene instruction,Oral hygiene instruction,,
+D1351,Sealant-per tooth,Sealant,Fillings,FILLINGS
+D1352,"Preventive Restoration, Perm Th",White Preventive Filling,Fillings,FILLINGS
+D1510,Space maint-fixed-unilateral,Fixed Space Maintainer - Unilateral,Space Maintainer,
+D1515,Space maint-fixed-bilateral,Fixed Space Maintainer - Bilateral,Space Maintainer,
+D1520,Space maint-remov-unilateral,Removable Unilateral Space Maintainer,Space Maintainer,
+D1525,Space maint-remov-bilateral,Removable Bilateral Space Maintainer,Space Maintainer,
+D1550,Recementation of space maint,Recementation of Space Maintainer,Space Maintainer,
+D1555,Removal of fixed space maint,Removal of Space Maintainer,Space Maintainer,
+D1999,"Unspecified prev procedure, B/R",Other Preventive Procedure,,
+RESTORATIVE ,,,,
+D2110,"Amalgam-1 surface, primary",One surface metal filling - baby teeth,Fillings,FILLINGS
+D2120,"Amalgam-2 surface, primary",Two surface metal filling - baby teeth,Fillings,FILLINGS
+D2130,"Amalgam-3 surface, primary",Three surface metal filling - baby teeth,Fillings,FILLINGS
+D2131,"Amalgam-4+ surface, primary",Four surface metal filling - baby teeth,Fillings,FILLINGS
+D2140,Amalgam-1 surf. prim/perm,One surface metal filling - adult teeth,Fillings,FILLINGS
+D2150,Amalgam-2 surf. prim/perm,Two surface metal filling - adult teeth,Fillings,FILLINGS
+D2160,Amalgam-3 surf. prim/perm,Three surface metal filling - adult teeth,Fillings,FILLINGS
+D2161,Amalgam-4+ surf. prim/perm,Four surface metal filling - adult teeth,Fillings,FILLINGS
+D2210,Silicate cement-per restorat.,Cement - Per restoration,,
+D2330,"Resin-one surface, anterior",One surface White Fillings - Front Teeth,Fillings,FILLINGS
+D2331,"Resin-two surfaces, anterior",Two surface White Fillings - Front Teeth,Fillings,FILLINGS
+D2332,"Resin-three surfaces, anterior",Three surface White Fillings - Front Teeth,Fillings,FILLINGS
+D2335,Resin-4+ w/incis angle-anterior,Four surface White Fillings - Front Teeth,Fillings,FILLINGS
+D2336,Compos resin crwn-anterior-prim,White Chairside Resin Crown - Front baby teeth,Crown/Onlay/Inlay,
+D2380,"Resin-1 surface, poster-primary",One surface White Fillings - Back Baby Teeth,Fillings,FILLINGS
+D2381,"Resin-2 surface, poster-primary",Two surface White Fillings - Back Baby Teeth,Fillings,FILLINGS
+D2382,"Resin-3 surface, poster-primary",Three surface White Fillings - Back Baby Teeth,Fillings,FILLINGS
+D2390,"Resin composite crown, anterior",Four surface White Fillings - Back Baby Teeth,Fillings,FILLINGS
+D2391,"Resin-1 surface, post-permanent",One surface White Fillings - Back Adult Teeth,Fillings,FILLINGS
+D2392,"Resin-2 surface, post-permanent",Two surface White Fillings - Back Adult Teeth,Fillings,FILLINGS
+D2393,"Resin-3 surface +, post-perm",Three surface White Fillings - Back Adult Teeth,Fillings,FILLINGS
+D2394,"Resin composite-4+s, posterior",Four surface White Fillings - Back Adult Teeth,Fillings,FILLINGS
+D2410,Gold foil-one surface,One Surface Gold Filling,,
+D2420,Gold foil-two surfaces,Two Surface Gold Filling,,
+D2430,Gold foil-three surfaces,Three Surface Gold Filling,,
+D2510,Inlay-metallic-one surface,One Surface Lab Processed Metal Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2520,Inlay-metallic-two surfaces,Two Surface Lab Processed Metal Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2530,Inlay-metallic-three + surfaces,Three Surface Lab Processed Metal Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2542,Onlay-metallic-two surfaces,One Surface Lab Processed Metal Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2543,Onlay-metallic-three surfaces,Two Surface Lab Processed Metal Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2544,Onlay-metallic-four + surfaces,Three Surface Lab Processed Metal Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2610,Inlay-porcel/ceramic-1 surface,One Surface Lab Processed Porcelain Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2620,Inlay-porcel/ceramic-2 surface,Two Surface Lab Processed Porcelain Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2630,Inlay-porcel/ceramic-3+ surface,Three Surface Lab Processed Porcelain Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2642,Onlay-porcel/ceram-2 surface,One Surface Lab Processed Porcelain Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2643,Onlay-porcel/ceram-3 surface,Two Surface Lab Processed Porcelain Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2644,Onlay-porcel/ceram-4 + surface,Three Surface Lab Processed Porcelain Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2650,Inlay-resin based composite-1s,One Surface Lab Processed Resin Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2651,Inlay-resin based composite-2s,Two Surface Lab Processed Resin Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2652,Inlay-resin based composite-3+s,Three Surface Lab Processed Resin Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2662,Onlay-resin based composite-2s,One Surface Lab Processed Resin Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2663,Onlay-resin based composite-3s,Two Surface Lab Processed Resin Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2664,Onlay-resin based composite-4+s,Three Surface Lab Processed Resin Restoration,Crown/Onlay/Inlay,CROWNS/CAPS
+D2710,Crown-resin composite(indirect),Full Resin Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2712,Crown-3/4 resin-based comp-ind,Partial Resin Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2720,Crown-resin w/high noble metal,Full Resin/Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2721,Crown-resin w/ most base metal,Full Resin/Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2722,Crown-resin with noble metal,Full Resin/Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2740,Crown-porcelain/ceramic poster,Full Porcelain Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2750,Crown-porc fuse high noble mtl,Full Porcelain Fused to Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2751,Crown-porc fused to base metal,Full Porcelain Fused to Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2752,Crown-porc fused noble metal,Full Porcelain Fused to Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2780,Crown-3/4 cast high noble metal,Partial Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2781,Crown-3/4 cast most base metal,Partial Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2782,Crown-3/4 cast noble metal,Partial Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2783,Crown-3/4 porcelain/ceramic,Partial Porcelain Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2790,Crown-full cast high noble mtl,Full Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2791,Crown-full cast base metal,Full Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2792,Crown-full cast noble metal,Full Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2794,Crown-titanium,Full Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2799,Provisional crown,Temporary Crown,,
+D2810,Crown-3/4 cast metallic,Partial Metal Crown - Lab Processed,Crown/Onlay/Inlay,CROWNS/CAPS
+D2910,Recement inlay/onlay/partial,Recement Restoration,Recement,
+D2915,Recemnt cast or prefab pst/cor,Recement Post,Recement,
+D2920,Recement crown,Recement Crown,Recement,
+D2921,"Reattach Th Fragment, incisal",Reattach Tooth Fragment,,
+D2929,Prefabricated porc/cerm cr-prim,Prefabricated Porcelain Crown - Baby Teeth,,
+D2930,Prefab stain steel crn-primary,Prefabricated Stainless Steel Crown - Baby Teeth,Stainless Steel Crowns,CROWNS/CAPS
+D2931,Prefab stain steel crown-perm,Prefabricated Stainless Steel Crown - Adult Teeth,Stainless Steel Crowns,CROWNS/CAPS
+D2932,Prefabricated resin crown,Prefabricated Resin Crown,,
+D2933,Prefab stl crown w/resin window,Prefabricated Stainless Steel Crown with Resin Window,Stainless Steel Crowns,CROWNS/CAPS
+D2934,Prefb esth ctd stnl stl crn-prm,Prefabricated Stainless Steel Crown,Stainless Steel Crowns,CROWNS/CAPS
+D2940,Sedative filling,Sedative Filling,,
+D2941,Interim Therapeutic Rest - Prim,Temporary Restoration - Baby Teeth,,
+D2949,Foundation for Indirect Rest,Liner for Indirect Restoration,,
+D2950,"Crown buildup, includ any pins",Crown Build Up,Build Up/Post/Core,CROWNS/CAPS
+D2951,"Pin retention-/tooth, (+ rest)",Retaining Pins For Large Fillings,Build Up/Post/Core,CROWNS/CAPS
+D2952,Cast post &core in add to crown,Post and Core Lab Fabricated,Build Up/Post/Core,CROWNS/CAPS
+D2953,Each add'l cast post-same tooth,Additional Post on the same tooth,Build Up/Post/Core,CROWNS/CAPS
+D2954,Prefab post&core in add to crn,Prefabricated Post and Core,Build Up/Post/Core,CROWNS/CAPS
+D2955,Post removal (not with endo),Post Removal,,
+D2957,Each + prefab post-same tooth,Additional Prefabricated Post and Core on the same tooth,Build Up/Post/Core,CROWNS/CAPS
+D2960,Labial veneer(laminate)-chairsd,Veneers,Veneers,VENEERS
+D2961,Labial veneer (resin lamin)-lab,Resin Veneers,Veneers,VENEERS
+D2962,Labial veneer (porceln lam)-lab,Porcelain Veneers,Veneers,VENEERS
+D2970,Temporary crown (fractured th),Temporary Crown,,
+D2971,Add'l prc-new crn undr exs dent,New Crown under Existing Partial Dentures,,
+D2975,Coping,Crown Coping,,
+D2980,"Crown repair, by report",Crown Repair,Restoration Repair,
+D2981,Inlay repair by material failur,Inlay Repair,Restoration Repair,
+D2982,Onlay repair by material failur,Onlay Repair,Restoration Repair,
+D2983,Veneer repair by mat. failure,Veneer Repair,Restoration Repair,
+D2990,Final Imp,Final Impression,,
+D2999,Unspecif restorative proced B/R,Other Restorative Procedures,,
+ENDODONTICS,ENDODONTICS,ENDODONTICS,,
+D3110,"Pulp cap-direct, (+rest)",Protective Material to Insulate Nerve,Build Up/Post/Core,FILLING
+D3120,"Pulp cap-indirect, (+ rest)",Protective Material to Insulate Nerve,Build Up/Post/Core,FILLING
+D3220,Therapeutic pulpotomy(exc rest),Removal of a portion of the main nerve to relieve pain,Root Canal,ROOT CANALS
+D3221,Pulpal debridemnt-prim/perm th,Initial Procedure for relief of acute pain,Root Canal,ROOT CANALS
+D3222,Partial pulpototomy apexogen,Partial Pulpotomy for Root Formation,Root Canal,ROOT CANALS
+D3230,"Pulpal therapy-anterior,primary",Removal of a portion of the main nerve to relieve pain - Front Baby Teeth,Root Canal,ROOT CANALS
+D3240,"Pulpal therapy-posterior, prim",Removal of a portion of the main nerve to relieve pain - Back Baby Teeth,Root Canal,ROOT CANALS
+D3310,Root canal therapy - anterior,Root Canal - Front Tooth,Root Canal,ROOT CANALS
+D3320,Root canal therapy - bicuspid,Root Canal - Premolar Tooth,Root Canal,ROOT CANALS
+D3330,Root canal therapy - molar,Root Canal - Molar,Root Canal,ROOT CANALS
+D3331,Treatmnt of root canal obstruct,Treatment of canal obstruction,Root Canal,ROOT CANALS
+D3332,Incomplt endo ther-inopbl/unres,Incomplete root canal due to condition of the tooth,Root Canal,
+D3333,Int root repair of perf defects,Internal Root Repair,Root Canal,
+D3346,"Retreat, prev RCT - anterior",Root Canal Retreatment - Front Tooth,Root Canal,ROOT CANALS
+D3347,"Retreat, prev RCT - bicuspid",Root Canal Retreatment - Premolar Tooth,Root Canal,ROOT CANALS
+D3348,"Retreat, prev RCT - molar",Root Canal Retreatment - Molar,Root Canal,ROOT CANALS
+D3351,"Apexification/recalcif, initial",Stimulation of Root Closure,Root Canal,ROOT CANALS
+D3352,"Apexification/recalcif, interim",Stimulation of Root Closure,Root Canal,ROOT CANALS
+D3353,"Apexification/recalcif, final",Stimulation of Root Closure,Root Canal,ROOT CANALS
+D3354,Pulpal Regeneration,Treatment to heal pulp tissue,,
+D3355,Pulpal Regeneration - 1st visit,Treatment to heal pulp tissue,,
+D3356,Pulpal Rgn - interim med Replc,Treatment to heal pulp tissue,,
+D3357,Pulpal Regen - completion,Treatment to heal pulp tissue,,
+D3410,Apicoectomy/Periradic surg-ant,Root tip surgery- front tooth,Root Tip Surgery,ROOT CANALS
+D3421,Apicoect/Perirad-bicus/1st root,Root tip surgery - 1st bicuspid root,Root Tip Surgery,ROOT CANALS
+D3425,Apicoect/Perirad-molar/1st root,Root tip surgery - 1st molar root,Root Tip Surgery,ROOT CANALS
+D3426,Apicoect/Perirad (each + root),Root tip surgery - any additional root,Root Tip Surgery,ROOT CANALS
+D3427,Periradicular surg-no apicoect,Root Surgery with no Amputation,,ROOT CANALS
+D3428,Bone Graft w/Perirdc Srg 1 Site,Root Bone Graft,,
+D3429,Bn Graft w/Perirdc Srg each add,Root Bone Graft Additional site,,
+D3430,Retrograde filling-per root,Root Tip Filling,Root Tip Surgery,ROOT CANALS
+D3431,Bio Mtrl to aid Reg w/Prdc Srg,Biomaterial for Hard/Soft Tissue Regeneration,,
+D3432,Guided TissRgn PerSite w/PrdSrg,Resorbable Barrier for Hard/Soft Tissue Regeneration,,
+D3450,Root amputation-per root,Root Amputation,,
+D3460,Endodontic endosseous implant,Implant placement from root canal into bone,,
+D3470,"Intentional replant, inc splint",Removal and Replantation of a tooth ,,
+D3910,Surg isolation of th w/rub dam,Tooth Isolation with barrier,,
+D3920,"Hemisection, no root can ther",Root Amputation,,
+D3950,Canal prep/fit of dowel/post,Canal Preparation For Post ,Root Canal,ROOT CANALS
+D3960,Bleaching of discolored tooth,Internal Bleaching,,
+D3999,"Unspecified endo procedure, B/R",Other Endo Procedure,,
+PERIODONTICS,PERIODONTICS,PERIODONTICS,,
+D4210,Gingivectomy-4+ per quadrant,Gum tissue removal - 4+ teeth per quadrant,Gum Surgery,GUM SURGERY
+D4211,Gingivectomy-1-3 contig th/quad,Gum tissue removal - 1-3 teeth per quadrant,Gum Surgery,GUM SURGERY
+D4212,Gingivectomy-Access/Restoration,Gum Tissue Removal for a restoration,Gum Surgery,
+D4220,"Gingiv curettage,surgical /quad",Removal of inflamed soft tissue at root surface,Gum Surgery,GUM SURGERY
+D4230,"Anatomical crwn exp,4+teeth/qu",Removal of enlarged gingival tissue and supporting bone of four or more teeth,Gum Surgery,
+D4231,"Anatomical crwn exp,1-3 th/quad",Removal of enlarged gingival tissue and supporting bone of one to three adjacent teeth,Gum Surgery,
+D4240,"Ging flap,root pln, 4+ per quad",Incision in gums to clean 4 or more teeth in a quadrant,Gum Surgery,GUM SURGERY
+D4241,Ging flap rt pln 1-3 cntg th/qu,Incision in gums to clean 1-3 teeth in a quadrant,Gum Surgery,GUM SURGERY
+D4245,Apically positioned flap,Repositioning of gum tissue,Gum Surgery,GUM SURGERY
+D4249,Clinic crown lengthen-hard tiss,Bone removal to provide more tooth structure for crown,Gum Surgery,GUM SURGERY
+D4250,Mucogingival surgery-per quad,Gum Surgery,Gum Surgery,GUM SURGERY
+D4260,Osseous surgery-4+ per quad,Bone Reshaping,,GUM SURGERY
+D4261,Osseous surg- 1-3 contg th/quad,Bone Reshaping,,GUM SURGERY
+D4263,Bone replace graft-1st site/qu,Bone placement in 1 site in a quad,Bone Graft,GUM SURGERY
+D4264,Bone replace graft-each add/qu,Bone placement in each additional site in a quad,Bone Graft,GUM SURGERY
+D4265,"Bio mat, sft&osseous tiss regen",Biomaterial for Hard/Soft Tissue Regeneration,Bone Graft,
+D4266,Guided tiss regen-resorb-per,Placement of resorbable membrane over surgical site,Bone Graft,GUM SURGERY
+D4267,Guided tiss regen-nonresorb-per,Placement of nonresorbable membrane over surgical site,Bone Graft,GUM SURGERY
+D4268,"Surg revision proc, per tooth",Follow-up surgery to refine the results of a previous surgery involving gum tissue,Gum Surgery,
+D4270,Pedicle soft tissue graft proc,Raising gum tissue and moving it over an exposed root or a gum tissue defect in another area,Gum Surgery,
+D4271,Free soft tissue graft proced,Graft soft tissue to replace gum tissue in another area,Gum Surgery,GUM SURGERY
+D4273,Subepithelial con tis graft/th,Graft soft tissue over gum tissue in an area that needs more coverage,Gum Surgery,GUM SURGERY
+D4274,Distal/proximal wedge procedure,Gum Reduction Surgery,Gum Surgery,GUM SURGERY
+D4275,Soft tissue allograft,Gum graft,Gum Surgery,GUM SURGERY
+D4276,Comb cnct tiss&dbl pedicle grft,Combined tissue grafting procedures to correct gum recession,Gum Surgery,GUM SURGERY
+D4277,"Soft Tissue Graft, 1st Tooth",Soft tissue graft first tooth,Gum Surgery,GUM SURGERY
+D4278,"Soft Tissue Graft, Each Add'l",Soft tissue graft additional tooth,Gum Surgery,GUM SURGERY
+D4320,Provisional splinting-intracor,Temporary stabilization of moving teeth,,
+D4321,Provisional splinting-extracor,Temporary stabilization of moving teeth,,
+D4341,Perio scale&root pln-4+per quad,Deep cleaning to remove tartar below gum line on 4+ teeth in a quad,Deep Cleaning,CLEANING
+D4342,"Perio scale&root pln-1-3th,quad",Deep cleaning to remove tartar below gum line on 1-3 teeth in a quad,Deep Cleaning,CLEANING
+D4355,"Full mouth debridemnt,eval/diag",Cleaning and removal of plaque from all teeth to allow for a comprehensive dental exam,Cleaning,CLEANING
+D4381,Local deliv antimicrb ag-th B/R,Direct placement of antibiotic medications into gums being treated for gum disease,Antimicrobial Gum Therapy,CLEANING
+D4910,Periodontal maintenance,Routine cleaning below gum line,Cleaning,CLEANING
+D4920,Unscheduled dressing change,Dressing change after gum surgery,,
+D4921,Gingival Irrigation–Per Quad,Antimicrobial Irrigation of Gum Tissue,Antimicrobial Gum Therapy,CLEANING
+D4999,"Unspecified perio proced, B/R",Other periodontal procedure,,
+REMOVABLE PROSTHODONTICS,REMOVABLE PROSTHODONTICS,REMOVABLE PROSTHODONTICS,,
+D5110,Complete denture - maxillary,Complete dentures upper jaw,Complete Dentures,REMOVABLE APPLIANCES
+D5120,Complete denture - mandibular,Complete dentures lower jaw,Complete Dentures,REMOVABLE APPLIANCES
+D5130,Immediate denture - maxillary,Temporary dentures upper jaw,Complete Dentures,REMOVABLE APPLIANCES
+D5140,Immediate denture - mandibular,Temporary dentures lower jaw,Complete Dentures,REMOVABLE APPLIANCES
+D5211,Maxillary partial - resin base,Partial resin denture upper jaw,Partial Dentures,REMOVABLE APPLIANCES
+D5212,Mandibular partial - resin base,Partial resin denture lower jaw,Partial Dentures,REMOVABLE APPLIANCES
+D5213,Maxil partial-metal Base W/sdls,Partial resin/metal denture upper jaw,Partial Dentures,REMOVABLE APPLIANCES
+D5214,Mand partial-metal base w/sdls,Partial resin/metal  denture lower jaw,Partial Dentures,REMOVABLE APPLIANCES
+D5225,Maxil partial-flex base incl cl,Flexible base partial dentures to replace some of the upper teeth,Partial Dentures,REMOVABLE APPLIANCES
+D5226,Mand partial-flex base incl cl,Flexible base partial dentures to replace some of the lower teeth,Partial Dentures,REMOVABLE APPLIANCES
+D5281,Removable unilat part denture,Partial dentures to replace some of the teeth on one side of the mouth,Partial Dentures,REMOVABLE APPLIANCES
+D5410,Adjust complete denture-maxil,Adjustment of upper denture,Denture Repair/Rebase,
+D5411,Adjust complete denture-mand,Adjustment of lower denture,Denture Repair/Rebase,
+D5421,Adjust partial denture-maxil,Adjustment of upper partial,Denture Repair/Rebase,
+D5422,Adjust partial denture-mand,Adjustment of lower partial,Denture Repair/Rebase,
+D5510,Repair complete denture base,Denture repair,Denture Repair/Rebase,
+D5520,Replace teeth-comp dent (ea th),Replacement of lost/broken teeth in denture,Denture Repair/Rebase,
+D5610,Repair resin denture base,Repair a broken resin partial denture base,Denture Repair/Rebase,
+D5620,Repair cast framework,Repair cast metal framework of a partial denture,Denture Repair/Rebase,
+D5630,Repair or replace broken clasp,Repair or replace a broken clasp of a partial denture,Denture Repair/Rebase,
+D5640,Replace broken teeth-per tooth,Replace a broken tooth for a partial denture,Denture Repair/Rebase,
+D5650,Add tooth to exist part denture,Add tooth to existing partial,Denture Repair/Rebase,
+D5660,"Add clasp, exist part denture",Add clasp to existing partial,Denture Repair/Rebase,
+D5670,Replace all th&acrylic-maxil,Replacement of all teeth/acrylic in upper denture/partial,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5671,Replace all th&acrylic-mand,Replacement of all teeth/acrylic in lower denture/partial,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5710,Rebase complete maxil denture,Refit a complete upper denture by replacing the base material,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5711,Rebase complete mand denture,Refit a complete lower denture by replacing the base material,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5720,Rebase maxil partial denture,Refit a partial upper denture by replacing the base material,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5721,Rebase mand partial denture,Refit partial lower denture by replaceing base material,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5730,Reline complete maxil-chairside,Resurface the tissue side of a complete upper denture in the office,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5731,Reline complete mand-chairside,Resurface the tissue side of a complete lower denture in the office,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5740,Reline maxil partial-chairside,Resurface the tissue side of a partial upper denture in the office,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5741,Reline mand partial-chairside,Resurface the tissue side of a partial lower denture in the office,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5750,Reline complete maxillary (lab),Resurface the tissue side of a complete upper denture–sent to a lab,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5751,Reline complete mand (lab),Resurface the tissue side of a complete lower denture–sent to a lab,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5760,Reline maxillary partial (lab),Resurface the tissue side of a partial upper denture–sent to a lab,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5761,Reline mandibular partial (lab),Resurface the tissue side of a partial lower denture–sent to a lab,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5810,Interim comp denture (maxil),Temporary complete dentures upper jaw,Complete Dentures,REMOVABLE APPLIANCES
+D5811,Interim comp denture (mand),Temporary complete dentures lower jaw,Complete Dentures,REMOVABLE APPLIANCES
+D5820,Interim partial denture (maxil),Temporary partial dentures upper jaw,Partial Dentures,REMOVABLE APPLIANCES
+D5821,Interim partial denture (mand),Temporary partial dentures lower jaw,Partial Dentures,REMOVABLE APPLIANCES
+D5850,"Tissue condition, maxillary",Gum tissue conditioner upper jaw,Denture Repair/Rebase,
+D5851,"Tissue condition, mandibular",Gum tissue conditioner lower jaw,Denture Repair/Rebase,
+D5860,"Overdenture-complete, B/R",Complete Overdenture,Overdentures,REMOVABLE APPLIANCES
+D5861,"Overdenture-partial, by report",Partial overdentures,Overdentures,REMOVABLE APPLIANCES
+D5862,"Precision attachment, B/R",Precision partial denture attachment,,
+D5863,Overdenture - Complete Max,Complete overdenture upper jaw,Overdentures,REMOVABLE APPLIANCES
+D5864,Overdenture - Partial Max,Partial overdenture upper jaw,Overdentures,REMOVABLE APPLIANCES
+D5865,Overdenture - Complete Mand,Complete overdenture lower jaw,Overdentures,REMOVABLE APPLIANCES
+D5866,Overdenture - Partial Mand,Partial overdenture lower jaw,Overdentures,REMOVABLE APPLIANCES
+D5867,Replcmt prec attachmt-part/full,Replacement of part of an attachment component for dentures,Denture Repair/Rebase,REMOVABLE APPLIANCES
+D5875,Mod of remvble prosth-post surg,Modification of dentures following surgery,Denture Repair/Rebase,
+D5899,"Unspecified remove prosth, B/R",Additional denture procedure,Denture Repair/Rebase,
+D5911,Facial moulage (sectional),A model or impression of the face ,,
+D5912,Facial moulage (complete),A model or impression of the face,,
+D5913,Nasal prosthesis,Artificial nose,,
+D5914,Auricular prosthesis,Artificial ear,,
+D5915,Orbital prosthesis,"Artificial eye, eyelids, and adjacent areas",,
+D5916,Ocular prosthesis,Artificial eye,,
+D5919,Facial prosthesis,Artificial Portion of the face,,
+D5922,Nasal septal prosthesis,Nasal Septum prosthesis,,
+D5923,"Ocular prosthesis, interim",Temporary artificial eye,,
+D5924,Cranial prosthesis,Artificial portion of the skull bone,,
+D5925,"Facial augmentat implant,prosth",Facial implant of material on a bony area beneath the skin,,
+D5926,"Nasal prosthesis, replacement",Artificial nose replacement,,
+D5927,"Auricular prosthesis,replacemen",Artificial ear replacement,,
+D5928,"Orbital prosthesis, replacement","Artificial eye, eyelids, and adjacent areas replacemetn",,
+D5929,"Facial prosthesis, replacement",Artificial Portion of the face replacement,,
+D5931,"Obturator prosthesis, surgical",Prosthesis to close a defect,,
+D5932,"Obturator prosthesis,definitive",Prosthesis to close a defect,,
+D5933,"Obturator prosthesis, modificat",Prosthesis to close a defect repair,,
+D5934,Mandibular resection w/ flange,Prosthesis for guiding the lower jaw to the upper jaw,,
+D5935,Mandibular resection w/o flange,Prosthesis for guiding the lower jaw to the upper jaw,,
+D5936,"Obturator prosthesis, interim",Prosthesis for initial healing for a missing area of the palate,,
+D5937,Trismus appliance (not TMD),Prosthesis to assist in opening the mouth wide enough to eat and maintain oral health,,
+D5951,Feeding aid,Feeding aid,,
+D5952,"Speech aid prosthesis,pediatric",Temporary prosthesis to close a defect in the roof of the mouth child,,
+D5953,"Speech aid prosthesis, adult",Prosthesis to close a defect in the roof of the mouth adult,,
+D5954,Palatal augmentation prosthesis,Removable prosthesis to alter the palate`s form adjacent to the tongue,,
+D5955,"Palatal lift prosth, definitive",Prosthesis to assist in restoring palate function,,
+D5958,"Palatal lift prosthesis,interim",Interim Prosthesis to assist in restoring palate function,,
+D5959,"Palatal lift prosth, modificat",Prosthesis modification to assist in restoring palate function,,
+D5960,"Speech aid prosth, modification",Modification to a speech aid prosthesis,,
+D5982,Surgical stent,Stent to soft tissues to facilitate healing,,
+D5983,Radiation carrier,Device used to holding the radiation source securely in the same location,,
+D5984,Radiation shield,Prosthesis to shield adjacent tissues from radiation,,
+D5985,Radiation cone locator,Prosthesis to direct and reduplicate the path of radiation to an oral tumor,,
+D5986,Fluoride gel carrier,Custom carrier appliance to apply fluoride close to teeth for extended time,,
+D5987,Commissure splint,Device placed between the lips to assist in increased opening between the lips,,
+D5988,Surgical splint,Device that uses existing bony structures to anchor broken bones during healing,,
+D5991,Topical medicament carrier,A custom fabricated carrier that covers the teeth and/or gums to deliver medication,,
+D5992,"Adj Max'facial Prosth, Report",Adjustment to a maxillofacial prosthetic appliance,,
+D5993,"Maint Max'facial Prosth, Report",Maintenance and cleaning of a maxillofacial prosthesis,,
+D5994,Periodontal medicament carrier,Periodontal medicament carrier,,
+D5999,Unspec maxillofacial prosth B/R,Unspec maxillofacial prosth B/R,,
+IMPLANTS AND FIXED PROSTHODONTICS,,IMPLANTS AND FIXED PROSTHODONTICS,,
+D6010,Surg place implant: endosteal,Implant placement,Implant Placement,IMPLANTS
+D6011,Second stage implant surgery,Additional surgery for implant,Implant Placement,IMPLANTS
+D6012,Plcmnt of intrm impl: endosteal,Placement of temporary implant,Implant Placement,IMPLANTS
+D6013,Placement of mini implant,Mini Implant placement,Implant Placement,IMPLANTS
+D6020,Abut place/subst:endost implant,Abutment placement/substitution for implant,Implant Abutment,IMPLANTS
+D6040,Surgic place: eposteal implant,Surgical placement of an eposteal implant,Implant Placement,IMPLANTS
+D6050,Surg place: transosteal implant,Surgical placement of a transosteal implant,Implant Placement,
+D6051,Interim Abutment,Temporary Abutment,Implant Abutment,IMPLANTS
+D6052,Semi-precision attchmt abutment,Semi-Precision attachment abutment,Implant Abutment,IMPLANTS
+D6053,"Imp/abut remov,comp edent arch",Implant/abutment support for removable complete dentures,Implant Overdenture,IMPLANTS
+D6054,"Imp/abut remov,part edent arch",Implant/abutment support for removable partial dentures,Implant Overdenture,IMPLANTS
+D6055,Dent implant sup connecting bar,Implant supported bar,Implant Overdenture,IMPLANTS
+D6056,Prefab abutment-incl placement,Prefabricated Abutment,Implant Abutment,IMPLANTS
+D6057,Custom abutment-incl placement,Custom abutment,Implant Abutment,IMPLANTS
+D6058,Abutment supported porc/cer crn,Porcelain implant crown,Implant Crown,IMPLANTS
+D6059,Abtmt supp porc fused to hi-nob,Porcelain/Metal implant crown,Implant Crown,IMPLANTS
+D6060,Abtmt supp porc fused-base metl,Porcelain/Metal implant crown,Implant Crown,IMPLANTS
+D6061,Abtmt supp porc fused-mtl crown,Porcelain/Metal implant crown,Implant Crown,IMPLANTS
+D6062,Abtmt supp cast mtl crown-hinob,Metal implant crown,Implant Crown,IMPLANTS
+D6063,Abtmt supp cast mtl crown-base,Metal implant crown,Implant Crown,IMPLANTS
+D6064,Abtmt supp cast mtl crown-noble,Metal implant crown,Implant Crown,IMPLANTS
+D6065,Implant supp porc/cer crown,Porcelain implant crown,Implant Crown,IMPLANTS
+D6066,Implant supp porc fused mtl crn,Porcelain/Metal implant crown,Implant Crown,IMPLANTS
+D6067,Implant supported metal crown,Metal implant crown,Implant Crown,IMPLANTS
+D6068,Abtmt supp ret for porc/cer FPD,Porcelain implant retainer for a fixed partial denture,Implant Abutment,IMPLANTS
+D6069,Abut sup ret-porc fsd mtl FPDhn,Porcelain/metal implant retainer for a fixed partial denture,Implant Abutment,IMPLANTS
+D6070,Abut sup ret-porc fsd mtl FPDbm,Porcelain/metal implant retainer for a fixed partial denture,Implant Abutment,IMPLANTS
+D6071,Abut sup ret-porc fsd mtl FPDno,Porcelain/metal implant retainer for a fixed partial denture,Implant Abutment,IMPLANTS
+D6072,Abut sup ret-cast mtl FPD-hinob,Metal implant retainer for a fixed partial denture,Implant Abutment,IMPLANTS
+D6073,Abut sup ret-cast mtl FPD-base,Metal implant retainer for a fixed partial denture,Implant Abutment,IMPLANTS
+D6074,Abut sup ret-cast mtl FPD-noble,Metal implant retainer for a fixed partial denture,Implant Abutment,IMPLANTS
+D6075,Implant supp ret-ceramic FPD,"Ceramic retainer for a fixed partial denture, supported by an implant",Implant Abutment,IMPLANTS
+D6076,Implnt supp ret-prc fuse mtlFPD,"Porcelain/metal retainer for a fixed partial denture, supported by an implant",Implant Abutment,IMPLANTS
+D6077,Implant supp ret-cast metal FPD,"Metal retainer for a fixed partial denture, supported by an implant",Implant Abutment,IMPLANTS
+D6078,Implnt/abut supp fxd comp edent,Fixed complete denture supported by implants or abutments on implants,Implant Overdenture,IMPLANTS
+D6079,Implnt/abut supp fxd part edent,Fixed partial denture supported by implants or abutments on implants,Implant Overdenture,IMPLANTS
+D6080,Implant maintenance procedures,Implant maintenance and cleaning,Cleaning,CLEANING
+D6090,"Repair implant sup prosth, B/R",Repair of a prosthesis supported by an implant,Implant Repair,
+D6091,Rpl attchmt imp/abt sup prosth,Replacement of an attachment piece for a prosthesis supported by an implant,Implant Repair,
+D6092,Recement impl/abut sup crown,Recement a crown supported by an implant or an abutment on an implant,Implant Repair,
+D6093,Recement impl/abut sup FPD,Recement a fixed partial denture supported by an implant,Implant Repair,
+D6094,Abutment supp crown - titanium,Titanium Implant Crown,Implant Crown,IMPLANTS
+D6095,"Repair implant abutment, B/R",Repair of implant abutment,Implant Repair,
+D6100,"Implant removal, by report","Surgical removal of an implant, including report for insurance",Implant Debridement/Repair,
+D6101,Debride Peri-Implant Defect,Debride Implant Defect,Implant Debridement/Repair,
+D6102,Debride/Oss Peri-Implant Defect,Debride Implant Defect,Implant Debridement/Repair,
+D6103,Bone Graft Rep Peri-Imp Defect,Bone Graft For Implant Defect,Implant Debridement/Repair,
+D6104,"Bone Graft, Implant Placement",Bone Graft during implant placement,Implant Placement,
+D6190,Radiograph/surg impl index B/R,Appliance used with x-rays for treatment planning implants,Implant Stent,IMPLANTS
+D6194,Abut sup ret-cast mtl FPD-titan,Titanium implant retainer for a fixed partial denture,Implant Abutment,
+D6199,"Unspecified implant proced, B/R",Additional implant procedure,,
+D6205,Pontic-indirect res based comp,Replacement tooth – indirect resin-based composite,Bridges,CROWN
+D6210,Pontic-cast high noble metal,Replacement tooth – cast high noble metal,Bridges,CROWN
+D6211,Pontic-cast predominantly base,Replacement tooth – cast predominantly base metal,Bridges,CROWN
+D6212,Pontic-cast noble metal,Replacement tooth – cast noble metal,Bridges,CROWN
+D6214,Pontic-titanium,Replacement tooth – titanium,Bridges,CROWN
+D6240,Pontic-porcelain fused to hnob,Replacement tooth – porcelain fused to high noble metal,Bridges,CROWN
+D6241,Pontic-porcelain fused to base,Replacement tooth – porcelain fused to predominantly base metal,Bridges,CROWN
+D6242,Pontic-porcelain fused to nobl,Replacement tooth – porcelain fused to noble metal,Bridges,CROWN
+D6245,Pontic-porcelain/ceramic,Replacement tooth – porcelain/ceramic,Bridges,CROWN
+D6250,Pontic-resin w/ high noble met,Replacement tooth – resin with high noble metal,Bridges,CROWN
+D6251,Pontic-resin w/ predomnt base,Replacement tooth – resin with predominantly base metal,Bridges,CROWN
+D6252,Pontic-resin with noble metal,Replacement tooth – resin with noble metal,Bridges,CROWN
+D6253,Provisional pontic,Temporary replacement tooth,Bridges,CROWN
+D6254,Interim Pontic,Temporary replacement tooth until treatment can be completed,Bridges,CROWN
+D6545,Retainer-cast for resin bonded,Cast retainer for resin bonded ,,
+D6548,Ret-porc/cer-resin bnd fxd pros,Porcelain/ceramic retainer to support resin bonded replacement teeth,,
+D6600,"Inlay-porcelain/ceramic, 2 surf","Inlay retainer to support replacement teeth – porcelain/ceramic, two surfaces",Bridges,CROWN
+D6601,"Inlay-porcelain/ceramic, 3+surf","Inlay retainer to support replacement teeth – porcelain/ceramic, three or more surfaces",Bridges,CROWN
+D6602,"Inlay-cast high noble met,2surf","Inlay retainer to support replacement teeth – cast high noble metal, two surfaces",Bridges,CROWN
+D6603,"Inlay-cast high nob met, 3+surf","Inlay retainer to support replacement teeth – cast high noble metal, three or more surfaces",Bridges,CROWN
+D6604,"Inlay-cast predomnt base, 2surf","Inlay retainer to support replacement teeth – cast predominantly base metal, two surfaces",Bridges,CROWN
+D6605,"Inlay-cast predomnt base,3+surf","Inlay retainer to support replacement teeth – cast predominantly base metal, three or more surfaces",Bridges,CROWN
+D6606,"Inlay-cast noble metal, 2 surf","Inlay retainer to support replacement teeth – cast noble metal, two surfaces",Bridges,CROWN
+D6607,"Inlay-cast noble metal, 3+ surf","Inlay retainer to support replacement teeth – cast noble metal, three or more surfaces",Bridges,CROWN
+D6608,"Onlay-porcelain/ceramic, 2 surf","Onlay retainer to support replacement teeth – porcelain/ceramic, two surfaces",Bridges,CROWN
+D6609,"Onlay-porcelain/ceramic, 3+surf","Onlay retainer to support replacement teeth – porcelain/ceramic, three or more surfaces",Bridges,CROWN
+D6610,"Onlay-cast high noble met,2surf","Onlay retainer to support replacement teeth – cast high noble metal, two surfaces",Bridges,CROWN
+D6611,"Onlay-cast high nob met, 3+surf","Onlay retainer to support replacement teeth – cast high noble metal, three or more surfaces",Bridges,CROWN
+D6612,"Onlay-cast predomnt base, 2surf","Onlay retainer to support replacement teeth – cast predominantly base metal, two surfaces",Bridges,CROWN
+D6613,"Onlay-cast predomnt base,3+surf","Onlay retainer to support replacement teeth – cast predominantly base metal, three or more surfaces",Bridges,CROWN
+D6614,"Onlay-cast noble metal, 2 surf","Onlay retainer to support replacement teeth – cast noble metal, two surfaces",Bridges,CROWN
+D6615,"Onlay-cast noble metal, 3+ surf","Onlay retainer to support replacement teeth – cast noble metal, three or more surfaces",Bridges,CROWN
+D6624,Inlay-titanium,Inlay retainer to support replacement teeth – titanium,Bridges,CROWN
+D6634,Onlay-titanium,Onlay retainer to support replacement teeth – titanium,Bridges,CROWN
+D6710,Retainer crn-indir res-bas comp,Cast metal retainer to support resin bonded replacement teeth,Bridges,CROWN
+D6720,Retainer crn-res w/ hi nob met,Crown retainer to support replacement teeth – resin with high noble metal,Bridges,CROWN
+D6721,Retainer crn-resin w/ base met,Crown retainer to support replacement teeth – resin with predominantly base metal,Bridges,CROWN
+D6722,Retainer crn-resin w/ nob met,Crown retainer to support replacement teeth – resin with noble metal,Bridges,CROWN
+D6740,Crown-porcelain/ceramic,Crown retainer to support replacement teeth – porcelain/ceramic,Bridges,CROWN
+D6750,Retainer crn-porc fused-hi nob,Crown retainer to support replacement teeth – porcelain fused to high noble metal,Bridges,CROWN
+D6751,Retainer crn-porc fuse-base met,Crown retainer to support replacement teeth – porcelain fused to predominantly base metal,Bridges,CROWN
+D6752,Retainer crn-porc fused-nob met,Crown retainer to support replacement teeth – porcelain fused to noble metal,Bridges,CROWN
+D6780,Retainer crn-3/4 cast h nob met,Crown retainer to support replacement teeth – 3/4 cast high noble metal,Bridges,CROWN
+D6781,Crown-3/4 cast most base metal,Crown retainer to support replacement teeth – 3/4 cast predominantly base metal,Bridges,CROWN
+D6782,Crown-3/4 cast noble metal,Crown retainer to support replacement teeth – 3/4 cast noble metal,Bridges,CROWN
+D6783,Crown-3/4 porcelain/ceramic,Crown retainer to support replacement teeth – 3/4 porcelain/ceramic,Bridges,CROWN
+D6790,Retainer crn-full cast hi nob,Crown retainer to support replacement teeth – full cast high noble metal,Bridges,CROWN
+D6791,Retainer crn-full cast base,Crown retainer to support replacement teeth – full cast predominantly base metal,Bridges,CROWN
+D6792,Retainer crn-full cast nob met,Crown retainer to support replacement teeth – full cast noble metal,Bridges,CROWN
+D6793,Provisional retainer crown,Temporary crown retainer to support replacement teeth,Bridges,CROWN
+D6794,Retainer crown-titanium,Crown retainer to support replacement teeth – titanium,Bridges,CROWN
+D6795,Interim Retainer Crown,Temporary retainer for replacement teeth until treatment can be completed,Bridges,CROWN
+D6920,Connector bar,Connector bar attached to a fixed partial denture retainer to add removable replacement teeth,Bridges,CROWN
+D6930,Recement fixed partial denture,Recement a fixed partial denture,Bridges,CROWN
+D6940,Stress breaker,Flexible connector bar,,
+D6950,Precision attachment,Attachment to a removable partial denture to help abutments support replacement teeth,,
+D6970,"Cast post/core, + brdg retainer","Post and core in addition to a fixed partial denture retainer, indirectly fabricated",Build Up/Post/Core,CROWN
+D6971,Cast post/part of brdg retainer,"Post and core part of fixed partial denture retainer, indirectly fabricated",Build Up/Post/Core,CROWN
+D6972,Prefab post/core+ brdg retainer,"Post and core in addition to a fixed partial denture retainer, pre-fabricated",Build Up/Post/Core,CROWN
+D6973,"Core buildup for retain,inc pin",Tooth Buildup,Build Up/Post/Core,CROWN
+D6975,Coping-metal,Metal covering of the remaining portion of a tooth as part of a fixed partial denture,,
+D6976,Each add'l cast post-same tooth,"Additional post for a fixed partial denture retainer, indirectly fabricated",Build Up/Post/Core,CROWN
+D6977,Each + prefab post-same tooth,"Additional post for a fixed partial denture retainer, pre-fabricated",Build Up/Post/Core,CROWN
+D6980,"Fixed partial dent. repair, B/R",Repair of a fixed partial denture,,
+D6985,"Pediatric part'l denture, fixed",Fixed partial denture for a child,,
+D6999,"Unspec fixed prosth proced, B/R",Additional fixed partial denture procedure,,
+ORAL SURGERY,ORAL SURGERY,ORAL SURGERY,,
+D7110,Extraction-single tooth,Extraction- single tooth,Extraction,ORAL SURGERY
+D7111,Extraction crnl remnts-decid th,Extraction of tooth remnants- baby teeth,Extraction,ORAL SURGERY
+D7120,Extraction-each additional,Extraction- each additional,Extraction,ORAL SURGERY
+D7130,Root removal-exposed root,Extraction - Root,Extraction,ORAL SURGERY
+D7140,"Extract,erupted th/exposed rt",Non-surgical removal of a tooth,Extraction,ORAL SURGERY
+D7210,Extraction-surgical/erupt tooth,Surgical remvoal of a tooth to include,Extraction,ORAL SURGERY
+D7220,Extraction-impacted/soft tis,Surgical removal of a tooth that is covered by the surrounding gums,Extraction,ORAL SURGERY
+D7230,Extraction-impacted/part bony,Surgical removal of a tooth that is covered by the surrounding gums and partially covered by bone,Extraction,ORAL SURGERY
+D7240,Extraction-impacted/compl bony,Surgical removal of a tooth that is covered by the surrounding gums and completely covered by bone,Extraction,ORAL SURGERY
+D7241,Remov impact-comp bony w/ comp,Surgical removal of a tooth that is covered by the surrounding gums and completely covered by bone,Extraction,ORAL SURGERY
+D7250,Surgic removl resid tooth root,Surgical removal of a removed tooth`s remaining roots,Extraction,ORAL SURGERY
+D7251,Coronectomy-part tooth removal,Removal of part of an impacted tooth because of complications,Extraction,ORAL SURGERY
+D7260,Oral antral fistula closure,Closure of an abnormal opening between the mouth and sinus,,
+D7261,Prim closure sinus perforation,Closure of a sinus opening resulting from removal of a tooth,,
+D7270,Reimplantation/stabilization,Reimplantation and/or stabilization of a tooth that was knocked out or loosened due to an accident,,
+D7272,Tooth transplantation,"Placement of a tooth in a new location, including stabilization",,
+D7280,Surgical access unreupted tooth,Surgical method to expose a covered tooth so it can grow in normally,,
+D7281,Expos impact/unerupt-aid erupt,Exposure of unerupted tooth to aid in eruption,,
+D7282,Mobiliz erupt/malpos th-erupt,Movement of a tooth for better position and growth,,
+D7283,Plcmnt of devc fo facil erup th,Placement of a bracket or band to help a covered tooth to grow in normally,,
+D7285,Biopsy of oral tissue-hard,Taking a very small sample from a tooth or bone for a biopsy,,ORAL SURGERY
+D7286,Biopsy of oral tissue-soft,Taking a very small sample of gum tissue or other mouth tissue for a biopsy,,ORAL SURGERY
+D7287,Exfoliative cyt sample collectn,Mild scraping of the inside of the mouth for evaluation,,ORAL SURGERY
+D7288,Brush biopsy-transepith sample,Brushing the inside of the mouth to get a sample for biopsy,,ORAL SURGERY
+D7290,Surgical reposition of teeth,Surgical repositioning of teeth,,
+D7291,"T/SC Fiberotomy, B/R",Surgical removal of unhealthy gum tissue that allows healthy gum tissue to replace it,,
+D7292,Plcmnt: temp anch scrw rtnd plt,Surgical placement of a temporary plate that is attached to the bone,,
+D7293,Plcmnt: temp anch w/ surg flap,Surgical placement of a temporary device for bone stability using part of the mouth tissue to hold it in place,,
+D7294,Plcmnt: temp anch w/o surg flap,Surgical placement of a temporary device for bone stability,,
+D7295,Bone Harvest for Grafting,Harvesting of bone for grafting,,
+D7310,Alveoloplasty w/ extract- /quad,Surgical Bone Recontouring,,ORAL SURGERY
+D7311,Alveoloplasty w/ext 1-3 th/quad,Surgical Bone Recontouring,,ORAL SURGERY
+D7320,Alveoloplasty w/o extract /quad,Surgical Bone Recontouring ,,ORAL SURGERY
+D7321,Alveoloplsty w/o ex 1-3 th/quad,Surgical Bone Recontouring,,ORAL SURGERY
+D7340,Vestibuloplasty-ridge ext -2nd,Surgery to heighten the bone around a tooth,Bone Augmentation,ORAL SURGERY
+D7350,Vestiplasty-ridge ext (inc),Extensive surgery to heighten the bone around a tooth,Bone Augmentation,ORAL SURGERY
+D7410,Excision benign lesion<=1.25cm,Surgical removal of a small benign lesion in the soft tissue of the mouth,,
+D7411,Excision benign lesion>1.25 cm,Surgical removal of a benign lesion over 1.25 cm in the soft tissue of the mouth,,
+D7412,"Excision benign lesion,complic",Complicated surgical removal of a benign lesion in the soft tissue of the mouth,,
+D7413,Excision malig lesion<=1.25cm,Surgical removal of a small malignant lesion in the soft tissue of the mouth,,
+D7414,Excision malig lesion>1.25cm,Surgical removal of a malignant lesion over 1.25 cm in the soft tissue of the mouth,,
+D7415,"Excision malig lesion,complic",Complicated surgical removal of a malignant lesion in the soft tissue of the mouth,,
+D7420,Radical excis-diam > 1.25 cm,Radical excis-diam > 1.25 cm,,
+D7430,Ex benign tumor-diam <= 1.25cm,Ex benign tumor-diam <= 1.25cm,,
+D7431,Ex benign tumor-diam > 1.25 cm,Ex benign tumor-diam > 1.25 cm,,
+D7440,Ex malig tumor-diam <= 1.25 cm,Surgical removal of a small malignant tumor in the bony areas of the mouth,,
+D7441,Ex malig tumor-diam > 1.25 cm,Surgical removal of a malignant tumor over 1.25 cm in the bony areas of the mouth,,
+D7450,Rem benign odont-diam<=1.25cm,Surgical removal of a small benign cyst or tumor in the bony areas of the mouth resulting from tooth development,,
+D7451,Rem benign odont-diam>1.25 cm,Surgical removal of a benign cyst or tumor over 1.25 cm in the bony areas of the mouth resulting from tooth development,,
+D7460,Rem benign nonodont-di<=1.25cm,Surgical removal of a small benign cyst or tumor in the bony areas of the mouth,,
+D7461,Rem benign nonodont-diam>1.25cm,Surgical removal of a benign cyst or tumor over 1.25 cm in the bony areas of the mouth,,
+D7465,Destruct lesion-phys/chem B/R,Destruction of lesions,,
+D7470,Rem exostosis-maxilla/mandible,Removal of extra bone in the jaw- upper/lower jaw,,ORAL SURGERY
+D7471,Removal of exostosis-per site,Surgical removal of a bony growth from bone tissue,,ORAL SURGERY
+D7472,Removal of torus palatinus,Surgical removal of a bulging projection of bone from the roof of the mouth,,
+D7473,Removal of torus mandibularis,Surgical removal of a bulging projection of bone from the lower part of the mouth under the tongue,,
+D7480,Part ostectomy(guttering/sauc),Part ostectomy(guttering/sauc),,
+D7485,"Surg reduc, osseous tuberosity",Surgical removal of excessive fibrous or bony tissue,,
+D7490,Rad resectn-maxilla or mandible,Surgical removal of lesion and defect leaving some normal appearing bone,,
+D7510,Incis&drain abscess-intra soft,Draining an abscess in the soft tissue of the mouth,Emergency Pain Relief,
+D7511,Incis&drain abscs-int soft comp,Complicated draining of an abscess in the soft tissue of the mouth,,
+D7520,Incis&drain abscess-extra soft,Draining an abscess in the soft tissue of the mouth from the outside (face),,
+D7521,Incis&drain abscs-ext soft comp,Complicated draining an abscess in the soft tissue of the mouth from the outside (face),,
+D7530,Remove foreign body from tissue,Removal of a foreign body from the soft tissue of the mouth or skin,,
+D7540,Remove foreign body from bone,Removal of a reaction producing foreign body from muscle and/or bone,,
+D7550,Partial ostect/sequestrectomy,Removal of loose or sloughed-off dead bone caused by infection or reduced blood supply,,
+D7560,Maxill sinusotomy-rem foreign,Removal of a tooth fragment or foreign body in the sinus area of the mouth,,
+D7610,Maxilla-open red (teeth immob),"Wiring, banding or splinting of teeth to prevent movement to treat a simple fracture of the upper jaw, involves minor surgery",,
+D7620,Maxilla-closed red(teeth immob),"Wiring, banding or splinting of teeth to prevent movement to treat a simple fracture of the upper jaw",,
+D7630,Mandible-open red (teeth immob),"Wiring, banding or splinting of teeth to prevent movement to treat a simple fracture of the lower jaw, involves minor surgery",,
+D7640,Mandible-closed red (th immob),"Wiring, banding or splinting of teeth to prevent movement to treat a simple fracture of the lower jaw",,
+D7650,Malar/zygomat arch-open reduc,Surgery to treat a simple fracture of the cheek bone,,
+D7660,Malar/zygo arch-closed reduc,Treatment of a simple fracture of the cheek bone,,
+D7670,Alveolus-closed reduction,"Treatment of a simple fracture–may involve wiring, banding or splinting of teeth to prevent movement",,
+D7671,Alveolus-open reduction,"Surgical treatment of a simple fracture–may involve wiring, banding or splinting of teeth to prevent movement",,
+D7680,Facial bone-complicated reduct,Treatment of simple fractures in facial bones,,
+D7710,Maxilla-open reduction,"Wiring, banding or splinting of teeth to prevent movement to treat a compound fracture of the upper jaw, involves minor surgery",,
+D7720,Maxilla-closed reduction,"Wiring, banding or splinting of teeth to prevent movement to treat a compound fracture of the upper jaw",,
+D7730,Mandible-open reduction,"Wiring, banding or splinting of teeth to prevent movement to treat a compound fracture of the lower jaw, involves minor surgery",,
+D7740,Mandible-closed reduction,"Wiring, banding or splinting of teeth to prevent movement to treat a compound fracture of the lower jaw",,
+D7750,Malar/zygomatic arch-open red,Surgery to treat a compound fracture of the cheek bone,,
+D7760,Malar/zygomatic arch-close red,Treatment of a compound fracture of the cheek bone,,
+D7770,"Alveolus-stabilize teeth, open","Treatment of a compound fracture–may involve wiring, banding or splinting of teeth to prevent movement",,
+D7771,"Alveolus-stabilize teeth,closed","Surgical treatment of a compound fracture–may involve wiring, banding or splinting of teeth to prevent movement",,
+D7780,Facial bones-complicated reduc,Treatment of compound fractures in facial bones,,
+D7810,Open reduction of dislocation,Surgery to treat a dislocated temporomandibular joint (TMJ),,
+D7820,Closed reduction of dislocate,Treatment for a dislocated temporomandibular joint (TMJ),,
+D7830,Manipulation under anesthesia,Manipulation of the temporomandibular joint (TMJ) under general anesthesia or intravenous sedation,,
+D7840,Condylectomy,Surgical removal of part of the mandibular bone for treatment of TMJ dysfunction,,
+D7850,Surgical discect:w/ w/o implant,Surgical removal of a disc for treatment of TMJ dysfunction,,
+D7852,Disc repair,Repair of a disc for treatment of TMJ dysfunction,,
+D7854,Synovectomy,Removal of a portion or all of the lining of ligaments of the TMJ,,
+D7856,Myotomy,Cutting of muscle around the temporomandibular joint (TMJ) for therapeutic purposes,,
+D7858,Joint reconstruction,Reconstruction of a temporomandibular joint,,
+D7860,Arthrotomy,Cutting into a temporomandibular joint as part of treatment to manage TMJ dysfunction,,
+D7865,Arthroplasty,Surgical correction of an abnormality in a temporomandibular joint (TMJ),,
+D7870,Arthrocentesis,Withdrawal of fluid from a temporomandibular joint (TMJ),,
+D7871,Non-arthroscopic lysis & lavage,Irrigation of a temporomandibular joint (TMJ),,
+D7872,"Arthroscopy-diag, w/ w/o biopsy",Use of a scope to view the inside of a temporomandibular joint for diagnosis,,
+D7873,Arthroscopy-surgical: adhesions,Use of a scope to view the inside of a temporomandibular joint for irrigation,,
+D7874,Arthroscopy-surgical: disc rep,Use of a scope to view the inside of a temporomandibular joint while repositioning and stabilizing the disc,,
+D7875,Arthroscopy-surgic: synovectomy,Use of a scope to view the inside of a temporomandibular joint for removal of a portion or all of the lining of ligaments,,
+D7876,Arthroscopy-surgical:discectomy,Use of a scope to view the inside of a temporomandibular joint to remove the disc,,
+D7877,Arthroscopy-surgic: debridement,Use of a scope to view the inside of a temporomandibular joint to remove diseased tissue,,
+D7880,Occlusal orthotic device,Use of splints for treatment of temporomandibular joint (TMJ) dysfunction,,
+D7899,"Unspecified TMD therapy, B/R",Additional treatment or management for temporomandibular joint (TMJ) dysfunction,,
+D7910,Suture of small wounds to 5cm,Stitches of recent small wounds up to 5 cm,,
+D7911,Complicated suture-up to 5 cm,Complicated stitches of a small wound,,
+D7912,Complicated suture-over 5 cm,Complicated stitches of a wound greater than 5 cm,,
+D7920,"Skin grafts, by report","Skin graft, including report for insurance",,
+D7921,Coll/App Autologous Blood Conc,Collection of concentrated blood,,
+D7940,Osteoplasty-orthognathic defor,"Reconstruction of jaws for correction of congenital, developmental or acquired traumatic or surgical deformity",,
+D7941,Osteotomy-mandibular rami,Surgical cutting or transection of a bone,,
+D7942,"Osteotomy-ramus, open",Surgical cutting or transection of a bone,,
+D7943,Osteotomy-mand rami w/ graft,Surgical cutting or transection of a bone with bone graft,,
+D7944,Osteotomy-segment/subap-s/quad,Surgical cutting or transection of bone for a range of teeth,,
+D7945,Osteotomy-body of mandible,Surgical cutting or transection of the lower jaw,,
+D7946,LeFort I (maxilla-total),Surgical section to repair fracture of the upper jaw – total,,
+D7947,LeFort I (maxilla-segmented),Surgical section to repair fracture of the upper jaw – segmented,,
+D7948,LeFort II/III-no bone graft,Surgical section to repair fracture of the upper jaw – major,,
+D7949,LeFort II/III-with bone graft,"Surgical section to repair fracture of the upper jaw – major, including bone graft",,
+D7950,Osseous/cartilage graft-mandB/R,Surgical grafting for the repair of conditions with the upper or lower jaw,,
+D7951,Sinus augmentation w/bone,Sinus augmentation with bone or bone substitutes,Sinus Lift,IMPLANT
+D7952,"Sinus Augment,Vertical Approach",Sinus Lift,Sinus Lift,IMPLANT
+D7953,Bone repl grft ridge prsv/site,Bone replacement graft for ridge preservation,Bone Graft,IMPLANT
+D7955,Rep maxillofacial sft/hrd tis,Reconstruction of defects of the facial bones,,
+D7960,Frenulectomy-separate procedur,Frenulectomy,Gum Surgery,GUM SURGERY
+D7963,Frenuloplasty,Removal of excess tissue and removal or repositioning of muscle inside the mouth,Gum Surgery,
+D7970,"Excision, hyperplast tiss-arch",Removal of excess tissue around the upper or lower jaw,,
+D7971,Excision-pericoronal ging /arch,Surgical removal of diseased tissue surrounding teeth that have difficulty growing in,Gum Surgery,
+D7972,"Surg reduc, fibrous tuberosity",Surgical removal of fibrous or bony tissue,,
+D7980,Sialolithotomy,Surgical removal of a stone within a salivary gland or its duct,,
+D7981,"Excision of salivary gland, B/R","Surgical removal of a salivary gland, including report for insurance",,
+D7982,Sialodochoplasty,Surgical repair of a defect and/or restoration of a portion of a salivary gland duct,,
+D7983,Closure of salivary fistula,"Surgical closure of an opening between a salivary duct and/or gland, or an abnormal opening into the oral cavity",,
+D7990,Emergency tracheotomy,Emergency tracheotomy,,
+D7991,Coronoidectomy,Surgical removal of a small part of the lower jaw,,
+D7995,"Synthetic graft-mand/facial,B/R","Synthetic graft of the lower jaw or facial bones, including report for insurance",,
+D7996,"Implant-mandib/augmentation,B/R",Implant for the lower jaw to increase size,,
+D7997,Appliance removal-incl archbar,Removal of an archbar or other appliance placed by another dentist,,
+D7998,Plcmnt of devc w/o fracture,Placement of a fixation device within the mouth,,
+D7999,"Unspecified oral surg proc, B/R","Additional oral surgery procedure, including report for insurance",,
+ORTHODONTICS,ORTHODONTICS,ORTHODONTICS,,
+D8010,"Limited ortho trt, primary dent",Limited orthodontic treatment for a child,Orthodontics,
+D8020,"Limited ortho trt, transitional",Limited orthodontic treatment for a child or adolescent,Orthodontics,
+D8030,"Limited ortho treat, adolescent",Limited orthodontic treatment for an adolescent,Orthodontics,
+D8040,"Limited ortho treat, adult dent",Limited orthodontic treatment for an adult,Orthodontics,
+D8050,"Intercep orth trt, primary dent",Interceptive orthodontic treatment for a child,Orthodontics,
+D8060,"Intercep orth trt, transitional",Interceptive orthodontic treatment for a child or adolescent,Orthodontics,
+D8070,"Comprehensive orth,transitional",Comprehensive orthodontic treatment for a child or adolescent,Orthodontics,
+D8080,"Comprehensive ortho, adolescent",Comprehensive orthodontic treatment for an adolescent,Orthodontics,
+D8090,"Comprehensive ortho, adult dent",Comprehensive orthodontic treatment for an adult,Orthodontics,
+D8210,Removable appliance therapy,Removable appliance therapy,Orthodontics,
+D8220,Fixed appliance therapy,Fixed appliance therapy,Orthodontics,
+D8660,Pre-orthodontic treatment visit,Pre-orthodontic treatment visit,Orthodontics,
+D8670,Periodic ortho visit (contract),Periodic orthodontic treatment visit (as part of contract),Orthodontics,
+D8680,Orthodontic retention,"Construction, placement and removal of orthodontic retainer(s)",Orthodontics,
+D8690,Ortho treatment (bill/contract),Orthodontic treatment (alternative billing to a contract fee),Orthodontics,
+D8691,Repair of orthodontic appliance,Repair of orthodontic appliance,Retainers,
+D8692,Retainer replacemnt-lost/broken,Replacement of lost or broken retainer,Retainers,
+D8693,Rebond/repair of fixed retainer,Rebonding or recementing; and/or repair of fixed retainers,Retainers,
+D8694,Repair/reattach fixed retainer,,Retainers,
+D8999,"Unspec ortho procedure, B/R","Additional orthodontic procedure, including report for insurance",,
+ADJUNCTIVE SERVICES,ADJUNCTIVE SERVICES,ADJUNCTIVE SERVICES,,
+D9110,"Emerg treatment, palliative",Emergency treatment of dental pain,Emergency Pain Relief,
+D9120,Fixed partl denture sectioning,Separation of one or more connections for a partial denture when the remaining portion of the partial denture will still be used,,
+D9210,Local anesthesia not op/surg,Local anesthesia not in conjunction with operative or surgical procedures,Emergency Pain Relief,
+D9211,Regional block anesthesia,Regional block anesthesia,,
+D9212,Trigeminal division blk anesth,Trigeminal division block anesthesia,,
+D9215,Local anesthesia,Local anesthesia,,
+D9220,Deep sedat/gen anesth-1st 30m,Deep sedation/general anesthesia – first 30 minutes,,
+D9221,Deep sedat/gen anesth-ea+15m,Deep sedation/general anesthesia – each additional 15 minutes,,
+D9230,Analgesia,Nitrous oxide,,
+D9240,Intravenous sedation,,,
+D9241,IV conscious sed/analg-1st 30m,"Intravenous, conscious sedation/analgesia – first 30 minutes",,
+D9242,IV conscious sed/analg-ea15m+,"Intravenous, conscious sedation/analgesia – each additional 15 minutes",,
+D9248,Non IV conscious sedation,Non-intravenous conscious sedation,,
+D9310,Consultation-per session,Professional consultation for a second opinion,,
+D9410,House/extended care facility,Professional house call or visit to an extended care facility,,
+D9420,Professional hospital call,Hospital call,,
+D9430,Office visit for observation,Office visit for observation,,
+D9440,Office visit-after regular hrs,Office visit after regularly scheduled hours,Emergency Pain Relief,
+D9450,"Case present,detailed/extens tx",Case presentation of detailed and extensive treatment planning,,
+D9610,"Therapeutic drug injection, B/R",Injection of therapeutic medication – single administration,Emergency Pain Relief,
+D9612,"Therap parenteral drugs, 2+",Injection of therapeutic medication – two or more administrations of different medications,Emergency Pain Relief,
+D9630,"Other drugs/medicaments, B/R","Additional drugs/medicaments, including report for insurance",,
+D9910,Application of desensitize med,Application of desensitizing medication,,
+D9911,"Apply desensitiz' resin, per th","Application of a desensitizing coating, per tooth",,
+D9920,"Behavior management, by report","Behavior management, including report for insurance",,
+D9930,Treat complications-postsurgic,"Treatment of post-surgical complications involving unusual circumstances, including report for insurance",,
+D9940,"Occlusal guards, by report",Removable dental guard to minimize effects of grinding the teeth or for other treatment,,
+D9941,Fabricate athletic mouthguards,Fabrication of athletic mouthguard,Nightguard/Mouthgaurd,
+D9942,Repair/Reline of occlusal guard,Repair and/or reline of dental guard,Nightguard/Mouthgaurd,
+D9950,Occlusal analysis-mounted case,"Analysis of the patient`s bite, involving several tests, measurements, models, etc.",,
+D9951,Occlusal adjustment-limited,Reshape the biting surfaces of the teeth to improve contact between the upper and lower teeth,,
+D9952,Occlusal adjustment-complete,Reshape the biting surfaces of the teeth to improve contact between the upper and lower teeth – complex and may involve multiple visits,,
+D9970,Enamel microabrasion,Removal of discolored surface enamel,,
+D9971,Odontoplasty 1-2 teeth-rmv enam,Surgical contouring of tooth surface to enhance plaque control and gum health,,
+D9972,External bleaching-per arch,Professional tooth whitening of the upper or lower teeth,Teeth Whitening,
+D9973,External bleaching-per tooth,"Professional tooth whitening, per tooth",Teeth Whitening,
+D9974,Internal bleaching-per tooth,"Professional tooth whitening from within the tooth, per tooth",Teeth Whitening,
+D9975,External Bleaching-Home-Arch,Home Teeth Whitening,Teeth Whitening,
+D9999,"Unspecified adjunct. proced,B/R","Additional services, including report for insurance",,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+Procedure Code,Dentist's Description,Patient Description,Plan Description,Categories for patient price comparison

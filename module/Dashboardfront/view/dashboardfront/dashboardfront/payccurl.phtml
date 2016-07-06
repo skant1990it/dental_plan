@@ -1,0 +1,250 @@
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">Stripe.setPublishableKey("<?php echo $publishablekey; ?>");</script>
+
+<script type="text/javascript">
+jQuery(function($) {
+  $('#payment-form').submit(function(event) {
+    var $form = $(this);
+
+    // Disable the submit button to prevent repeated clicks
+    $form.find('button').prop('disabled', true);
+
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
+  });
+});
+
+function stripeResponseHandler(status, response) {
+  var $form = $('#payment-form');
+
+  if (response.error) {
+    // Show the errors on the form
+    $form.find('.payment-errors').text(response.error.message);
+    $form.find('button').prop('disabled', false);
+  } else {
+    // response contains id and card, which contains additional card details
+    var token = response.id;
+    // Insert the token into the form so it gets submitted to the server
+    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+    // and submit
+    $form.get(0).submit();
+  }
+};
+</script>
+<header layout="row">
+     <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+    <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<div class="width650" ng-controller="formController1">
+<div class="grid100 change-password">
+	<?php //echo $patient[0]['plan_id'];?>
+ <form name="/dashboardfront/payccurl" id="billingProvider">
+		<h2>Billing Information</h2>
+		  {{ message3 }}
+		<?php if($paytype==1){?>
+		<div >
+		<md-input-container class="md-block">
+			<label>Bank Account Number</label>
+			<input name="accountno" type="text" ng-model="billing.accountno" ng-pattern='/^(0|[0-9][0-9]*)$/' required>
+			<div ng-show="billingProvider.accountno.$touched">
+			  <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.required">Enter bank account no.</div>
+			  <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.pattern">Only number are allowed .</div>
+		   </div>
+		</md-input-container>
+		<md-input-container class="md-block">
+		  <label>Confirm Account Number</label>
+		  <input name="conf_account" type="text" ng-pattern="billing.accountno" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-model="billing.conf_account" only-num required>
+		  <!--  code for match pattern start       -->  
+		<div ng-show="billingProvider.conf_account.$touched">
+		  <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.required">Enter confirm account no.</div>
+		  <div class="md-errors-spacer" ng-show="billingProvider.accountno.$error.pattern">Only number are allowed .</div>
+		  <div class="md-errors-spacer" ng-show="(billingProvider.conf_account.$viewValue != '' && billingProvider.accountno.$viewValue != '')">
+		  <span ng-show="(billingProvider.accountno.$viewValue != billingProvider.conf_account.$viewValue)">Mismatch account no.</span>
+		</div>
+		</div>
+		<!--  code for match pattern end       --> 
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label>Bank Routing Number</label>
+			<input name="routingno" type="text" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-model="billing.routingno" required>
+			<div ng-show="billingProvider.routingno.$touched">
+			  <div class="md-errors-spacer" ng-show="billingProvider.routingno.$error.required">Enter routing no.</div>
+			  <div class="md-errors-spacer" ng-show="billingProvider.routingno.$error.pattern">Only number are allowed .</div>
+		   </div>
+		</md-input-container>
+		<md-input-container class="md-block">
+		  <label>Confirm Routing Number</label>
+		  <input name="conf_routing" type="text"  ng-pattern="billing.routingno" ng-model="billing.conf_routing"  required>
+		 
+		<!--  code for match pattern start       -->  
+		<div ng-show="billingProvider.conf_routing.$touched">
+		  <div class="md-errors-spacer" ng-show="billingProvider.routingno.$error.required">Enter confirm routing no.</div>
+		  <div class="md-errors-spacer" ng-show="(billingProvider.conf_routing.$viewValue != '' && billingProvider.routingno.$viewValue != '')">
+		  <span ng-show="(billingProvider.routingno.$viewValue != billingProvider.conf_routing.$viewValue)">Mismatch routing no.</span>
+		</div>
+		</div>
+		<!--  code for match pattern end       --> 
+		</md-input-container>
+
+		<md-input-container class="md-block">
+		  <label>Account Holder Name</label>
+		   <input name="acc_holder_name" type="text" ng-model="billing.acc_holder_name" required>
+		   <div ng-show="billingProvider.acc_holder_name.$touched">
+			  <div class="md-errors-spacer" ng-show="billingProvider.acc_holder_name.$error.required">Enter account holder name.</div>
+		  </div>
+		</md-input-container>
+		</div>
+		<?php }else{?>
+		
+		<div >
+		<md-input-container class="md-block">
+		  <label>Name on CC</label>
+		  <input name="name_on_cc" type="text" ng-model="billing.name_on_cc" required>
+		  <div ng-show="billingProvider.name_on_cc.$touched">
+		  <div class="md-errors-spacer" ng-show="billingProvider.name_on_cc.$error.required">Enter name on CC.</div>
+		</div>
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label>CC Number</label>
+			 <input name="cc_number" type="text" ng-pattern='/^(0|[0-9][0-9]*)$/'  ng-model="billing.cc_number" required>
+			  <div ng-show="billingProvider.cc_number.$touched">
+			  <div class="md-errors-spacer" ng-show="billingProvider.cc_number.$error.required">Enter CC number .</div>
+			  <div class="md-errors-spacer" ng-show="billingProvider.cc_number.$error.pattern">Only number are allowed .</div>
+			 </div>
+		</md-input-container>
+		<md-input-container class="md-block">
+		<label>Confirm CC number</label>
+		<input name="conf_cc_number" type="text" ng-model="billing.conf_cc_number" ng-pattern="billing.cc_number" required>
+		<!--  code for match pattern start       -->  
+		<div ng-show="billingProvider.conf_cc_number.$touched">
+		  <div class="md-errors-spacer" ng-show="billingProvider.conf_cc_number.$error.required">Enter confirm CC number.</div>
+		  <div class="md-errors-spacer" ng-show="(billingProvider.conf_cc_number.$viewValue != '' && billingProvider.cc_number.$viewValue != '')">
+		  <span ng-show="(billingProvider.cc_number.$viewValue != billingProvider.conf_cc_number.$viewValue)">Mismatch CC number.</span>
+		</div>
+		</div>
+		<!--  code for match pattern end       -->  
+		</md-input-container>
+
+		<div layout-gt-sm="row">
+		  <md-input-container class="md-block" flex-gt-sm>
+				<label>CVC Number</label>
+				<input name="csv_no" type="text" ng-pattern='/^(0|[0-9][0-9]*)$/'  ng-model="billing.csv_no" required>
+		  <div ng-show="billingProvider.csv_no.$touched" required>
+			<div class="md-errors-spacer" ng-show="billingProvider.csv_no.$error.required">Enter cvc number.</div>
+			<div class="md-errors-spacer" ng-show="billingProvider.csv_no.$error.pattern">Only number are allowed.</div>
+		 </div>
+		</md-input-container>
+		</div>  <!--  row div close here       -->
+
+
+		<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+		  <label>Exp. Month</label>
+		  <md-select ng-model="billing.monthno" placeholder="Select Month">
+				<md-option ng-value="month_name.id" ng-repeat="month_name in monthname">{{ month_name.name }}</md-option>
+		 </md-select>
+
+		 <div>
+			<div class="md-errors-spacer"> {{ messagemonth }}</div>
+		   
+		 </div>
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+		<label>Exp. Year</label>
+		<md-select ng-model="billing.exp_year" placeholder="Select Year">
+				<md-option ng-value="year_name.id" ng-repeat="year_name in yearname">{{ year_name.name }}</md-option>
+		</md-select>
+
+		<div>
+		<div class="md-errors-spacer">{{ messageyear }}</div>
+		</div>
+		
+		</md-input-container>
+		</div>  <!--  row div close here       -->
+
+		</div>  <!--  ng-if div close here       -->
+		<?php }?>
+		<div layout="row" layout-align="center center">
+			
+			<md-button class="md-warn md-raised blue-button" ng-click="submitPatient(addPatientForm)">Submit payment</md-button>
+		</div>
+	</form>
+ </div>
+</div>   
+
+
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']);
+app.controller('formController1', function($scope,$http,$window) { 
+	 $scope.monthname= [                                 // this is for month list on billing  
+         { id: 1, name: 'January' },
+         { id: 2, name: 'February' },
+         { id: 3, name: 'March' },
+         { id: 4, name: 'April' },
+         { id: 5, name: 'May' },
+         { id: 6, name: 'June' },
+         { id: 7, name: 'July' },
+         { id: 8, name: 'August' },
+         { id: 9, name: 'September' },
+         { id: 10, name: 'October' },
+         { id: 11, name: 'November' },
+         { id: 12, name: 'December '}
+         ];
+         $scope.yearname= [                               // this is for year list on billing  
+         { id: 2016, name: 2016 },
+         { id: 2017, name: 2017 },
+         { id: 2018, name: 2018 },
+         { id: 2019, name: 2019 },
+         { id: 2020, name: 2020 },
+         { id: 2021, name: 2021 },
+         { id: 2022, name: 2022 },
+         { id: 2023, name: 2023 },
+         { id: 2024, name: 2024 },
+         { id: 2025, name: 2025 },
+         { id: 2026, name: 2026 },
+         { id: 2027, name: 2027},
+         { id: 2028, name: 2029 },
+         { id: 2029, name: 2029 },
+         { id: 2030, name: 2030 },
+         ];    
+    $scope.submitPatient =function($valid)
+    {
+		$window.location="/dashboardfront/termsconditionpatient/<?php echo $patid;?>";
+		//console.log($scope.member);
+		if($scope.addPatientForm.$valid)
+		{
+			$window.location="/dashboardfront/termsconditionpatient/<?php echo $patid;?>";
+		 
+		$http.post('/dashboardfront/patientedit',$scope.member)
+		.success(function(data,status){
+			var rdata = angular.fromJson(data);
+			//console.log(rdata);
+			//alert(rdata.success);
+		  if(rdata.success==1){
+			$window.location=rdata.url;
+
+		  }else{
+			//alert('by');
+			//$scope.repeatloc=data;
+		  }
+
+		});
+		}else{			
+		$scope.message =   'Please fill the form details.';  
+		}
+    };
+    
+    
+});
+
+</script>
+

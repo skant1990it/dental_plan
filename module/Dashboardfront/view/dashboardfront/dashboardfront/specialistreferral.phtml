@@ -1,0 +1,145 @@
+
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo_spl.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+ 
+ <div class="width1200" ng-controller="refer1controller">
+    <div class="grid100 change-password">
+        <div layout="row" layout-align="center center">
+            <h2><span class="margin30">My Referrals Page</span></h2>
+        </div>
+        <div class="referral-column">
+            <ul>
+                <li>
+                    <div class="green-column"><?php echo $receivereferral  ; ?><br/>Referrals Recieved</div>
+                </li>
+                <li>
+                    <div class="green-column"><?php  echo $acceptreferralcount; ?><br/>Referrals Accepted</div>
+                </li>
+                <li>
+                    <div class="red-column"><?php echo $declinereferral; ?><br/>Referrals Declined</div>
+                </li>
+                <li>
+                    <div class="blue-column"><?php echo $pendingreferral; ?><br/>Referrals Pending</div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="referral-buttons">
+            <ul>
+                <li ng-class="myclass" ng-click="referalstatus(10)"><a href="javascript:void(0);"  title="All Referrals">All Referrals</a></li>
+                <li ng-class="myclass1"><a href="javascript:void(0);" ng-click="referalstatus(1)" title="Accepted Referrals">Accepted Referrals</a></li>
+                <li ng-class="myclass2" ng-click="referalstatus(2)"><a href="javascript:void(0);" title="Declined Referrals">Declined Referrals</a></li>
+                <li ng-class="myclass4" ng-click="referalstatus(4)"><a href="javascript:void(0);" title="Missed Referrals">Missed Referrals</a></li>
+                <li ng-class="myclass0" ng-click="referalstatus(0)"><a href="javascript:void(0);" title="Pending Referrals">Pending Referrals</a></li>
+            </ul>
+        </div>
+        <div class="schedule-table margintop90">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Referral Date</th>
+                        <th>Referral Type</th>
+                        <th>Referral Reason</th>
+                        <th>First Appointment Date</th>
+                        <th>Appointment time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                      
+                    <tr ng-repeat="listing in listdata|filter:{ status: mystatus }"> 
+                        <td>{{ listing.date_reffered | date : 'MM/dd/yyyy' }}</td>
+                        <td>Private Plan</td>
+                        <td>
+                            <div layout="row" layout-align="center center">
+                            {{ listing.comments }}
+                               <!-- <img src="/images/refferal-icon.png" width="21" height="25" alt="Refferral">  -->
+                            </div>
+                        </td>
+                        <td>
+                            <span class="calendar-text">{{ listing.appointment_date | date : 'MM/dd/yyyy' }}</span>
+                            <div layout="row" layout-align="end start">
+                                <img src="/images/calendar-icon.png" width="24" height="24" alt="Calendar">
+                            </div>
+                        </td>
+                        <td>{{ listing.appointment_time }} </td>
+                        <td>
+                          <span ng-if="listing.status==0">Pending</span>
+                          <span ng-if="listing.status==1">Accepted</span>
+                          <span ng-if="listing.status==2">Decline</span>
+                          <span ng-if="listing.status==3">Accepted- but call</span>
+                          <span ng-if="listing.status==4">Missed</span>
+                        </td> 
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>          
+            
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('refer1controller', function($scope,$http,$window) 
+{ 
+  var referlisting='<?php echo $referrallistdata ; ?>';
+ var referlistingobject=angular.fromJson(referlisting);
+ // alert(angular.isObject(referlistingobject));
+  // data1=angular.isObject(referlistingobject);
+//alert(data1);
+  $scope.listdata=referlistingobject;
+  $scope.referalstatus=function(id)
+  {
+  if(id==10){
+     $scope.mystatus='';
+   $scope.myclass="small-red-column" ; 
+   $scope.myclass0="" ;
+   $scope.myclass1="" ;
+   $scope.myclass2="" ;
+   $scope.myclass4="" ;
+  }
+  if(id==0){
+  $scope.mystatus=id;
+  $scope.myclass0="small-red-column" ;
+   $scope.myclass="" ; 
+   $scope.myclass1="" ;
+   $scope.myclass2="" ;
+   $scope.myclass4="" ;
+  }
+  if(id==1){
+ $scope.mystatus=id;
+  $scope.myclass1="small-red-column" ;
+  $scope.myclass0="" ;
+  $scope.myclass= "" ; 
+  $scope.myclass2="" ;
+  $scope.myclass4="" ;
+
+  }
+  if(id==2){
+  $scope.mystatus=id;
+  $scope.myclass2="small-red-column" ;
+  $scope.myclass0="" ;
+  $scope.myclass= "" ; 
+  $scope.myclass4="" ;
+  $scope.myclass1="" ;
+  }
+  if(id==4){
+  $scope.mystatus=id;
+  $scope.myclass4="small-red-column" ;
+  $scope.myclass2="" ;
+  $scope.myclass0="" ;
+  $scope.myclass= "" ; 
+  $scope.myclass1="" ;
+
+  }
+}
+}); 
+</script>

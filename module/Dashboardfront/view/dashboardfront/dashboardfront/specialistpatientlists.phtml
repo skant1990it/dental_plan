@@ -1,0 +1,61 @@
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo_spl.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<div  ng-controller="formCtrl">
+<div class="width1200">
+    <div class="grid100 change-password">
+    	<div layout="row" layout-align="center center">
+            <h2><span class="margin30">Providers List</span></h2>
+        </div>
+        <div class="schedule-table margintop90">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>                       
+                        <th>Referral Reason</th>
+                        <th>First Appointment Date</th>
+                        <th>Appointment time</th>
+                    </tr>
+                </thead>
+                <tbody>
+					<?php foreach($list as $val){ ?>
+                    <tr>
+                        <td><?php echo $val['patient_firstname'].' '.$val['patient_lastname']?></td>
+                        
+                        <td>
+							<?php echo $val['comments']; ?>
+                        	<div layout="row" layout-align="center center">
+                        		<!--<img src="images/refferal-icon.png" width="21" height="25" alt="Refferral">-->
+                            </div>
+                        </td>
+                        <td>
+                        	<span class="calendar-text"><?php echo $val['appointment_date'] ?></span>
+                            <div layout="row" layout-align="end start">
+                           		<!--<img src="images/calendar-icon.png" width="24" height="24" alt="Calendar">-->
+                            </div>
+                        </td>
+                        <td><?php echo $val['appointment_time']; ?></td>
+                    </tr>
+                   <?php } ?>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div> 
+</div>
+
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']);
+app.controller("formCtrl", function($scope, $http,$window) {
+	
+	 });
+</script>

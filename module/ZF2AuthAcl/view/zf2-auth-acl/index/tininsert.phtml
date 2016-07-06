@@ -1,0 +1,75 @@
+
+<form name="tinForm" id="msform" method="post" action="/register" novalidate="novalidate">
+    <header>
+        <div class="logo"><a href="/" title="denefits"><img src="images/logo.png" width="183" height="57" alt="Logo"></a></div>
+      <!--
+        <div class="log-frame" layout-align="start end" flex>
+    	<md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="text = (text == 'logoff' || text == undefined ? 'logon' : 'logoff')">
+            <div ng-if="(text == 'logoff' || text == undefined)">
+                <a href="javascript:void(0)" class="logoff">{{text || 'logoff'}}</a>
+            </div>    
+            <div ng-if="text == 'logon'">
+                <a href="javascript:void(0)" class="logon">{{text || 'logoff'}}</a>
+            </div>
+        </md-switch>
+    </div>
+    -->
+    </header>
+    <div class="width650">
+        <div class="grid100 change-password" ng-controller="tincontroller"> 
+              <fieldset>
+                 <div id="msg" class="align-center" style="color:#555555;font-family:open_sansregular;font-size:12px;" ng-bind="message"><a> {{ message }}</a></div> 
+            	<div layout="row" layout-align="center center">
+                	<h2>Enter your TIN </h2>
+                </div>
+                <div layout="row" layout-align="center center" class="align-center">
+                	<h3>Just for tax purposes</h3>
+                </div>
+                <md-input-container class="md-block">
+                    <label>My TIN is</label>
+                    <input name="tinnoenter" type="text" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-maxlength="9" ng-minlength="9" ng-model="password.tinnoenter" required>
+                      <div ng-show="tinForm.$submitted || tinForm.tinnoenter.$touched">
+                           <div class="md-errors-spacer" ng-show="tinForm.tinnoenter.$error.required">Enter TIN.</div>
+                           <div class="md-errors-spacer" ng-show="tinForm.tinnoenter.$error.maxlength">Max length should be 9 .</div>
+                           <div class="md-errors-spacer" ng-show="tinForm.tinnoenter.$error.minlength">Min length should be 9 .</div>
+                          <div style="padding-right:5px;" class="md-errors-spacer" ng-show="tinForm.tinnoenter.$error.pattern">Only number allowed. </div>
+                      </div>
+                </md-input-container>
+                <div layout="row" layout-align="center center">
+                	<md-button class="md-warn md-raised save-button" ng-click=onTinSubmit(tinForm)>Next</md-button>
+                </div>
+             </form>
+            </fieldset>
+            
+        </div>
+    </div>
+
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="jscript/angular-animate.min.js"></script>
+<script src="jscript/angular-aria.min.js"></script>
+<script src="jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+<script type="text/javascript">    
+var app=angular.module('BlankApp', ['ngMaterial']);
+ app.controller('tincontroller',function($scope,$http,$window){
+      $scope.onTinSubmit=function($valid){
+      if($scope.tinForm.$valid){
+         $http.post('/tininsert',$scope.password).success(function(data,status){
+         //$window.location.href=  '/register' ;
+         $window.tinForm.submit();
+         })
+      }else{
+        $scope.message= 'Please fill the form details'; 
+      }
+    };
+});
+</script>
+<script src="jscript/jquery-1.9.1.min.js"></script>
+<script src="jscript/jquery.easing.min.js"></script>
+<script src="jscript/process-wizard.js"></script>
+

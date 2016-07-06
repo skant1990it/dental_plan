@@ -1,0 +1,441 @@
+<?php
+
+use Zend\Session\Container;
+ $session = new Container('User');
+ $doc_specility_type=  $session->offsetGet('doc_speciality') ;
+?>
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<div ng-controller="newreferralscontrollar">
+<div class="width1024">
+    <div class="grid100 change-password">
+        <div layout="row" layout-align="center center">
+            <h2>New Referral</h2>
+        </div>
+    </div>
+    <div class="referral-search">
+      <form>
+        <fieldset>
+                <div layout-gt-sm="row">   
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Dr. Name  </label>
+                         <input name="name" type="text" ng-model="search.first_name">
+                   </md-input-container>
+                      
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Zip  </label>
+                         <input name="name" type="text" ng-model="search.zip">
+                   </md-input-container> 
+                <md-input-container class="md-block" flex-gt-sm>
+                  <md-select placeholder="Provider Specialty" ng-model="search.kind_of_practice">
+                            <md-option ng-value="'1,0,0'">General Dental Office</md-option>
+                            <md-option ng-value="'0,1,0'">Specialty Office</md-option>
+                            <md-option ng-value="'0,0,1'">General Dental Office with different specialties</md-option>
+                        </md-select>
+               </md-input-container>
+           </div>
+        </fieldset>
+      </form>
+    </div>
+</div>
+<div class="referral-search-frame">
+	<div class="banner"><img src="/images/banner.jpg" width="1800" height="513" alt="Banner"></div>
+    <div class="width1160">
+    	<div class="referral-list">
+        	<ul> 
+          <li ng-repeat="specialitydata in  specialitylist|filter:search">
+                  <div class="image-holderb"><img src="/images/profile-pic.jpg" width="120" height="120"></div>
+                    <div class="referral-search-content">
+                   	  <div class="number">{{ $index +1 }}</div>
+                        <div class="referral-content">
+                        	<p>{{ specialitydata.first_name+" "+specialitydata.last_name }}<img src="/images/rating-4.jpg" width="69" height="16" alt="Rating"></p>
+                          	<p>Address: {{specialitydata.address +', '+specialitydata.city+', '+specialitydata.state+', '+specialitydata.zip }}</p>
+                            <p>Hours: {{ specialitydata.timing }}</p>
+                        </div>
+                      	<div class="referrals-button">
+                            <div layout="row" layout-align="end start" class="clearboth">
+                              
+                               <md-button  ng-click="refered(specialitydata.id,$index +1,specialitydata.first_name,specialitydata.last_name,specialitydata.address,specialitydata.city,specialitydata.state,specialitydata.zip,specialitydata.timing,specialitydata.provider_id,specialitydata.doc_id,specialitydata.dentist_type)" class="md-warn md-raised preferred-button">Preferred</md-button>
+                                
+                                <md-button  ng-click="alternate(specialitydata.id,specialitydata.first_name,specialitydata.last_name,specialitydata.address,specialitydata.city,specialitydata.state,specialitydata.zip,specialitydata.timing,specialitydata.provider_id)" class="md-warn md-raised alternate-button marginLeft10">Alternate</md-button>
+                               
+                                <md-button class="md-warn md-raised view-button marginLeft10" ng-click="doctor_details( specialitydata)">View More</md-button>
+                           </div>
+                       </div>
+              		</div>	
+                </li>
+            </ul>
+        </div>
+        <div class="referral-column-frame" ng-if="viewvalue">
+        	<ul>
+            	<li>
+                	<h4>{{ doctordate.first_name+''+ doctordate.last_name }}</h4>
+                    <div class="height325">
+                        <div class="bio-list">
+                            <ul>
+                                <li>Dr. School</li>
+                                <li style="padding-left:-10px;">Dr. Motto</li>
+                                <li>Dr. Accomplishments</li>
+                                <li>Dr. Associations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                	<h4>Patient Reviews</h4>
+                    <div class="height325">
+                        <div class="review-list">
+                            <ul>
+                                <li>
+                                    <div class="rating-area"><img width="69" height="16" alt="Rating" src="/images/rating.jpg"></div>
+                                    <div class="content-area">
+                                        <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Pellentesque sed euismod sapien, id eleifend odio.urna,</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rating-area"><img width="69" height="16" alt="Rating" src="/images/rating.jpg"></div>
+                                    <div class="content-area">
+                                        <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Pellentesque sed euismod sapien, id eleifend odio.urna,</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                	<h4>Fee Schedule</h4>
+                    <div class="height325">
+                    	<div class="schedule-list">
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Pellentesque sed euismod sapien, id eleifend odio.urna,Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Pellentesque sed euismod sapien, id eleifend odio.urna,</li>
+                        		<li>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Pellentesque sed euismod sapien, id eleifend odio.urna,</li>
+                            </ul>   
+                        </div>     
+                    </div>
+                </li>
+            </ul>
+            <!--<div class="referral-column"></div>
+            <div class="referral-column"></div>
+            <div class="referral-column"></div>-->
+         <div layout="row" layout-align="end start" class="clearboth marginTop20b">
+            <md-button ng-click="doctordetails_hide()" class="md-warn md-raised view-button marginLeft10">View Less</md-button>
+        </div>
+        </div>      
+ <!--    here the div for refer list    details         start   -->
+             {{ errormsg1 }}
+        <div class="referral-list" ng-if="refer_index==1">
+             {{ message3 }}     {{ errormsg }}
+        	<ul>
+       	    	<li style="margin-top:32px;">
+                	<div class="image-holderb"><img src="/images/profile-pic.jpg" width="120" height="120"></div>
+                    <div class="referral-search-content">
+                   	  <div class="number">{{ $index }}</div>
+                        <div class="referral-content">
+                        	<p> {{ first_name1+" "+last_name1 }}  <img src="/images/rating-4.jpg" width="69" height="16" alt="Rating"></p>
+                          	<p>Address: {{address1 +', '+city1+', '+', '+state1+', '+zip1 }}</p>
+                            <p>Hours: {{ available_time1 }}</p>
+                        </div>
+                      	<div class="referrals-button">
+                            <div layout="row" layout-align="end start" class="clearboth">
+                                <md-button class="md-warn md-raised preferred-button">Preferred</md-button>
+                            </div>
+                      	</div>
+              		</div>	
+                </li>
+            </ul>
+        </div>
+         <form name="ReferForm">
+          <div class="referral-list" ng-if="alternate_index1==1">
+            <ul> 
+            <li style="margin-top:32px;">
+                <div class="image-holderb"><img src="/images/profile-pic.jpg" width="120" height="120"></div>
+                 <div class="referral-search-content">
+                   <div class="number">{{ $index }}</div>
+                <div class="referral-content">
+                    <p> {{ altfirst_name1+' '+altlast_name1}}<img src="/images/rating-4.jpg" width="69" height="16" alt="Rating"></p>
+                    <p>Address: {{altaddress1 +', '+altcity1+', '+', '+altstate1+', '+altzip1 }}</p>
+                    <p>Hours: {{ altavai_time1 }}</p>
+                </div>
+                <div class="referrals-button">
+             <div layout="row" layout-align="end start" class="clearboth">
+                     <md-button class="md-warn md-raised alternate-button marginLeft10">Alternate</md-button>
+                     <md-button ng-click="delplan(2)">
+                          <img src="/images/close.png" width="22" height="22"  style="cursor:pointer;" alt="Close">
+                    </md-button>
+              </div>
+                     </div>
+                    </div>  
+            </li>
+            </ul>
+        </div>
+         
+        <div class="referral-list" ng-if="alternate_index2==1">
+            <ul>
+                 <li style="margin-top:32px;">
+                    <div class="image-holderb"><img src="/images/profile-pic.jpg" width="120" height="120"></div>
+                    <div class="referral-search-content">
+                      <div class="number">{{ $index }}</div>
+                        <div class="referral-content">
+
+                            <p> {{ altfirst_name2+' '+altlast_name2}}<img src="/images/rating-4.jpg" width="69" height="16" alt="Rating"></p>
+                            <p>Address: {{altaddress2 +', '+altcity2+', '+', '+altstate2+', '+altzip2 }}</p>
+                            <p>Hours: {{ altavai_time2 }}</p>
+                        </div>
+                        <div class="referrals-button">
+                            <div layout="row" layout-align="end start" class="clearboth">
+                                <md-button class="md-warn md-raised alternate-button marginLeft10">Alternate</md-button>
+                                <md-button  ng-click="delplan(3)">
+                                   <img src="/images/close.png" width="22" height="22"  style="cursor:pointer;" alt="Close">
+                               </md-button>
+                         </div>
+                        </div>
+                    </div>  
+                </li>
+            </ul>
+        </div>
+        <div class="referral-list"  ng-if="refer_index==1">
+        <div class="grid50" style="padding-top:20px;margin: auto;align:left;float:left;padding-right:86px;">
+            <textarea rows="4" class="box2"  ng-model="refer.comments" placeholder="Referral reason from dentist" required></textarea>
+
+       </div>
+          <div layout-gt-sm="row">
+                   
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Appointment Date</label>
+                        <input id="dob" name="dob" type="text"  ng-pattern='/^(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])\/(199\d|[2-9]\d{3})$/' ng-model="refer.dob" required>
+                        <div class="md-errors-spacer" ng-show="ReferForm.dob.$touched"> 
+                         <span ng-if="ReferForm.dob.$error.required">Required. </span>
+                         <span ng-if="ReferForm.dob.$error.pattern">Date format(MM/DD/YYYY).</span>
+                       </div>
+                    </md-input-container>
+                    
+
+
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Appointment time(H:M)</label>
+                        <input name="timing" type="text" placeholder="10:00 AM" ng-model="refer.timing" required>
+                        <div class="md-errors-spacer" ng-show="ReferForm.timing.$touched"> 
+                        <span ng-if="ReferForm.timing.$error.required">Required.</span>
+                        </div>
+                    </md-input-container>
+                    
+                </div>  
+
+       </div>
+<!--    here the div for refer list    details         end  -->
+
+        <div layout="row" layout-align="center center" class="clearboth margin-bottom40b">
+            <md-button class="md-warn md-raised dark-green-button marginLeft10" ng-click="submitRefer(ReferForm)">Refer</md-button>
+        </div>
+     </form>          
+    </div>
+</div>
+</div>  <!--    controller div close here         -->
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('newreferralscontrollar', function($scope,$http,$window) 
+{ 
+ $scope.viewvalue=0;
+ var specility_details='<?php echo $providerlist ; ?>';
+ $scope.refer={'id':1};
+ var specility_detailsobject  = angular.fromJson(specility_details);
+ $scope.specialitylist = specility_detailsobject;
+ 
+ $scope.doctor_details=function(doctor_details)
+ {
+    $scope.viewvalue=1;
+    $scope.doctordate=doctor_details;
+ }
+ $scope.doctordetails_hide=function()
+ {
+    $scope.viewvalue=0;
+   
+ }
+
+ $scope.submitRefer =function($valid)
+    {   
+        if($scope.ReferForm.$valid)
+        {
+        $http.post('/dashboardfront/newreferral',$scope.refer)
+       .success(function(data,status){
+          if(data==1)
+          $scope.message3="Record updated successfully.";
+         if($scope.refer.alt1==undefined||'')
+            $scope.refer.alt1=0;
+          if($scope.refer.alt2==undefined||'')
+            $scope.refer.alt2=0;
+         var vardata = $scope.refer.pat_id+'-'+$scope.refer.provider_id+'-'+$scope.refer.alt1+'-'+$scope.refer.alt2;
+         $window.location.href = '/dashboardfront/referthanks/'+vardata; 
+        })
+     }else{
+       $scope.message3="Invalid from details.";
+     }
+     };
+ $scope.choices = [{id: '1'}];     // this variable for location form
+ $scope.refered =function(id1,index,first_name,last_name,address,city,state,zip,available_time,provider_id,refer_by,provider_dentist_id)
+    {   
+      if(($scope.previous_index==id1))
+      {
+       if($scope.alternate_index1)
+        { 
+         var newItemNo = $scope.choices.length+1;
+         $scope.alternate_index1='';
+         $scope.choices.pop({'id': newItemNo});
+        }
+       if($scope.alternate_index2)
+       {
+             var newItemNo = $scope.choices.length+1;
+         $scope.alternate_index2='';
+         $scope.choices.pop({'id': newItemNo});
+
+       }
+        $scope.id1=id1;
+        $scope.refer_index=1;
+        $scope.first_name1=first_name;
+        $scope.last_name1=last_name;
+        $scope.address1=address;
+        $scope.city1=city;
+        $scope.state1=state;
+        $scope.zip1=zip;
+        $scope.available_time1=available_time;
+        $scope.refer.provider_id=provider_id;
+        $scope.refer.refer_by=refer_by;
+        $scope.refer.provider_dentist_id=provider_dentist_id;
+        $scope.refer.pat_id=<?php echo $pat_id;  ?>; 
+      }else{
+        $scope.id1=id1;
+        $scope.refer_index=1;
+        $scope.first_name1=first_name;
+        $scope.last_name1=last_name;
+        $scope.address1=address;
+        $scope.city1=city;
+        $scope.state1=state;
+        $scope.zip1=zip;
+        $scope.available_time1=available_time;
+        $scope.refer.provider_id=provider_id;
+        $scope.refer.refer_by=refer_by;
+        $scope.refer.provider_dentist_id=provider_dentist_id;
+        $scope.refer.pat_id=<?php echo $pat_id;  ?>; 
+      }
+     $scope.errormsg1=" ";  
+   } ;
+
+ $scope.alternate =function(index,first_name,last_name,address,city,state,zip,available_time,alt1_id)
+    {   
+     if(($scope.alternate_index1=='')&&($scope.alternate_index2==''));
+      {
+        if(($scope.id1==index)&&(!$scope.id1))
+         { 
+          $scope.errormsg1="First add preffered before choose alternate. ";
+          $scope.refer_index=0;
+         }
+      }
+     if($scope.id1){
+        if($scope.id1==index){
+            if($scope.choices.length>=3)
+              $scope.errormsg="you cannot add more than two alternate."; 
+            else
+            $scope.refer_index='';
+        }
+        var newItemNo = $scope.choices.length+1;
+        $scope.choices.push({'id': newItemNo});
+        var len =$scope.choices.length;
+        if((len==2)){
+          if($scope.previous_index!=index)
+           {
+        $scope.previous_index=index;
+        $scope.alternate_index1=1;
+        $scope.altfirst_name1 =first_name;
+        $scope.altlast_name1=last_name;
+        $scope.altaddress1 =address;
+        $scope.altcity1= city;
+        $scope.altstate1 =state;
+        $scope.altzip1= zip;
+        $scope.altavai_time1=available_time;
+        $scope.refer.alt1=alt1_id;
+         $scope.errormsg="";
+        }else{
+            $scope.choices.pop({'id': newItemNo});
+           $scope.errormsg="Same alternate can not add twice.";
+        }
+       }
+       if((len==3)){
+         if(($scope.previous_index!=index))
+         {
+        $scope.previous_index=index;
+        $scope.alternate_index2=1;
+        $scope.altfirst_name2 =first_name;
+        $scope.altlast_name2=last_name;
+        $scope.altaddress2 =address;
+        $scope.altcity2= city;
+        $scope.altstate2 =state;
+        $scope.altzip2= zip;
+        $scope.altavai_time2=available_time;
+        $scope.refer.alt2 =alt1_id;
+         $scope.errormsg="";
+        }else{
+         $scope.choices.pop({'id': newItemNo});
+         $scope.errormsg="Same alternate can not add twice.";
+       }
+      } 
+       if(len>3){
+         $scope.errormsg="you cannot add more than two alternate.";
+         $scope.choices.pop({'id': newItemNo});
+       }
+     }else{
+      $scope.errormsg1="First add preffer before choose alternate. ";
+     }
+  } ;
+$scope.delplan=function(referid)
+{
+  if(referid==2){
+   $scope.errormsg="Referral 1 deleted successfully.";
+        $scope.alternate_index1 ='';
+        $scope.previous_index='';
+        $scope.altfirst_name1 ='';
+        $scope.altlast_name1='';
+        $scope.altaddress1 ='';
+        $scope.altcity1= '';
+        $scope.altstate1 ='';
+        $scope.altzip1= '';
+        $scope.altavai_time1='';
+        $scope.refer.alt1='';
+        $scope.choices = [{id: '1'}]; 
+  }
+  if(referid==3){
+    $scope.errormsg="Referral 2 deleted successfully.";
+    $scope.alternate_index2 ='';
+        $scope.previous_index='';
+        $scope.altfirst_name2 ='';
+        $scope.altlast_name2='';
+        $scope.altaddress2 ='';
+        $scope.altcity2= '';
+        $scope.altstate2 ='';
+        $scope.altzip2= '';
+        $scope.altavai_time2='';
+        $scope.refer.alt2 ='';
+        $scope.choices = [{id: '1'}]; 
+    //   $scope.choices = [{id: '1'},{id: '2'}]; 
+  }
+} ;
+}); 
+</script>
+
+
+<style>
+
+.referral-column-frame li {
+    border: 1px solid #dfdedd;
+    float: left;
+    margin: 0 0 0 -1px;
+    padding: 0;
+    width: 370px;
+}
+	</style>
+

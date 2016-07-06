@@ -1,0 +1,176 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+
+ use Zend\Session\Container;
+ $session = new Container('User');
+ $doc_specility_type=  $session->offsetGet('doc_speciality') ;
+
+?>
+<header layout="row">
+    <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+     <div class="log-frame" layout-align="start end" ng-controller="headercontrollar" flex>
+        <md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="showbtn(switchtext)">
+        {{ switchtext }} 
+          
+        </md-switch>
+    </div>
+</header>
+
+ <div class="width650 change-password" ng-controller="providerbillingeditcontrollar">
+            <form name="Provider" id="billingProvider">
+                  {{  message3  }} 
+              <md-input-container class="md-block margin-bottom40">
+                  <md-select placeholder="Pay with checking account" ng-model="useraccount.accounttype" ng-init="useraccount.accounttype=1">
+                      <md-option ng-value="optionno.id" ng-repeat="optionno in paymentoption">{{ optionno.name }}</md-option>
+                  </md-select>
+              </md-input-container>
+               <div ng-if="useraccount.accounttype==1">
+                  <h2>Change your password</h2>
+                <fieldset>
+                   
+
+                 <md-input-container class="md-block">
+                  <label>User name</label>
+                   <input name="acc_holder_name" type="text" ng-model="useraccount.acc_holder_name" required>
+                   <div ng-show="Provider.acc_holder_name.$touched">
+                      <div class="md-errors-spacer" ng-show="Provider.acc_holder_name.$error.required">Enter user name.</div>
+                  </div>
+               </md-input-container>
+               
+            <md-input-container class="md-block">
+                  <label>Current Password</label>
+                   <input name="acc_current_pass" type="text" ng-model="useraccount.acc_current_pass" required>
+                   <div ng-show="Provider.acc_current_pass.$touched">
+                      <div class="md-errors-spacer" ng-show="Provider.acc_current_pass.$error.required">Enter current password.</div>
+                  </div>
+            </md-input-container>
+            
+             <md-input-container class="md-block">
+                  <label>New Password</label>
+                   <input name="new_pass" type="text" ng-model="useraccount.new_pass" required>
+                   <div ng-show="Provider.new_pass.$touched">
+                      <div class="md-errors-spacer" ng-show="Provider.new_pass.$error.required">Enter new password.</div>
+                  </div>
+             </md-input-container>
+
+
+                <md-input-container class="md-block">
+                  <label>Confirm New Password</label>
+                  <input name="conf_new_pass" type="text" ng-pattern="useraccount.conf_new_pass" ng-model="useraccount.conf_new_pass" only-num required>
+                  <!--  code for match pattern start       -->  
+                  <div ng-show="Provider.conf_new_pass.$touched">
+                  <div class="md-errors-spacer" ng-show="Provider.conf_new_pass.$error.required">Enter confirm new password.</div>
+        
+                  <div class="md-errors-spacer" ng-show="(Provider.conf_new_pass.$viewValue != '' && Provider.new_pass.$viewValue != '')">
+                  <span ng-show="(Provider.new_pass.$viewValue != Provider.conf_new_pass.$viewValue)">Mismatch password.</span>
+              </div>
+            </div>
+             <!--  code for match pattern end       --> 
+              </md-input-container>
+          </fieldset>   
+        </div>
+              <div ng-if="useraccount.accounttype==2">
+                   <h3><span class="margin30c">Security Code Setup</span></h3>
+          <fieldset>
+                <md-input-container class="md-block">
+                    <label>Current 4 Digits Security Code</label>
+
+                    <input name="code" type="text" ng-pattern='/^(0|[0-9][0-9]*)$/' ng-minlength="4" ng-maxlength="4" ng-model="useraccount.code" required>
+                    <div ng-show="Provider.code.$touched">
+                    <div class="md-errors-spacer" ng-show="Provider.code.$error.required">Enter sequrity code.</div>
+                    <div class="md-errors-spacer" ng-show="Provider.code.$error.minlength">Min length should be 4.</div>
+                    <div class="md-errors-spacer" ng-show="Provider.code.$error.maxlength">Max length should be 4 .</div>
+                    <div class="md-errors-spacer" ng-show="Provider.code.$error.pattern">Only number allowed . </div>
+                   </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>New Security Code</label>
+                     <input name="new_code" type="text" ng-minlength="4" ng-maxlength="4" ng-model="useraccount.new_code" ng-pattern='/^(0|[0-9][0-9]*)$/' required>
+                    <div ng-show="Provider.new_code.$touched">
+                    <div class="md-errors-spacer" ng-show="Provider.new_code.$error.required">Enter new sequrity code.</div>
+                    <div class="md-errors-spacer" ng-show="Provider.new_code.$error.minlength">Min length should be 4.</div>
+                    <div class="md-errors-spacer" ng-show="Provider.new_code.$error.maxlength">Max length should be 4 .</div>
+                    <div class="md-errors-spacer" ng-show="Provider.new_code.$error.pattern">Only number allowed .</div>
+                  </div> 
+                </md-input-container>
+
+          <md-input-container class="md-block">
+              <label>Confirm New Security Code</label>
+               <input name="conf_new_code" type="text" ng-minlength="4" ng-maxlength="4" ng-model="useraccount.conf_new_code" ng-pattern='/^(0|[0-9][0-9]*)$/' required>
+              <div ng-show="Provider.conf_new_code.$touched">
+                <div class="md-errors-spacer" ng-show="Provider.conf_new_code.$error.required">Enter confirm new sequrity code.</div><br>
+                <div class="md-errors-spacer" ng-show="Provider.conf_new_code.$error.minlength">Min length should be 4.</div><br>
+                <div class="md-errors-spacer" ng-show="Provider.conf_new_code.$error.maxlength">Max length should be 4 .</div><br>
+                 <div class="md-errors-spacer" ng-show="Provider.conf_new_code.$error.pattern">Only number allowed .</div><br>
+                <div class="md-errors-spacer" ng-show="(Provider.conf_new_code.$viewValue  != '' && Provider.new_code.$viewValue)">
+                  <div ng-show="(Provider.new_code.$viewValue != Provider.conf_new_code.$viewValue)">Mismatch sequrity code.</div>
+               </div>
+            </div> 
+          </md-input-container>
+      </fieldset>
+  
+         </div>  <!--  ng-if div close here       -->
+              <div layout="row" layout-align="center center">
+                  <md-button class="md-warn md-raised save-button next" ng-click="submitUserdata(Provider)">Save</md-button>
+            <?php if($doc_specility_type==3){
+             ?>
+                 <md-button ng-href="/dashboardfront/specilistwelcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+                 <md-button ng-href="/dashboardfront/dashboardsetting" class="md-warn md-raised red-button marginLeft10">Cancel</md-button>
+                <?php
+          }else{
+          ?>
+            <md-button ng-href="/dashboardfront/welcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+           <md-button ng-href="/dashboardfront/dashboardsetting" class="md-warn md-raised red-button marginLeft10">Cancel</md-button>
+             <?php
+              }
+             ?>
+             </div>
+            </form>
+  
+    </div>
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('providerbillingeditcontrollar', function($scope,$http,$window) 
+{ 
+    $scope.paymentoption = [                                 // this is doctor type list on billing page 
+         { id: 1, name: 'Change your password' },
+         { id: 2, name: 'Change Security Code' },
+         ];
+ $scope.submitUserdata =function($valid)
+    {   
+       if($scope.Provider.$valid){
+          $http.post('/dashboardfront/providersequrityedit',$scope.useraccount)
+       .success(function(data,status){
+          if(data==1){
+          $scope.message3="Record updated successfully.";
+          }else if(data==2){
+          $scope.message3="Not the valid user id and password.";  
+          }else if(data==3){
+          $scope.message3="Not the valid sequrity code.";  
+          } 
+        })
+      }else{
+          $scope.message3="Invalid billing form details.";
+       }
+    } ;
+
+}); 
+</script>
+

@@ -1,0 +1,283 @@
+<?php echo $this->doctype(); 
+use Zend\Session\Container;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php 
+ $urllink=$_SERVER['REQUEST_URI'];
+?>
+    <title><?php if($urllink=='/admin/1'){ ?>Dental Plan Software <?php }else{ ?>Admin - Dental Plan Software  <?php }?> </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+	  
+    <!-- Bootstrap core CSS -->
+      <?php echo $this->headScript()  
+        ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+           ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+      
+        ; ?>
+
+
+
+	
+        <!-- Icons -->
+        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+        <link rel="shortcut icon" href="/img/favicon.png">
+        <link rel="apple-touch-icon" href="/img/icon57.png" sizes="57x57">
+        <link rel="apple-touch-icon" href="/img/icon72.png" sizes="72x72">
+        <link rel="apple-touch-icon" href="/img/icon76.png" sizes="76x76">
+        <link rel="apple-touch-icon" href="/img/icon114.png" sizes="114x114">
+        <link rel="apple-touch-icon" href="/img/icon120.png" sizes="120x120">
+        <link rel="apple-touch-icon" href="/img/icon144.png" sizes="144x144">
+        <link rel="apple-touch-icon" href="/img/icon152.png" sizes="152x152">
+        <link rel="apple-touch-icon" href="/img/icon180.png" sizes="180x180">
+        <!-- END Icons -->
+
+        <!-- Stylesheets -->
+        <!-- Bootstrap is included in its original form, unaltered -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+        <!-- Related styles of various icon packs and plugins -->
+        <link rel="stylesheet" href="/css/plugins.css">
+
+        <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
+        <link rel="stylesheet" href="/css/main.css">
+
+        <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
+        <?php if ($template['theme']) { ?><link rel="stylesheet" href="/css/themes/<?php echo $template['theme']; ?>.css" id="theme-link"><?php } ?>
+
+        <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
+        <link rel="stylesheet" href="/css/themes.css">
+        <!-- END Stylesheets -->
+
+        <!-- Modernizr (browser feature detection library) -->
+
+    <script src="/js/vendor/jquery-2.1.4.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/pages/uiTables.js"></script>
+<script>$(function(){ UiTables.init(); });</script>
+
+
+        <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+      
+
+    
+    
+    
+    <!--[if lt IE 9]>
+        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+        <![endif]-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+
+
+<body class="nav-md">
+ 
+ <div class="" id="page-wrapper">
+    <!-- Preloader -->
+    <!-- Preloader functionality (initialized in js/app.js) - pageLoading() -->
+    <!-- Used only if page preloader enabled from inc/config (PHP version) or the class 'page-loading' is added in #page-wrapper element (HTML version) -->
+    <div class="preloader">
+        <div class="inner">
+            <!-- Animation spinner for all modern browsers -->
+            <div class="preloader-spinner themed-background hidden-lt-ie10"></div>
+
+            <!-- Text for IE9 -->
+            <h3 class="text-primary visible-lt-ie10"><strong>Loading..</strong></h3>
+        </div>
+    </div>
+    <!-- END Preloader -->
+
+    <!-- Page Container -->
+    <!-- In the PHP version you can set the following options from inc/config file -->
+    <!--
+        Available #page-container classes:
+
+        'sidebar-light'                                 for a light main sidebar (You can add it along with any other class)
+
+        'sidebar-visible-lg-mini'                       main sidebar condensed - Mini Navigation (> 991px)
+        'sidebar-visible-lg-full'                       main sidebar full - Full Navigation (> 991px)
+
+        'sidebar-alt-visible-lg'                        alternative sidebar visible by default (> 991px) (You can add it along with any other class)
+
+        'header-fixed-top'                              has to be added only if the class 'navbar-fixed-top' was added on header.navbar
+        'header-fixed-bottom'                           has to be added only if the class 'navbar-fixed-bottom' was added on header.navbar
+
+        'fixed-width'                                   for a fixed width layout (can only be used with a static header/main sidebar layout)
+
+        'enable-cookies'                                enables cookies for remembering active color theme when changed from the sidebar links (You can add it along with any other class)
+    -->
+  <div class="header-fixed-top sidebar-visible-lg-full" id="page-container">
+
+
+        <!-- Main Container -->
+        <div id="main-container">
+            <!-- Header -->
+<!-- In the PHP version you can set the following options from inc/config file -->
+<!--
+    Available header.navbar classes:
+
+    'navbar-default'            for the default light header
+    'navbar-inverse'            for an alternative dark header
+
+    'navbar-fixed-top'          for a top fixed header (fixed main sidebar with scroll will be auto initialized, functionality can be found in js/app.js - handleSidebar())
+        'header-fixed-top'      has to be added on #page-container only if the class 'navbar-fixed-top' was added
+
+    'navbar-fixed-bottom'       for a bottom fixed header (fixed main sidebar with scroll will be auto initialized, functionality can be found in js/app.js - handleSidebar()))
+        'header-fixed-bottom'   has to be added on #page-container only if the class 'navbar-fixed-bottom' was added
+-->
+<!--   here header  menu  start here           -->
+            <?php 
+                     $session = new Container('User');
+                     if($session->offsetExists('email'))
+                      { 
+                      echo $this->partial('header.phtml');  
+              }
+                     ?>
+<!--   here header  menu  end here           -->
+            
+  <!--   here left  menu  start here           -->    
+              <?php 
+                     $session = new Container('User');
+                     if($session->offsetExists('email'))
+                      { 
+                      echo $this->partial('left-menu.phtml');  
+              }
+              ?> 
+ <!--   here left  menu  start here           -->
+
+<!-- Page content -->
+<div id="page-content" style="min-height: 433px;">
+
+           <?php   echo $this->content;?>
+    <!-- First Row -->
+ <!--
+    <div class="row">
+     
+
+
+
+   
+        <div class="col-sm-6 col-lg-3">
+            <a class="widget" href="javascript:void(0)">
+                <div class="widget-content widget-content-mini text-right clearfix">
+                    <div class="widget-icon pull-left themed-background">
+                        <i class="gi gi-cardio text-light-op"></i>
+                    </div>
+                    <h2 class="widget-heading h3">
+                        <strong><span data-to="13" data-toggle="counter">13</span></strong>
+                    </h2>
+                    <span class="text-muted">PATIENTS</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <a class="widget" href="doctors_grid.php">
+                <div class="widget-content widget-content-mini text-right clearfix">
+                    <div class="widget-icon pull-left themed-background-success">
+                        <i class="gi gi-user text-light-op"></i>
+                    </div>
+                    <h2 class="widget-heading h3 text-success">
+                        <strong> <span data-to="4" data-toggle="counter">4</span></strong>
+                    </h2>
+                    <span class="text-muted">DOCTORS</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <a class="widget" href="specialist_grid.php">
+                <div class="widget-content widget-content-mini text-right clearfix">
+                    <div class="widget-icon pull-left themed-background-success">
+                        <i class="gi gi-user text-light-op"></i>
+                    </div>
+                    <h2 class="widget-heading h3 text-success">
+                        <strong> <span data-to="2" data-toggle="counter">2</span></strong>
+                    </h2>
+                    <span class="text-muted">SPECIALISTS</span>
+                </div>
+            </a>
+        </div>
+         <div class="col-sm-6 col-lg-3">
+            <a class="widget" href="javascript:void(0)">
+                <div class="widget-content widget-content-mini text-right clearfix">
+                    <div class="widget-icon pull-left themed-background-success">
+                        <i class="gi gi-user text-light-op"></i>
+                    </div>
+                    <h2 class="widget-heading h3 text-success">
+                        <strong> <span data-to="0" data-toggle="counter">0</span></strong>
+                    </h2>
+                    <span class="text-muted">REFERALS</span>
+                </div>
+            </a>
+        </div>
+       <div class="col-sm-6 col-lg-3">
+            <a class="widget" href="javascript:void(0)">
+                <div class="widget-content widget-content-mini text-right clearfix">
+                    <div class="widget-icon pull-left themed-background-warning">
+                        <i class="gi gi-briefcase text-light-op"></i>
+                    </div>
+                    <h2 class="widget-heading h3 text-warning">
+                        <strong>$ <span data-to="874.0000" data-toggle="counter">874</span></strong>
+                    </h2>
+                    <span class="text-muted">FROM PATIENTS</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <a class="widget" href="javascript:void(0)">
+                <div class="widget-content widget-content-mini text-right clearfix">
+                    <div class="widget-icon pull-left themed-background-danger">
+                        <i class="gi gi-wallet text-light-op"></i>
+                    </div>
+                    <h2 class="widget-heading h3 text-danger">
+                        <strong>$ <span data-to="1500.0000" data-toggle="counter">1500</span></strong>
+                    </h2>
+                    <span class="text-muted">FROM DOCTORS</span>
+                </div>
+            </a>
+        </div>
+       <div class="col-sm-6 col-lg-3">
+            <a class="widget" href="javascript:void(0)">
+                <div class="widget-content widget-content-mini text-right clearfix">
+                    <div class="widget-icon pull-left themed-background-warning">
+                        <i class="gi gi-briefcase text-light-op"></i>
+                    </div>
+                    <h2 class="widget-heading h3 text-warning">
+                        <strong>$ <span data-to="582.0000" data-toggle="counter">582</span></strong>
+                    </h2>
+                    <span class="text-muted">DOCTORS PAYOUT</span>
+                </div>
+            </a>
+        </div>
+        
+    </div>
+      -->
+    <!-- END First Row -->
+</div>
+<!-- END Page Content -->
+
+        </div>
+        <!-- END Main Container -->
+    </div>
+    <!-- END Page Container -->
+</div>
+
+</body>
+
+</html>
+<script src="/js/pages/readyDashboard.js"></script>
+<script>$(function(){ ReadyDashboard.init(); });</script>

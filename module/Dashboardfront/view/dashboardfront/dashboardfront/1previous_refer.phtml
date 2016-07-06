@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>denefits</title>
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Angular Material style sheet -->
+<link href="/css/angular-material.css" rel="stylesheet">
+<!-- Custom style sheet -->
+<link href="/css/custom.css" rel="stylesheet">
+</head>
+<body ng-app="BlankApp" ng-cloak>
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+    <div class="width1200" ng-controller="refercontroller">
+    <div class="grid100 change-password">
+    	<div layout="row" layout-align="center center">
+            <h2>Specialist Referral Dashboard</h2>
+        </div>
+        <div layout="row" layout-align="center center">
+            <div class="refer-column">
+                <ul>
+                    <li>
+                        <div class="refer-green-column"><img src="/images/refer-icon2.png" width="121" height="92" alt="Refer"><br/><?php echo $this->tot_refer_count; ?><br/>Reffered</div>
+                    </li>
+                    <li>
+                        <div class="refer-blue-column"><img src="/images/acceptance-icon.png" width="72" height="93" alt="Acceptance"><br/><?php echo $this->tot_refer_accepted_count; ?><br/>Pending Acceptance</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="schedule-table margintop90">
+        <md-input-container class="grid350 md-block" style="width:30%;float:left;">
+            <md-select placeholder="Email Sents" name="myModel" ng-model="myModel">
+                <md-option value="1">Dummy Text</md-option>
+                <md-option value="2">Dummy Text</md-option>
+                <md-option value="3">Dummy Text</md-option>
+            </md-select>
+        </md-input-container> 
+        <div class="buttons-frame">
+                <div class="compaign-frame add-button">
+                    <ul>
+                        <li class="button dark-green dark-green-shadow"><a href="/dashboardfront/patient" title="New Referral">New Referral</a></li>
+                    </ul>
+                </div>
+        </div>
+            <div class="responsive-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="width150">Patient Name</th>
+                        <th>Specialist Type</th>
+                        <th>Primary Specialist</th>
+                        <th>Alternate1 </th>
+                        <th>Alternate2 </th>
+                        <th>Referral Note</th>
+                        <th>Acceptance Status</th>
+                        <th colspan="2">Date Referred</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr  ng-repeat="referdata in referlistingarray">
+                      <td class="width150">{{ referdata.patient_firstname+' '+referdata.patient_lastname }} </td>
+                        <td><span ng-if="referdata.dentist_type==1">Dentist</span>
+                            <span ng-if="referdata.dentist_type==2">Pediatric Dentists</span>
+                            <span ng-if="referdata.dentist_type==3">Other Specialist</span>
+                        </td>
+                        <td>{{ referdata.refer_to_name }}</td>
+                        <td> {{ referdata.alternate1_name }}</td>
+                        <td> {{ referdata.alternate2_name }}</td>
+                        <td class="align-center">{{ referdata.comments }} <a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></td>
+                        <td>
+                           <div ng-if="referdata.status == '0' "> Pending </div>
+                           <div ng-if="referdata.status == '1' "> Accepted </div>
+                           <div ng-if="referdata.status == '2' "> Decline </div>
+                           <div ng-if="referdata.status == '3' "> Accepted-But call</div>
+                           <div ng-if="referdata.status == '4' "> Missed </div>
+                        </td>
+                        <td>{{ referdata.date_reffered| date : 'MM/dd/yyyy'}}</td>
+                        <td class="align-center"><a href="javascript:void(0);" title="Delete"><img src="/images/delete-icon.png" width="20" height="25" alt="Delete"></a></td>
+                    </tr>
+              </tbody>
+            </table>
+            </div>
+        </div>
+
+    </div>
+</div>        
+            
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('refercontroller', function($scope,$http,$window) 
+{ 
+  var referlisting=statesname='<?php echo $referlisting ; ?>';
+  var referlistingobject=angular.fromJson(referlisting); 
+  $scope.referlistingarray  = angular.fromJson(referlistingobject);
+}); 
+</script>
+
+</body>
+</html>

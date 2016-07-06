@@ -1,0 +1,162 @@
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<?php //print_r($refer);?>
+<div class="grid680" ng-controller="formCtrl">
+	<form name="userForm" id="msform" action="#">
+    <div class="grid100 change-password specialist-popup" ng-if="procedurepopup==0">
+        <div class="align-center"><h2>Hello Dr. <br/>You Have a New referral</h2></div>
+       
+        {{error}}
+        <div class="specialist-frame align-center">
+			<?php foreach($refer as $key=>$val){ ?>
+            <h3><span class="red-color">
+				<?php
+				 $sdate = date('Y-m-d H:i:s', strtotime($val['refer_time'].'+1 day'));
+				 $edata = date('Y-m-d H:i:s');
+				 
+				 $start_date = new DateTime($sdate);
+				 $since_start = $start_date->diff(new DateTime($edata));
+				 echo $since_start->h.'hr '.$since_start->i.'min '.$since_start->s.'sec ';
+				?>
+				</span></h3>
+            <p>left to accept or his referral will go to another provider</p>
+            
+				<div>Referral reason from dentist:<?php echo $val['comments'];?></div>
+            <div layout="row" layout-align="center center">
+              <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-value="<?php echo $val['ref_id'];?>" ng-model="refer.time[<?php echo $val['ref_id'];?>]" class="md-primary">
+                <?php echo date('m/d/Y', strtotime($val['appointment_date']));
+                echo '&nbsp;'.$val['appointment_time'];
+                ?>
+              </md-checkbox>
+            </div>
+            <?php }?>
+        </div>
+        
+        <div layout="row" layout-align="center center" class="clearboth">
+            <md-button class="md-warn md-raised more-button" ng-click="procedure()">Accept</md-button>
+            <md-button class="md-warn md-raised more-button marginLeft10" ng-click="acceptbutcall()">Accept But Call</md-button>
+            <md-button class="md-warn md-raised red-button marginLeft10" ng-click="submitDecline()">Decline</md-button>
+        </div>
+       
+	</div>
+	
+	
+	<div class="grid100 change-password specialist-popup" ng-if="procedurepopup==1">
+		{{error}}
+        <div class="align-center"><h2>Hello Dr. <br/>Please enter procedure codes for</h2></div>
+        <?php foreach($refer as $key=>$val){ ?>
+		<div ng-if="refer.time[<?php echo $val['ref_id'];?>]==true"> 
+        <div class="align-center" style="margin-top:20px;"><h3><?php echo $val['patient_firstname'].' '.$val['patient_lastname'];?></h3></div>
+        <div class="grid100 box-frame">
+            <textarea rows="3" class="box2" style="height:80px;" ng-model="refer.procedure[<?php echo $val['ref_id'];?>]" placeholder="procedure code" required></textarea>
+        </div>
+        </div>
+        <?php }?>
+        <div layout="row" layout-align="center center" class="clearboth">
+            <md-button class="md-warn md-raised more-button marginLeft10"  ng-disabled="isDisabled" ng-click="submitAccept()">Please click here</md-button>
+        </div>
+	</div>
+	
+	</form>
+</div>
+
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']);
+app.controller("formCtrl", function($scope, $http,$window) {
+	$scope.procedurepopup = 0;
+	$scope.isDisabled = false;
+	$scope.refer = {'reftype':'accept'};
+	$scope.submitAccept = function(){
+			
+		if ($scope.userForm.$valid) {
+			//$scope.isDisabled = true;			
+			
+			console.log($scope.refer);
+			$http.post('/dashboardfront/submitpopup',$scope.refer)
+			.success(function(data,status){
+				$scope.dashboard = 1;
+			  if(data=='1'){
+				$window.location="/dashboardfront/specilistwelcome";
+
+			  }else{
+				
+			  }
+
+			})
+		}else{
+			$scope.message =   'Please fill the form details.';  
+		}		
+		
+	
+	};
+	$scope.submitDecline = function(){
+			$scope.refer.reftype='decline';
+			//alert($scope.refer.reftype);
+		if ($scope.userForm.$valid) {
+			$scope.isDisabled = true;			
+			
+			console.log($scope.refer);
+			$http.post('/dashboardfront/submitpopup',$scope.refer)
+			.success(function(data,status){
+				//$scope.dashboard = 1;
+			  if(data=='1'){
+				$window.location="/dashboardfront/specilistwelcome";
+
+			  }else{
+				
+			  }
+
+			})
+		}else{
+			$scope.message =   'Please fill the form details.';  
+		}		
+		
+	
+	};
+	$scope.procedure = function(){
+		var count = 0;
+		angular.forEach($scope.refer.time, function(student){
+			count += 1;
+		});
+		 
+		//alert(count);
+		if (count>0) {
+			//$scope.isDisabled = true;		
+			$scope.procedurepopup = 1;
+		}else{
+			$scope.error="Please check atleast one referral";
+		}
+	};
+	$scope.acceptbutcall = function (){
+		var count = 0;
+		angular.forEach($scope.refer.time, function(student){
+			count += 1;
+		});
+		if (count>0) {
+		$scope.refer.reftype='call';
+		$http.post('/dashboardfront/submitpopup',$scope.refer)
+			.success(function(data,status){
+				//$scope.dashboard = 1;
+			  if(data=='1'){
+				$window.location="/dashboardfront/referralpopup2";
+
+			  }else{
+				
+			  }
+
+			})
+		}else{
+			$scope.error="Please check atleast one referral";
+		}
+	};
+ });
+</script>

@@ -1,0 +1,595 @@
+<div ng-controller="formCtrl">
+<form name="userForm" id="msform" action="#">
+    <header>
+        <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+        <div class="process-wizard">
+            <ul id="progressbar">
+                <li class="active"><span>Banking</span></li>
+                <li><span>Fee Schedule upload</span></li>                                
+                <li><span>Financing</span></li>
+                <li><span>Referrals</span></li>
+                <li><span>Welcome</span></li>
+            </ul>
+        </div>
+        <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+    </header>
+    <div class="width650">
+        <div class="grid100 change-password">
+            <div id="divone" ng-show='one'>
+                <div class="margin50" layout="row" layout-align="center start">
+                	<div class="bank-icon" layout="row" layout-align="center center"><img src="/images/bank-icon.png" width="93" height="93" alt="Bank"></div>
+                </div>
+                <h2>Where Would you like your money deposited?</h2>
+                   <p>{{ message }} </p>
+                <md-input-container class="md-block">
+                    <label>Account Name</label>
+                    <input name="name" type="text" ng-model="account.name" required>
+                     <div ng-show="userForm.name.$touched">
+                      <div class="md-errors-spacer" ng-show="userForm.name.$error.required">Enter Account Name.</div>
+                     </div>
+                     
+                     
+                     
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Routing Number</label>
+                    <input name="routing_number" type="text" ng-model="account.routing_number" ng-pattern='/^(0|[0-9][0-9]*)$/' required>
+                      <div ng-show="userForm.routing_number.$touched">
+                      <div class="md-errors-spacer" ng-show="userForm.routing_number.$error.required">Enter Routing Number.</div>
+                      <div class="md-errors-spacer" ng-show="userForm.routing_number.$error.pattern">Only numbers are allow.</div>
+                     </div>
+                     
+                     
+                     
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm Routing Number</label>
+                    <input name="confirm_routing_number" type="text" ng-model="account.confirm_routing_number" ng-pattern="account.routing_number" required>
+                    <div ng-show="userForm.confirm_routing_number.$touched">
+                           <div class="md-errors-spacer" ng-show="userForm.confirm_routing_number.$error.required">Enter Confirm Routing Number</div>
+                          <div class="md-errors-spacer" ng-show="userForm.confirm_routing_number.$error.pattern">Routing number have to match!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Account Number</label>
+                    <input name="account_number" type="text" ng-model="account.account_number" ng-pattern='/^(0|[0-9][0-9]*)$/' required>
+                    <div ng-show="userForm.account_number.$touched">
+                          <div class="md-errors-spacer" ng-show="userForm.account_number.$error.required">Enter Account Number</div>
+                          <div class="md-errors-spacer" ng-show="userForm.account_number.$error.pattern">Only numbers are allow</div>
+                     </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm Account Number</label>
+                    <input name="confirm_account_number" type="text" ng-model="account.confirm_account_number" ng-pattern="account.account_number" required>
+                    <div ng-show="userForm.confirm_account_number.$touched">
+                         <div class="md-errors-spacer" ng-show="userForm.confirm_account_number.$error.required">Confirm Account Number</div>
+                         <div class="md-errors-spacer" ng-show="userForm.confirm_account_number.$error.pattern">Account number have to match!</div>
+                     </div>
+                     
+                </md-input-container>
+               	<md-button class="md-warn md-raised next-button next" id="nbutton1" ng-click=bankingformsubmit(userForm);>Next</md-button>
+            </div>
+            <div ng-show='two'>
+            	<div layout="row" layout-align="center center">
+                	<h2>Upload your Fee Schedule ?</h2>
+                </div>
+                <div layout="row" layout-align="center center">
+                	<h3>Please upload a .xls or .csv file only. Thank You</h3>
+                </div>
+                <div layout="row" layout-align="center center">
+					 <input style="width:360px;" type = "file" file-model = "myFile"/>					
+                	<md-button class="md-warn md-raised more-button" ng-click = "uploadFileCsv()">Upload</md-button>
+                </div>
+                <p>{{error}} {{mapMsg}}</p>
+                <div ng-if="mapingdiv == 1" >
+					<div ng-if="loader == 1" style=" background-color: #fff;overflow: hidden;position: fixed; z-index:10; top:545px;left:550px;height:20px" >Processing...  Please wait!</div>
+					<div layout-gt-sm="row" class="layout-gt-sm-row">
+					<md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        ADA Code :                        
+					 </md-input-container>
+					 
+					<md-input-container class="md-block" flex-gt-sm >
+					   <select placeholder="Select column" ng-model="maping.ada">
+						<option value="" selected>- Please Match Column -</option>					   
+					   <option ng-value="key" ng-repeat="(key,col) in  pricingrow">{{ col }}</option>
+					   </select>
+					  
+					</md-input-container>
+					</div>
+					<div layout-gt-sm="row" class="layout-gt-sm-row">
+					<md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        Description :                         
+					</md-input-container>
+					 
+					<md-input-container class="md-block" flex-gt-sm >
+						 <select placeholder="Select column" ng-model="maping.description">
+						<option value="" selected>- Please Match Column -</option>					   
+					   <option ng-value="key" ng-repeat="(key,col) in  pricingrow">{{ col }}</option>
+					   </select>
+					  
+					</md-input-container>
+					</div>
+					<div layout-gt-sm="row" class="layout-gt-sm-row">
+					<md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        Price :                         
+					 </md-input-container>
+					 
+					<md-input-container class="md-block" flex-gt-sm >
+						 <select placeholder="Select column" ng-model="maping.pricing">
+						<option value="" selected>- Please Match Column -</option>					   
+					   <option ng-value="key" ng-repeat="(key,col) in  pricingrow">{{ col }}</option>
+					   </select>
+					  
+					</md-input-container>
+					</div>
+					<md-button style="margin-left:250px" ng-disabled="loader" class="md-warn md-raised prev-button previous" ng-click="mapprice(userForm)" >Map</md-button>
+                </div>
+                
+                <div id="progress" class="graph"><div id="bar" style="width:{{progress}}%"><p>{{progress}}% complete</p></div></div>
+                <md-button class="md-warn md-raised prev-button previous" ng-click="showtab('one')" >Back</md-button>
+	            <md-button class="md-warn md-raised next-button next" ng-disabled="mapdisable" ng-disabled="mapdisable" ng-click="showtab('three')">Next</md-button>
+            </div>
+                
+            <div ng-show='three'>
+                <div class="width900" ng-init="letfinance='0'">
+					
+                    <div layout="row" layout-align="center center">
+                        <h2><span class="margin30">Would you like to let patients finance their treatment?</span></h2>
+                        {{financeMsg}}
+                    </div>
+                    <div layout="row" layout-align="center center" class="margin30d">
+                        <md-radio-group ng-model="letfinance" layout="row">
+                            <md-radio-button value="1" class="md-primary">Yes</md-radio-button>
+                            <md-radio-button value="0" class="md-primary">No</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    <div ng-if="letfinance == '1'">
+                    <div layout="row" layout-align="center center">
+                        <h3><span class="margin30">What is the lowest minimum payment per month you would accept?</span></h3>
+                    </div>
+                    <div class="payment-input clearboth">													
+							<input name="lowestpayment" type="text" ng-model="finance.lowestpayment" placeholder="$50/month" ng-pattern='/^(0|[1-9][0-9]*)$/' required>
+							<div class="md-errors-spacer" ng-show="userForm.lowestpayment.$touched" > 
+								<span ng-show="userForm.lowestpayment.$error.required">Required</span>
+								<span class="md-errors-spacer" ng-show="userForm.lowestpayment.$error.pattern">Only numbers are allow.</span>
+							</div>						
+                        
+                    </div>
+                    <div layout="row" layout-align="center center" class="margintop50 clearboth">
+                        <h3><span class="margin30">What is the minimum downpayment you will require from patients in order to charge 0% intrest?</span></h3>
+                    </div>
+                    <div class="payment-input clearboth">                       							
+							<input name="downpayment" type="text" ng-model="finance.downpayment" placeholder="20%" ng-pattern='/^(0|[1-9][0-9]*)$/' required>
+							<div class="md-errors-spacer" ng-show="userForm.downpayment.$touched"> 
+								<span ng-show="userForm.downpayment.$error.required">Required</span>
+								<span class="md-errors-spacer" ng-show="userForm.downpayment.$error.pattern">Only numbers are allow.</span>
+							</div>	
+                      
+                    </div>
+                    <div layout="row" layout-align="center center" class="margintop50 clearboth">
+                        <h3>How would you like to charge for late fees?</h3>            
+                        <div layout="row" layout-align="center start" class="md-block marginLeft20">
+                            <md-radio-group ng-model="chargein" layout="row">
+                                <md-radio-button value="0" class="md-primary">Flat Fee</md-radio-button>
+                                <md-radio-button value=1 class="md-primary">Percentage of remaining balance</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </div>
+                    <div class="charge200">
+                        <div layout="row" layout-align="center center" class="margintop50 clearboth">
+                            <h3 ng-if="chargein == '0'" >$</h3>
+                            <div class="payment-input" ng-if="chargein == '1'||chargein == '0'">								
+									
+									<input name="chargelatefee" type="text" ng-model="finance.chargelatefee" ng-pattern='/^(0|[1-9][0-9]*)$/' required>
+									<div class="md-errors-spacer" ng-show="userForm.chargelatefee.$touched"> 
+										<span ng-show="userForm.chargelatefee.$error.required">Required</span>
+										<span class="md-errors-spacer" ng-show="userForm.chargelatefee.$error.pattern">Only numbers are allow.</span>
+									</div>								
+
+                            </div>
+                            <h3 ng-if="chargein == '1'">%</h3>
+                        </div>
+                    </div>
+                    </div>
+				</div>                
+	            <md-button class="md-warn md-raised prev-button previous margin110" ng-click="showtab('two')">Back</md-button>
+                <md-button class="md-warn md-raised next-button next margin110" ng-click="financingSubmit(userForm)">Next</md-button>
+            </div>
+            <div ng-show='four'>
+                <div layout="row" layout-align="center center">
+                	<h2>Would you like us to help find patients for you?</h2>
+                	{{financeMsg}}
+                </div>
+                <div layout="row" layout-align="center center">
+                	<div class="align-center"><h3>There is no risk. We find patients, you only pay when patients show up for their appointment</h3></div>
+                </div>
+                 <div layout="row" layout-align="center center" class="margin30d" ng-init="help=1">
+                        <md-radio-group ng-model="help" layout="row">
+                            <md-radio-button value="0" class="md-primary">Yes</md-radio-button>
+                            <md-radio-button value=1 class="md-primary">No</md-radio-button>
+                        </md-radio-group>
+                 </div>
+              <div ng-if="help==0">
+                 <div id="last-frame" class="last-frame" ng-init="mail=1" >
+                	<div class="width900">
+                    	<div layout="row" layout-align="center center">
+                            <h2><span class="margin30">One last thing....</span></h2>
+                        </div>
+                        <div layout="row" layout-align="center center">
+                            <h3><span class="">We want you to see to be able to send patients to specialists you like </span></h3>
+                        </div>
+                        <div layout="row" layout-align="center center">
+                            <h3><span class="">May we send an email invitation on your behalf to your preferred specialists to be part of Denefits?</span></h3>
+                        </div>
+                        <div layout="row" layout-align="center center" class="margin30d">
+                            <md-radio-group ng-model="mail" layout="row">
+                                <md-radio-button value="0" class="md-primary">Yes</md-radio-button>
+                                <md-radio-button value="1" class="md-primary">No</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <div ng-if="mail== 0" >
+                        <div layout-gt-sm="row" class="clearboth" ng-repeat="pat in pats">
+                            <md-input-container class="md-block">
+                                <label>First Name</label>
+                                <input name="invitation_first{{ $index }}" type="text" ng-model="invitation.firstName[pat.id]" required>
+                                <div class="md-errors-spacer" ng-show="userForm.invitation_first{{ $index }}.$touched">
+									<span ng-show="userForm.invitation_first{{ $index }}.$error.required">Enter Last Name</span>
+								</div>
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Last Name</label>
+                                <input name="invitation_last{{ $index }}" type="text" ng-model="invitation.lastName[pat.id]" required>
+                                <div class="md-errors-spacer" ng-show="userForm.invitation_last{{ $index }}.$touched">
+									<span ng-show="userForm.invitation_last{{ $index }}.$error.required">Enter Last Name</span>
+								</div>
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Email Address</label>
+                                <input name="invitation_email{{ $index }}" ng-pattern='/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/' type="text" ng-model="invitation.emailAddress[pat.id]" required>
+                                <div class="md-errors-spacer" ng-show="userForm.invitation_email{{ $index }}.$touched">
+									<span ng-show="userForm.invitation_email{{ $index }}.$error.required">Enter Email Address</span>
+									<span ng-show="userForm.invitation_email{{ $index }}.$error.pattern">Invalid Email Address</span>
+								</div>
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Phone Number</label>
+                                <input name="invitation_phone{{ $index }}" ng-pattern='/^(0|[0-9][0-9]*)$/' type="text" ng-model="invitation.phoneNumber[pat.id]" required>
+                                <div class="md-errors-spacer" ng-show="userForm.invitation_phone{{ $index }}.$touched">
+									 <span ng-show="userForm.invitation_phone.phone{{ $index }}.$error.pattern"> Only number allowed</span>
+									 <span ng-show="userForm.phone{{ $index }}.$error.required">Enter phone</span>
+								</div>
+								
+                            </md-input-container>
+                            <div ng-if="pat.id!=1" class="delete"><a href="javascript:void(0);" title="Delete"><img src="/images/delete-icon.png" width="20" height="25" alt="Delete" ng-click="removeInvite($index,pat.id)"></a></div>
+                        </div>
+                        
+                        <div layout="row" layout-align="center center">
+							<md-button class="md-warn md-raised green-button" ng-click=addNewpat()>Add More</md-button>
+						</div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+                <md-button class="md-warn md-raised prev-button previous" ng-click="showtab('three')">Back</md-button>
+	            <md-button class="md-warn md-raised next-button next" ng-click="referralSubmit()">Next</md-button>
+            </div>
+            <div ng-show='five'>
+                <div class="align-center">
+                	<h2>Welcome to Denefits. You are now a part of the world's largest private dental marketplace</h2>
+                </div>
+                <br/><br/><br/><br/>
+                <div layout="row" ng-if="dashboard==1" layout-align="center center">
+                	<md-button class="md-warn md-raised green-button" ng-href="specilistwelcome">Go to my dashboard</md-button>
+                </div>
+                <br/><br/>
+                <md-button class="md-warn md-raised prev-button previous" ng-click="showtab('four')">Back</md-button>
+	            <md-button class="md-warn md-raised next-button submit" ng-disabled="isDisabled" ng-click="submitUserForm(userForm)" >Submit</md-button>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']); 
+ 
+         
+ app.directive('fileModel', ['$parse', function ($parse) {
+	return {
+	   restrict: 'A',
+	   link: function(scope, element, attrs) {
+		  var model = $parse(attrs.fileModel);
+		  var modelSetter = model.assign;
+		  
+		  element.bind('change', function(){
+			 scope.$apply(function(){
+				modelSetter(scope, element[0].files[0]);
+			 });
+		  });
+	   }
+	};
+ }]);
+
+ app.service('fileUpload', ['$http', function ($http) {
+	this.uploadFileToUrl = function(file, uploadUrl,$scope){
+	   var fd = new FormData();
+	  
+	   fd.append('file', file);
+		$scope.progress = 25;
+	   $http.post(uploadUrl, fd, {
+		  transformRequest: angular.identity,
+		  headers: {'Content-Type': undefined}
+	   })
+	
+	   .success(function(data){
+		   if(data==0){
+			   //alert('upload csv file only');
+				$scope.error='Upload csv file only';
+				$scope.progress = 0;
+			}else{
+				$scope.progress = 100;
+				$scope.feemap(data);
+			}
+	   })
+	
+	   .error(function(){
+	   });
+	   $scope.progress = 60;
+	   $scope.error='';
+	}
+ }]);
+ 
+app.controller("formCtrl", function($scope, $http,fileUpload,$window) {
+		
+	     $scope.one = true; // setting the first div visible when the page loads
+         $scope.two = false; // hidden
+         $scope.three = false; // hidden
+         $scope.four = false; // hidden
+         $scope.five = false; // hidden
+         $scope.six = false; // hidden
+         $scope.seven = false; // hidden
+		 $scope.isDisabled = false;
+		 $scope.dashboard = 0;
+		 $scope.mapdisable = 1;
+		 $scope.mapMsg = '';
+		 $scope.loader = 0;
+		 
+		$scope.fees = {};
+		$scope.pricing = {};
+		$scope.finance = {};
+		$scope.invitation = {};
+		$scope.maping = {};
+		
+		$scope.pats = [{id: '1'}];
+		$scope.progress = 0;
+        $scope.url = '/dashboardfront/bankingdoctorspecialist'; 
+        $scope.bankingformsubmit = function($valid) {
+			//$( "#divone" ).fadeTo( "slow", 0.33 );
+			 //$( ".next" ).unbind( "click");			
+             ///alert($scope.userForm.$valid);
+ 
+            if ($scope.userForm.$valid) {
+              //alert($scope.account.name);
+ 
+                $http.post($scope.url, $scope.account).
+                        success(function(data, status) {
+							var next_fs = $(this).parent().next();						
+							$("#progressbar li").eq(1).addClass("active");
+							$scope.one = false; 
+							$scope.two = true; 
+                            console.log(data);
+                            var ctr = this;
+                            console.log($scope.account.name);
+                            //$( "#nbutton1" ).triggerHandler( "click" );
+							//$scope.target.parent.
+                            //angular.element( document.querySelector( '#nbutton1' ) ).triggerHandler('click');;
+                            
+                            //$temp = $compile(nextbutton)($scope);
+							//$temp.addClass('next');
+                            //$( "#nbutton1" ).trigger( "click" );
+                            //$window.gonext();
+                            //$( ".next" ).bind( "click");
+                            //$( ".next" ).trigger( "click" );
+                            //$mdTabsCtrl.nextPage();
+                            /*$scope.status = status;
+                            $scope.data = data;
+                            $scope.result = data;*/
+                            //$scope.account.nbutton1.class=
+                            //var nextbutton = angular.element( document.querySelector( '#nbutton1' ) );
+							//nextbutton.addClass('next');
+                        })
+            }else{
+                
+                $scope.message  ='Form is not valid';
+            }
+ 
+        };
+      
+		$scope.uploadFileCsv = function(){
+		   var file = $scope.myFile;
+		   $scope.progress = 10;
+		   console.log('file is ' );
+		   console.dir(file);
+		   
+		   var uploadUrl = "/dashboardfront/feeSchedule";
+		   fileUpload.uploadFileToUrl(file, uploadUrl,$scope);
+		};
+		$scope.feemap = function($data){
+			$scope.pricingfile=$data;
+			$http.get("/dashboardfront/feemap",{params: {'name':$data}}).then(function(response) {
+				
+				$scope.mapingdiv=1;
+				$scope.pricingrow = response.data;
+				//console.log(response);
+				//$scope.myWelcome = response.data;
+				//console.log(response.data);
+				//$scope.fees = response.data;
+				
+			});
+		}; 
+		$scope.mapprice = function ($valid){
+			$scope.mapdisable=1;
+			$scope.loader=1;
+			 $scope.maping.file=$scope.pricingfile;
+			console.log($scope.maping);
+			 $http.post("/dashboardfront/feemapsubmit", $scope.maping).
+					success(function(data, status) {
+						
+						if(data==0){							
+							$scope.mapMsg='Incorrect mapping';
+							$scope.loader=0;
+						}
+						if(data>0){
+							$scope.mapingdiv=0;
+							$scope.mapMsg='File mapped and saved successfully.';
+							$scope.mapdisable=0;
+							$scope.loader=0;
+						}
+				});
+		}
+		$scope.displayPrivatePlan = function(){
+			$http.get("/dashboardfront/privateplan").then(function(response) {
+				//$scope.myWelcome = response.data;
+				console.log(response.data);
+				$scope.fees = response.data;				
+				$scope.discount={yearly_max_silver:'$1500',yearly_max_platinum:'$2000',yearly_max_diamond:'$2500'};
+			});
+		}; 
+		$scope.submitUserForm = function(){
+			
+			if ($scope.userForm.$valid) {
+				$scope.isDisabled = true;
+				$scope.formdata = {'invitation':$scope.invitation,'finance':$scope.finance,'pricing':$scope.pricing,'fees':$scope.fees,'discount':$scope.discount};
+				/*$scope.formdata = {};
+				$scope.formdata.push($scope.invitation);
+				$scope.formdata.push($scope.finance);
+				$scope.formdata.push($scope.pricing);
+				$scope.formdata.push($scope.fees);
+*/
+				console.log($scope.formdata);
+				$http.post('/dashboardfront/submitspecialistbanking',$scope.formdata)
+				.success(function(data,status){
+					$scope.dashboard = 1;
+				  if(data=='0'){
+					
+
+				  }else{
+					
+				  }
+
+				})
+			}else{
+				$scope.message =   'Please fill the form details.';  
+			}
+		 
+			
+			
+		
+		};
+		$scope.addNewpat = function() 
+		{
+		   var newItemNo = $scope.pats.length+1;
+		   $scope.pats.push({'id': newItemNo                            
+		   });
+		};
+		 $scope.removeInvite=function(index,choice_id)
+		 {
+		  $scope.pats.splice(index,1);              // use for remove id element from choices array
+		  delete  $scope.invitation.firstName[choice_id];
+		  delete  $scope.invitation.lastName[choice_id];
+		  delete  $scope.invitation.emailAddress[choice_id];
+		  delete  $scope.invitation.phoneNumber[choice_id];		  
+		 };
+		$scope.showtab = function(tab){
+			if(tab=='one'){
+				$("#progressbar li").eq(1).removeClass("active");
+				$("#progressbar li").eq(0).addClass("active");
+				$scope.one = true; 
+				$scope.two = false; // hidden
+			}
+			if(tab=='two'){
+				$("#progressbar li").eq(2).removeClass("active");
+				$("#progressbar li").eq(1).addClass("active");
+				$scope.two = true; 
+				$scope.three = false; 
+				$scope.one = false; 
+				
+			}
+			if(tab=='three'){
+				$scope.displayPrivatePlan();
+				$("#progressbar li").eq(3).removeClass("active");
+				$("#progressbar li").eq(2).addClass("active");
+				$scope.three = true;
+				$scope.four = false; 
+				$scope.two = false; 
+			}
+			if(tab=='four'){
+				
+				$("#progressbar li").eq(4).removeClass("active");
+				$("#progressbar li").eq(3).addClass("active");
+				$scope.four = true;
+				$scope.three = false; 
+				$scope.five = false;
+				
+			}
+			if(tab=='five'){
+				$("#progressbar li").eq(5).removeClass("active");
+				$("#progressbar li").eq(4).addClass("active");
+				$scope.five = true;
+				$scope.four = false;
+				//$scope.six = false;
+			}
+			
+		
+		};
+		
+		$scope.financingSubmit = function (){
+			$scope.financeMsg='';
+			var errorexist = 0;
+			//alert($scope.letfinance);
+			if($scope.letfinance!=0){	
+				//alert($scope.chargein);
+				//alert($scope.finance.chargelatefee);
+						
+				if($scope.finance.lowestpayment==undefined){
+					errorexist = 1;
+				}else if($scope.finance.downpayment==undefined){
+					errorexist = 2;
+				}else if($scope.charge!=undefined){					
+					if($scope.finance.chargelatefee==undefined){
+						errorexist = 3;
+					}	
+				}
+				
+			}
+			
+			if(errorexist==0){
+				$scope.showtab('four');
+			}else{
+				$scope.financeMsg='Please fill the form details.';
+			}
+			
+		};
+		$scope.referralSubmit = function (){
+			
+		
+			if($scope.userForm.$valid){			
+				$scope.showtab('five');					
+			}			
+			else{
+				$scope.financeMsg='Please fill the form details.';
+			}
+			
+		};
+       
+ 
+    });
+    
+</script>
+<script src="/jscript/jquery-1.9.1.min.js"></script>
+

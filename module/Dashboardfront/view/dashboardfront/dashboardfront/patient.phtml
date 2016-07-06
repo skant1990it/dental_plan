@@ -1,0 +1,159 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+
+
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+?>
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+
+<div class="width1200" ng-controller="patientcontrollar">
+    <div class="grid100 change-password">
+    	<div layout="row" layout-align="center center">
+            <h2><span class="margin30">Patient Listing</span></h2>
+        </div>
+        <div class="schedule-table margintop90">
+        <md-input-container class="grid550 md-block">
+        <md-select ng-model="planname" placeholder="All Plans">
+        <md-option ng-value="planslisting.plan_id">All Plan</md-option>
+          <md-option ng-value="planslisting.plan_id" ng-repeat="planslisting in planslistingarray">{{ planslisting.heading_line ? planslisting.heading_line : planslisting.plan_name }}</md-option>
+       </md-select>
+        </md-input-container> 
+            <div class="buttons-frame">
+                <div class="compaign-frame add-button">
+                    <ul>
+                        <li class="button dark-blue dark-blue-shadow"><a href="/dashboardfront/planchoice" title="Add New Patient">Add New Patient</a></li>
+                    </ul>
+                </div>
+            </div>
+ 			<div class="responsive-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="width150">Name</th>
+                        <th>Patient Id</th>
+                        <th>Plan</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th class="width120">Current Status Payment</th>
+                        <th class="width85">1st Notice</th>
+                        <th class="width85">2nd Notice</th>
+                        <th class="width85">Letter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="patientdata in patientlistarray|filter: planname">
+                        <td class="width150"><div class="tooltip"><a style="text-decoration:none;" href="/dashboardfront/patientprofile/{{ patientdata.patient_id }}" title="patient name">{{ patientdata.patient_firstname+' '+patientdata.patient_lastname }}</a>
+                         <span class="tooltiptext">View profile</span>
+                         </div>
+                        </td>
+                        <td>{{   patientdata.patient_id }}</td>
+                        <td>{{  patientdata.heading_line? patientdata.heading_line:patientdata.plan_name }}</td>
+                        <td>{{ patientdata.patient_phone }}</td>
+                        <td><a href="javascript:void(0);" title="giacomoguilizzoni@domain.com"> {{ patientdata.patient_email }}</a>
+                        </td>
+                        <td class="width85"><span ng-if="patientdata.pay_status==1">Current</span>
+                        <span ng-if="patientdata.pay_status==0">Un paid</span>
+                       </td>
+                        <td>
+                        	<div layout="row" layout-align="center center">
+                        		<span class="email-button"><a href="javascript:void(0);" title="EDIT">Edit</a></span>
+                            </div>
+                        </td>
+                        <td>
+                        	<div layout="row" layout-align="center center">
+                        		<span class="email-button"><a href="javascript:void(0);" title="EDIT">Edit</a></span>
+                            </div>
+                        </td>
+                        <td>
+                        	<div layout="row" layout-align="center center">
+                        		<span class="email-button"><a href="javascript:void(0);" title="PRINT">PRINT</a></span>
+                            </div>
+                        </td>
+                    </tr>
+                  
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+    </div>
+</div>        
+
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('headercontrollar',function($scope,$http,$window)
+{
+    $scope.switchtext='logon';
+    $scope.showbtn=function(text){
+        //alert(text);
+        if(text=='logon'){
+            $scope.switchtext='logoff';
+            $window.location.href = '/logout';
+        }
+    }   
+});
+app.controller('patientcontrollar', function($scope,$http,$window) 
+{ 
+  var patientname=statesname='<?php echo $statelist ; ?>';
+  var patientlistobject=angular.fromJson(patientname); 
+  $scope.patientlistarray  = angular.fromJson(patientlistobject);
+
+  var planslisting=statesname='<?php echo $planslisting ; ?>';
+  var planslistingobject=angular.fromJson(planslisting); 
+  $scope.planslistingarray  = angular.fromJson(planslistingobject);
+}); 
+</script>
+<style>
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #5ec385;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+</style>

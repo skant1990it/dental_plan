@@ -1,0 +1,123 @@
+
+<form name="registerForm" id="msform" action="/register" method="post" novalidate="novalidate">
+    <header>
+        <div class="logo"><a href="/" title="denefits"><img src="images/logo.png" width="183" height="57" alt="Logo"></a></div>
+      <!--
+        <div class="log-frame" layout-align="start end" flex>
+    	<md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="text = (text == 'logoff' || text == undefined ? 'logon' : 'logoff')">
+            <div ng-if="(text == 'logoff' || text == undefined)">
+                <a href="javascript:void(0)" class="logoff">{{text || 'logoff'}}</a>
+            </div>    
+            <div ng-if="text == 'logon'">
+                <a href="javascript:void(0)" class="logon">{{text || 'logoff'}}</a>
+            </div>
+        </md-switch>
+    </div>
+    -->
+    </header>
+    <div class="width650">
+    <div class="grid100 change-password" ng-controller="registerController">
+    <fieldset> 
+      <div id="msg" class="align-center" ng-bind="message"><a> {{ message }} </a></div>
+      <div id="msg" class="align-center"><a> <?php if($exists==1){ echo "Login Id Allready Exists." ; } ?>   </a>
+               </div>
+               <h2>How Would You Like To Login</h2>
+                <md-input-container class="md-block">
+                  <md-radio-group name="registertype" ng-init="user.registertype=1"  ng-model="user.registertype" layout="row">
+                    <md-radio-button ng-value="1"  class="md-primary">As a Doctor </md-radio-button>    
+                    <md-radio-button ng-value="3" class="md-primary">As Specialist</md-radio-button>   <!--I use 3 for specilist   -->
+                 </md-radio-group>
+                   <input name="registertype" type="hidden" value="{{ user.registertype }}">
+                 <br>
+               </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Login ID</label>
+                  
+                    <input name="login" type="text" ng-model="user.login" required>
+                     <div ng-show="registerForm.login.$touched">
+                          <span ng-show="registerForm.login.$error.required">Enter Login ID</span>
+                     </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    
+                    <input type="password" name="password" required ng-model="user.password" />
+                     <div ng-show="registerForm.password.$touched">
+                          <span ng-show="registerForm.password.$error.required">Enter Password</span>
+                     </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm Password</label>
+                    <input type="password" name="passwordConfirmation" required ng-model="user.passwordConfirmation" ng-pattern="user.password" />
+                    <div ng-show="registerForm.passwordConfirmation.$touched">
+                        <span ng-show="registerForm.passwordConfirmation.$error.required">Enter Confirm Password</span>
+                    </div>
+                    <div ng-show="(registerForm.passwordConfirmation.$viewValue != '' && registerForm.password.$viewValue != '')">
+                    <span ng-show="(registerForm.password.$viewValue != registerForm.passwordConfirmation.$viewValue)">Mismatch Password</span>
+                    </div>
+               </md-input-container>
+                
+                <h3>Security Code Setup</h3>
+                <md-input-container class="md-block">
+                    <label>4 Digit Security Code</label>
+                    <input name="securityval" type="password" ng-pattern="/^(0|[0-9][0-9]*)$/" ng-maxlength="4"  ng-minlength="4" ng-model="user.securityval" required>
+                    <div ng-show="registerForm.securityval.$touched">
+                        <span ng-show="registerForm.securityval.$error.required">Enter 4 Digit Security Code</span>
+                        <span ng-show="registerForm.securityval.$error.minlength"> Min length should be 4. </span>
+                        <span ng-show="registerForm.securityval.$error.maxlength">Max length should be 4. </span>
+                        <span ng-show="registerForm.securityval.$error.pattern">Only number allowed. </span>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                <label>Confirm Security Code</label>
+                <input name="sequritycode_conf" type="password"  ng-minlength="4"  ng-model="user.sequritycode_conf" ng-pattern="user.securityval" required>
+                <div ng-show="registerForm.sequritycode_conf.$touched">
+                    <span ng-show="registerForm.sequritycode_conf.$error.required">Enter Confirm Security Code</span>
+                     <span ng-show="registerForm.sequritycode_conf.$error.minlength"> Min length should be 4. </span>
+                        <span ng-show="registerForm.sequritycode_conf.$error.maxlength">Max length should be 4. </span>
+                      <div ng-show="(registerForm.securityval.$viewValue != '' && registerForm.sequritycode_conf.$viewValue != '')">
+                    <span ng-show="(registerForm.securityval.$viewValue != registerForm.sequritycode_conf.$viewValue)">Mismatch Security Code</span>
+                    </div>
+              </div>
+                </md-input-container>
+
+                 <md-input-container class="md-block">
+                <input name="tinnumberatregistrstion" type="hidden" value="<?php echo $tinno ; ?>"  >
+                </md-input-container>
+
+                <md-button class="md-warn md-raised save-button" ng-click=onSubmitRegister(registerForm)>Let's Go Set Up Your Account</md-button>    
+            </fieldset>   
+        </div>
+    </div>
+</form>
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="jscript/angular-animate.min.js"></script>
+<script src="jscript/angular-aria.min.js"></script>
+<script src="jscript/angular-messages.min.js"></script>
+<!-- Angular Material Library -->
+<script src="jscript/angular-material.min.js"></script> 
+<!-- Your application -->
+<script type="text/javascript">    
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('registerController',function($scope,$http,$window){
+ $scope.onSubmitRegister=function($valid){
+ if($scope.registerForm.$valid){
+
+     $window.registerForm.submit();
+   /*$http.post('/register',$scope.user)
+   .success(function(data,status){
+     if(data=='exists'){
+        $scope.message =   'Login ID Allready exists.';      
+     }
+    
+   })*/
+  }else{
+    $scope.message =   'Please fill the form details.';  
+  }
+ };
+});
+</script>
+<script src="jscript/jquery-1.9.1.min.js"></script>
+<script src="jscript/jquery.easing.min.js"></script>
+<script src="jscript/process-wizard.js"></script>

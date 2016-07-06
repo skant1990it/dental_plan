@@ -1,0 +1,87 @@
+<?php
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+?>
+
+<header layout="row">
+    <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+    <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+
+<div class="grid100 change-password">
+    <div layout="row" layout-align="center center">
+        <h2>Pick A Plan</h2>
+    </div>
+    <div class="plan-frame" layout="row" layout-align="center center">
+        <ul><?php foreach($listplans as $key=>$value){
+			if($key>2)
+				continue;
+				
+				if($key==0){
+					$classbox = 'silver-plan';
+					$classbutton = 'silver-button';
+				}elseif($key==1){
+					$classbox = 'gold-planb';
+					$classbutton = 'gold-button';
+				}else{
+					$classbox = 'platinum-plan';
+					$classbutton = 'platinum-button';
+				}
+				echo $value['plan_monthly_price'];
+				
+			?>
+            <li>
+                <div class="column gray-border">
+                    <div class="<?php echo $classbox;?>">
+                        <ul>
+                            <li>
+                                <h3><?php echo $value['heading_line'] ? $value['heading_line'] : $value['plan_name']?></h3>
+                            </li>
+                            <li>
+                                <h4>$<?php echo number_format(empty((int)$value['plan_monthly_price'])?50:$value['plan_monthly_price'], 2, '.', ',');?>/Month</h4>
+                                <p>Per Individual</p>
+                            </li>
+                            <li>
+                                <h4>$<?php echo number_format(empty((int)$value['addon_monthly_price'])?40:$value['addon_monthly_price'], 2, '.', ',');?>/Month</h4>
+                                <p>Per Additional Memeber</p>
+                            </li>
+                            <li>
+                                <h5>$<?php echo number_format((int)$value['plan_yearly_price'], 2, '.', ',');?> Maximum</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="period-frame">
+                        <h3>No Deductible<br/>No Waiting Period</h3>
+                        <table>
+							<?php foreach($value[$value['plan_name']] as $keys=>$val){?>
+                          <tr>
+                            <td class="width250"><?php echo $val['service_type']?></td>
+                            <td><?php echo $val['service_notes']?>%</td>
+                          </tr>
+                         <?php }?>
+                      </table>
+							
+                  </div>
+                </div>
+                <div class="<?php echo $classbutton;?>"><a href="/dashboardfront/patientedit/<?php echo $value['plan_id'];?>" title="I want Silver">I want <?php echo $value['heading_line'] ? $value['heading_line'] : $value['plan_name']?></a></div>
+            </li>
+           <?php }?>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']);
+</script>

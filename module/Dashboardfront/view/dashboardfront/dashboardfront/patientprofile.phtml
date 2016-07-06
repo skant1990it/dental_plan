@@ -1,0 +1,535 @@
+<?php
+
+//use Zend\Session\Container;
+ //$session = new Container('User');
+ //$doc_specility_type=  $session->offsetGet('doc_speciality') ;
+?>
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<div class="width100">
+    <div class="grid100 change-password">
+        <div  layout="row" layout-align="center center">
+            <h2>Patient Profile</h2>
+        </div>
+    </div>
+    <div class="profile-frame"  ng-controller="providerbillingeditcontrollar">
+    	<div class="grid45 padding-right5">
+        	<div class="profile-pic">
+                <img ng-src="{{ avatarSrc }}" width="220" height="220" alt="Profile">
+                 <input type="file" file-model = "myFile" accept="image/*" image="image" style="display:none" id="fileInput"/>
+                 <div class="capture">
+                    <a href="javascript:void(0);" ng-show='selectbutton'  ng-click = "triggerUpload()" title=""><img src="/images/image-capture.png" width="60" height="48" alt="Capture"></a>
+                    <a href="javascript:void(0);" ng-show='uploadbutton' ng-click="uploadFile()" title="save">Save to display changes<img width="26" height="26" alt="Edit" src="/images/save_32.png"></a>
+                </div>
+            </div>
+            <div class="contract-frame" layout="column" layout-align="center center">
+                <div class="gold-plan"><?php echo (!empty($plandetails[0]['heading_line'])?$plandetails[0]['heading_line']:$plandetails[0]['plan_name']);?></div>
+                <md-button class="md-warn md-raised dark-red-button marginLeft10">Upgrade</md-button>
+                <div class="member">Patient Since <?php echo date("M, Y",strtotime($patient_details[0]['plan_start_date']));?></div>
+            </div>
+            <div class="profile-text">
+                <h3><?php echo $patient_details[0]['patient_firstname'].' '.$patient_details[0]['patient_lastname'] ; ?></h3>
+            </div>
+            <div class="margintop50">
+                <div ng-show='showText' class="profile-boxb">
+                    <ul>
+                    	<li>{{addr}} <?php echo ', '.$patient_details[0]['patient_city'].', '.$patient_details[0]['patient_state'].', '.$patient_details[0]['patient_zip'];?></li>
+                    	<li><?php echo $patient_details[0]['patient_email'];?> </li>
+                    	<li><?php echo $patient_details[0]['patient_phone'];?> </li>
+                    </ul>    
+                </div>
+                <textarea ng-show='showArea' class="profile-boxb" ng-show='showArea' rows="6" cols="35" ng-model='pat_addressedit'></textarea>
+                <div class="calendar-text marginLeft10"><a href="/dashboardfront/docpatientedit/<?php echo $patient_details[0]['patient_id'];?>" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a>
+               </div>
+            </div>
+            <div class="margintop50">
+                <div class="profile-boxb">
+                    <ul>
+                        <li><?php echo $patient_details[0]['cc_number'];?></li>
+                    </ul>    
+                </div>
+                <div class="calendar-text marginLeft10"><a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+            </div>
+            
+            <div class="margintop50">
+                <div class="profile-boxb">
+                    <ul>
+                        <li>Revenue Info</li>
+                    </ul>    
+                </div>
+                <div class="calendar-text marginLeft10"><a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+            </div>
+            
+            <div class="margintop50">
+                <div class="profile-boxb">
+                    <ul>
+                        <li>Financing Policy Change History</li>
+                    </ul>    
+                </div>
+                <div class="calendar-text marginLeft10"><a href="javascript:void(0);" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+            </div>
+      	</div>
+        <div class="grid55">
+        	<div class="remaining-frame">
+            	<div class="office-info">
+                	<span class="prospect-text"><h3>Remaining Benefits: $</h3></span>
+            	</div>
+                <div class="buttons-frame position-relative">
+                    <div class="compaign-frame add-button">
+                        <ul>
+                            <li class="buttonb dark-green dark-green-shadow"><a href="javascript:void(0);" title="Finance Patient">Finance Patient</a></li>
+                            <li class="buttonb dark-green dark-green-shadow"><a href="javascript:void(0);" title="Add Family">Add Family</a></li>
+                            <li class="buttonb dark-green dark-green-shadow"><a href="/dashboardfront/newreferral/<?php echo $patient_details[0]['patient_id'] ; ?>" title="Refer">Refer</a></li>
+                            <li id="clickMeId" onclick="show('comment')"  class="buttonb dark-red dark-red-shadow"><a href="javascript:void(0);" title="Check In">Check In</a></li>
+                        </ul>
+                        <div id="comment" class="pay-extra top50">
+                            <h3>Check In</h3>
+                            <p>What was you be doing today? Remember to as detailed as possible!</p>
+                            <h4>Existing Treatment</h4>
+                            <div class="grid100" layout="row" layout-align="start end">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">
+                                D0120 Full Mouth Prophy
+                              </md-checkbox>
+                            </div>
+                            <div class="grid100" layout="row" layout-align="start end">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary">
+                                D 6233 Crown #30
+                              </md-checkbox>
+                            </div>
+
+                            <div layout-gt-sm="row" class="grid100"> 
+                                <md-input-container class="md-block position-relative">
+                                    <md-select class="treat-select" placeholder="Tooth #" name="checkModela" ng-model="checkModela">
+                                        <md-option value="1">Full Month</md-option>
+                                        <md-option value="2">URQ</md-option>
+                                        <md-option value="3">ULQ</md-option>
+                                        <md-option value="4">LRQ</md-option>
+                                        <md-option value="5">Upper Arch</md-option>
+                                    </md-select>
+                                </md-input-container> 
+                                <md-input-container class="marginLeft20 md-block position-relative">
+                                    <md-select class="treat-select" placeholder="ADA Code Smart Search" name="checkModelb" ng-model="checkModelb">
+                                        <md-optgroup label="Diagnostic">
+                                            <md-option value="1">D0123 Fulll Month Xrays</md-option>
+                                            <md-option value="2">D0123 Bite Wing Xrays</md-option>
+                                            <md-option value="3">D0123 Periapical</md-option>
+                                        </md-optgroup>
+                                        <md-optgroup label="Preventive"></md-optgroup>
+                                        <md-optgroup label="Restorative"></md-optgroup>
+                                    </md-select>
+                                </md-input-container> 
+                                <div class="plus-icon"><a href="javascript:void(0);" title="Plus"><img src="/images/plus-icon.png" width="24" height="24" alt="Plus"></a></div>
+                            </div>
+
+                            <h4>Common Procedures</h4>
+                            <div class="grid100" layout="row" layout-align="center center">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Prophy
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Limited Exam
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                FMX
+                              </md-checkbox>
+                            </div>
+                            
+                            <div class="grid100" layout="row" layout-align="center center">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Prophy
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Limited Exam
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                FMX
+                              </md-checkbox>
+                            </div>
+                            
+                            <div class="grid100" layout="row" layout-align="center center">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Prophy
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Limited Exam
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                FMX
+                              </md-checkbox>
+                            </div>
+                            
+                            <div class="grid100" layout="row" layout-align="center center">
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Prophy
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                Limited Exam
+                              </md-checkbox>
+                              <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary width33">
+                                FMX
+                              </md-checkbox>
+                            </div>
+                            <div layout="row" layout-align="end start" class="pull-left ">
+                                <md-radio-group layout="row" class="margintop40">
+                                    <md-radio-button class="md-primary">Set as complete</md-radio-button>
+                                </md-radio-group>
+                            </div>
+                            <div class="referrals-button pull-right">
+                                <div class="pay-frame" layout="row" layout-align="end center">
+                                    <md-button onclick="hide('comment')" class="md-warn md-raised red-buttonc">Check In</md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="office-info">
+                <span class="prospect-text"><h3>Treatment Details</h3></span>
+            </div>
+            <div class="responsive-table">
+                <table class="patient-table">
+                    <tbody>
+                        <tr>
+                            <th class="blue-bg">Tooth #</th>
+                            <th class="blue-bg">ADA Code Smart Search</th>
+                            <th class="blue-bg">Description</th>
+                            <th class="blue-bg">Treatment Plan</th>
+                            <th class="blue-bg">Completed</th>
+                            <th class="blue-bg">Copayment</th>
+                            <th class="blue-bg">Savings</th>
+                            <th class="blue-bg">Providers</th>
+                        </tr>
+                        <tr>
+                            <td>Full Mouth</td>
+                            <td>D0120</td>
+                            <td>Proph</td>
+                            <td class="align-center"><img src="/images/calendar-icon.png" width="24" height="24" alt="Calendar"></td>
+                            <td class="align-center"><img src="/images/calendar-icon.png" width="24" height="24" alt="Calendar"></td>
+                            <td>$</td>
+                            <td>$</td>
+                            <td>Dr. John</td>
+                        </tr>
+                        <tr>
+                            <td>Full Mouth</td>
+                            <td>D0120</td>
+                            <td>Proph</td>
+                            <td class="align-center"><img src="/images/calendar-icon.png" width="24" height="24" alt="Calendar"></td>
+                            <td class="align-center"><img src="/images/calendar-icon.png" width="24" height="24" alt="Calendar"></td>
+                            <td>$</td>
+                            <td>$</td>
+                            <td>Dr. John</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div layout-gt-sm="row" class="grid50"> 
+                <md-input-container class="md-block">
+                    <md-select class="treat-select" placeholder="Tooth #" name="myModel" ng-model="myModel">
+                        <md-option value="1">Full Month</md-option>
+                        <md-option value="2">URQ</md-option>
+                        <md-option value="3">ULQ</md-option>
+                        <md-option value="4">LRQ</md-option>
+                        <md-option value="5">Upper Arch</md-option>
+                    </md-select>
+                </md-input-container> 
+                <md-input-container class="marginLeft20 md-block">
+                    <md-select class="treat-select" placeholder="ADA Code Smart Search" name="myModelb" ng-model="myModelb">
+                        <md-optgroup label="Diagnostic">
+                            <md-option value="1">D0123 Fulll Month Xrays</md-option>
+                            <md-option value="2">D0123 Bite Wing Xrays</md-option>
+                            <md-option value="3">D0123 Periapical</md-option>
+                        </md-optgroup>
+                        <md-optgroup label="Preventive"></md-optgroup>
+                        <md-optgroup label="Restorative"></md-optgroup>
+                    </md-select>
+                </md-input-container> 
+                <div class="plus-icon"><a href="javascript:void(0);" title="Plus"><img src="/images/plus-icon.png" width="24" height="24" alt="Plus"></a></div>
+            </div>
+            <div class="grid50 procedures">
+                <div class="compaign-frame add-button marginTop20b">
+                    <ul>
+                        <li class="button dark-green dark-green-shadow"><a href="javascript:void(0);" title="Add More Procedures">Add More Procedures</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="collection-frame margintop50">
+           	<!--    <label>Collection Details</label>
+                <input type="text" name="">
+        	</div>-->
+            <div class="margintop50">
+            	<h3>Messaging Center</h3>
+                <div class="message-list">
+                    <ul>
+                        <li>
+                       	  	<input type="text" name="" placeholder="To">
+                            <div class="message-frame">
+                       	    	<div class="prospect-text"><a href="javascript:void(0);" title="Attachment"><img src="/images/attachment-icon.jpg" width="23" height="21" alt="Attachment"></a></div>
+                                <span class="sent-buttonb"><a class="active" href="javascript:void(0);" title="Send">Send</a></span>
+                            </div>
+                        </li>
+                        <li class="height44">
+                        	<div class="message-content">
+                        		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-content">
+                                <p>(Date) Marrio to Patient: We can see you on the 23rd of  the this month</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-content">
+                                <p>(Date) Patient Name to Mario:Do you have an appointment avilable this month?</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-content">
+                                <p>(Date) Endodontist to Patient: That's great to hear</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-content">
+                                <p>(Date) Patient Name: to Endodontist: I'm feeling much better now. Thank you</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+	</div>
+</div>
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+       restrict: 'A',
+       link: function(scope, element, attrs) {
+          var model = $parse(attrs.fileModel);
+          var modelSetter = model.assign;
+          
+          element.bind('change', function(){
+             scope.$apply(function(){
+                modelSetter(scope, element[0].files[0]);
+             });
+          });
+       }
+    };
+ }]);
+
+ app.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl,$scope){
+       var fd = new FormData();
+      
+       fd.append('file', file);
+       $scope.progress = 25;
+       $http.post(uploadUrl, fd, {
+          transformRequest: angular.identity,
+          headers: {'Content-Type': undefined}
+       })
+    
+       .success(function(data){
+           if(data.success==0){
+                $scope.error=data.error;
+                $scope.selectbutton = true;
+                $scope.uploadbutton = false;
+            }else{              
+                $scope.avatarSrc=data.file;
+                $scope.selectbutton = true;
+                $scope.uploadbutton = false;
+            }
+       })
+       .error(function(){
+       });
+       
+       $scope.error='';
+    }
+ }]);
+app.controller('providerbillingeditcontrollar', function($scope,$http,$window,fileUpload) 
+{ 
+	$scope.addr = '<?php echo $patient_details[0]['patient_address'];?>';
+	$scope.avatarSrc="<?php echo '/img/placeholders/avatars/'.(!empty($patient_details[0]['profile_img'])?$patient_details[0]['profile_img']:'profile-pic.jpg');?>";
+    $scope.selectbutton = true;
+    
+    $scope.showText = true;
+	$scope.addreditbutton = true;
+	$scope.pat_id = '<?php echo $patient_details[0]['patient_id'];?>';
+    $scope.editaddr = function(){
+		$scope.pat_addressedit = $scope.addr;
+		$scope.showArea = true;
+		$scope.addrsavebutton = true;		
+		$scope.showText = false;
+		$scope.addreditbutton = false;		
+	}
+	$scope.saveaddr = function (){
+		if($scope.pat_addressedit!=''){
+		$http.post('/dashboardfront/savepataddr',{'pat_id':$scope.pat_id,'address':$scope.pat_addressedit})
+		.success(function(data,status){
+			//console.log(data);
+			if(data.success==1){
+				//console.log(data);
+				$scope.addr = $scope.pat_addressedit;
+				addr = $scope.pat_addressedit;
+				$scope.showArea = false;
+				$scope.addrsavebutton = false;		
+				$scope.showText = true;
+				$scope.addreditbutton = true;
+			}
+
+		});
+		}
+	};
+ $scope.uploadFile = function(){
+        if( document.getElementById("fileInput").files.length == 0 ){
+            console.log("no files selected");
+        }else{      
+               var file = $scope.myFile;
+               // $scope.progress = 10;
+               console.log('file is ' );
+               console.dir(file);              
+               var uploadUrl ="<?php echo "/dashboardfront/patientimagechange/".$patient_details[0]['patient_id'];?>";
+               fileUpload.uploadFileToUrl(file, uploadUrl,$scope);
+           }
+        };
+        $scope.triggerUpload=function()
+        {           
+            document.getElementById('fileInput').click()
+            $scope.selectbutton = false;
+            $scope.uploadbutton = true;
+        }
+
+
+
+}); 
+</script>
+
+
+<style>
+
+/* css for patient profile page start     */
+
+.buttonb {
+    border-radius: 3px;
+    float: left;
+    margin: 0 0 0 9px;
+    padding: 0 36px;
+    width: auto;
+}
+.buttonb a {
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    line-height: 38px;
+}
+.buttonc {
+    border-radius: 3px;
+    float: left;
+    padding: 0 20px;
+    width: auto;
+}
+.buttonc a {
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    line-height: 38px;
+}
+
+
+
+
+
+
+
+
+.width33 { width:33.33%; }
+.position-relative { position:relative; }
+.pay-extra { background-color:#fff; width:584px; min-height:375px; float:left; border:1px #e4e4e4 solid; position:absolute; top:20px; right:0px; z-index:100; padding:35px 33px 35px 33px; display:none; }
+.pay-extra h3 { width:100%; float:left; font-size:20px; color:#000; padding:0px 0px 25px 0px; text-align:center; }
+.pay-extra h4 { width:100%; float:left; font-size:16px; color:#000; font-weight:bold; padding:25px 0px 20px 0px; }
+.pay-extra p { width:100%; float:left; font-size:16px; color:#000; line-height:30px; }
+.pay-frame { width:100% !important; margin:25px 0px 0px 0px; }
+.top50 { top:50px; }
+.email-button { width:auto; float:left; }
+.email-button a { background-color:#bfbfbf; float:left; border-radius:2px; -webkit-border-radius:2px; font-size:12px; color:#fff; padding:4px 20px 4px 20px; text-decoration:none; text-transform:uppercase; }
+.email-button a:hover { background-color:#50ba72; }
+.email-button a.active { background-color:#50ba72; }
+
+.md-select-menu-container { position: inherit; z-index: 200; }
+.sent-button { width:auto; float:left; }
+.sent-button a { background-color:#bfbfbf; float:left; border-radius:2px; -webkit-border-radius:2px; font-size:12px; color:#fff; padding:4px 20px 4px 20px; text-decoration:none; text-transform:uppercase; }
+.sent-button a:hover { background-color:#2b56a0; }
+.sent-button a.active { background-color:#2b56a0; }
+
+
+
+.referral-column { width:100%; float:left; }
+.referral-column li { width:277px; float:left; margin:0px 0px 50px 30px; font-family: "open_sanslight"; font-size:27px; color:#fff; text-align:center; line-height:32px; display: table; -webkit-box-shadow: 0px 0px 20px 10px #f5f5f5;
+box-shadow: 0px 0px 20px 10px #f5f5f5; }
+.referral-column li:first-child { margin:0px; }
+.green-column { background-color:#50ba72; height:126px; border-radius:5px; -webkit-border-radius:5px; display: table-cell; vertical-align:middle; }
+.red-column { background-color:#ec0000; height:126px; border-radius:5px; -webkit-border-radius:5px; display: table-cell; vertical-align:middle; }
+.blue-column { background-color:#2b56a0; height:126px; border-radius:5px; -webkit-border-radius:5px; display: table-cell; vertical-align:middle; }
+.gray-column { background-color:#767676; height:126px; border-radius:5px; -webkit-border-radius:5px; display: table-cell; vertical-align:middle; }
+
+.referral-buttons { width:100%; float:left; }
+.referral-buttons li { background-color:#2b56a0; width:auto; float:left; margin:0px 0px 0px 10px; border-radius:3px; -webkit-border-radius:3px; -webkit-box-shadow: 0 2px 0px 0px #0d3477; -moz-box-shadow: 0 2px 0px 0px #0d3477; box-shadow: 0 2px 0px 0px #0d3477; }
+.referral-buttons li a { font-family: 'open_sanssemibold'; font-size:16px; color:#fff; padding:0px 30px 0px 30px; line-height:40px; display:block; }
+.referral-buttons li:first-child { margin:0px; }
+.referral-buttons li.small-red-column { background-color:#ec0000; -webkit-box-shadow: 0 2px 0px 0px #840000; -moz-box-shadow: 0 2px 0px 0px #840000; box-shadow: 0 2px 0px 0px #840000; }
+
+
+
+.referral-columnb { width:100%; float:left; margin:50px 0px 0px 0px; }
+.referral-columnb li { width:380px; float:left; margin:0px 0px 50px 30px; font-family: "open_sanslight"; font-size:27px; color:#fff; text-align:center; line-height:32px; display: table; }
+.referral-columnb li:first-child { margin:0px; }
+
+.refer-column { width:770px; margin:0px auto; }
+.refer-column ul { width:100%; float:left; margin:50px 0px 0px 0px; }
+.refer-column li { width:368px; height:228px; float:left; margin:0px 0px 50px 30px; font-family: "open_sanslight"; font-size:27px; color:#fff; text-align:center; line-height:32px; display: table; }
+.refer-column li:first-child { margin:0px; }
+.refer-column li img { margin:0px 0px 15px 0px; }
+.refer-green-column { background-color:#50ba72; height:166px; display: table-cell; vertical-align:middle; padding:25px 0px 25px 0px; border-radius:5px; -webkit-border-radius:5px; }
+.refer-blue-column { background-color:#2b56a0; height:166px; display: table-cell; vertical-align:middle; padding:25px 0px 25px 0px; border-radius:5px; -webkit-border-radius:5px; }
+
+
+
+.referral-search { width:100%; float:left; }
+.referral-search .md-button.md-warn.dark-green-button { margin:-30px 0px 0px 0px; }
+.referral-search-frame { width:100%; float:left; }
+.banner img { width:100%; height:auto; float:left; }
+.referral-list { width:100%; float:left; }
+.referral-list li { width:100%; float:left; margin:25px 0px 0px 0px; }
+.referral-list li:first-child {  margin:80px 0px 0px 0px; }
+.image-holderb { width:122px; height:122px; float:left; border:1px #dfdedd solid; margin:0px 25px 0px 0px; }
+.referral-search-content { width:1012px; min-height:122px; float:left; padding:20px 20px 20px 20px; border:1px #dfdedd solid; }
+.number { width:30px; float:left; font-size:25px; color:#2b56a0; }
+.referral-content { width:560px; float:left; }
+.referral-content p { font-family: "open_sanslight"; font-size:16px; color:#000; padding:7px 0px 0px 0px; }
+.referral-content p:first-child { padding:0px; }
+.referrals-button { width:auto; float:left; }
+
+.referral-column-frame { width:100%; float:left; margin:50px 0px 0px 0px; }
+.referral-column-frame li { width:370px; float:left; margin:0px 0px 0px 25px; padding:0px 15px 0px 15px; border:1px #dfdedd solid; }
+.referral-column-frame li:first-child { margin:0px; }
+.referral-column-frame li h4 { width:100%; float:left; font-size:25px; color:#2b56a0; line-height:80px; text-align:center; }
+
+
+
+.patient-table { width:100%; float:left; }
+.patient-table h2 { font-size:26px; color:#000; text-align:center; padding:0px 0px 30px 0px; position:relative; }
+.patient-table table { border-collapse: collapse; width: 100%; float:left; margin:15px 0px 0px 0px; }
+.patient-table tr { background-color:#fff; }
+.patient-table td { border: 1px solid #dfdfdf; padding: 12px 12px 12px 12px; text-align: left; vertical-align:top; line-height:22px; }
+.patient-table th { font-family: 'open_sansregular'; font-size:14px; color:#fff; border-top: 1px solid #5ec385; border-bottom: 1px solid #5ec385; border-left: 1px solid #aed8bc; border-right: 1px solid #aed8bc; padding: 12px 12px 12px 12px; text-align: left; }
+.patient-table td { font-family: 'open_sansregular'; font-size:14px; color:#737373; }
+
+.profile-frame .office-info { padding:0px; }
+
+
+	</style>
+

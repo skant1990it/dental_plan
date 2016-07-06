@@ -1,0 +1,369 @@
+
+<form name="userForm" id="msform">
+    <header>
+        <div class="logo"><a href="javascript:void(0);" title="denefits"><img src="images/logo.png" width="183" height="57" alt="Logo"></a></div>
+        <div class="process-wizard">
+            <ul id="progressbar">
+                <li class="active"><span>Locations</span></li>
+                <li><span>Providers</span></li>
+                <li><span>Payment</span></li>
+                <li><span>Login</span></li>
+            </ul>
+        </div>
+        <div class="log-frame" layout-align="start end" flex>
+    	<md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="text = (text == 'logoff' || text == undefined ? 'logon' : 'logoff')">
+            <div ng-if="(text == 'logoff' || text == undefined)">
+                <a href="javascript:void(0)" class="logoff">{{text || 'logoff'}}</a>
+            </div>    
+            <div ng-if="text == 'logon'">
+                <a href="javascript:void(0)" class="logon">{{text || 'logoff'}}</a>
+            </div>
+        </md-switch>
+    </div>
+    </header>
+    <div class="width650">
+        <div class="grid100 change-password" ng-controller="formController">
+            <fieldset>
+                <h2>How Would you like to Login</h2>
+                <md-input-container class="md-block">
+                    <label>Login ID</label>
+                    <input name="login" type="text" ng-model="login.userName">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input name="password" type="password" ng-model="password.password">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm Password</label>
+                    <input name="password" type="password" ng-model="confirm.password">
+                </md-input-container>
+                
+                <h3>Security Code Setup</h3>
+                <md-input-container class="md-block">
+                    <label>4 Digits Security Code</label>
+                    <input name="security" type="text" ng-model="security.password">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm Security Code</label>
+                    <input name="code" type="text" ng-model="code.password">
+                </md-input-container>
+                <md-button class="md-warn md-raised save-button next">Let's go set up your account</md-button>
+                
+            </fieldset>
+           
+
+
+    <fieldset>
+      <form  id="formProvider1" name="formProvider">
+        <div>
+          <div ng-repeat="row in rows track by row.id">
+
+             <h2>Tell About your practice</h2>
+                <h3>Primary Location: 1501 Superior Ave, Newport Beach, CA, 92663</h3>
+                <div layout-gt-sm="row" class="clearboth">
+                    <md-input-container class="md-block">
+                        <label>First Name</label>
+                        <input name="first_name[]" id="first_name[]" type="text" ng-model="formProvider.first.row.id">
+                        <div id="firstname{{ $index }}"></div>
+                     </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Last Name</label>
+                        <input name="last_name[]" id="last_name[]" type="text" ng-model="formProvider.last.row.id">
+                        <div id="lastname{{ $index }}"></div>
+                    </md-input-container>
+                    <div layout="row" layout-align="center start" class="md-block padding20">
+                           <md-radio-group layout="row">
+                            <input type="radio" value="1" name="gender[]" id="gender[]" class="md-primary">Male
+                            <input type="radio" value="0" name="gender[]" id="gender[]" class="md-primary">Female
+                        </md-radio-group>
+                    </div>
+                </div>    
+                <md-input-container class="md-block">
+                    <label>License Number</label>
+                    <input name="license[]" id="license[]" type="text" ng-model="formProvider.license.row.id">
+                    <div id="licenseerror{{ $index }}"></div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>NPI Number</label>
+                    <input name="npi[]" name="npi[]" type="text" ng-model="formProvider.npi.row.id">
+                     <div id="npierror{{ $index }}"></div>
+                </md-input-container>
+                
+                <md-input-container class="md-block" flex-gt-sm>
+                    <md-select placeholder="General Dentist" name="dentist[]" id="dentist[]" ng-model="user">
+                        <md-option value="1">Dummy Text1</md-option>
+                        <md-option value="2">Dummy Text2</md-option>
+                        <md-option value="3">Dummy Text3</md-option>
+                    </md-select>
+                   <div id="dentisterror{{ $index }}"></div> 
+                </md-input-container>
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-warn md-raised green-button" ng-click=addRow(formProvider)>Add More Providers</md-button>
+                </div>
+          </div>
+        </div>
+
+     <md-button class="md-warn md-raised prev-button previous">Previous</md-button>
+    <div id="replace_on_next">
+     <md-button  class="md-warn md-raised next-button next" onclick="submitrovider()">Next</md-button>
+    </div>
+      </form>
+     <!--
+                <h2>Tell About your practice</h2>
+                <h3>Primary Location: 1501 Superior Ave, Newport Beach, CA, 92663</h3>
+                <div layout-gt-sm="row" class="clearboth">
+                    <md-input-container class="md-block">
+                        <label>First Name</label>
+                        <input name="first" type="text" ng-model="first.userName">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Last Name</label>
+                        <input name="last" type="text" ng-model="last.password">
+                    </md-input-container>
+                    <div layout="row" layout-align="center start" class="md-block padding20">
+                        <md-radio-group layout="row">
+                            <md-radio-button value="0" ng-model="true" class="md-primary">Male</md-radio-button>
+                            <md-radio-button value=1 class="md-primary">Female</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                </div>    
+                <md-input-container class="md-block">
+                    <label>1License Number</label>
+                    <input name="license" type="text" ng-model="license.password">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>NPI Number</label>
+                    <input name="npi" type="text" ng-model="npi.password">
+                </md-input-container>
+                
+                <md-input-container class="md-block" flex-gt-sm>
+                    <md-select placeholder="General Dentist" ng-model="user">
+                        <md-option value="Dummy Text">Dummy Text</md-option>
+                        <md-option value="Dummy Text">Dummy Text</md-option>
+                        <md-option value="Dummy Text">Dummy Text</md-option>
+                    </md-select>
+                </md-input-container>
+                <div layout="row" layout-align="center center">
+                  <md-button class="md-warn md-raised green-button">Add More Providers</md-button>
+                </div>
+                
+              
+                
+                <md-button class="md-warn md-raised prev-button previous">Previous</md-button>
+                <md-button class="md-warn md-raised next-button next">Next</md-button>
+            -->
+                
+            </fieldset>
+            
+
+
+
+
+
+
+
+            <fieldset>
+            <form name="billingProvider">
+                <h2>Billing Information</h2>
+                <md-input-container class="md-block margin-bottom40">
+                    <md-select placeholder="Pay with checking account" ng-model="user">
+                        <md-option value="Dummy Text">Dummy Text</md-option>
+                        
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Bank Account Number</label>
+                    <input name="password" type="text" ng-model="password.password">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm Account Number</label>
+                    <input name="password" type="text" ng-model="confirm.password">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Bank Routing Number</label>
+                    <input name="password" type="text" ng-model="confirm.password">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm Routing Number</label>
+                    <input name="password" type="text" ng-model="confirm.password">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Account Holder Name</label>
+                    <input name="password" type="text" ng-model="confirm.password">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Name on CC</label>
+                    <input name="password" type="text" ng-model="confirm.password">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>CC Number</label>
+                    <input name="password" type="text" ng-model="confirm.password">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Confirm CC Number</label>
+                    <input name="password" type="text" ng-model="confirm.password">
+                </md-input-container>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>CVC Number</label>
+                        <input name="password" type="text" ng-model="confirm.password">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Exp. Date</label>
+                        <input name="password" type="password" ng-model="confirm.password">
+                    </md-input-container>
+                </div>
+                <md-button class="md-warn md-raised prev-button previous">Previous</md-button>
+                <md-button class="md-warn md-raised next-button next" ng-click="submitBilling(billingProvider)">Next</md-button>
+                </form>
+            </fieldset>
+           
+            <fieldset>
+               <h2>Login</h2>
+                <md-input-container class="md-block">
+                    <label>User Name</label>
+                    <input name="user" type="text" ng-model="user.userName">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input name="password" type="password" ng-model="password.password">
+                </md-input-container>
+                <md-button class="md-warn md-raised prev-button previous">Previous</md-button>
+                <md-button class="md-warn md-raised next-button submit">Log in</md-button>
+                
+                <div class="grid100">
+                    <div class="login-text pull-left"><a href="javascript:void(0);" title="Forgot Password">Forgot Password</a></div>
+                    <div class="login-text pull-right"><a href="javascript:void(0)" title="Create Account">Create Account</a></div>
+                </div>
+                
+            </fieldset>
+            
+        </div>
+    </div>
+</form>
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="jscript/angular-animate.min.js"></script>
+<script src="jscript/angular-aria.min.js"></script>
+<script src="jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+<script type="text/javascript">  
+
+  function submitrovider(){
+            var first_name =document.getElementsByName('first_name[]');
+            var last_name  =document.getElementsByName('last_name[]');
+            var gender     =document.getElementsByName('gender[]');
+            var license    =document.getElementsByName('license[]');
+            var npi        =document.getElementsByName('npi[]');
+            var dentist    =document.getElementsByName('.dentist[]');
+            flag=0;
+            for (var i=0; i<first_name.length; i++)
+                        {
+                            var fnamevalue = first_name[i].value ;
+                            if(fnamevalue==''){
+                            var firstnameerror =document.getElementById('firstname'+i);
+                               firstnameerror.innerHTML= 'Enter First Name'  ;
+                               flag=1;
+                            }
+                            var lnamevalue = last_name[i].value ;
+                            if(lnamevalue==''){
+                            var lastnameerror =document.getElementById('lastname'+i);
+                                lastnameerror.innerHTML= 'Enter Last Name'  ;
+                                flag=1;
+                            }
+                            var licensevalue=license[i].value ;
+                             if(licensevalue==''){
+                            var licenseerror =document.getElementById('licenseerror'+i);
+                                licenseerror.innerHTML= 'Enter License No'  ;
+                                flag=1;
+                            }
+                            var npivalue = npi[i].value;
+                             if(npivalue==''){
+                            var npierror =document.getElementById('npierror'+i);
+                                npierror.innerHTML= 'Enter NPI No'  ;
+                                flag=1;
+                            }
+                            var dentistvalue = parseInt(dentist[i].value) ;
+                             if(isNaN(dentistvalue)){
+                            var dentisterror =document.getElementById('dentisterror'+i);
+                                dentisterror.innerHTML= 'Enter General Dentist.'  ; 
+                                flag=1;
+                             }
+
+                        }
+                        if(flag==0){
+                        sendCode(first_name,last_name, gender,license,npi,dentist);
+                         
+                  }
+    }
+ 
+ function sendCode(first_name,last_name, gender,license,npi,dentist) {
+    var namevalue = [];
+    var lastnamevalue = [];
+    var gendervalue = [];
+    var licensevalue = [];
+    var npivalue = [];
+    var dentistvalue = [];
+    for (var i=0; i<first_name.length; i++)
+   {
+        namevalue.push(first_name[i].value) ;
+        lastnamevalue.push(last_name[i].value) ;
+        gendervalue.push(gender[i].value) ;
+        licensevalue.push(license[i].value);
+        npivalue.push(npi[i].value) ;
+        dentistvalue.push(dentist[i].value) ;
+    }
+    $.post('/addproviderinfo', {
+    fname: namevalue,
+    lname: lastnamevalue,
+    genderarray: gendervalue,
+    npiarray: npivalue,
+    dentistarray: dentistvalue,
+    licensearray:licensevalue,
+    },function(result){
+         
+     });
+   
+}
+
+
+
+
+
+  
+var app=angular.module('BlankApp', ['ngMaterial']).controller('formController', function($scope) {   
+        $scope.rowCounter = 0;
+        $scope.rows = [{
+        id: '0'
+        }];
+        
+        $scope.addRow = function() {
+        $scope.rowCounter += 1;
+        $scope.rowTemplate = {
+                id: $scope.rowCounter,
+        };
+        $scope.rows.push($scope.rowTemplate);
+        };
+    });
+
+</script>
+<style>
+.mdprimary1{
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    box-sizing: border-box;
+    height: 20px;
+    top: 0;
+    transition: border-color 0.28s ease 0s;
+    width: 20px;
+}
+</style>
+<script src="jscript/jquery-1.9.1.min.js"></script>
+<script src="jscript/jquery.easing.min.js"></script>
+<script src="jscript/process-wizard.js"></script>
+

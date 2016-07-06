@@ -1,0 +1,168 @@
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+<div ng-controller="formCtrl">
+<form name="userForm" id="msform" action="#">
+    <div class="width650">
+        <div class="grid100 change-password">
+			<div layout="row" layout-align="center center">
+                	<h2>Upload your Fee Schedule</h2>
+                </div>
+                <div layout="row" layout-align="center center">
+                	<h3>Please upload a .xls or .csv file only. Thank You</h3>
+                </div>
+                <div layout="row" layout-align="center center">
+					 <input type = "file" file-model = "myFile"/>					
+                	<md-button class="md-warn md-raised more-button" ng-click = "uploadFileCsv()">Upload</md-button>
+                </div>
+                <p>{{error}} {{mapMsg}}</p>
+                <div ng-if="mapingdiv == 1" >
+					
+					<div layout-gt-sm="row" class="layout-gt-sm-row">
+					<md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        ADA Code :                        
+					 </md-input-container>
+					 
+					<md-input-container class="md-block" flex-gt-sm >
+					   <select placeholder="Select column" ng-model="maping.ada">
+						<option value="" selected>- Please select -</option>					   
+					   <option ng-value="key" ng-repeat="(key,col) in  pricingrow">{{ col }}</option>
+					   </select>
+					  
+					</md-input-container>
+					</div>
+					<div layout-gt-sm="row" class="layout-gt-sm-row">
+					<md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        Description :                         
+					</md-input-container>
+					 
+					<md-input-container class="md-block" flex-gt-sm >
+						 <select placeholder="Select column" ng-model="maping.description">
+						<option value="" selected>- Please select -</option>					   
+					   <option ng-value="key" ng-repeat="(key,col) in  pricingrow">{{ col }}</option>
+					   </select>
+					  
+					</md-input-container>
+					</div>
+					<div layout-gt-sm="row" class="layout-gt-sm-row">
+					<md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        Price :                         
+					 </md-input-container>
+					 
+					<md-input-container class="md-block" flex-gt-sm >
+						 <select placeholder="Select column" ng-model="maping.pricing">
+						<option value="" selected>- Please select -</option>					   
+					   <option ng-value="key" ng-repeat="(key,col) in  pricingrow">{{ col }}</option>
+					   </select>
+					  
+					</md-input-container>
+					</div>
+					<md-button class="md-warn md-raised prev-button previous" ng-click="mapprice(userForm)" >Map</md-button>
+                </div>
+                
+                <div id="progress" class="graph"><div id="bar" style="width:{{progress}}%"><p>{{progress}}% complete</p></div></div>
+                <md-button class="md-warn md-raised prev-button previous" onclick="history.go(-1);">Back</md-button>
+	            <md-button class="md-warn md-raised next-button next" ng-click="showtab('three')">Next</md-button>
+	        </div>
+	    </div>
+</form>
+</div>
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']); 
+ 
+         
+ app.directive('fileModel', ['$parse', function ($parse) {
+	return {
+	   restrict: 'A',
+	   link: function(scope, element, attrs) {
+		  var model = $parse(attrs.fileModel);
+		  var modelSetter = model.assign;
+		  
+		  element.bind('change', function(){
+			 scope.$apply(function(){
+				modelSetter(scope, element[0].files[0]);
+			 });
+		  });
+	   }
+	};
+ }]);
+
+ app.service('fileUpload', ['$http', function ($http) {
+	this.uploadFileToUrl = function(file, uploadUrl,$scope){
+	   var fd = new FormData();
+	  
+	   fd.append('file', file);
+		$scope.progress = 25;
+	   $http.post(uploadUrl, fd, {
+		  transformRequest: angular.identity,
+		  headers: {'Content-Type': undefined}
+	   })
+	
+	   .success(function(data){
+		   if(data==0){
+			   //alert('upload csv file only');
+				$scope.error='Upload csv file only';
+				$scope.progress = 0;
+			}else{
+				$scope.progress = 100;
+				$scope.feemap(data);
+			}
+	   })
+	
+	   .error(function(){
+	   });
+	   $scope.progress = 60;
+	   $scope.error='';
+	}
+ }]);
+ 
+app.controller("formCtrl", function($scope, $http,fileUpload,$window) {
+	$scope.progress = 0;
+	$scope.maping = {};
+	$scope.uploadFileCsv = function(){
+		   var file = $scope.myFile;
+		   $scope.progress = 10;
+		   console.log('file is ' );
+		   console.dir(file);
+		   
+		   var uploadUrl = "/dashboardfront/feeSchedule";
+		   fileUpload.uploadFileToUrl(file, uploadUrl,$scope);
+		};
+		$scope.feemap = function($data){
+			$scope.pricingfile=$data;
+			$http.get("/dashboardfront/feemap",{params: {'name':$data}}).then(function(response) {
+				
+				$scope.mapingdiv=1;
+				$scope.pricingrow = response.data;
+				//console.log(response);
+				//$scope.myWelcome = response.data;
+				//console.log(response.data);
+				//$scope.fees = response.data;
+				
+			});
+		}; 
+		$scope.mapprice = function ($valid){
+			 $scope.maping.file=$scope.pricingfile;
+			console.log($scope.maping);
+			 $http.post("/dashboardfront/feemapsubmit", $scope.maping).
+					success(function(data, status) {
+						if(data==0){							
+							$scope.mapMsg='Incorrect mapping';
+						}
+						if(data>0){
+							$scope.mapingdiv=0;
+							$scope.mapMsg='File mapped and saved successfully.';
+						}
+				});
+		}
+});
+    
+</script>

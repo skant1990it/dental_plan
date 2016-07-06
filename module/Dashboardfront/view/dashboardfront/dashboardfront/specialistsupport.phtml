@@ -1,0 +1,118 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+use Zend\Session\Container;
+ $session = new Container('User');
+ $doc_specility_type=  $session->offsetGet('doc_speciality') ;
+
+?>
+
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo_spl.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+
+    <div class="width650" ng-controller="supportControllar">
+     <form name="Support" id="Support">
+        <div class="grid100 change-password">
+            <fieldset>
+              <div class="layout-align-center-center layout-row" layout="row" layout-align="center center">
+                  <h2>Contact Information</h2>
+                </div>
+                <div layout="row" layout-align="center center" class="align-center layout-align-center-center layout-row">
+                  <h3>1-800-DENEFITS<br>Email:support@denefits.com</h3> 
+                </div>
+                  <div style="text-align:center;"> {{ message3 }} </div>
+                <md-input-container class="md-block">
+                  <label>First Name</label>
+                   <input name="name" type="text" ng-model="support.name" required>
+                   <div ng-show="Support.name.$touched">
+                      <div class="md-errors-spacer" ng-show="Support.name.$error.required">Enter first name.</div>
+                </div>
+              </md-input-container>
+                
+              <md-input-container class="md-block">
+                   <label>Last Name</label>
+                   <input name="lname" type="text" ng-model="support.lname" required>
+                   <div ng-show="Support.lname.$touched">
+                      <div class="md-errors-spacer" ng-show="Support.lname.$error.required">Enter last name.</div>
+                  </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label for="input_2">Email</label>
+                     <input name="email" type="email" ng-pattern='/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/' ng-model="support.email" class="ng-pristine ng-untouched ng-valid md-input ng-valid-email" id="input_15" aria-invalid="false" required>
+                    <div ng-show="Support.email.$touched">
+                      <div class="md-errors-spacer" ng-show="Support.email.$error.required">Enter Email Address. </div>
+                      <div class="md-errors-spacer" ng-show="Support.email.$error.pattern">Invalid email address. </div>
+                   </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label for="input_3">Phone</label>
+                    <input ng-pattern='/^(0|[0-9][0-9]*)$/' name="phone" ng-maxlength="10" ng-minlength="10"  type="text" ng-model="support.phone" class="ng-pristine ng-untouched ng-valid md-input" id="input_14" aria-invalid="false" required>
+                   <div ng-show="Support.phone.$touched">
+                      <div class="md-errors-spacer" ng-show="Support.phone.$error.required">Enter Phone No.</div>
+                      <div class="md-errors-spacer" ng-show="Support.phone.$error.pattern">Only number allowed .</div>
+                      <div class="md-errors-spacer" ng-show="Support.phone.$error.maxlength">Max length should be 10 .</div>
+                      <div class="md-errors-spacer" ng-show="Support.phone.$error.minlength">Min length should be 10 .</div>
+                   </div>
+                </md-input-container>
+                <md-input-container style="height: auto;" class="md-block">
+                    <label for="input_4">Questions Or Comments</label>
+                    <textarea style="" aria-invalid="false" aria-multiline="true" id="input_4" class="ng-pristine ng-untouched ng-valid md-input" name="biography" ng-model="support.biography" rows="4" md-select-on-focus="" required></textarea>
+                    <div ng-show="Support.biography.$touched"> 
+                    <div class="md-errors-spacer" ng-show="Support.biography.$error.required">Enter comments.
+                    </div>
+                  </div>
+                </md-input-container>
+                <div class="layout-align-center-center layout-row" layout="row" layout-align="center center">
+                  <button class="md-warn md-raised save-button next md-button md-ink-ripple" type="button" ng-transclude="" ng-click="submitSupport(Support)"><span class="ng-scope">Submit</span></button>
+                  <?php if($doc_specility_type==3){
+                   ?>
+            <md-button ng-href="/dashboardfront/specilistwelcome" class="md-warn md-raised red-button marginLeft10">Cancel</md-button>
+              <?php
+               }else{
+              ?>
+            <md-button ng-href="/dashboardfront/welcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+             <?php
+              }
+             ?>
+            </div>
+          </fieldset>
+        </div>
+      </form>
+    </div>
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('supportControllar', function($scope,$http,$window) 
+{ 
+ $scope.submitSupport =function($valid)
+    {    
+       if($scope.Support.$valid){
+          $http.post('/dashboardfront/specialistsupport',$scope.support)
+       .success(function(data,status){
+          if(data==1)
+          $scope.message3="Mail sent successfully.";
+          })
+      }else{
+          $scope.message3="Invalid billing form details.";
+       }
+    } ;
+}); 
+</script>

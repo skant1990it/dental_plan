@@ -1,0 +1,131 @@
+<header layout="row">
+    <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+    <div class="log-frame" layout-align="start end" flex>
+        <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+    </div>
+</header>
+
+<div class="grid100 change-password">
+    <div class="term-plan-frame">
+        <ul>
+            <li>
+                <div class="column green-border">
+                    <div class="gold-planb">
+                    	<ul>
+                        	<li>
+                            	<h3><?php echo $plan[0]['heading_line'] ? $plan[0]['heading_line'] : $plan[0]['plan_name'];?></h3>
+                            </li>
+                            <li>
+                            	<h4>$<?php echo number_format(empty((int)$plan[0]['plan_monthly_price'])?50:$plan[0]['plan_monthly_price'], 2, '.', ',');?>/Month</h4>
+                                <p>Per Individual</p>
+                            </li>
+                            <li>
+                            	<h4>$<?php echo number_format(empty((int)$plan[0]['addon_monthly_price'])?40:$plan[0]['addon_monthly_price'], 2, '.', ',');?>/Month</h4>
+                                <p>Per Additional Memeber</p>
+                            </li>
+                            <li>
+                            	<h5>$<?php echo number_format((int)$plan[0]['plan_yearly_price'], 2, '.', ',');?> Maximum</h5>
+                            </li>
+                        </ul>
+                    </div>
+					<div class="period-frame">
+                    	<h3>No Deductible<br/>No Waiting Period</h3>
+                        <table>
+						  <?php foreach($planservice as $val){?>
+                          <tr>
+                            <td class="width250"><?php echo $val['service_type']?></td>
+                            <td><?php echo $val['service_notes']?>%</td>
+                          </tr>
+                          <?php }?>
+                      </table>
+                  </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div >
+
+<div class="width1200" ng-controller="formCtrl">
+	<form name="userForm" id="msform" action="#">
+		
+		
+    <div class="terms-frame">
+        <h2>Payment Information:  <span>CC Number: <?php echo $patient[0]['cc_number'];?></span></h2>
+        <h3>Terms &amp; Conditions</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas massa eget laoreet cursus. </p>
+        
+        
+        
+        <div class="terms-checkbox-frame">
+			
+            <div layout-gt-sm="row" class="clearboth">
+              <md-checkbox md-no-ink ng-model="tm.agree" aria-label="Checkbox No Ink" class="md-primary" required>
+                Pt checks to agree to conditions. Prejury entered here
+              </md-checkbox>
+            </div>
+            <div layout-gt-sm="row" class="clearboth padding20">
+              <md-checkbox md-no-ink  ng-model="tm.understand" aria-label="Checkbox No Ink" class="md-primary" required>
+                Understand writing out name on computer is same as
+              </md-checkbox>
+            </div>
+        </div>
+        <div layout-gt-sm="row" class="terms-inner-frame">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>First Name</label>
+                <input name="fname" type="text" ng-model="tm.fname" required>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Last Name</label>
+                <input name="lname" type="text" ng-model="tm.lname" required>
+            </md-input-container>
+        </div>
+        {{ message }}
+    </div>
+    <md-button class="md-warn md-raised next-button submit" ng-disabled="isDisabled" ng-click="submitUserForm(userForm)" >Submit</md-button>
+    </form>
+    <div layout-gt-sm="row" class="clearboth">
+    <div>&nbsp;&nbsp;</div>
+</div>    
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="jscript/angular.min.js"></script>
+<script src="jscript/angular-animate.min.js"></script>
+<script src="jscript/angular-aria.min.js"></script>
+<script src="jscript/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="jscript/angular-material.min.js"></script> 
+
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']);
+app.controller("formCtrl", function($scope, $http, $window) {
+	
+	$scope.isDisabled = false;	
+	$scope.message= '';
+	$scope.tm = {"pat_id":<?php echo $pat_id?>,"plan_id":<?php echo $plan_id?>};
+	
+	$scope.submitUserForm = function(){
+		
+	 if ($scope.userForm.$valid) {
+		 $scope.isDisabled = true;
+		 $http.post('/dashboardfront/termsconditionpatient',$scope.tm)
+				.success(function(data,status){
+				  if(data=='1'){
+					$window.location='/dashboardfront/patient';
+
+				  }
+
+		});
+	 }else{
+			$scope.message='Please fill all the details';
+		  }
+	}
+});
+</script>

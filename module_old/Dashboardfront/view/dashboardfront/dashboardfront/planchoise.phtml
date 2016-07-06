@@ -1,0 +1,179 @@
+<?php
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+?>
+
+<header layout="row">
+    <div class="logo" layout-align="start" flex><a href="javascript:void(0);" title="denefits"><img src="/images/logo.png" width="183" height="57" alt="Logo"></a></div>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+    <div class="log-frame" layout-align="start end" flex>Logoff <span class="handle-bar"><i class="handle"></i></span></div>
+</header>
+
+<div class="grid100 change-password">
+    <div layout="row" layout-align="center center">
+        <h2>Pick A Plan</h2>
+    </div>
+    <div class="plan-frame" layout="row" layout-align="center center">
+        <ul>
+            <li>
+                <div class="column gray-border">
+                    <div class="silver-plan">
+                        <ul>
+                            <li>
+                                <h3>Silver Plan</h3>
+                            </li>
+                            <li>
+                                <h4>$50/Month</h4>
+                                <p>Per Individual</p>
+                            </li>
+                            <li>
+                                <h4>$40/Month</h4>
+                                <p>Per Additional Memeber</p>
+                            </li>
+                            <li>
+                                <h5>$1500 Maximum</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="period-frame">
+                        <h3>No Deductible<br/>No Waiting Period</h3>
+                        <table>
+                          <tr>
+                            <td class="width250">Exam</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>Cleaning</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>Xrays</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>White Fillings</td>
+                            <td>75%</td>
+                          </tr>
+                          <tr>
+                            <td>Crowns</td>
+                            <td>50%</td>
+                          </tr>
+                      </table>
+                  </div>
+                </div>
+                <div class="silver-button"><a href="/dashboardfront/patientedit/6" title="I want Silver">I want Silver</a></div>
+            </li>
+            <li>
+                <div class="column green-border">
+                    <div class="gold-planb">
+                        <ul>
+                            <li>
+                                <h3>Gold Plan</h3>
+                            </li>
+                            <li>
+                                <h4>$70/Month</h4>
+                                <p>Per Individual</p>
+                            </li>
+                            <li>
+                                <h4>$60/Month</h4>
+                                <p>Per Additional Memeber</p>
+                            </li>
+                            <li>
+                                <h5>$2500 Maximum</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="period-frame">
+                        <h3>No Deductible<br/>No Waiting Period</h3>
+                        <table>
+                          <tr>
+                            <td class="width250">Exam</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>Cleaning</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>Xrays</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>White Fillings</td>
+                            <td>75%</td>
+                          </tr>
+                          <tr>
+                            <td>Crowns</td>
+                            <td>50%</td>
+                          </tr>
+                      </table>
+                  </div>
+                </div>
+                <div class="gold-button"><a href="/dashboardfront/patientedit/6" title="I want Gold">I want Gold</a></div>
+            </li>
+            <li>
+                <div class="column blue-border">
+                    <div class="platinum-plan">
+                        <ul>
+                            <li>
+                                <h3>Platinum Plan</h3>
+                            </li>
+                            <li>
+                                <h4>$90/Month</h4>
+                                <p>Per Individual</p>
+                            </li>
+                            <li>
+                                <h4>$80/Month</h4>
+                                <p>Per Additional Memeber</p>
+                            </li>
+                            <li>
+                                <h5>$3500 Maximum</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="period-frame">
+                        <h3>No Deductible<br/>No Waiting Period</h3>
+                        <table>
+                          <tr>
+                            <td class="width250">Exam</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>Cleaning</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>Xrays</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>White Fillings</td>
+                            <td>75%</td>
+                          </tr>
+                          <tr>
+                            <td>Crowns</td>
+                            <td>50%</td>
+                          </tr>
+                      </table>
+                  </div>
+                </div>
+                <div class="platinum-button"><a href="/dashboardfront/patientedit/6" title="I want Platinum">I want Platinum</a></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']);
+</script>

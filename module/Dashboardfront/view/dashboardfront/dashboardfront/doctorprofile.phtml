@@ -1,0 +1,210 @@
+<header layout="row">
+    
+    <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+    <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+    </div>
+</header>
+<?php $docytpe = array(1=>'Dentist', 2=>'Pediatric Dentists', 3=>'Other Specialist');               // this is doctor type list 
+//print_r($providers[0]);
+        ?>
+<div class="width100" ng-controller="profileController">
+    <div class="grid100 change-password">
+        <div layout="row" layout-align="center center">
+            <h2>Provider Details</h2>
+        </div>
+    </div>
+    <div class="profile-frame">
+    	<div class="grid45 padding-right5">
+			{{error}}
+        	<div class="profile-pic">
+            	<img ng-src="{{ avatarSrc }}" width="220" height="220" alt="Profile">            	
+            	<input type="file" file-model = "myFile" accept="image/*" image="image" style="display:none" id="fileInput"/>
+                <div class="capture">
+					<a href="javascript:void(0);" ng-show='selectbutton'  ng-click = "triggerUpload()" title=""><img src="/images/image-capture.png" width="60" height="48" alt="Capture"></a>
+					<a href="javascript:void(0);" ng-show='uploadbutton' ng-click="uploadFile()" title="save">Save to display changes<img width="26" height="26" alt="Edit" src="/images/save_32.png"></a>
+				</div>
+            </div>
+            <div class="profile-rating"><img src="/images/rating4.5.jpg" width="157" height="30" alt="Rating"></div>
+            <div class="profile-text">
+                <h3><?php echo $providers[0]['first_name']; ?> <?php echo $providers[0]['last_name']; ?></h3>
+                <p><?php echo $docytpe[$providers[0]['dentist_type']]; ?></p>
+            </div>
+            <div class="margintop50">
+                <div class="profile-boxb">
+                    <ul>
+                        <li><?php echo $location[0]['practice_email'];?></li>
+                        
+                        <li><?php echo $location[0]['address'].', '.$location[0]['city'].', '.$location[0]['state'].', '.$location[0]['zip']?><br/><span>Hours: <?php echo $location[0]['timing']?></span></li>
+                        
+                        
+                    </ul>    
+                </div>
+                <div class="calendar-text marginLeft10"><a href="/dashboardfront/practiceinfoedit" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+            </div>
+            <div class="margintop50">
+                <div class="profile-boxb">
+                    <ul>
+                        <li>Professional Details</li>
+                        <li>Lic #<?php echo $providers[0]['licence_no']; ?></li>
+                        <li>NPI #<?php echo $providers[0]['npi_no']; ?></li>
+                        <!--<li>Associations</li>
+                        <li>Degrees</li>-->
+                    </ul>    
+                </div>
+                <div class="calendar-text marginLeft10"><a href="/dashboardfront/providerlocationedit" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a></div>
+            </div>
+      	</div>
+        <div class="grid55">
+        	<h3>Dr. Bio</h3>
+        	<div class="profile-box">
+            	<p ng-show='showAreaText'>{{bio}} </p>
+            	<textarea ng-show='showArea' rows="10" cols="60" ng-model='dr_bio'></textarea>
+            </div>
+            
+            <div class="calendar-text marginLeft10"><a href="javascript:void(0);" ng-show='bioeditbutton' ng-click="editbio()" title="Edit"><img src="/images/edit-icon.png" width="26" height="26" alt="Edit"></a>
+            <a href="javascript:void(0);" ng-show='biosavebutton' ng-click="savebio()" title="Edit"><img src="/images/save_32.png" width="26" height="26" alt="Edit"></a>
+            </div>
+            <div class="margintop50">
+            	<h3>Reviews</h3>
+            </div>
+        	<div class="profile-box">
+            	<ul>
+                	<li>
+                    	<div class="rating-area"><img src="/images/rating.jpg" width="69" height="16" alt="Rating"></div>
+                        <div class="content-area">
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas massa eget laoreet cursus. Maecenas tempus tortor ut justo faucibus mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu lorem interdum, luctus neque eget, placerat est. Maecenas a quam eros. </p>
+                        </div>
+                    </li>
+                    <li>
+                    	<div class="rating-area"><img src="/images/rating.jpg" width="69" height="16" alt="Rating"></div>
+                        <div class="content-area">
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas massa eget laoreet cursus. Maecenas tempus tortor ut justo faucibus mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu lorem interdum, luctus neque eget, placerat est. Maecenas a quam eros. </p>
+                        </div>
+                    </li>
+                    <li>
+                    	<div class="rating-area"><img src="/images/rating.jpg" width="69" height="16" alt="Rating"></div>
+                        <div class="content-area">
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas massa eget laoreet cursus. Maecenas tempus tortor ut justo faucibus mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu lorem interdum, luctus neque eget, placerat est. Maecenas a quam eros. </p>
+                        </div>
+                    </li>
+                </ul>
+            	
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Your application -->
+<script type="text/javascript">    
+/**
+ * You must include the dependency on 'ngMaterial' 
+ */
+var app = angular.module('BlankApp', ['ngMaterial']);
+app.directive('fileModel', ['$parse', function ($parse) {
+	return {
+	   restrict: 'A',
+	   link: function(scope, element, attrs) {
+		  var model = $parse(attrs.fileModel);
+		  var modelSetter = model.assign;
+		  
+		  element.bind('change', function(){
+			 scope.$apply(function(){
+				modelSetter(scope, element[0].files[0]);
+			 });
+		  });
+	   }
+	};
+ }]);
+
+ app.service('fileUpload', ['$http', function ($http) {
+	this.uploadFileToUrl = function(file, uploadUrl,$scope){
+	   var fd = new FormData();
+	  
+	   fd.append('file', file);
+	   $scope.progress = 25;
+	   $http.post(uploadUrl, fd, {
+		  transformRequest: angular.identity,
+		  headers: {'Content-Type': undefined}
+	   })
+	
+	   .success(function(data){
+		//console.log(data);
+		   if(data.success==0){
+			   //alert('upload csv file only');
+				$scope.error=data.error;
+				$scope.selectbutton = true;
+				$scope.uploadbutton = false;
+				//$scope.progress = 0;
+			}else{				
+				$scope.avatarSrc=data.file;
+				$scope.selectbutton = true;
+				$scope.uploadbutton = false;
+			}
+	   })
+	
+	   .error(function(){
+	   });
+	   
+	   $scope.error='';
+	}
+ }]);
+
+
+app.controller('profileController',function($scope,$http,fileUpload,$window)
+{
+	$scope.error = '';
+	$scope.bio = '<?php echo $providers[0]['bio'];?>';
+	$scope.avatarSrc="<?php echo '/img/placeholders/avatars/'.$providers[0]['pro_avatar'];?>";
+	$scope.selectbutton = true;
+	
+	$scope.showAreaText = true;
+	$scope.bioeditbutton = true;
+    $scope.editbio = function(){
+		$scope.dr_bio = $scope.bio;
+		$scope.showArea = true;
+		$scope.biosavebutton = true;		
+		$scope.showAreaText = false;
+		$scope.bioeditbutton = false;		
+	}
+	$scope.savebio = function (){
+		if($scope.dr_bio!=''){
+		$http.post('/dashboardfront/savedoctorbio',{'id':<?php echo $providers[0]['id']; ?>,'bio':$scope.dr_bio})
+		.success(function(data,status){
+			//console.log(data);
+			if(data.success==1){
+				//console.log(data);
+				$scope.bio = $scope.dr_bio;
+				bio = $scope.dr_bio;
+				$scope.showArea = false;
+				$scope.biosavebutton = false;		
+				$scope.showAreaText = true;
+				$scope.bioeditbutton = true;
+			}
+
+		});
+		}
+	};
+	$scope.uploadFile = function(){
+		if( document.getElementById("fileInput").files.length == 0 ){
+			console.log("no files selected");
+		}else{		
+			   var file = $scope.myFile;
+			   // $scope.progress = 10;
+			   console.log('file is ' );
+			   console.dir(file);			   
+			   var uploadUrl = "/dashboardfront/providerimagechange/<?php echo $providers[0]['id'];?>";
+			   fileUpload.uploadFileToUrl(file, uploadUrl,$scope);
+		   }
+		};
+		$scope.triggerUpload=function()
+		{			
+			document.getElementById('fileInput').click()
+			$scope.selectbutton = false;
+			$scope.uploadbutton = true;
+		}
+});
+</script>
+

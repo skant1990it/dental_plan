@@ -1,0 +1,127 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+
+
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+?>
+<header layout="row">
+    <div class="logo" layout-align="start" flex><a href="javascript:" title="denefits"><img src="/images/logo.png" width="183" height="57" alt="Logo"></a></div>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+     <div class="log-frame" layout-align="start end" ng-controller="headercontrollar" flex>
+        <md-switch class="md-primary" md-no-ink ng-model="hasInk" aria-label="No Ink Effects" ng-click="showbtn(switchtext)">
+        {{ switchtext }} 
+          
+        </md-switch>
+    </div>
+</header>
+
+<div class="width1200" ng-controller="patientcontrollar">
+    <div class="grid100 change-password">
+    	<div layout="row" layout-align="center center">
+            <h2><span class="margin30">Does the patient also need Financing?</span></h2>
+        </div>
+        <div class="schedule-table margintop90">
+        <md-input-container class="grid550 md-block">
+        <md-select ng-model="planname" placeholder="All Plans">
+          <md-option ng-value="planslisting.plan_id" ng-repeat="planslisting in planslistingarray">{{ planslisting.plan_name }}</md-option>
+       </md-select>
+        </md-input-container> 
+            <div class="buttons-frame">
+                <div class="compaign-frame add-button">
+                    <ul>
+                        <li class="button dark-blue dark-blue-shadow"><a href="javascript:void(0);" title="Add New Patient">Add New Patient</a></li>
+                    </ul>
+                </div>
+            </div>
+ 			<div class="responsive-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="width150">Name</th>
+                        <th>Member Id</th>
+                        <th>Plan</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th class="width120">Current Status Payment</th>
+                        <th class="width85">1st Notice</th>
+                        <th class="width85">2nd Notice</th>
+                        <th class="width85">Letter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="patientdata in patientlistarray|filter: planname">
+                        <td class="width150">{{ patientdata.patient_firstname+' '+patientdata.patient_lastname }}</td>
+                        <td>{{ patientdata.patient_id }}</td>
+                        <td>{{ patientdata.plan_name }}</td>
+                        <td>{{ patientdata.patient_phone }}</td>
+                        <td><a href="javascript:void(0);" title="giacomoguilizzoni@domain.com"> {{ patientdata.patient_email }}</a>
+                        </td>
+                        <td class="width85"><span ng-if="patientdata.pay_status==1">Current</span>
+                        <span ng-if="patientdata.pay_status==0">Un paid</span>
+                       </td>
+                        <td>
+                        	<div layout="row" layout-align="center center">
+                        		<span class="email-button"><a href="javascript:void(0);" title="EDIT">Edit</a></span>
+                            </div>
+                        </td>
+                        <td>
+                        	<div layout="row" layout-align="center center">
+                        		<span class="email-button"><a href="javascript:void(0);" title="EDIT">Edit</a></span>
+                            </div>
+                        </td>
+                        <td>
+                        	<div layout="row" layout-align="center center">
+                        		<span class="email-button"><a href="javascript:void(0);" title="PRINT">PRINT</a></span>
+                            </div>
+                        </td>
+                    </tr>
+                  
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+    </div>
+</div>        
+
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('headercontrollar',function($scope,$http,$window)
+{
+    $scope.switchtext='logon';
+    $scope.showbtn=function(text){
+        //alert(text);
+        if(text=='logon'){
+            $scope.switchtext='logoff';
+            $window.location.href = '/logout';
+        }
+    }   
+});
+app.controller('patientcontrollar', function($scope,$http,$window) 
+{ 
+   //alert($scope.hasInk);
+  var patientname=statesname='<?php echo $statelist ; ?>';
+  var patientlistobject=angular.fromJson(patientname); 
+  $scope.patientlistarray  = angular.fromJson(patientlistobject);
+
+  var planslisting=statesname='<?php echo $planslisting ; ?>';
+  var planslistingobject=angular.fromJson(planslisting); 
+  $scope.planslistingarray  = angular.fromJson(planslistingobject);
+}); 
+</script>

@@ -1,0 +1,171 @@
+<?php
+// plan cycle
+$plan_billing_cycle[1] = 'Monthly';
+$plan_billing_cycle[2] = 'Annually';
+
+$plan_bill_cycle[1] = 'Month';
+$plan_bill_cycle[2] = 'Year';
+
+
+// gender type
+$sex[1] = 'Male';
+$sex[2] = 'Female';
+
+// plan type
+$plan_type[1] = 'Individual';
+$plan_type[2] = 'Family';
+$plan_type[3] = 'Addon';
+use Zend\Session\Container;
+ $session = new Container('User');
+  $doc_specility_type=  $session->offsetGet('doc_speciality') ;
+
+?>
+<header layout="row">
+ <?php echo $this->render('dentalheaderlogo.phtml'); ?>
+    <div class="searchbar">
+        <div class="inner-searchbar"><input type="text" name="search" placeholder="Type the text for search" id="search"></div>
+    </div>
+      <?php echo $this->render('dentalheaderlogin.phtml'); ?>
+</header>
+
+<div class="width800">
+    <div class="grid100 change-password" ng-controller="formController">
+        
+        <h2><span class="margin30">Providers Per Location</span></h2>
+        <form id="formProvider" name="formProvider">
+          {{ message2 }}
+         <div ng-repeat="(key,locrow) in repeatloc">
+            <div ng-if="locrow.group  == '0'">
+              <h3><span  ng-if="key==0"> Primary </span>Location<span ng-if="key!=0"> {{ $index+1 }}</span>: {{ locrow.address +', '+locrow.city+' ,'+locrow.state +', '+locrow.zip}}</h3>
+            </div>
+              <div ng-repeat="provider in locrow.options" style="border-bottom:2px dotted #000000;margin-bottom:20px;margin-top:20px;">
+                <div layout-gt-sm="row" class="clearboth">
+                    <md-input-container class="md-block">
+                        <label>First Name</label>
+                        <input name="first_name{{ key}}{{$index }}"  type="text" ng-model="locrow.first_name[provider.id]" required>
+                         <div ng-show="formProvider.first_name{{ key}}{{$index }}.$touched">
+                          <div class="md-errors-spacer" ng-show="formProvider.first_name{{ key}}{{$index }}.$error.required">Enter First Name.</div>
+                        </div>
+                     </md-input-container>
+                     <md-input-container class="md-block">
+                        <label>Last Name</label>
+                      <input name="last_name{{ key}}{{$index }}" type="text" ng-model="locrow.last_name[provider.id]" required>
+                      <div ng-show="formProvider.last_name{{ key}}{{$index }}.$touched">
+                        <div class="md-errors-spacer" ng-show="formProvider.last_name{{ key}}{{$index }}.$error.required">Enter Last Name.</div>
+                      </div>
+                    </md-input-container>
+                  <div layout="row" layout-align="center start" class="md-block padding20">
+                     <md-radio-group ng-model="locrow.gender[provider.id]" layout="row" required>
+                        <md-radio-button ng-value=1  class="md-primary">Male</md-radio-button>
+                        <md-radio-button ng-value=0 class="md-primary">Female</md-radio-button>
+                    </md-radio-group>
+                  </div>
+                  <div class="delete" ng-if="provider.id!=1"><a href="javascript:void(0);" title="Delete"><img src="/images/delete-icon.png" width="20" height="25" alt="Delete" ng-click="removeProvider(key,$index)"></a></div>
+                </div>    
+                <md-input-container class="md-block">
+                    <label>License Number</label>
+                    <input type="text" name="license{{ key}}{{$index }}" ng-pattern="/^(0|[0-9][0-9]*)$/"  ng-model="locrow.license[provider.id]" required>
+                  <div ng-show="formProvider.license{{ key}}{{$index }}.$touched" required>
+                        <div class="md-errors-spacer" ng-show="formProvider.license{{ key}}{{$index }}.$error.required">Enter Licence No.</div>
+                        <div class="md-errors-spacer" ng-show="formProvider.license{{ key}}{{$index }}.$error.pattern">Only number are allowed .</div>
+                  </div>
+                </md-input-container>
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>NPI Number</label>
+                    <input  type="text" name="npi{{ key}}{{$index }}" ng-pattern="/^(0|[0-9][0-9]*)$/"  ng-model="locrow.npi[provider.id]" required>
+                    <div ng-show="formProvider.npi{{ key}}{{$index }}.$touched" required>
+                        <div class="md-errors-spacer" ng-show="formProvider.npi{{ key}}{{$index }}.$error.required">Enter NPI No.</div>
+                        <div class="md-errors-spacer" ng-show="formProvider.npi{{ key}}{{$index }}.$error.pattern">Only number are allowed .</div>
+                   </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                   <md-select ng-model="locrow.dentist[provider.id]" placeholder="Select Dentist Type" required>
+                        <md-option ng-value="user.id" ng-repeat="user in users">{{ user.name }}</md-option>
+                  </md-select>
+                   <div id="dentisterror{{ $index }}"></div> 
+                </md-input-container>
+          </div>
+            <div ng-if="locrow.group  == '0'"  layout="row" layout-align="center center">
+                <md-button  class="md-warn md-raised green-button" ng-click="addNewChoice1(key)">Add More Providers</md-button>
+           </div>
+        </div>
+<div layout="row" layout-align="center center">
+  <md-button class="md-warn md-raised save-button next" ng-click="submitprovider(formProvider)">Save</md-button>
+  
+ <?php if($doc_specility_type==3){
+                   ?>
+                 <md-button ng-href="/dashboardfront/specilistwelcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+                 <md-button ng-href="/dashboardfront/dashboardsetting" class="md-warn md-raised red-button marginLeft10">Cancel</md-button>
+                <?php
+               }else{
+                ?>
+            <md-button ng-href="/dashboardfront/welcome" class="md-warn md-raised save-button marginLeft10">Dashboard</md-button>
+           <md-button ng-href="/dashboardfront/dashboardsetting" class="md-warn md-raised red-button marginLeft10">Cancel</md-button>
+             <?php
+              }
+             ?>
+  
+</div>
+ </form>
+    </div>
+</div>                 
+
+
+<!-- Your application -->
+
+<script type="text/javascript">  
+var app=angular.module('BlankApp', ['ngMaterial']);
+app.controller('formController', function($scope,$http,$window) {
+var providerdetail='<?php echo $providerdetail ; ?>';
+var providerdetailobject  = angular.fromJson(providerdetail);
+$scope.repeatloc=providerdetailobject;
+       $scope.users = [                                 // this is doctor type list 
+         { id: 1, name: 'Dentist' },
+         { id: 2, name: 'Pediatric Dentists' },
+         { id: 3, name: 'Other Specialist' }
+         ];
+       $scope.choices1 = [{id: '1'}];    // this variable for provider form
+       $scope.addNewChoice1 = function(id) 
+       {
+        var vr=$scope.repeatloc[id].options;
+        var newItemNo = Object.keys($scope.repeatloc[id].options).length+1;
+        vr.push({'id':newItemNo});
+      };
+           $scope.submitprovider= function($valid)
+      {
+       if($scope.formProvider.$valid)
+       {
+       $http.post('/dashboardfront/addproviderinfo',$scope.repeatloc)
+       .success(function(data,status){
+        $scope.message2='Record updated successfully' ;
+        // $scope.repeatloc=data; 
+        if(data){
+
+        }
+        
+        })
+       } else{
+        $scope.message2="Please fill the form details.";
+       }  
+      };
+    $scope.removeProvider=function(key,provider_id)
+     { 
+         $scope.repeatloc[key].options.splice(provider_id,1);       // use for remove id element from choices array
+         delete  $scope.repeatloc[key].first_name[provider_id+1] ;
+         delete  $scope.repeatloc[key].last_name[provider_id+1] ;
+         delete  $scope.repeatloc[key].license[provider_id+1] ;
+         delete  $scope.repeatloc[key].npi[provider_id+1] ;
+         delete  $scope.repeatloc[key].dentist[provider_id+1] ; 
+         delete  $scope.repeatloc[key].group[provider_id+1] ; 
+     };
+});
+</script>
+<style>
+.change-password h2 {
+    color: #2b56a0;
+    font-family: "open_sanslight";
+    font-size: 28px;
+    line-height: 9px;
+    padding: 0 0 20px;
+}
+</style>
